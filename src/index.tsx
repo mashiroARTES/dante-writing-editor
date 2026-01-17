@@ -212,18 +212,17 @@ app.put('/api/auth/preferences', async (c) => {
 
 const GROK_API_URL = 'https://api.x.ai/v1/chat/completions'
 
-// Available models - Updated January 2025
+// Available models - Updated January 2026
+// See: https://docs.x.ai/docs/models
 app.get('/api/grok/models', async (c) => {
   return c.json({
     models: [
-      { id: 'grok-4', name: 'Grok 4', description: '最も高性能な推論モデル（最新）' },
-      { id: 'grok-4-fast', name: 'Grok 4 Fast', description: 'Grok 4の高速版' },
-      { id: 'grok-4.1-fast', name: 'Grok 4.1 Fast', description: '最新の高速モデル' },
-      { id: 'grok-3-latest', name: 'Grok 3', description: 'バランスの取れた高性能モデル' },
+      { id: 'grok-3-latest', name: 'Grok 3', description: '最高性能モデル（推奨）' },
       { id: 'grok-3-fast-latest', name: 'Grok 3 Fast', description: 'Grok 3の高速版' },
-      { id: 'grok-3-mini', name: 'Grok 3 Mini', description: '軽量で高速なモデル' },
-      { id: 'grok-3-mini-fast', name: 'Grok 3 Mini Fast', description: '最も高速なモデル' },
-      { id: 'grok-2-latest', name: 'Grok 2', description: 'コスト効率の良いモデル' }
+      { id: 'grok-3-mini-latest', name: 'Grok 3 Mini', description: '軽量で高速なモデル' },
+      { id: 'grok-3-mini-fast-latest', name: 'Grok 3 Mini Fast', description: '最も高速で安価' },
+      { id: 'grok-2-latest', name: 'Grok 2', description: 'コスト効率の良いモデル' },
+      { id: 'grok-2-vision-latest', name: 'Grok 2 Vision', description: '画像理解対応モデル' }
     ]
   })
 })
@@ -609,9 +608,19 @@ app.get('/', (c) => {
   return c.html(mainPage)
 })
 
+// Return empty favicon to prevent 500 errors
+app.get('/favicon.ico', (c) => {
+  return new Response(null, { status: 204 })
+})
+
 // 404 handler for undefined API routes
 app.all('/api/*', (c) => {
   return c.json({ error: 'Not Found' }, 404)
+})
+
+// 404 handler for other undefined routes
+app.all('*', (c) => {
+  return c.text('Not Found', 404)
 })
 
 // Global error handler
