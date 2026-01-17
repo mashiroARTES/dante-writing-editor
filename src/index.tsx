@@ -609,4 +609,15 @@ app.get('/', (c) => {
   return c.html(mainPage)
 })
 
+// 404 handler for undefined API routes
+app.all('/api/*', (c) => {
+  return c.json({ error: 'Not Found' }, 404)
+})
+
+// Global error handler
+app.onError((err, c) => {
+  console.error('Server error:', err)
+  return c.json({ error: 'Internal Server Error' }, 500)
+})
+
 export default app
