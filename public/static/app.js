@@ -1771,19 +1771,17 @@
             <i class="fas fa-book-reader text-blue-500"></i>
             <span class="text-sm font-medium text-gray-700">${t('referenceProjects')}</span>
           </div>
-          <button onclick="showContextSelector()" class="px-3 py-1 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition">
+          <button id="context-selector-btn" onclick="showContextSelector()" class="px-3 py-1 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition">
             ${count > 0 ? `${count} ${t('contextSelected')}` : t('noContextSelected')}
             <i class="fas fa-chevron-down ml-1"></i>
           </button>
         </div>
-        ${count > 0 ? `
-        <div class="mt-2 flex flex-wrap gap-1">
+        <div id="selected-context-display" class="mt-2 flex flex-wrap gap-1 ${count > 0 ? '' : 'hidden'}">
           ${state.selectedContextProjects.map(id => {
             const p = state.projects.find(pr => pr.id === id);
             return p ? `<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">${escapeHtml(p.title)}</span>` : '';
           }).join('')}
         </div>
-        ` : ''}
       </div>
     `;
   }
@@ -1948,21 +1946,19 @@
           
           <!-- Reference Projects Selector -->
           ${hasOtherProjects ? `
-          <div class="border-b border-gray-200 bg-blue-50 px-4 py-2 flex items-center justify-between">
+          <div id="writing-context-bar" class="border-b border-gray-200 bg-blue-50 px-4 py-2 flex items-center justify-between">
             <div class="flex items-center gap-2 text-sm">
               <i class="fas fa-book-reader text-blue-500"></i>
               <span class="text-gray-700">${t('referenceProjects')}</span>
-              ${contextCount > 0 ? `
-              <span class="flex flex-wrap gap-1 ml-2">
+              <span id="writing-context-tags" class="flex flex-wrap gap-1 ml-2 ${contextCount > 0 ? '' : 'hidden'}">
                 ${state.selectedContextProjects.slice(0, 2).map(id => {
                   const p = state.projects.find(pr => pr.id === id);
                   return p ? `<span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">${escapeHtml(p.title)}</span>` : '';
                 }).join('')}
                 ${contextCount > 2 ? `<span class="text-xs text-blue-600">+${contextCount - 2}</span>` : ''}
               </span>
-              ` : ''}
             </div>
-            <button onclick="showContextSelector()" class="px-3 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700 transition">
+            <button id="writing-context-btn" onclick="showContextSelector()" class="px-3 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700 transition">
               ${contextCount > 0 ? `${contextCount} ${t('contextSelected')}` : t('noContextSelected')}
             </button>
           </div>
@@ -2948,9 +2944,62 @@
     } else {
       state.selectedContextProjects.splice(idx, 1);
     }
-    // Re-render the modal to update checkboxes
+    // Re-render the modal to update checkboxes and update background UI
     showContextSelector();
+    updateContextDisplay();
   };
+
+  // Update context display without full re-render
+  function updateContextDisplay() {
+    const contextCount = state.selectedContextProjects.length;
+    const btnText = contextCount > 0 ? `${contextCount} ${t('contextSelected')}` : t('noContextSelected');
+    
+    // Update button in idea/plot modes (with chevron icon)
+    const contextSelectorBtn = document.getElementById('context-selector-btn');
+    if (contextSelectorBtn) {
+      contextSelectorBtn.innerHTML = `${btnText} <i class="fas fa-chevron-down ml-1"></i>`;
+    }
+    
+    // Update button in writing mode (no icon)
+    const writingContextBtn = document.getElementById('writing-context-btn');
+    if (writingContextBtn) {
+      writingContextBtn.textContent = btnText;
+    }
+    
+    // Update selected projects display in idea/plot modes
+    const selectedDisplay = document.getElementById('selected-context-display');
+    if (selectedDisplay) {
+      if (contextCount > 0) {
+        selectedDisplay.innerHTML = state.selectedContextProjects.map(id => {
+          const p = state.projects.find(pr => pr.id === id);
+          return p ? `<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">${escapeHtml(p.title)}</span>` : '';
+        }).join('');
+        selectedDisplay.classList.remove('hidden');
+      } else {
+        selectedDisplay.innerHTML = '';
+        selectedDisplay.classList.add('hidden');
+      }
+    }
+    
+    // Update tags in writing mode
+    const writingContextTags = document.getElementById('writing-context-tags');
+    if (writingContextTags) {
+      if (contextCount > 0) {
+        let tagsHtml = state.selectedContextProjects.slice(0, 2).map(id => {
+          const p = state.projects.find(pr => pr.id === id);
+          return p ? `<span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">${escapeHtml(p.title)}</span>` : '';
+        }).join('');
+        if (contextCount > 2) {
+          tagsHtml += `<span class="text-xs text-blue-600">+${contextCount - 2}</span>`;
+        }
+        writingContextTags.innerHTML = tagsHtml;
+        writingContextTags.classList.remove('hidden');
+      } else {
+        writingContextTags.innerHTML = '';
+        writingContextTags.classList.add('hidden');
+      }
+    }
+  }
 
   window.clearContextSelection = function() {
     state.selectedContextProjects = [];
