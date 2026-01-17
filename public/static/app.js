@@ -1143,6 +1143,19 @@
     state.currentProject.content = content;
     state.currentProject.title = title;
     state.currentProject.word_count = content.length;
+    
+    // Update project in the projects list for sidebar display
+    const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
+    if (projectIndex !== -1) {
+      state.projects[projectIndex].title = title;
+      state.projects[projectIndex].word_count = content.length;
+      // Re-render sidebar project list
+      const projectsList = document.getElementById('projects-list');
+      if (projectsList) {
+        projectsList.innerHTML = renderProjectsList();
+      }
+    }
+    
     updateCharCount();
   }
 
