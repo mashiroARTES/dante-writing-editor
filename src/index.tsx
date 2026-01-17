@@ -212,17 +212,13 @@ app.put('/api/auth/preferences', async (c) => {
 
 const GROK_API_URL = 'https://api.x.ai/v1/chat/completions'
 
-// Available models - Updated January 2026
-// See: https://docs.x.ai/docs/models
+// Available models
 app.get('/api/grok/models', async (c) => {
   return c.json({
     models: [
-      { id: 'grok-3-latest', name: 'Grok 3', description: '最高性能モデル（推奨）' },
-      { id: 'grok-3-fast-latest', name: 'Grok 3 Fast', description: 'Grok 3の高速版' },
-      { id: 'grok-3-mini-latest', name: 'Grok 3 Mini', description: '軽量で高速なモデル' },
-      { id: 'grok-3-mini-fast-latest', name: 'Grok 3 Mini Fast', description: '最も高速で安価' },
-      { id: 'grok-2-latest', name: 'Grok 2', description: 'コスト効率の良いモデル' },
-      { id: 'grok-2-vision-latest', name: 'Grok 2 Vision', description: '画像理解対応モデル' }
+      { id: 'grok-4-1-fast-non-reasoning', name: 'Grok 4.1 Fast', description: '高速・推奨モデル' },
+      { id: 'grok-4-1-fast-reasoning', name: 'Grok 4.1 Fast Reasoning', description: '高速・推論モデル' },
+      { id: 'grok-4-0709', name: 'Grok 4', description: '最高性能モデル' }
     ]
   })
 })

@@ -10,7 +10,7 @@
     projects: [],
     history: [],
     models: [],
-    selectedModel: 'grok-3-latest',
+    selectedModel: 'grok-4-1-fast-non-reasoning',
     currentTab: 'editor',
     currentMode: 'writing', // 'idea', 'plot', 'writing'
     isGenerating: false,
@@ -99,7 +99,7 @@
       state.user = data.user;
       state.preferences = data.preferences;
       if (state.preferences) {
-        state.selectedModel = state.preferences.default_model || 'grok-3-latest';
+        state.selectedModel = state.preferences.default_model || 'grok-4-1-fast-non-reasoning';
         state.theme = state.preferences.theme || 'light';
         applyTheme();
       }
