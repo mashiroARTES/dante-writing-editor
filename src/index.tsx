@@ -236,7 +236,12 @@ app.post('/api/grok/generate', async (c) => {
       return c.json({ error: 'プロンプトは必須です' }, 400)
     }
     
-    const selectedModel = model || 'grok-3-latest'
+    // Valid models list
+    const validModels = ['grok-4-1-fast-non-reasoning', 'grok-4-1-fast-reasoning']
+    const defaultModel = 'grok-4-1-fast-non-reasoning'
+    
+    // Use default if model is invalid or not provided
+    const selectedModel = (model && validModels.includes(model)) ? model : defaultModel
     
     // Build system prompt based on generation type
     let systemPrompt = 'あなたは優秀な日本語ライターです。'
