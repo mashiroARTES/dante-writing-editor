@@ -325,13 +325,12 @@ app.post('/api/payment/create', async (c) => {
           plan,
           chars_to_add: charsToAdd.toString()
         },
-        payment_types: ['credit_card', 'konbini', 'pay_pay', 'line_pay', 'merpay']
+        payment_types: ['credit_card', 'konbini', 'paypay', 'linepay', 'merpay']
       })
     })
     
     if (!response.ok) {
-      const error = await response.text()
-      console.error('KOMOJU error:', error)
+      console.error('KOMOJU error:', response.status)
       return c.json({ error: 'Payment creation failed' }, 500)
     }
     
