@@ -5,10 +5,11 @@ import { getCookie, setCookie, deleteCookie } from 'hono/cookie'
 type Bindings = {
   DB: D1Database
   GROK_API_KEY: string
+  KOMOJU_SECRET_KEY: string
 }
 
 type Variables = {
-  user: { id: number; email: string; username: string } | null
+  user: { id: number; email: string; username: string; plan: string; total_chars_limit: number; total_chars_used: number; language: string } | null
 }
 
 const app = new Hono<{ Bindings: Bindings; Variables: Variables }>()
@@ -22,11 +23,25 @@ app.use('/api/*', async (c, next) => {
   if (sessionId) {
     try {
       const session = await c.env.DB.prepare(
-        'SELECT s.*, u.id as user_id, u.email, u.username FROM sessions s JOIN users u ON s.user_id = u.id WHERE s.id = ? AND s.expires_at > datetime("now")'
+        `SELECT s.*, u.id as user_id, u.email, u.username, 
+         COALESCE(u.plan, 'free') as plan, 
+         COALESCE(u.total_chars_limit, 30000) as total_chars_limit, 
+         COALESCE(u.total_chars_used, 0) as total_chars_used,
+         COALESCE(u.language, 'ja') as language
+         FROM sessions s JOIN users u ON s.user_id = u.id 
+         WHERE s.id = ? AND s.expires_at > datetime("now")`
       ).bind(sessionId).first()
       
       if (session) {
-        c.set('user', { id: session.user_id as number, email: session.email as string, username: session.username as string })
+        c.set('user', { 
+          id: session.user_id as number, 
+          email: session.email as string, 
+          username: session.username as string,
+          plan: session.plan as string,
+          total_chars_limit: session.total_chars_limit as number,
+          total_chars_used: session.total_chars_used as number,
+          language: session.language as string
+        })
       }
     } catch (e) {
       // Session invalid
@@ -45,10 +60,10 @@ function generateSessionId(): string {
   return result
 }
 
-// Helper: Simple password hash (for demo - use proper bcrypt in production)
+// Helper: Simple password hash
 async function hashPassword(password: string): Promise<string> {
   const encoder = new TextEncoder()
-  const data = encoder.encode(password + 'ai-writer-salt-2024')
+  const data = encoder.encode(password + 'dante-writer-salt-2024')
   const hashBuffer = await crypto.subtle.digest('SHA-256', data)
   const hashArray = Array.from(new Uint8Array(hashBuffer))
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
@@ -59,33 +74,34 @@ async function hashPassword(password: string): Promise<string> {
 // Register
 app.post('/api/auth/register', async (c) => {
   try {
-    const { email, password, username } = await c.req.json()
+    const { email, password, username, language } = await c.req.json()
     
     if (!email || !password || !username) {
-      return c.json({ error: 'メールアドレス、パスワード、ユーザー名は必須です' }, 400)
+      return c.json({ error: 'Required fields missing' }, 400)
     }
     
     if (password.length < 6) {
-      return c.json({ error: 'パスワードは6文字以上必要です' }, 400)
+      return c.json({ error: 'Password must be at least 6 characters' }, 400)
     }
     
     const existing = await c.env.DB.prepare('SELECT id FROM users WHERE email = ?').bind(email).first()
     if (existing) {
-      return c.json({ error: 'このメールアドレスは既に登録されています' }, 400)
+      return c.json({ error: 'Email already registered' }, 400)
     }
     
     const passwordHash = await hashPassword(password)
+    const userLang = language || 'ja'
     
     const result = await c.env.DB.prepare(
-      'INSERT INTO users (email, password_hash, username) VALUES (?, ?, ?)'
-    ).bind(email, passwordHash, username).run()
+      'INSERT INTO users (email, password_hash, username, plan, total_chars_limit, total_chars_used, language) VALUES (?, ?, ?, ?, ?, ?, ?)'
+    ).bind(email, passwordHash, username, 'free', 30000, 0, userLang).run()
     
     const userId = result.meta.last_row_id
     
     // Create default preferences
     await c.env.DB.prepare(
-      'INSERT INTO user_preferences (user_id) VALUES (?)'
-    ).bind(userId).run()
+      'INSERT INTO user_preferences (user_id, default_model) VALUES (?, ?)'
+    ).bind(userId, 'grok-4-1-fast-non-reasoning').run()
     
     // Create session
     const sessionId = generateSessionId()
@@ -103,9 +119,9 @@ app.post('/api/auth/register', async (c) => {
       path: '/'
     })
     
-    return c.json({ success: true, user: { id: userId, email, username } })
+    return c.json({ success: true, user: { id: userId, email, username, plan: 'free', total_chars_limit: 30000, total_chars_used: 0, language: userLang } })
   } catch (e: any) {
-    return c.json({ error: e.message || '登録に失敗しました' }, 500)
+    return c.json({ error: e.message || 'Registration failed' }, 500)
   }
 })
 
@@ -115,17 +131,21 @@ app.post('/api/auth/login', async (c) => {
     const { email, password } = await c.req.json()
     
     if (!email || !password) {
-      return c.json({ error: 'メールアドレスとパスワードは必須です' }, 400)
+      return c.json({ error: 'Email and password required' }, 400)
     }
     
     const passwordHash = await hashPassword(password)
     
     const user = await c.env.DB.prepare(
-      'SELECT id, email, username FROM users WHERE email = ? AND password_hash = ?'
+      `SELECT id, email, username, COALESCE(plan, 'free') as plan, 
+       COALESCE(total_chars_limit, 30000) as total_chars_limit, 
+       COALESCE(total_chars_used, 0) as total_chars_used,
+       COALESCE(language, 'ja') as language
+       FROM users WHERE email = ? AND password_hash = ?`
     ).bind(email, passwordHash).first()
     
     if (!user) {
-      return c.json({ error: 'メールアドレスまたはパスワードが正しくありません' }, 401)
+      return c.json({ error: 'Invalid email or password' }, 401)
     }
     
     // Create session
@@ -144,9 +164,9 @@ app.post('/api/auth/login', async (c) => {
       path: '/'
     })
     
-    return c.json({ success: true, user: { id: user.id, email: user.email, username: user.username } })
+    return c.json({ success: true, user })
   } catch (e: any) {
-    return c.json({ error: e.message || 'ログインに失敗しました' }, 500)
+    return c.json({ error: e.message || 'Login failed' }, 500)
   }
 })
 
@@ -178,17 +198,15 @@ app.get('/api/auth/me', async (c) => {
 app.delete('/api/auth/account', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
   try {
-    // Delete user (cascade will delete related data)
     await c.env.DB.prepare('DELETE FROM users WHERE id = ?').bind(user.id).run()
     deleteCookie(c, 'session_id', { path: '/' })
-    
     return c.json({ success: true })
   } catch (e: any) {
-    return c.json({ error: e.message || 'アカウント削除に失敗しました' }, 500)
+    return c.json({ error: e.message || 'Failed to delete account' }, 500)
   }
 })
 
@@ -196,16 +214,133 @@ app.delete('/api/auth/account', async (c) => {
 app.put('/api/auth/preferences', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
-  const { default_model, default_genre, theme, auto_save } = await c.req.json()
+  const { default_model, default_genre, theme, auto_save, language } = await c.req.json()
   
   await c.env.DB.prepare(
     'UPDATE user_preferences SET default_model = ?, default_genre = ?, theme = ?, auto_save = ?, updated_at = datetime("now") WHERE user_id = ?'
   ).bind(default_model, default_genre, theme, auto_save ? 1 : 0, user.id).run()
   
+  if (language) {
+    await c.env.DB.prepare('UPDATE users SET language = ? WHERE id = ?').bind(language, user.id).run()
+  }
+  
   return c.json({ success: true })
+})
+
+// Get usage stats
+app.get('/api/auth/usage', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  return c.json({
+    plan: user.plan,
+    total_chars_limit: user.total_chars_limit,
+    total_chars_used: user.total_chars_used,
+    remaining: user.total_chars_limit - user.total_chars_used
+  })
+})
+
+// ==================== PAYMENT ROUTES (KOMOJU) ====================
+
+// Create payment session
+app.post('/api/payment/create', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  try {
+    const { plan } = await c.req.json()
+    
+    let amount = 0
+    let charsToAdd = 0
+    
+    if (plan === 'standard') {
+      amount = 1000
+      charsToAdd = 500000
+    } else if (plan === 'premium') {
+      amount = 10000
+      charsToAdd = 6000000
+    } else {
+      return c.json({ error: 'Invalid plan' }, 400)
+    }
+    
+    // Create KOMOJU session
+    const response = await fetch('https://komoju.com/api/v1/sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(c.env.KOMOJU_SECRET_KEY + ':')
+      },
+      body: JSON.stringify({
+        amount,
+        currency: 'JPY',
+        default_locale: user.language || 'ja',
+        return_url: 'https://project-fb113820.pages.dev/payment/complete',
+        cancel_url: 'https://project-fb113820.pages.dev/payment/cancel',
+        metadata: {
+          user_id: user.id.toString(),
+          plan,
+          chars_to_add: charsToAdd.toString()
+        },
+        payment_types: ['credit_card', 'konbini', 'pay_pay', 'line_pay', 'merpay']
+      })
+    })
+    
+    if (!response.ok) {
+      const error = await response.text()
+      console.error('KOMOJU error:', error)
+      return c.json({ error: 'Payment creation failed' }, 500)
+    }
+    
+    const data = await response.json() as any
+    
+    return c.json({ 
+      success: true, 
+      session_url: data.session_url,
+      session_id: data.id
+    })
+  } catch (e: any) {
+    console.error('Payment error:', e)
+    return c.json({ error: e.message || 'Payment creation failed' }, 500)
+  }
+})
+
+// KOMOJU webhook
+app.post('/api/payment/webhook', async (c) => {
+  try {
+    const body = await c.req.json()
+    
+    if (body.type === 'payment.captured') {
+      const payment = body.data
+      const metadata = payment.metadata || {}
+      const userId = parseInt(metadata.user_id)
+      const plan = metadata.plan
+      const charsToAdd = parseInt(metadata.chars_to_add)
+      
+      if (userId && charsToAdd) {
+        // Update user's character limit
+        await c.env.DB.prepare(
+          'UPDATE users SET total_chars_limit = total_chars_limit + ?, plan = ? WHERE id = ?'
+        ).bind(charsToAdd, plan, userId).run()
+        
+        // Record payment
+        await c.env.DB.prepare(
+          'INSERT INTO payments (user_id, amount, plan, chars_added, komoju_payment_id, status) VALUES (?, ?, ?, ?, ?, ?)'
+        ).bind(userId, payment.amount, plan, charsToAdd, payment.id, 'completed').run()
+      }
+    }
+    
+    return c.json({ success: true })
+  } catch (e: any) {
+    console.error('Webhook error:', e)
+    return c.json({ error: e.message }, 500)
+  }
 })
 
 // ==================== GROK API ROUTES ====================
@@ -216,8 +351,8 @@ const GROK_API_URL = 'https://api.x.ai/v1/chat/completions'
 app.get('/api/grok/models', async (c) => {
   return c.json({
     models: [
-      { id: 'grok-4-1-fast-non-reasoning', name: 'Grok 4.1 Fast', description: '高速・推奨モデル' },
-      { id: 'grok-4-1-fast-reasoning', name: 'Grok 4.1 Fast Reasoning', description: '高速・推論モデル' }
+      { id: 'grok-4-1-fast-non-reasoning', name: 'Grok 4.1 Fast', description: 'Fast, recommended model' },
+      { id: 'grok-4-1-fast-reasoning', name: 'Grok 4.1 Fast Reasoning', description: 'Fast reasoning model' }
     ]
   })
 })
@@ -226,122 +361,134 @@ app.get('/api/grok/models', async (c) => {
 app.post('/api/grok/generate', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  // Check usage limit
+  if (user.total_chars_used >= user.total_chars_limit) {
+    return c.json({ 
+      error: 'limit_exceeded',
+      message: 'Character limit exceeded. Please upgrade your plan.',
+      usage: {
+        used: user.total_chars_used,
+        limit: user.total_chars_limit
+      }
+    }, 403)
   }
   
   try {
-    const { prompt, model, generation_type, target_length, project_id, context } = await c.req.json()
+    const { prompt, model, generation_type, target_length, project_id, context, target_language } = await c.req.json()
     
     if (!prompt) {
-      return c.json({ error: 'プロンプトは必須です' }, 400)
+      return c.json({ error: 'Prompt is required' }, 400)
     }
     
     // Valid models list
     const validModels = ['grok-4-1-fast-non-reasoning', 'grok-4-1-fast-reasoning']
     const defaultModel = 'grok-4-1-fast-non-reasoning'
-    
-    // Use default if model is invalid or not provided
     const selectedModel = (model && validModels.includes(model)) ? model : defaultModel
     
     // Build system prompt based on generation type
-    let systemPrompt = 'あなたは優秀な日本語ライターです。'
+    let systemPrompt = 'You are an excellent writer.'
     
     switch (generation_type) {
       case 'idea':
-        systemPrompt = `あなたは創造的なアイデアを生み出す優秀なライターです。
-ユーザーが指定したジャンルやテーマに基づいて、斬新で魅力的なアイデアを複数提案してください。
-各アイデアには簡単な説明を添えてください。箇条書きで読みやすく整理してください。`
+        systemPrompt = `You are a creative writer who generates innovative ideas.
+Based on the specified genre or theme, propose multiple fresh and attractive ideas.
+Add a brief explanation to each idea. Format as a bullet list for readability.`
         break
       case 'plot':
-        systemPrompt = `あなたは物語構成のプロフェッショナルです。
-ユーザーが指定したテーマやアイデアに基づいて、魅力的なプロットを作成してください。
-以下の要素を含めてください：
-- 導入部（設定、主人公紹介）
-- 展開部（問題の発生、葛藤）
-- クライマックス（転換点）
-- 結末（解決、余韻）
-各パートの概要を分かりやすく説明してください。`
+        systemPrompt = `You are a professional story planner.
+Based on the specified theme or idea, create an attractive plot.
+Include these elements:
+- Introduction (setting, protagonist introduction)
+- Development (problem occurrence, conflict)
+- Climax (turning point)
+- Resolution (resolution, afterglow)
+Explain each part clearly.`
         break
       case 'writing':
       case 'continuation':
-        systemPrompt = `あなたは優秀な日本語ライターです。
-${target_length ? `約${target_length}文字を目標に` : ''}文章を執筆してください。
-文体は自然で読みやすく、内容は魅力的であることを心がけてください。
-${context ? `以下は既存の文章です。この続きを自然に書いてください。` : ''}`
+        systemPrompt = `You are an excellent writer.
+${target_length ? `Write approximately ${target_length} characters.` : ''}
+Write naturally readable and attractive content.
+${context ? `The following is existing text. Continue it naturally.` : ''}`
         break
       case 'rewrite':
-        systemPrompt = `あなたは優秀な編集者です。
-与えられた文章をより良い表現に書き直してください。
-- 文法の修正
-- 表現の改善
-- 読みやすさの向上
-を心がけてください。文章の意図は変えないでください。`
+        systemPrompt = `You are an excellent editor.
+Rewrite the given text with better expressions.
+Focus on:
+- Grammar correction
+- Expression improvement
+- Readability enhancement
+Do not change the meaning.`
         break
       case 'expand':
-        systemPrompt = `あなたは優秀なライターです。
-与えられた文章を${target_length ? `約${target_length}文字に` : 'より詳しく'}拡張してください。
-- 詳細な描写の追加
-- 感情表現の豊かさ
-- 具体的な例の挿入
-を心がけてください。`
+        systemPrompt = `You are an excellent writer.
+Expand the given text ${target_length ? `to approximately ${target_length} characters` : 'with more detail'}.
+Focus on:
+- Detailed descriptions
+- Rich emotional expressions
+- Concrete examples`
         break
       case 'proofread':
-        systemPrompt = `あなたは優秀な校正者です。
-与えられた文章を校正し、以下の形式で返してください：
+        systemPrompt = `You are an excellent proofreader.
+Proofread the given text and return in this format:
 
-【修正後の文章】
-（修正済みの文章全体）
+【Corrected Text】
+(Full corrected text)
 
-【修正箇所】
-- 修正1: 「誤」→「正」（理由）
-- 修正2: ...
+【Corrections Made】
+- Correction 1: "error" → "correct" (reason)
+- Correction 2: ...
 
-誤字脱字、文法ミス、句読点の誤用、表記揺れを見つけて修正してください。
-意味や文体は変えないでください。`
+Find and fix typos, grammar mistakes, punctuation errors, and inconsistencies.
+Do not change meaning or style.`
         break
       case 'summarize':
-        systemPrompt = `あなたは優秀な要約者です。
-与えられた文章を簡潔に要約してください。
-- 重要なポイントを漏らさない
-- ${target_length ? `約${target_length}文字以内で` : '元の文章の1/3程度に'}まとめる
-- 読みやすい文章にする
-を心がけてください。`
+        systemPrompt = `You are an excellent summarizer.
+Summarize the given text concisely.
+Focus on:
+- Not missing important points
+- ${target_length ? `Keeping it within ${target_length} characters` : 'About 1/3 of original length'}
+- Making it readable`
+        break
+      case 'translate':
+        systemPrompt = `You are a professional translator.
+Translate the given text to ${target_language || 'English'}.
+- Preserve the original meaning and nuance
+- Use natural expressions in the target language
+- Maintain the original tone and style`
         break
       case 'style_formal':
-        systemPrompt = `あなたは文体変換の専門家です。
-与えられた文章を丁寧な敬語・ビジネス文体に変換してください。
-- 「です・ます調」を使用
-- ビジネスシーンで使える丁寧な表現
-- 元の意味は変えない
-を心がけてください。`
+        systemPrompt = `You are a style conversion expert.
+Convert the given text to formal/polite style.
+- Use polite expressions suitable for business
+- Do not change the original meaning`
         break
       case 'style_casual':
-        systemPrompt = `あなたは文体変換の専門家です。
-与えられた文章をカジュアルな口語体に変換してください。
-- 親しみやすい表現
-- 「だ・である調」や話し言葉
-- 元の意味は変えない
-を心がけてください。`
+        systemPrompt = `You are a style conversion expert.
+Convert the given text to casual/friendly style.
+- Use approachable expressions
+- Do not change the original meaning`
         break
       case 'style_literary':
-        systemPrompt = `あなたは文体変換の専門家です。
-与えられた文章を文学的で美しい表現に変換してください。
-- 比喩や修辞技法の活用
-- 情感豊かな描写
-- 読み手の心に響く表現
-を心がけてください。`
+        systemPrompt = `You are a style conversion expert.
+Convert the given text to literary/beautiful expressions.
+- Use metaphors and rhetorical techniques
+- Create emotionally rich descriptions`
         break
       case 'title_generate':
-        systemPrompt = `あなたはタイトル作成の専門家です。
-与えられた文章の内容に最適なタイトルを5つ提案してください。
-それぞれのタイトルには簡単な説明を添えてください。
-キャッチーで印象に残るタイトルを心がけてください。`
+        systemPrompt = `You are a title creation expert.
+Propose 5 optimal titles for the given content.
+Add a brief explanation to each title.
+Create catchy and memorable titles.`
         break
     }
     
     const messages = [
       { role: 'system', content: systemPrompt },
-      { role: 'user', content: context ? `【既存の文章】\n${context}\n\n【指示】\n${prompt}` : prompt }
+      { role: 'user', content: context ? `【Existing Text】\n${context}\n\n【Instruction】\n${prompt}` : prompt }
     ]
     
     const response = await fetch(GROK_API_URL, {
@@ -361,26 +508,37 @@ ${context ? `以下は既存の文章です。この続きを自然に書いて�
     if (!response.ok) {
       const error = await response.text()
       console.error('Grok API error:', error)
-      return c.json({ error: 'AI生成に失敗しました: ' + error }, 500)
+      return c.json({ error: 'AI generation failed: ' + error }, 500)
     }
     
     const data = await response.json() as any
     const generatedText = data.choices[0].message.content
+    const charsGenerated = generatedText.length
+    
+    // Update user's usage
+    await c.env.DB.prepare(
+      'UPDATE users SET total_chars_used = total_chars_used + ? WHERE id = ?'
+    ).bind(charsGenerated, user.id).run()
     
     // Save to history
     await c.env.DB.prepare(
-      'INSERT INTO ai_history (user_id, project_id, prompt, response, model, generation_type, target_length) VALUES (?, ?, ?, ?, ?, ?, ?)'
-    ).bind(user.id, project_id || null, prompt, generatedText, selectedModel, generation_type || 'writing', target_length || null).run()
+      'INSERT INTO ai_history (user_id, project_id, prompt, response, model, generation_type, target_length, chars_generated) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+    ).bind(user.id, project_id || null, prompt, generatedText, selectedModel, generation_type || 'writing', target_length || null, charsGenerated).run()
     
     return c.json({ 
       success: true, 
       text: generatedText,
       model: selectedModel,
-      usage: data.usage
+      usage: data.usage,
+      chars_generated: charsGenerated,
+      user_usage: {
+        used: user.total_chars_used + charsGenerated,
+        limit: user.total_chars_limit
+      }
     })
   } catch (e: any) {
     console.error('Generation error:', e)
-    return c.json({ error: e.message || 'AI生成に失敗しました' }, 500)
+    return c.json({ error: e.message || 'AI generation failed' }, 500)
   }
 })
 
@@ -390,7 +548,7 @@ ${context ? `以下は既存の文章です。この続きを自然に書いて�
 app.get('/api/projects', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
   const { type } = c.req.query()
@@ -414,7 +572,7 @@ app.get('/api/projects', async (c) => {
 app.get('/api/projects/:id', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
   const id = c.req.param('id')
@@ -423,7 +581,7 @@ app.get('/api/projects/:id', async (c) => {
   ).bind(id, user.id).first()
   
   if (!project) {
-    return c.json({ error: 'プロジェクトが見つかりません' }, 404)
+    return c.json({ error: 'Project not found' }, 404)
   }
   
   return c.json({ project })
@@ -433,13 +591,13 @@ app.get('/api/projects/:id', async (c) => {
 app.post('/api/projects', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
   const { title, genre, custom_genre, project_type, content } = await c.req.json()
   
   if (!title || !genre || !project_type) {
-    return c.json({ error: 'タイトル、ジャンル、プロジェクトタイプは必須です' }, 400)
+    return c.json({ error: 'Title, genre, and project type are required' }, 400)
   }
   
   const wordCount = (content || '').length
@@ -466,7 +624,7 @@ app.post('/api/projects', async (c) => {
 app.put('/api/projects/:id', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
   const id = c.req.param('id')
@@ -477,7 +635,7 @@ app.put('/api/projects/:id', async (c) => {
   ).bind(id, user.id).first()
   
   if (!existing) {
-    return c.json({ error: 'プロジェクトが見つかりません' }, 404)
+    return c.json({ error: 'Project not found' }, 404)
   }
   
   const wordCount = (content || '').length
@@ -493,7 +651,7 @@ app.put('/api/projects/:id', async (c) => {
 app.delete('/api/projects/:id', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
   const id = c.req.param('id')
@@ -511,7 +669,7 @@ app.delete('/api/projects/:id', async (c) => {
 app.get('/api/history', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
   const { limit, offset, type } = c.req.query()
@@ -536,7 +694,7 @@ app.get('/api/history', async (c) => {
 app.delete('/api/history/:id', async (c) => {
   const user = c.get('user')
   if (!user) {
-    return c.json({ error: '認証が必要です' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
   
   const id = c.req.param('id')
@@ -556,14 +714,18 @@ const mainPage = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Writer Pro - AIライティングツール</title>
+  <title>DANTE - AI統合ライティングエディター</title>
+  <link rel="icon" type="image/png" href="/static/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
   <style>
-    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .gradient-bg { background: linear-gradient(135deg, #8B4513 0%, #D4AF37 50%, #8B4513 100%); }
+    .dante-gold { color: #D4AF37; }
+    .dante-brown { color: #8B4513; }
+    .dante-bg { background-color: #1a1a2e; }
     .editor-area { min-height: 400px; }
     .char-counter { font-variant-numeric: tabular-nums; }
-    .tab-active { border-bottom: 2px solid #667eea; color: #667eea; }
+    .tab-active { border-bottom: 2px solid #D4AF37; color: #D4AF37; }
     .fade-in { animation: fadeIn 0.3s ease-in; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .loading { animation: pulse 1.5s infinite; }
@@ -571,20 +733,17 @@ const mainPage = `<!DOCTYPE html>
     .toast { animation: slideIn 0.3s ease-out; }
     @keyframes slideIn { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     
-    /* Mobile optimizations */
     @media (max-width: 768px) {
       .editor-area { min-height: 300px; }
       .sidebar { position: fixed; left: -100%; transition: left 0.3s; z-index: 50; }
       .sidebar.open { left: 0; }
     }
     
-    /* Custom scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #f1f1f1; }
-    ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #555; }
+    ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #8B4513; }
     
-    /* Dark mode */
     .dark { background-color: #1a1a2e; color: #e0e0e0; }
     .dark .bg-white { background-color: #16213e !important; }
     .dark .bg-gray-50 { background-color: #1a1a2e !important; }
@@ -604,13 +763,284 @@ const mainPage = `<!DOCTYPE html>
 </body>
 </html>`
 
+// Terms of Service page
+const termsPage = `<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用規約 - DANTE</title>
+  <link rel="icon" type="image/png" href="/static/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-8">
+  <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+    <div class="text-center mb-8">
+      <img src="/static/logo.png" alt="DANTE" class="w-20 h-20 mx-auto mb-4">
+      <h1 class="text-3xl font-bold text-gray-800">利用規約</h1>
+      <p class="text-gray-600">Terms of Service</p>
+    </div>
+    
+    <div class="prose max-w-none">
+      <h2 class="text-xl font-bold mt-6 mb-3">第1条（適用）</h2>
+      <p>本規約は、合同会社RATIO Lab.（以下「当社」）が提供するAI統合ライティングエディター「DANTE」（以下「本サービス」）の利用に関する条件を定めるものです。</p>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">第2条（利用登録）</h2>
+      <p>利用者は、本規約に同意の上、当社所定の方法により利用登録を行うものとします。</p>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">第3条（料金）</h2>
+      <ul class="list-disc pl-6">
+        <li>無料プラン：30,000文字まで（一度限り）</li>
+        <li>スタンダードプラン：1,000円で500,000文字</li>
+        <li>プレミアムプラン：10,000円で6,000,000文字</li>
+      </ul>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">第4条（禁止事項）</h2>
+      <p>利用者は、以下の行為を行ってはなりません：</p>
+      <ul class="list-disc pl-6">
+        <li>法令または公序良俗に違反する行為</li>
+        <li>当社または第三者の権利を侵害する行為</li>
+        <li>本サービスの運営を妨害する行為</li>
+        <li>不正アクセスまたはその試み</li>
+      </ul>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">第5条（免責事項）</h2>
+      <p>当社は、本サービスにより生成されたコンテンツの正確性、完全性、有用性について保証しません。</p>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">第6条（準拠法・管轄）</h2>
+      <p>本規約の解釈および適用は日本法に準拠し、本サービスに関する紛争については、水戸地方裁判所土浦支部を第一審の専属的合意管轄裁判所とします。</p>
+      
+      <div class="mt-8 pt-4 border-t">
+        <p class="text-sm text-gray-600">
+          運営：合同会社RATIO Lab. / RATIO Lab., LLC<br>
+          制定日：2026年1月17日
+        </p>
+      </div>
+    </div>
+    
+    <div class="mt-8 text-center">
+      <a href="/" class="text-blue-600 hover:underline">← DANTEに戻る</a>
+    </div>
+  </div>
+</body>
+</html>`
+
+// Privacy Policy page
+const privacyPage = `<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー - DANTE</title>
+  <link rel="icon" type="image/png" href="/static/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-8">
+  <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+    <div class="text-center mb-8">
+      <img src="/static/logo.png" alt="DANTE" class="w-20 h-20 mx-auto mb-4">
+      <h1 class="text-3xl font-bold text-gray-800">プライバシーポリシー</h1>
+      <p class="text-gray-600">Privacy Policy</p>
+    </div>
+    
+    <div class="prose max-w-none">
+      <h2 class="text-xl font-bold mt-6 mb-3">1. 収集する情報</h2>
+      <p>当社は、以下の情報を収集します：</p>
+      <ul class="list-disc pl-6">
+        <li>メールアドレス、ユーザー名（アカウント登録時）</li>
+        <li>作成されたコンテンツ（プロジェクト、文章）</li>
+        <li>利用履歴（AI生成履歴、使用文字数）</li>
+        <li>決済情報（決済代行サービス経由）</li>
+      </ul>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">2. 情報の利用目的</h2>
+      <ul class="list-disc pl-6">
+        <li>本サービスの提供・運営</li>
+        <li>ユーザーサポート</li>
+        <li>サービス改善</li>
+        <li>料金請求・決済処理</li>
+      </ul>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">3. 情報の第三者提供</h2>
+      <p>当社は、法令に基づく場合を除き、利用者の同意なく個人情報を第三者に提供しません。</p>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">4. セキュリティ</h2>
+      <p>当社は、個人情報の漏洩、滅失、毀損を防止するため、適切なセキュリティ対策を講じます。</p>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">5. Cookieの使用</h2>
+      <p>本サービスは、セッション管理のためにCookieを使用します。</p>
+      
+      <h2 class="text-xl font-bold mt-6 mb-3">6. お問い合わせ</h2>
+      <p>個人情報に関するお問い合わせは、当社までご連絡ください。</p>
+      
+      <div class="mt-8 pt-4 border-t">
+        <p class="text-sm text-gray-600">
+          運営：合同会社RATIO Lab. / RATIO Lab., LLC<br>
+          制定日：2026年1月17日
+        </p>
+      </div>
+    </div>
+    
+    <div class="mt-8 text-center">
+      <a href="/" class="text-blue-600 hover:underline">← DANTEに戻る</a>
+    </div>
+  </div>
+</body>
+</html>`
+
+// Help/Guide page
+const helpPage = `<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使い方ガイド - DANTE</title>
+  <link rel="icon" type="image/png" href="/static/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen p-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-8">
+      <img src="/static/logo.png" alt="DANTE" class="w-24 h-24 mx-auto mb-4">
+      <h1 class="text-3xl font-bold text-gray-800">DANTE 使い方ガイド</h1>
+      <p class="text-gray-600">AI統合ライティングエディター</p>
+    </div>
+    
+    <div class="space-y-6">
+      <!-- Getting Started -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <i class="fas fa-rocket text-yellow-600"></i>
+          はじめに
+        </h2>
+        <p class="text-gray-700">DANTEは、AIと一緒に文章を書くための統合エディターです。小説、ブログ、ビジネス文書など、あらゆる執筆をサポートします。</p>
+      </div>
+      
+      <!-- Features -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <i class="fas fa-magic text-purple-600"></i>
+          主な機能
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-bold text-gray-800"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>ネタ考案</h3>
+            <p class="text-sm text-gray-600">テーマやキーワードから斬新なアイデアを生成</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-bold text-gray-800"><i class="fas fa-sitemap text-blue-500 mr-2"></i>プロット作成</h3>
+            <p class="text-sm text-gray-600">物語の構成を自動で提案</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-bold text-gray-800"><i class="fas fa-pen text-green-500 mr-2"></i>ライティング</h3>
+            <p class="text-sm text-gray-600">続きを書く、書き直す、拡張するなど</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-bold text-gray-800"><i class="fas fa-language text-red-500 mr-2"></i>翻訳</h3>
+            <p class="text-sm text-gray-600">多言語への翻訳機能</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Plans -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <i class="fas fa-crown text-yellow-600"></i>
+          料金プラン
+        </h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="p-4 border rounded-lg">
+            <h3 class="font-bold text-gray-800">無料プラン</h3>
+            <p class="text-2xl font-bold text-gray-900">¥0</p>
+            <p class="text-sm text-gray-600">30,000文字まで（一度限り）</p>
+          </div>
+          <div class="p-4 border-2 border-yellow-500 rounded-lg bg-yellow-50">
+            <h3 class="font-bold text-gray-800">スタンダード</h3>
+            <p class="text-2xl font-bold text-gray-900">¥1,000</p>
+            <p class="text-sm text-gray-600">500,000文字（書籍約5冊分）</p>
+          </div>
+          <div class="p-4 border-2 border-purple-500 rounded-lg bg-purple-50">
+            <h3 class="font-bold text-gray-800">プレミアム</h3>
+            <p class="text-2xl font-bold text-gray-900">¥10,000</p>
+            <p class="text-sm text-gray-600">6,000,000文字（書籍約60冊分）</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Legal -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <i class="fas fa-balance-scale text-gray-600"></i>
+          法的情報
+        </h2>
+        <div class="flex gap-4">
+          <a href="/terms" class="text-blue-600 hover:underline">利用規約</a>
+          <a href="/privacy" class="text-blue-600 hover:underline">プライバシーポリシー</a>
+        </div>
+        <p class="text-sm text-gray-600 mt-4">運営：合同会社RATIO Lab. / RATIO Lab., LLC</p>
+      </div>
+    </div>
+    
+    <div class="mt-8 text-center">
+      <a href="/" class="inline-block px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">
+        <i class="fas fa-pen mr-2"></i>DANTEを使い始める
+      </a>
+    </div>
+  </div>
+</body>
+</html>`
+
 app.get('/', (c) => {
   return c.html(mainPage)
 })
 
-// Return empty favicon to prevent 500 errors
-app.get('/favicon.ico', (c) => {
-  return new Response(null, { status: 204 })
+app.get('/terms', (c) => {
+  return c.html(termsPage)
+})
+
+app.get('/privacy', (c) => {
+  return c.html(privacyPage)
+})
+
+app.get('/help', (c) => {
+  return c.html(helpPage)
+})
+
+app.get('/guide', (c) => {
+  return c.html(helpPage)
+})
+
+// Payment complete/cancel pages
+app.get('/payment/complete', (c) => {
+  return c.html(`<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>決済完了</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+<div class="bg-white p-8 rounded-lg shadow-lg text-center">
+<i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+<h1 class="text-2xl font-bold mb-4">決済が完了しました</h1>
+<p class="text-gray-600 mb-6">ご購入ありがとうございます。文字数が追加されました。</p>
+<a href="/" class="px-6 py-3 bg-yellow-600 text-white rounded-lg">エディターに戻る</a>
+</div>
+</body></html>`)
+})
+
+app.get('/payment/cancel', (c) => {
+  return c.html(`<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>決済キャンセル</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+<div class="bg-white p-8 rounded-lg shadow-lg text-center">
+<i class="fas fa-times-circle text-red-500 text-6xl mb-4"></i>
+<h1 class="text-2xl font-bold mb-4">決済がキャンセルされました</h1>
+<p class="text-gray-600 mb-6">決済処理がキャンセルされました。</p>
+<a href="/" class="px-6 py-3 bg-gray-600 text-white rounded-lg">エディターに戻る</a>
+</div>
+</body></html>`)
+})
+
+// Serve logo as favicon
+app.get('/favicon.ico', async (c) => {
+  return c.redirect('/static/logo.png')
 })
 
 // 404 handler for undefined API routes
