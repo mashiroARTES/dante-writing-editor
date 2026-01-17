@@ -42,6 +42,7 @@
       readingTime: '読了時間',
       pages: '枚（400字）',
       save: '保存',
+      saving: '保存中...',
       saved: '保存しました',
       delete: '削除',
       cancel: 'キャンセル',
@@ -162,6 +163,7 @@
       readingTime: 'Reading time',
       pages: 'pages (400 chars)',
       save: 'Save',
+      saving: 'Saving...',
       saved: 'Saved',
       delete: 'Delete',
       cancel: 'Cancel',
@@ -282,6 +284,7 @@
       readingTime: '阅读时间',
       pages: '页（400字）',
       save: '保存',
+      saving: '保存中...',
       saved: '已保存',
       delete: '删除',
       cancel: '取消',
@@ -402,6 +405,7 @@
       readingTime: '읽기 시간',
       pages: '매 (400자)',
       save: '저장',
+      saving: '저장 중...',
       saved: '저장됨',
       delete: '삭제',
       cancel: '취소',
@@ -522,6 +526,7 @@
       readingTime: 'Tempo di lettura',
       pages: 'pagine (400 car.)',
       save: 'Salva',
+      saving: 'Salvataggio...',
       saved: 'Salvato',
       delete: 'Elimina',
       cancel: 'Annulla',
@@ -643,6 +648,7 @@
       readingTime: 'पढ़ने का समय',
       pages: 'पृष्ठ (400 अक्षर)',
       save: 'सहेजें',
+      saving: 'सहेजा जा रहा है...',
       saved: 'सहेजा गया',
       delete: 'हटाएं',
       cancel: 'रद्द करें',
@@ -739,7 +745,7 @@
       styleFormal: 'Estilo Formal', styleCasual: 'Estilo Casual', styleLiterary: 'Estilo Literario',
       characters: 'caracteres', charactersNoSpace: 'caracteres (sin espacios)', lines: 'líneas',
       readingTime: 'Tiempo de lectura', pages: 'páginas (400 car.)',
-      save: 'Guardar', saved: 'Guardado', delete: 'Eliminar', cancel: 'Cancelar', close: 'Cerrar',
+      save: 'Guardar', saving: 'Guardando...', saved: 'Guardado', delete: 'Eliminar', cancel: 'Cancelar', close: 'Cerrar',
       copy: 'Copiar', copied: 'Copiado', insert: 'Insertar', apply: 'Aplicar', export: 'Exportar',
       history: 'Historial', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Oscuro',
       autoSave: 'Autoguardar', language: 'Idioma', genre: 'Género', title: 'Título',
@@ -785,7 +791,7 @@
       styleFormal: 'Style Formel', styleCasual: 'Style Décontracté', styleLiterary: 'Style Littéraire',
       characters: 'caractères', charactersNoSpace: 'caractères (sans espaces)', lines: 'lignes',
       readingTime: 'Temps de lecture', pages: 'pages (400 car.)',
-      save: 'Enregistrer', saved: 'Enregistré', delete: 'Supprimer', cancel: 'Annuler', close: 'Fermer',
+      save: 'Enregistrer', saving: 'Enregistrement...', saved: 'Enregistré', delete: 'Supprimer', cancel: 'Annuler', close: 'Fermer',
       copy: 'Copier', copied: 'Copié', insert: 'Insérer', apply: 'Appliquer', export: 'Exporter',
       history: 'Historique', model: 'Modèle', theme: 'Thème', light: 'Clair', dark: 'Sombre',
       autoSave: 'Sauvegarde auto', language: 'Langue', genre: 'Genre', title: 'Titre',
@@ -831,7 +837,7 @@
       styleFormal: 'Formeller Stil', styleCasual: 'Lockerer Stil', styleLiterary: 'Literarischer Stil',
       characters: 'Zeichen', charactersNoSpace: 'Zeichen (ohne Leerzeichen)', lines: 'Zeilen',
       readingTime: 'Lesezeit', pages: 'Seiten (400 Zeichen)',
-      save: 'Speichern', saved: 'Gespeichert', delete: 'Löschen', cancel: 'Abbrechen', close: 'Schließen',
+      save: 'Speichern', saving: 'Speichern...', saved: 'Gespeichert', delete: 'Löschen', cancel: 'Abbrechen', close: 'Schließen',
       copy: 'Kopieren', copied: 'Kopiert', insert: 'Einfügen', apply: 'Anwenden', export: 'Exportieren',
       history: 'Verlauf', model: 'Modell', theme: 'Design', light: 'Hell', dark: 'Dunkel',
       autoSave: 'Autospeichern', language: 'Sprache', genre: 'Genre', title: 'Titel',
@@ -877,7 +883,7 @@
       styleFormal: 'Estilo Formal', styleCasual: 'Estilo Casual', styleLiterary: 'Estilo Literário',
       characters: 'caracteres', charactersNoSpace: 'caracteres (sem espaços)', lines: 'linhas',
       readingTime: 'Tempo de leitura', pages: 'páginas (400 car.)',
-      save: 'Salvar', saved: 'Salvo', delete: 'Excluir', cancel: 'Cancelar', close: 'Fechar',
+      save: 'Salvar', saving: 'Salvando...', saved: 'Salvo', delete: 'Excluir', cancel: 'Cancelar', close: 'Fechar',
       copy: 'Copiar', copied: 'Copiado', insert: 'Inserir', apply: 'Aplicar', export: 'Exportar',
       history: 'Histórico', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Escuro',
       autoSave: 'Salvar auto', language: 'Idioma', genre: 'Gênero', title: 'Título',
@@ -923,7 +929,7 @@
       styleFormal: 'Формальный стиль', styleCasual: 'Разговорный стиль', styleLiterary: 'Литературный стиль',
       characters: 'символов', charactersNoSpace: 'символов (без пробелов)', lines: 'строк',
       readingTime: 'Время чтения', pages: 'страниц (400 симв.)',
-      save: 'Сохранить', saved: 'Сохранено', delete: 'Удалить', cancel: 'Отмена', close: 'Закрыть',
+      save: 'Сохранить', saving: 'Сохранение...', saved: 'Сохранено', delete: 'Удалить', cancel: 'Отмена', close: 'Закрыть',
       copy: 'Копировать', copied: 'Скопировано', insert: 'Вставить', apply: 'Применить', export: 'Экспорт',
       history: 'История', model: 'Модель', theme: 'Тема', light: 'Светлая', dark: 'Тёмная',
       autoSave: 'Автосохранение', language: 'Язык', genre: 'Жанр', title: 'Название',
@@ -969,7 +975,7 @@
       styleFormal: 'أسلوب رسمي', styleCasual: 'أسلوب غير رسمي', styleLiterary: 'أسلوب أدبي',
       characters: 'حرف', charactersNoSpace: 'حرف (بدون مسافات)', lines: 'سطر',
       readingTime: 'وقت القراءة', pages: 'صفحة (400 حرف)',
-      save: 'حفظ', saved: 'تم الحفظ', delete: 'حذف', cancel: 'إلغاء', close: 'إغلاق',
+      save: 'حفظ', saving: 'جاري الحفظ...', saved: 'تم الحفظ', delete: 'حذف', cancel: 'إلغاء', close: 'إغلاق',
       copy: 'نسخ', copied: 'تم النسخ', insert: 'إدراج', apply: 'تطبيق', export: 'تصدير',
       history: 'السجل', model: 'النموذج', theme: 'المظهر', light: 'فاتح', dark: 'داكن',
       autoSave: 'حفظ تلقائي', language: 'اللغة', genre: 'النوع', title: 'العنوان',
@@ -1375,6 +1381,27 @@
       btn.innerHTML = state.isGenerating 
         ? `<i class="fas fa-spinner fa-spin mr-2"></i>${t('generating')}`
         : `<i class="fas fa-magic mr-2"></i>${t('generate')}`;
+    }
+    
+    // Show/hide loading overlay
+    let overlay = document.getElementById('generating-overlay');
+    if (state.isGenerating) {
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'generating-overlay';
+        overlay.className = 'fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50';
+        overlay.innerHTML = `
+          <div class="bg-white rounded-xl p-6 shadow-2xl flex items-center gap-4">
+            <i class="fas fa-spinner fa-spin text-2xl text-yellow-600"></i>
+            <span class="text-lg font-medium text-gray-800">${t('generating')}</span>
+          </div>
+        `;
+        document.body.appendChild(overlay);
+      }
+    } else {
+      if (overlay) {
+        overlay.remove();
+      }
     }
   }
 
@@ -1938,7 +1965,7 @@
           <div class="p-2 sm:p-4 border-b border-gray-200 flex items-center justify-between gap-2">
             <input type="text" id="project-title" value="${escapeHtml(project?.title || '')}" placeholder="${t('title')}" class="text-base sm:text-lg font-semibold text-gray-800 border-none focus:outline-none flex-1 min-w-0">
             <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-              <button onclick="saveProject()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('save')}">
+              <button id="save-btn" onclick="saveProject()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('save')}">
                 <i class="fas fa-save"></i><span class="hidden sm:inline ml-1 text-sm">${t('save')}</span>
               </button>
               <button onclick="showExportModal()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('export')}">
@@ -2767,11 +2794,26 @@
   };
 
   window.saveProject = async function() {
+    const saveBtn = document.getElementById('save-btn');
+    const originalContent = saveBtn?.innerHTML;
+    
     try {
+      // Show saving state
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i><span class="hidden sm:inline ml-1 text-sm">${t('saving')}</span>`;
+      }
+      
       await updateProject();
       showToast(t('saved'), 'success');
     } catch (e) {
       showToast(e.message, 'error');
+    } finally {
+      // Restore button state
+      if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = originalContent;
+      }
     }
   };
 
