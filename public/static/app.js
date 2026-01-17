@@ -58,6 +58,25 @@
       light: 'ライト',
       dark: 'ダーク',
       autoSave: '自動保存',
+      autoSaved: '自動保存しました',
+      autoSaveEnabled: '自動保存: ON',
+      autoSaveDisabled: '自動保存: OFF',
+      shortcuts: 'ショートカット',
+      shortcutSave: 'Ctrl+S: 保存',
+      shortcutGenerate: 'Ctrl+Enter: AI生成',
+      shortcutUndo: 'Ctrl+Z: 元に戻す',
+      rateLimitExceeded: 'リクエストが多すぎます。しばらくお待ちください',
+      exportMarkdown: 'Markdown形式',
+      exportText: 'テキスト形式',
+      exportDocx: 'Word形式',
+      templates: 'テンプレート',
+      useTemplate: 'テンプレートを使用',
+      folders: 'フォルダ',
+      tags: 'タグ',
+      addTag: 'タグを追加',
+      addFolder: 'フォルダを追加',
+      allProjects: 'すべてのプロジェクト',
+      noFolder: '未分類',
       language: '言語',
       genre: 'ジャンル',
       title: 'タイトル',
@@ -179,6 +198,25 @@
       light: 'Light',
       dark: 'Dark',
       autoSave: 'Auto Save',
+      autoSaved: 'Auto saved',
+      autoSaveEnabled: 'Auto Save: ON',
+      autoSaveDisabled: 'Auto Save: OFF',
+      shortcuts: 'Shortcuts',
+      shortcutSave: 'Ctrl+S: Save',
+      shortcutGenerate: 'Ctrl+Enter: Generate',
+      shortcutUndo: 'Ctrl+Z: Undo',
+      rateLimitExceeded: 'Too many requests. Please wait a moment',
+      exportMarkdown: 'Markdown',
+      exportText: 'Plain Text',
+      exportDocx: 'Word Document',
+      templates: 'Templates',
+      useTemplate: 'Use Template',
+      folders: 'Folders',
+      tags: 'Tags',
+      addTag: 'Add Tag',
+      addFolder: 'Add Folder',
+      allProjects: 'All Projects',
+      noFolder: 'Uncategorized',
       language: 'Language',
       genre: 'Genre',
       title: 'Title',
@@ -300,6 +338,25 @@
       light: '浅色',
       dark: '深色',
       autoSave: '自动保存',
+      autoSaved: '已自动保存',
+      autoSaveEnabled: '自动保存: 开',
+      autoSaveDisabled: '自动保存: 关',
+      shortcuts: '快捷键',
+      shortcutSave: 'Ctrl+S: 保存',
+      shortcutGenerate: 'Ctrl+Enter: AI生成',
+      shortcutUndo: 'Ctrl+Z: 撤销',
+      rateLimitExceeded: '请求过多，请稍候',
+      exportMarkdown: 'Markdown格式',
+      exportText: '纯文本',
+      exportDocx: 'Word文档',
+      templates: '模板',
+      useTemplate: '使用模板',
+      folders: '文件夹',
+      tags: '标签',
+      addTag: '添加标签',
+      addFolder: '添加文件夹',
+      allProjects: '所有项目',
+      noFolder: '未分类',
       language: '语言',
       genre: '类型',
       title: '标题',
@@ -421,6 +478,25 @@
       light: '라이트',
       dark: '다크',
       autoSave: '자동 저장',
+      autoSaved: '자동 저장됨',
+      autoSaveEnabled: '자동 저장: ON',
+      autoSaveDisabled: '자동 저장: OFF',
+      shortcuts: '단축키',
+      shortcutSave: 'Ctrl+S: 저장',
+      shortcutGenerate: 'Ctrl+Enter: AI 생성',
+      shortcutUndo: 'Ctrl+Z: 실행 취소',
+      rateLimitExceeded: '요청이 너무 많습니다. 잠시 기다려 주세요',
+      exportMarkdown: 'Markdown',
+      exportText: '텍스트',
+      exportDocx: 'Word 문서',
+      templates: '템플릿',
+      useTemplate: '템플릿 사용',
+      folders: '폴더',
+      tags: '태그',
+      addTag: '태그 추가',
+      addFolder: '폴더 추가',
+      allProjects: '모든 프로젝트',
+      noFolder: '미분류',
       language: '언어',
       genre: '장르',
       title: '제목',
@@ -542,6 +618,25 @@
       light: 'Chiaro',
       dark: 'Scuro',
       autoSave: 'Salvataggio Auto',
+      autoSaved: 'Salvato automaticamente',
+      autoSaveEnabled: 'Auto Save: ON',
+      autoSaveDisabled: 'Auto Save: OFF',
+      shortcuts: 'Scorciatoie',
+      shortcutSave: 'Ctrl+S: Salva',
+      shortcutGenerate: 'Ctrl+Enter: Genera',
+      shortcutUndo: 'Ctrl+Z: Annulla',
+      rateLimitExceeded: 'Troppe richieste. Attendere un momento',
+      exportMarkdown: 'Markdown',
+      exportText: 'Testo',
+      exportDocx: 'Documento Word',
+      templates: 'Modelli',
+      useTemplate: 'Usa Modello',
+      folders: 'Cartelle',
+      tags: 'Tag',
+      addTag: 'Aggiungi Tag',
+      addFolder: 'Aggiungi Cartella',
+      allProjects: 'Tutti i Progetti',
+      noFolder: 'Non classificato',
       language: 'Lingua',
       genre: 'Genere',
       title: 'Titolo',
@@ -664,6 +759,25 @@
       light: 'लाइट',
       dark: 'डार्क',
       autoSave: 'स्वतः सहेजें',
+      autoSaved: 'स्वतः सहेजा गया',
+      autoSaveEnabled: 'स्वतः सहेजें: ON',
+      autoSaveDisabled: 'स्वतः सहेजें: OFF',
+      shortcuts: 'शॉर्टकट',
+      shortcutSave: 'Ctrl+S: सहेजें',
+      shortcutGenerate: 'Ctrl+Enter: AI जनरेट',
+      shortcutUndo: 'Ctrl+Z: अनडू',
+      rateLimitExceeded: 'बहुत अधिक अनुरोध। कृपया प्रतीक्षा करें',
+      exportMarkdown: 'Markdown',
+      exportText: 'टेक्स्ट',
+      exportDocx: 'Word दस्तावेज़',
+      templates: 'टेम्पलेट',
+      useTemplate: 'टेम्पलेट उपयोग करें',
+      folders: 'फ़ोल्डर',
+      tags: 'टैग',
+      addTag: 'टैग जोड़ें',
+      addFolder: 'फ़ोल्डर जोड़ें',
+      allProjects: 'सभी प्रोजेक्ट',
+      noFolder: 'अवर्गीकृत',
       language: 'भाषा',
       genre: 'विधा',
       title: 'शीर्षक',
@@ -748,7 +862,11 @@
       save: 'Guardar', saving: 'Guardando...', saved: 'Guardado', delete: 'Eliminar', cancel: 'Cancelar', close: 'Cerrar',
       copy: 'Copiar', copied: 'Copiado', insert: 'Insertar', apply: 'Aplicar', export: 'Exportar',
       history: 'Historial', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Oscuro',
-      autoSave: 'Autoguardar', language: 'Idioma', genre: 'Género', title: 'Título',
+      autoSave: 'Autoguardar', autoSaved: 'Guardado automáticamente', autoSaveEnabled: 'Autoguardar: ON', autoSaveDisabled: 'Autoguardar: OFF',
+      shortcuts: 'Atajos', shortcutSave: 'Ctrl+S: Guardar', shortcutGenerate: 'Ctrl+Enter: Generar', shortcutUndo: 'Ctrl+Z: Deshacer',
+      rateLimitExceeded: 'Demasiadas solicitudes. Por favor espere', exportMarkdown: 'Markdown', exportText: 'Texto', exportDocx: 'Word',
+      templates: 'Plantillas', useTemplate: 'Usar Plantilla', folders: 'Carpetas', tags: 'Etiquetas', addTag: 'Añadir Etiqueta', addFolder: 'Añadir Carpeta', allProjects: 'Todos los Proyectos', noFolder: 'Sin clasificar',
+      language: 'Idioma', genre: 'Género', title: 'Título',
       customPrompt: 'Instrucciones para AI Writer', targetLength: 'Longitud Objetivo', targetLengthNote: '*Aproximado. La IA puede no producir la longitud exacta especificada',
       concept: 'Concepto y Planificación', conceptPlaceholder: 'Ingresa tu concepto o plan...',
       plotContent: 'Contenido de la Trama', useIdeaPlot: 'Aplicar Idea y Trama',
@@ -794,7 +912,11 @@
       save: 'Enregistrer', saving: 'Enregistrement...', saved: 'Enregistré', delete: 'Supprimer', cancel: 'Annuler', close: 'Fermer',
       copy: 'Copier', copied: 'Copié', insert: 'Insérer', apply: 'Appliquer', export: 'Exporter',
       history: 'Historique', model: 'Modèle', theme: 'Thème', light: 'Clair', dark: 'Sombre',
-      autoSave: 'Sauvegarde auto', language: 'Langue', genre: 'Genre', title: 'Titre',
+      autoSave: 'Sauvegarde auto', autoSaved: 'Sauvegardé automatiquement', autoSaveEnabled: 'Sauvegarde auto: ON', autoSaveDisabled: 'Sauvegarde auto: OFF',
+      shortcuts: 'Raccourcis', shortcutSave: 'Ctrl+S: Sauvegarder', shortcutGenerate: 'Ctrl+Enter: Générer', shortcutUndo: 'Ctrl+Z: Annuler',
+      rateLimitExceeded: 'Trop de requêtes. Veuillez patienter', exportMarkdown: 'Markdown', exportText: 'Texte', exportDocx: 'Word',
+      templates: 'Modèles', useTemplate: 'Utiliser Modèle', folders: 'Dossiers', tags: 'Étiquettes', addTag: 'Ajouter Étiquette', addFolder: 'Ajouter Dossier', allProjects: 'Tous les Projets', noFolder: 'Non classé',
+      language: 'Langue', genre: 'Genre', title: 'Titre',
       customPrompt: 'Instructions pour AI Writer', targetLength: 'Longueur Cible', targetLengthNote: '*Approximatif. L\'IA peut ne pas produire la longueur exacte spécifiée',
       concept: 'Concept et Planification', conceptPlaceholder: 'Entrez votre concept ou plan...',
       plotContent: 'Contenu du Scénario', useIdeaPlot: 'Appliquer Idée et Scénario',
@@ -840,7 +962,11 @@
       save: 'Speichern', saving: 'Speichern...', saved: 'Gespeichert', delete: 'Löschen', cancel: 'Abbrechen', close: 'Schließen',
       copy: 'Kopieren', copied: 'Kopiert', insert: 'Einfügen', apply: 'Anwenden', export: 'Exportieren',
       history: 'Verlauf', model: 'Modell', theme: 'Design', light: 'Hell', dark: 'Dunkel',
-      autoSave: 'Autospeichern', language: 'Sprache', genre: 'Genre', title: 'Titel',
+      autoSave: 'Autospeichern', autoSaved: 'Automatisch gespeichert', autoSaveEnabled: 'Autospeichern: AN', autoSaveDisabled: 'Autospeichern: AUS',
+      shortcuts: 'Tastenkombinationen', shortcutSave: 'Ctrl+S: Speichern', shortcutGenerate: 'Ctrl+Enter: Generieren', shortcutUndo: 'Ctrl+Z: Rückgängig',
+      rateLimitExceeded: 'Zu viele Anfragen. Bitte warten', exportMarkdown: 'Markdown', exportText: 'Text', exportDocx: 'Word',
+      templates: 'Vorlagen', useTemplate: 'Vorlage verwenden', folders: 'Ordner', tags: 'Tags', addTag: 'Tag hinzufügen', addFolder: 'Ordner hinzufügen', allProjects: 'Alle Projekte', noFolder: 'Nicht kategorisiert',
+      language: 'Sprache', genre: 'Genre', title: 'Titel',
       customPrompt: 'Anweisungen für AI Writer', targetLength: 'Ziellänge', targetLengthNote: '*Ungenähr. KI gibt möglicherweise nicht genau die angegebene Länge aus',
       concept: 'Konzept und Planung', conceptPlaceholder: 'Geben Sie Ihr Konzept oder Ihren Plan ein...',
       plotContent: 'Handlungsinhalt', useIdeaPlot: 'Idee und Handlung anwenden',
@@ -886,7 +1012,11 @@
       save: 'Salvar', saving: 'Salvando...', saved: 'Salvo', delete: 'Excluir', cancel: 'Cancelar', close: 'Fechar',
       copy: 'Copiar', copied: 'Copiado', insert: 'Inserir', apply: 'Aplicar', export: 'Exportar',
       history: 'Histórico', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Escuro',
-      autoSave: 'Salvar auto', language: 'Idioma', genre: 'Gênero', title: 'Título',
+      autoSave: 'Salvar auto', autoSaved: 'Salvo automaticamente', autoSaveEnabled: 'Salvar auto: ON', autoSaveDisabled: 'Salvar auto: OFF',
+      shortcuts: 'Atalhos', shortcutSave: 'Ctrl+S: Salvar', shortcutGenerate: 'Ctrl+Enter: Gerar', shortcutUndo: 'Ctrl+Z: Desfazer',
+      rateLimitExceeded: 'Muitas solicitações. Por favor aguarde', exportMarkdown: 'Markdown', exportText: 'Texto', exportDocx: 'Word',
+      templates: 'Modelos', useTemplate: 'Usar Modelo', folders: 'Pastas', tags: 'Tags', addTag: 'Adicionar Tag', addFolder: 'Adicionar Pasta', allProjects: 'Todos os Projetos', noFolder: 'Não categorizado',
+      language: 'Idioma', genre: 'Gênero', title: 'Título',
       customPrompt: 'Instruções para AI Writer', targetLength: 'Comprimento Alvo', targetLengthNote: '*Aproximado. A IA pode não produzir o comprimento exato especificado',
       concept: 'Conceito e Planejamento', conceptPlaceholder: 'Insira seu conceito ou plano...',
       plotContent: 'Conteúdo do Enredo', useIdeaPlot: 'Aplicar Ideia e Enredo',
@@ -932,7 +1062,11 @@
       save: 'Сохранить', saving: 'Сохранение...', saved: 'Сохранено', delete: 'Удалить', cancel: 'Отмена', close: 'Закрыть',
       copy: 'Копировать', copied: 'Скопировано', insert: 'Вставить', apply: 'Применить', export: 'Экспорт',
       history: 'История', model: 'Модель', theme: 'Тема', light: 'Светлая', dark: 'Тёмная',
-      autoSave: 'Автосохранение', language: 'Язык', genre: 'Жанр', title: 'Название',
+      autoSave: 'Автосохранение', autoSaved: 'Автосохранено', autoSaveEnabled: 'Автосохранение: ВКЛ', autoSaveDisabled: 'Автосохранение: ВЫКЛ',
+      shortcuts: 'Горячие клавиши', shortcutSave: 'Ctrl+S: Сохранить', shortcutGenerate: 'Ctrl+Enter: Генерация', shortcutUndo: 'Ctrl+Z: Отмена',
+      rateLimitExceeded: 'Слишком много запросов. Пожалуйста подождите', exportMarkdown: 'Markdown', exportText: 'Текст', exportDocx: 'Word',
+      templates: 'Шаблоны', useTemplate: 'Использовать шаблон', folders: 'Папки', tags: 'Теги', addTag: 'Добавить тег', addFolder: 'Добавить папку', allProjects: 'Все проекты', noFolder: 'Без категории',
+      language: 'Язык', genre: 'Жанр', title: 'Название',
       customPrompt: 'Инструкции для AI писателя', targetLength: 'Целевая длина', targetLengthNote: '*Приблизительно. ИИ может не выдать точно указанную длину',
       concept: 'Концепция и планирование', conceptPlaceholder: 'Введите вашу концепцию или план...',
       plotContent: 'Содержание сюжета', useIdeaPlot: 'Применить идею и сюжет',
@@ -978,7 +1112,11 @@
       save: 'حفظ', saving: 'جاري الحفظ...', saved: 'تم الحفظ', delete: 'حذف', cancel: 'إلغاء', close: 'إغلاق',
       copy: 'نسخ', copied: 'تم النسخ', insert: 'إدراج', apply: 'تطبيق', export: 'تصدير',
       history: 'السجل', model: 'النموذج', theme: 'المظهر', light: 'فاتح', dark: 'داكن',
-      autoSave: 'حفظ تلقائي', language: 'اللغة', genre: 'النوع', title: 'العنوان',
+      autoSave: 'حفظ تلقائي', autoSaved: 'تم الحفظ تلقائياً', autoSaveEnabled: 'حفظ تلقائي: مفعل', autoSaveDisabled: 'حفظ تلقائي: موقف',
+      shortcuts: 'اختصارات', shortcutSave: 'Ctrl+S: حفظ', shortcutGenerate: 'Ctrl+Enter: توليد', shortcutUndo: 'Ctrl+Z: تراجع',
+      rateLimitExceeded: 'طلبات كثيرة جداً. يرجى الانتظار', exportMarkdown: 'Markdown', exportText: 'نص', exportDocx: 'Word',
+      templates: 'قوالب', useTemplate: 'استخدام قالب', folders: 'مجلدات', tags: 'علامات', addTag: 'إضافة علامة', addFolder: 'إضافة مجلد', allProjects: 'كل المشاريع', noFolder: 'غير مصنف',
+      language: 'اللغة', genre: 'النوع', title: 'العنوان',
       customPrompt: 'تعليمات لكاتب AI', targetLength: 'الطول المستهدف', targetLengthNote: '*تقريبي. قد لا ينتج الذكاء الاصطناعي الطول المحدد بالضبط',
       concept: 'المفهوم والتخطيط', conceptPlaceholder: 'أدخل مفهومك أو خطتك...',
       plotContent: 'محتوى الحبكة', useIdeaPlot: 'تطبيق الفكرة والحبكة',
@@ -1026,7 +1164,38 @@
     language: 'ja',
     sidebarOpen: false,
     autoSaveTimer: null,
-    selectedContextProjects: [] // IDs of projects to use as context
+    autoSaveEnabled: true,
+    lastSavedContent: '',
+    selectedContextProjects: [],
+    folders: [],
+    tags: [],
+    selectedFolder: null,
+    rateLimitCount: 0,
+    rateLimitResetTime: 0
+  };
+
+  // ==================== TEMPLATES ====================
+  const TEMPLATES = {
+    novel: {
+      ja: '# 第一章\n\n　主人公の名前は{name}。{setting}で暮らしていた。\n\n　ある日、{event}が起こり、物語は動き始める。',
+      en: '# Chapter One\n\nThe protagonist, {name}, lived in {setting}.\n\nOne day, {event} occurred, and the story began to unfold.'
+    },
+    blog: {
+      ja: '## {title}\n\n### はじめに\n\n今回は{topic}についてお話しします。\n\n### 本題\n\n{content}\n\n### まとめ\n\n{conclusion}',
+      en: '## {title}\n\n### Introduction\n\nToday, I\'ll discuss {topic}.\n\n### Main Content\n\n{content}\n\n### Conclusion\n\n{conclusion}'
+    },
+    business: {
+      ja: '【件名】{subject}\n\nお世話になっております。\n{company}の{name}です。\n\n{content}\n\nご確認のほど、よろしくお願いいたします。',
+      en: 'Subject: {subject}\n\nDear {recipient},\n\n{content}\n\nBest regards,\n{name}'
+    },
+    script: {
+      ja: '【シーン1】{location}\n\n{character1}：「{dialogue1}」\n\n{character2}：「{dialogue2}」\n\n（{action}）',
+      en: '[SCENE 1] {location}\n\n{character1}: "{dialogue1}"\n\n{character2}: "{dialogue2}"\n\n({action})'
+    },
+    academic: {
+      ja: '# {title}\n\n## 要旨\n\n{abstract}\n\n## 1. 序論\n\n{introduction}\n\n## 2. 方法\n\n{method}\n\n## 3. 結果\n\n{results}\n\n## 4. 考察\n\n{discussion}\n\n## 参考文献\n\n{references}',
+      en: '# {title}\n\n## Abstract\n\n{abstract}\n\n## 1. Introduction\n\n{introduction}\n\n## 2. Methods\n\n{method}\n\n## 3. Results\n\n{results}\n\n## 4. Discussion\n\n{discussion}\n\n## References\n\n{references}'
+    }
   };
 
   // Get translation
@@ -1105,6 +1274,153 @@
 
   function formatNumber(num) {
     return num.toLocaleString();
+  }
+
+  // ==================== AUTO SAVE ====================
+  function startAutoSave() {
+    if (state.autoSaveTimer) {
+      clearInterval(state.autoSaveTimer);
+    }
+    
+    if (state.autoSaveEnabled) {
+      state.autoSaveTimer = setInterval(async () => {
+        if (state.currentMode === 'writing' && state.currentProject) {
+          const content = document.getElementById('editor-content')?.value || '';
+          if (content !== state.lastSavedContent && content.trim()) {
+            try {
+              await updateProjectSilent();
+              state.lastSavedContent = content;
+              showAutoSaveIndicator();
+            } catch (e) {
+              console.error('Auto save failed:', e);
+            }
+          }
+        }
+      }, 30000); // 30 seconds
+    }
+  }
+
+  function stopAutoSave() {
+    if (state.autoSaveTimer) {
+      clearInterval(state.autoSaveTimer);
+      state.autoSaveTimer = null;
+    }
+  }
+
+  function showAutoSaveIndicator() {
+    const indicator = document.getElementById('auto-save-indicator');
+    if (indicator) {
+      indicator.textContent = t('autoSaved');
+      indicator.classList.remove('opacity-0');
+      setTimeout(() => {
+        indicator.classList.add('opacity-0');
+      }, 2000);
+    }
+  }
+
+  async function updateProjectSilent() {
+    const content = document.getElementById('editor-content')?.value || '';
+    const title = document.getElementById('project-title')?.value || t('newProject');
+    
+    if (!state.currentProject) return;
+    
+    await api(`/projects/${state.currentProject.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        title,
+        genre: state.currentProject.genre,
+        custom_genre: state.currentProject.custom_genre,
+        content
+      })
+    });
+    
+    state.currentProject.content = content;
+    state.currentProject.title = title;
+    state.currentProject.word_count = content.length;
+    
+    const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
+    if (projectIndex !== -1) {
+      state.projects[projectIndex].title = title;
+      state.projects[projectIndex].word_count = content.length;
+      const projectsList = document.getElementById('projects-list');
+      if (projectsList) {
+        projectsList.innerHTML = renderProjectsList();
+      }
+    }
+  }
+
+  function toggleAutoSave() {
+    state.autoSaveEnabled = !state.autoSaveEnabled;
+    if (state.autoSaveEnabled) {
+      startAutoSave();
+      showToast(t('autoSaveEnabled'), 'success');
+    } else {
+      stopAutoSave();
+      showToast(t('autoSaveDisabled'), 'info');
+    }
+    updateAutoSaveButton();
+  }
+
+  function updateAutoSaveButton() {
+    const btn = document.getElementById('auto-save-btn');
+    if (btn) {
+      btn.innerHTML = `<i class="fas fa-sync"></i><span class="hidden sm:inline ml-1 text-xs">${state.autoSaveEnabled ? 'ON' : 'OFF'}</span>`;
+      btn.className = state.autoSaveEnabled 
+        ? 'p-1 sm:px-2 sm:py-1 text-green-600 hover:bg-green-50 rounded transition text-sm'
+        : 'p-1 sm:px-2 sm:py-1 text-gray-400 hover:bg-gray-50 rounded transition text-sm';
+    }
+  }
+
+  // ==================== KEYBOARD SHORTCUTS ====================
+  function initKeyboardShortcuts() {
+    document.addEventListener('keydown', async (e) => {
+      // Ctrl+S or Cmd+S: Save
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        if (state.currentMode === 'writing') {
+          await window.saveProject();
+        }
+      }
+      
+      // Ctrl+Enter or Cmd+Enter: Generate
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        if (state.currentMode === 'writing' && !state.isGenerating) {
+          const customPrompt = document.getElementById('custom-prompt')?.value;
+          if (customPrompt?.trim()) {
+            window.customGenerate();
+          } else {
+            window.aiContinue();
+          }
+        }
+      }
+      
+      // Escape: Close modal
+      if (e.key === 'Escape') {
+        window.closeModal();
+      }
+    });
+  }
+
+  // ==================== RATE LIMITING ====================
+  const RATE_LIMIT = 20; // requests per minute
+  const RATE_LIMIT_WINDOW = 60000; // 1 minute
+
+  function checkRateLimit() {
+    const now = Date.now();
+    
+    if (now > state.rateLimitResetTime) {
+      state.rateLimitCount = 0;
+      state.rateLimitResetTime = now + RATE_LIMIT_WINDOW;
+    }
+    
+    if (state.rateLimitCount >= RATE_LIMIT) {
+      const waitTime = Math.ceil((state.rateLimitResetTime - now) / 1000);
+      throw new Error(t('rateLimitExceeded') + ` (${waitTime}s)`);
+    }
+    
+    state.rateLimitCount++;
+    return true;
   }
 
   // ==================== TOAST NOTIFICATIONS ====================
@@ -1284,7 +1600,60 @@
     const data = await api(`/projects/${id}`);
     state.currentProject = data.project;
     state.currentMode = data.project.project_type;
+    state.lastSavedContent = data.project.content || '';
     render();
+    startAutoSave();
+  }
+
+  // ==================== FOLDERS & TAGS ====================
+  async function loadFolders() {
+    try {
+      const data = await api('/folders');
+      state.folders = data.folders || [];
+    } catch (e) {
+      state.folders = [];
+    }
+  }
+
+  async function loadTags() {
+    try {
+      const data = await api('/tags');
+      state.tags = data.tags || [];
+    } catch (e) {
+      state.tags = [];
+    }
+  }
+
+  async function createFolder(name, color) {
+    const data = await api('/folders', {
+      method: 'POST',
+      body: JSON.stringify({ name, color })
+    });
+    state.folders.push(data.folder);
+    return data.folder;
+  }
+
+  async function createTag(name, color) {
+    const data = await api('/tags', {
+      method: 'POST',
+      body: JSON.stringify({ name, color })
+    });
+    state.tags.push(data.tag);
+    return data.tag;
+  }
+
+  async function setProjectFolder(projectId, folderId) {
+    await api(`/projects/${projectId}/folder`, {
+      method: 'PUT',
+      body: JSON.stringify({ folder_id: folderId })
+    });
+    const project = state.projects.find(p => p.id === projectId);
+    if (project) {
+      project.folder_id = folderId;
+    }
+    if (state.currentProject?.id === projectId) {
+      state.currentProject.folder_id = folderId;
+    }
   }
 
   // ==================== AI GENERATION ====================
@@ -1294,6 +1663,9 @@
   }
 
   async function generate(prompt, type, targetLength = null, context = null, targetLanguage = null) {
+    // Check rate limit
+    checkRateLimit();
+    
     state.isGenerating = true;
     updateGenerateButton();
     
@@ -1688,13 +2060,26 @@
             <div id="usage-display" class="mt-3"></div>
           </div>
           
-          <!-- Projects List -->
+          <!-- Folders & Projects List -->
           <div class="flex-1 overflow-y-auto p-4">
+            <!-- Folder Filter -->
+            <div class="mb-3">
+              <select id="folder-filter" class="w-full text-sm border border-gray-200 rounded-lg px-2 py-1" onchange="filterByFolder(this.value)">
+                <option value="">${t('allProjects')}</option>
+                <option value="null">${t('noFolder')}</option>
+                ${state.folders.map(f => `<option value="${f.id}" style="color: ${f.color}">${f.name}</option>`).join('')}
+              </select>
+            </div>
             <div class="flex items-center justify-between mb-3">
               <h3 class="font-semibold text-gray-700">${t('projects')}</h3>
-              <button onclick="showNewProjectModal()" class="text-yellow-600 hover:text-yellow-700">
-                <i class="fas fa-plus"></i>
-              </button>
+              <div class="flex gap-1">
+                <button onclick="showFolderModal()" class="text-gray-500 hover:text-gray-700" title="${t('folders')}">
+                  <i class="fas fa-folder-plus"></i>
+                </button>
+                <button onclick="showNewProjectModal()" class="text-yellow-600 hover:text-yellow-700">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
             </div>
             <div id="projects-list">${renderProjectsList()}</div>
           </div>
@@ -1737,6 +2122,16 @@
               </div>
             </div>
             <div class="flex items-center gap-1 sm:gap-2">
+              <span id="auto-save-indicator" class="text-xs text-green-600 opacity-0 transition-opacity hidden sm:inline">${t('autoSaved')}</span>
+              <button id="auto-save-btn" onclick="toggleAutoSave()" class="p-1 sm:px-2 sm:py-1 ${state.autoSaveEnabled ? 'text-green-600 hover:bg-green-50' : 'text-gray-400 hover:bg-gray-50'} rounded transition text-sm" title="${t('autoSave')}">
+                <i class="fas fa-sync"></i><span class="hidden sm:inline ml-1 text-xs">${state.autoSaveEnabled ? 'ON' : 'OFF'}</span>
+              </button>
+              <button onclick="showTemplateModal()" class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg hidden sm:block" title="${t('templates')}">
+                <i class="fas fa-file-alt"></i>
+              </button>
+              <button onclick="showShortcutsModal()" class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg hidden sm:block" title="${t('shortcuts')}">
+                <i class="fas fa-keyboard"></i>
+              </button>
               <select id="model-select" class="text-xs sm:text-sm border border-gray-300 rounded-lg px-2 py-1 sm:px-3 sm:py-2 max-w-[100px] sm:max-w-none" onchange="changeModel(this.value)">
                 ${state.models.map(m => `<option value="${m.id}" ${state.selectedModel === m.id ? 'selected' : ''}>${m.name}</option>`).join('')}
               </select>
@@ -1768,22 +2163,39 @@
   }
 
   function renderProjectsList() {
-    if (state.projects.length === 0) {
+    let filteredProjects = state.projects;
+    
+    // Filter by folder
+    if (state.selectedFolder !== null) {
+      if (state.selectedFolder === 'null') {
+        filteredProjects = state.projects.filter(p => !p.folder_id);
+      } else {
+        filteredProjects = state.projects.filter(p => p.folder_id === state.selectedFolder);
+      }
+    }
+    
+    if (filteredProjects.length === 0) {
       return `<p class="text-sm text-gray-500 text-center py-4">${t('noProjects')}</p>`;
     }
     
-    return state.projects.map(p => `
-      <div class="group flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition cursor-pointer ${state.currentProject?.id === p.id ? 'bg-yellow-50' : ''}" onclick="loadProject(${p.id})">
-        <i class="fas ${getTypeIcon(p.project_type)} text-gray-400"></i>
-        <div class="flex-1 min-w-0">
-          <p class="text-sm font-medium text-gray-700 truncate">${escapeHtml(p.title)}</p>
-          <p class="text-xs text-gray-500">${formatNumber(p.word_count || 0)} ${t('characters')}</p>
+    return filteredProjects.map(p => {
+      const folder = state.folders.find(f => f.id === p.folder_id);
+      return `
+        <div class="group flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition cursor-pointer ${state.currentProject?.id === p.id ? 'bg-yellow-50' : ''}" onclick="loadProject(${p.id})">
+          <div class="flex flex-col items-center">
+            <i class="fas ${getTypeIcon(p.project_type)} text-gray-400"></i>
+            ${folder ? `<div class="w-2 h-2 rounded-full mt-1" style="background-color: ${folder.color}"></div>` : ''}
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-700 truncate">${escapeHtml(p.title)}</p>
+            <p class="text-xs text-gray-500">${formatNumber(p.word_count || 0)} ${t('characters')}</p>
+          </div>
+          <button onclick="event.stopPropagation(); deleteProject(${p.id})" class="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 p-1">
+            <i class="fas fa-trash text-xs"></i>
+          </button>
         </div>
-        <button onclick="event.stopPropagation(); deleteProject(${p.id})" class="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 p-1">
-          <i class="fas fa-trash text-xs"></i>
-        </button>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 
   function getTypeIcon(type) {
@@ -2472,12 +2884,16 @@
           <h3 class="text-xl font-bold text-gray-800 mb-4">${t('export')}</h3>
           <div class="space-y-3">
             <button onclick="exportAs('txt')" class="w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-3">
-              <i class="fas fa-file-alt text-gray-500"></i>
-              <span>Text (.txt)</span>
+              <i class="fas fa-file-alt text-blue-500"></i>
+              <span>${t('exportText')} (.txt)</span>
             </button>
             <button onclick="exportAs('md')" class="w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-3">
-              <i class="fab fa-markdown text-gray-500"></i>
-              <span>Markdown (.md)</span>
+              <i class="fab fa-markdown text-purple-500"></i>
+              <span>${t('exportMarkdown')} (.md)</span>
+            </button>
+            <button onclick="exportAs('docx')" class="w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-3">
+              <i class="fas fa-file-word text-blue-600"></i>
+              <span>${t('exportDocx')} (.docx)</span>
             </button>
             <button onclick="copyContent('editor-content')" class="w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-3">
               <i class="fas fa-copy text-gray-500"></i>
@@ -2778,6 +3194,11 @@
     if (format === 'md') {
       blob = new Blob([`# ${title}\n\n${content}`], { type: 'text/markdown' });
       filename = `${title}.md`;
+    } else if (format === 'docx') {
+      // Generate simple DOCX (Office Open XML format)
+      const docxContent = generateDocx(title, content);
+      blob = new Blob([docxContent], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+      filename = `${title}.docx`;
     } else {
       blob = new Blob([content], { type: 'text/plain' });
       filename = `${title}.txt`;
@@ -2792,6 +3213,333 @@
     closeModal();
     showToast(t('export') + ' OK', 'success');
   };
+
+  // Generate DOCX file (simplified Office Open XML)
+  function generateDocx(title, content) {
+    const paragraphs = content.split('\n').map(p => 
+      `<w:p><w:r><w:t>${escapeXml(p || ' ')}</w:t></w:r></w:p>`
+    ).join('');
+    
+    const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:body>
+    <w:p><w:pPr><w:pStyle w:val="Title"/></w:pPr><w:r><w:t>${escapeXml(title)}</w:t></w:r></w:p>
+    ${paragraphs}
+  </w:body>
+</w:document>`;
+
+    const contentTypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`;
+
+    const relsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`;
+
+    // Create ZIP file manually (simplified)
+    return createSimpleDocx(contentTypesXml, relsXml, documentXml);
+  }
+
+  function escapeXml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+  }
+
+  function createSimpleDocx(contentTypes, rels, document) {
+    // Use JSZip-like manual ZIP creation for DOCX
+    // For simplicity, we'll use a base64 template approach
+    const zip = new JSZipLite();
+    zip.file('[Content_Types].xml', contentTypes);
+    zip.file('_rels/.rels', rels);
+    zip.file('word/document.xml', document);
+    return zip.generate();
+  }
+
+  // Minimal ZIP implementation for DOCX export
+  class JSZipLite {
+    constructor() {
+      this.files = {};
+    }
+    
+    file(name, content) {
+      this.files[name] = content;
+    }
+    
+    generate() {
+      const files = Object.entries(this.files);
+      const parts = [];
+      let offset = 0;
+      const centralDir = [];
+      
+      for (const [name, content] of files) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(content);
+        const header = this._createLocalHeader(name, data);
+        parts.push(header, data);
+        centralDir.push(this._createCentralHeader(name, data, offset));
+        offset += header.byteLength + data.byteLength;
+      }
+      
+      const centralDirData = this._concatArrays(centralDir);
+      const endRecord = this._createEndRecord(files.length, centralDirData.byteLength, offset);
+      
+      return this._concatArrays([...parts, centralDirData, endRecord]);
+    }
+    
+    _createLocalHeader(name, data) {
+      const encoder = new TextEncoder();
+      const nameBytes = encoder.encode(name);
+      const header = new Uint8Array(30 + nameBytes.length);
+      const view = new DataView(header.buffer);
+      
+      view.setUint32(0, 0x04034b50, true); // signature
+      view.setUint16(4, 20, true); // version
+      view.setUint16(6, 0, true); // flags
+      view.setUint16(8, 0, true); // compression
+      view.setUint16(10, 0, true); // mod time
+      view.setUint16(12, 0, true); // mod date
+      view.setUint32(14, this._crc32(data), true); // crc32
+      view.setUint32(18, data.byteLength, true); // compressed size
+      view.setUint32(22, data.byteLength, true); // uncompressed size
+      view.setUint16(26, nameBytes.length, true); // name length
+      view.setUint16(28, 0, true); // extra length
+      header.set(nameBytes, 30);
+      
+      return header;
+    }
+    
+    _createCentralHeader(name, data, offset) {
+      const encoder = new TextEncoder();
+      const nameBytes = encoder.encode(name);
+      const header = new Uint8Array(46 + nameBytes.length);
+      const view = new DataView(header.buffer);
+      
+      view.setUint32(0, 0x02014b50, true); // signature
+      view.setUint16(4, 20, true); // version made by
+      view.setUint16(6, 20, true); // version needed
+      view.setUint16(8, 0, true); // flags
+      view.setUint16(10, 0, true); // compression
+      view.setUint16(12, 0, true); // mod time
+      view.setUint16(14, 0, true); // mod date
+      view.setUint32(16, this._crc32(data), true); // crc32
+      view.setUint32(20, data.byteLength, true); // compressed size
+      view.setUint32(24, data.byteLength, true); // uncompressed size
+      view.setUint16(28, nameBytes.length, true); // name length
+      view.setUint16(30, 0, true); // extra length
+      view.setUint16(32, 0, true); // comment length
+      view.setUint16(34, 0, true); // disk start
+      view.setUint16(36, 0, true); // internal attr
+      view.setUint32(38, 0, true); // external attr
+      view.setUint32(42, offset, true); // offset
+      header.set(nameBytes, 46);
+      
+      return header;
+    }
+    
+    _createEndRecord(count, centralSize, centralOffset) {
+      const record = new Uint8Array(22);
+      const view = new DataView(record.buffer);
+      
+      view.setUint32(0, 0x06054b50, true); // signature
+      view.setUint16(4, 0, true); // disk number
+      view.setUint16(6, 0, true); // central dir disk
+      view.setUint16(8, count, true); // entries on disk
+      view.setUint16(10, count, true); // total entries
+      view.setUint32(12, centralSize, true); // central dir size
+      view.setUint32(16, centralOffset, true); // central dir offset
+      view.setUint16(20, 0, true); // comment length
+      
+      return record;
+    }
+    
+    _crc32(data) {
+      let crc = 0xffffffff;
+      const table = this._getCrc32Table();
+      for (let i = 0; i < data.length; i++) {
+        crc = table[(crc ^ data[i]) & 0xff] ^ (crc >>> 8);
+      }
+      return (crc ^ 0xffffffff) >>> 0;
+    }
+    
+    _getCrc32Table() {
+      if (!this._crc32Table) {
+        this._crc32Table = new Uint32Array(256);
+        for (let i = 0; i < 256; i++) {
+          let c = i;
+          for (let j = 0; j < 8; j++) {
+            c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+          }
+          this._crc32Table[i] = c;
+        }
+      }
+      return this._crc32Table;
+    }
+    
+    _concatArrays(arrays) {
+      const totalLength = arrays.reduce((sum, arr) => sum + arr.byteLength, 0);
+      const result = new Uint8Array(totalLength);
+      let offset = 0;
+      for (const arr of arrays) {
+        result.set(new Uint8Array(arr.buffer || arr), offset);
+        offset += arr.byteLength;
+      }
+      return result;
+    }
+  }
+
+  // ==================== TEMPLATE MODAL ====================
+  window.showTemplateModal = function() {
+    const lang = state.language === 'ja' ? 'ja' : 'en';
+    const modals = document.getElementById('modals');
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
+          <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-file-alt text-yellow-600 mr-2"></i>${t('templates')}</h3>
+          <div class="space-y-3">
+            ${Object.entries(TEMPLATES).map(([key, template]) => `
+              <button onclick="applyTemplate('${key}')" class="w-full py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 text-left">
+                <div class="flex items-center gap-3">
+                  <i class="fas ${GENRES.find(g => g.id === key)?.icon || 'fa-file'} text-yellow-600"></i>
+                  <div>
+                    <div class="font-medium">${t(key)}</div>
+                    <div class="text-xs text-gray-500">${template[lang].substring(0, 50)}...</div>
+                  </div>
+                </div>
+              </button>
+            `).join('')}
+          </div>
+          <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg">${t('close')}</button>
+        </div>
+      </div>
+    `;
+  };
+
+  window.applyTemplate = function(templateKey) {
+    const lang = state.language === 'ja' ? 'ja' : 'en';
+    const template = TEMPLATES[templateKey]?.[lang];
+    if (template) {
+      const editor = document.getElementById('editor-content');
+      if (editor) {
+        if (editor.value && !confirm('現在の内容を置き換えますか？ / Replace current content?')) {
+          return;
+        }
+        editor.value = template;
+        updateCharCount();
+        showToast(t('useTemplate') + ' OK', 'success');
+      }
+    }
+    closeModal();
+  };
+
+  // ==================== SHORTCUTS MODAL ====================
+  window.showShortcutsModal = function() {
+    const modals = document.getElementById('modals');
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-xl max-w-md w-full p-6" onclick="event.stopPropagation()">
+          <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-keyboard text-yellow-600 mr-2"></i>${t('shortcuts')}</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between py-2 border-b">
+              <span class="text-gray-700">${t('save')}</span>
+              <kbd class="px-2 py-1 bg-gray-100 rounded text-sm">Ctrl + S</kbd>
+            </div>
+            <div class="flex justify-between py-2 border-b">
+              <span class="text-gray-700">${t('generate')}</span>
+              <kbd class="px-2 py-1 bg-gray-100 rounded text-sm">Ctrl + Enter</kbd>
+            </div>
+            <div class="flex justify-between py-2 border-b">
+              <span class="text-gray-700">${t('close')}</span>
+              <kbd class="px-2 py-1 bg-gray-100 rounded text-sm">Escape</kbd>
+            </div>
+          </div>
+          <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg">${t('close')}</button>
+        </div>
+      </div>
+    `;
+  };
+
+  // ==================== FOLDER MODAL ====================
+  window.showFolderModal = function() {
+    const modals = document.getElementById('modals');
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-xl max-w-md w-full p-6" onclick="event.stopPropagation()">
+          <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-folder text-yellow-600 mr-2"></i>${t('folders')}</h3>
+          
+          <div class="mb-4">
+            <div class="flex gap-2">
+              <input type="text" id="new-folder-name" placeholder="${t('addFolder')}" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg">
+              <input type="color" id="new-folder-color" value="#6b7280" class="w-10 h-10 rounded cursor-pointer">
+              <button onclick="createNewFolder()" class="px-4 py-2 bg-yellow-600 text-white rounded-lg">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="space-y-2 max-h-60 overflow-y-auto">
+            ${state.folders.length === 0 ? `<p class="text-gray-500 text-center py-4">${t('noFolder')}</p>` : 
+              state.folders.map(f => `
+                <div class="flex items-center justify-between py-2 px-3 bg-gray-50 rounded-lg">
+                  <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded" style="background-color: ${f.color}"></div>
+                    <span>${f.name}</span>
+                  </div>
+                  <button onclick="deleteFolder(${f.id})" class="text-red-500 hover:text-red-700">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              `).join('')}
+          </div>
+          
+          <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg">${t('close')}</button>
+        </div>
+      </div>
+    `;
+  };
+
+  window.createNewFolder = async function() {
+    const name = document.getElementById('new-folder-name').value;
+    const color = document.getElementById('new-folder-color').value;
+    
+    if (!name.trim()) {
+      showToast('Folder name is required', 'warning');
+      return;
+    }
+    
+    try {
+      await createFolder(name, color);
+      showToast(t('saved'), 'success');
+      showFolderModal(); // Refresh modal
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  };
+
+  window.deleteFolder = async function(id) {
+    if (!confirm(t('confirmDelete'))) return;
+    
+    try {
+      await api(`/folders/${id}`, { method: 'DELETE' });
+      state.folders = state.folders.filter(f => f.id !== id);
+      showToast(t('deleted'), 'success');
+      showFolderModal(); // Refresh modal
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  };
+
+  window.filterByFolder = function(folderId) {
+    state.selectedFolder = folderId === '' ? null : (folderId === 'null' ? 'null' : parseInt(folderId));
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
+    }
+  };
+
+  window.toggleAutoSave = toggleAutoSave;
 
   window.saveProject = async function() {
     const saveBtn = document.getElementById('save-btn');
@@ -3147,8 +3895,11 @@
       const isAuthed = await checkAuth();
       
       if (isAuthed) {
-        await loadProjects();
+        await Promise.all([loadProjects(), loadFolders(), loadTags()]);
       }
+      
+      // Initialize keyboard shortcuts
+      initKeyboardShortcuts();
       
       render();
     } catch (e) {

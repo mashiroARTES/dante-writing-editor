@@ -869,6 +869,187 @@ app.delete('/api/history/:id', async (c) => {
   return c.json({ success: true })
 })
 
+// ==================== FOLDER ROUTES ====================
+
+// Get all folders
+app.get('/api/folders', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const folders = await c.env.DB.prepare(
+    'SELECT * FROM folders WHERE user_id = ? ORDER BY name'
+  ).bind(user.id).all()
+  
+  return c.json({ folders: folders.results })
+})
+
+// Create folder
+app.post('/api/folders', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const { name, color } = await c.req.json()
+  
+  if (!name) {
+    return c.json({ error: 'Folder name is required' }, 400)
+  }
+  
+  const result = await c.env.DB.prepare(
+    'INSERT INTO folders (user_id, name, color) VALUES (?, ?, ?)'
+  ).bind(user.id, name, color || '#6b7280').run()
+  
+  return c.json({ 
+    success: true, 
+    folder: { id: result.meta.last_row_id, name, color: color || '#6b7280' } 
+  })
+})
+
+// Delete folder
+app.delete('/api/folders/:id', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const id = c.req.param('id')
+  
+  await c.env.DB.prepare(
+    'DELETE FROM folders WHERE id = ? AND user_id = ?'
+  ).bind(id, user.id).run()
+  
+  return c.json({ success: true })
+})
+
+// ==================== TAG ROUTES ====================
+
+// Get all tags
+app.get('/api/tags', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const tags = await c.env.DB.prepare(
+    'SELECT * FROM tags WHERE user_id = ? ORDER BY name'
+  ).bind(user.id).all()
+  
+  return c.json({ tags: tags.results })
+})
+
+// Create tag
+app.post('/api/tags', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const { name, color } = await c.req.json()
+  
+  if (!name) {
+    return c.json({ error: 'Tag name is required' }, 400)
+  }
+  
+  const result = await c.env.DB.prepare(
+    'INSERT INTO tags (user_id, name, color) VALUES (?, ?, ?)'
+  ).bind(user.id, name, color || '#3b82f6').run()
+  
+  return c.json({ 
+    success: true, 
+    tag: { id: result.meta.last_row_id, name, color: color || '#3b82f6' } 
+  })
+})
+
+// Delete tag
+app.delete('/api/tags/:id', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const id = c.req.param('id')
+  
+  await c.env.DB.prepare(
+    'DELETE FROM tags WHERE id = ? AND user_id = ?'
+  ).bind(id, user.id).run()
+  
+  return c.json({ success: true })
+})
+
+// Add tag to project
+app.post('/api/projects/:projectId/tags/:tagId', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const projectId = c.req.param('projectId')
+  const tagId = c.req.param('tagId')
+  
+  try {
+    await c.env.DB.prepare(
+      'INSERT OR IGNORE INTO project_tags (project_id, tag_id) VALUES (?, ?)'
+    ).bind(projectId, tagId).run()
+    
+    return c.json({ success: true })
+  } catch (e) {
+    return c.json({ error: 'Failed to add tag' }, 500)
+  }
+})
+
+// Remove tag from project
+app.delete('/api/projects/:projectId/tags/:tagId', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const projectId = c.req.param('projectId')
+  const tagId = c.req.param('tagId')
+  
+  await c.env.DB.prepare(
+    'DELETE FROM project_tags WHERE project_id = ? AND tag_id = ?'
+  ).bind(projectId, tagId).run()
+  
+  return c.json({ success: true })
+})
+
+// Get tags for a project
+app.get('/api/projects/:id/tags', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const id = c.req.param('id')
+  
+  const tags = await c.env.DB.prepare(
+    'SELECT t.* FROM tags t JOIN project_tags pt ON t.id = pt.tag_id WHERE pt.project_id = ?'
+  ).bind(id).all()
+  
+  return c.json({ tags: tags.results })
+})
+
+// Update project folder
+app.put('/api/projects/:id/folder', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const id = c.req.param('id')
+  const { folder_id } = await c.req.json()
+  
+  await c.env.DB.prepare(
+    'UPDATE projects SET folder_id = ? WHERE id = ? AND user_id = ?'
+  ).bind(folder_id, id, user.id).run()
+  
+  return c.json({ success: true })
+})
+
 // ==================== STATIC & FRONTEND ====================
 
 // Main HTML page
@@ -879,6 +1060,10 @@ const mainPage = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DANTE - AI統合ライティングエディター</title>
   <link rel="icon" type="image/png" href="/static/logo.png">
+  <link rel="apple-touch-icon" href="/static/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#D4AF37">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -922,7 +1107,18 @@ const mainPage = `<!DOCTYPE html>
 </head>
 <body class="bg-gray-50 min-h-screen">
   <div id="app"></div>
+  <div id="modals"></div>
   <script src="/static/app.js"></script>
+  <script>
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('SW registered'))
+          .catch(err => console.log('SW registration failed'));
+      });
+    }
+  </script>
 </body>
 </html>`
 
