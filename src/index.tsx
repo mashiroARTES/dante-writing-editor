@@ -752,7 +752,7 @@ app.post('/api/projects', async (c) => {
     return c.json({ error: 'Authentication required' }, 401)
   }
   
-  const { title, genre, custom_genre, project_type, content } = await c.req.json()
+  const { title, genre, custom_genre, project_type, content, concept, plot_content } = await c.req.json()
   
   if (!title || !genre || !project_type) {
     return c.json({ error: 'Title, genre, and project type are required' }, 400)
@@ -761,8 +761,8 @@ app.post('/api/projects', async (c) => {
   const wordCount = (content || '').length
   
   const result = await c.env.DB.prepare(
-    'INSERT INTO projects (user_id, title, genre, custom_genre, project_type, content, word_count) VALUES (?, ?, ?, ?, ?, ?, ?)'
-  ).bind(user.id, title, genre, custom_genre || null, project_type, content || '', wordCount).run()
+    'INSERT INTO projects (user_id, title, genre, custom_genre, project_type, content, word_count, concept, plot_content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
+  ).bind(user.id, title, genre, custom_genre || null, project_type, content || '', wordCount, concept || '', plot_content || '').run()
   
   return c.json({ 
     success: true, 
@@ -773,7 +773,9 @@ app.post('/api/projects', async (c) => {
       custom_genre,
       project_type, 
       content: content || '',
-      word_count: wordCount
+      word_count: wordCount,
+      concept: concept || '',
+      plot_content: plot_content || ''
     } 
   })
 })
@@ -786,7 +788,7 @@ app.put('/api/projects/:id', async (c) => {
   }
   
   const id = c.req.param('id')
-  const { title, genre, custom_genre, content } = await c.req.json()
+  const { title, genre, custom_genre, content, concept, plot_content } = await c.req.json()
   
   const existing = await c.env.DB.prepare(
     'SELECT id FROM projects WHERE id = ? AND user_id = ?'
@@ -799,8 +801,8 @@ app.put('/api/projects/:id', async (c) => {
   const wordCount = (content || '').length
   
   await c.env.DB.prepare(
-    'UPDATE projects SET title = ?, genre = ?, custom_genre = ?, content = ?, word_count = ?, updated_at = datetime("now") WHERE id = ?'
-  ).bind(title, genre, custom_genre || null, content || '', wordCount, id).run()
+    'UPDATE projects SET title = ?, genre = ?, custom_genre = ?, content = ?, word_count = ?, concept = ?, plot_content = ?, updated_at = datetime("now") WHERE id = ?'
+  ).bind(title, genre, custom_genre || null, content || '', wordCount, concept || '', plot_content || '', id).run()
   
   return c.json({ success: true, word_count: wordCount })
 })

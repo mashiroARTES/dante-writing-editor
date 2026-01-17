@@ -60,7 +60,13 @@
       language: '言語',
       genre: 'ジャンル',
       title: 'タイトル',
-      customPrompt: 'カスタムプロンプト',
+      customPrompt: 'AIライターに指示',
+      concept: 'コンセプト・企画',
+      conceptPlaceholder: '作品のコンセプトや企画内容を入力...',
+      plotContent: 'プロット内容',
+      useIdeaPlot: 'ネタ考案・プロットの内容を反映',
+      savedIdeas: '保存済みアイデア',
+      savedPlot: '保存済みプロット',
       targetLength: '目標文字数',
       plan: 'プラン',
       free: '無料',
@@ -168,7 +174,13 @@
       language: 'Language',
       genre: 'Genre',
       title: 'Title',
-      customPrompt: 'Custom Prompt',
+      customPrompt: 'Instructions for AI Writer',
+      concept: 'Concept & Planning',
+      conceptPlaceholder: 'Enter your concept or planning details...',
+      plotContent: 'Plot Content',
+      useIdeaPlot: 'Apply Idea & Plot content',
+      savedIdeas: 'Saved Ideas',
+      savedPlot: 'Saved Plot',
       targetLength: 'Target Length',
       plan: 'Plan',
       free: 'Free',
@@ -276,7 +288,13 @@
       language: '语言',
       genre: '类型',
       title: '标题',
-      customPrompt: '自定义提示',
+      customPrompt: 'AI写作指令',
+      concept: '概念与企划',
+      conceptPlaceholder: '输入您的概念或企划内容...',
+      plotContent: '情节内容',
+      useIdeaPlot: '应用创意和情节内容',
+      savedIdeas: '已保存的创意',
+      savedPlot: '已保存的情节',
       targetLength: '目标长度',
       plan: '方案',
       free: '免费',
@@ -384,7 +402,13 @@
       language: '언어',
       genre: '장르',
       title: '제목',
-      customPrompt: '사용자 지정 프롬프트',
+      customPrompt: 'AI 작가 지시',
+      concept: '콘셉트 및 기획',
+      conceptPlaceholder: '콘셉트나 기획 내용을 입력...',
+      plotContent: '플롯 내용',
+      useIdeaPlot: '아이디어 및 플롯 내용 적용',
+      savedIdeas: '저장된 아이디어',
+      savedPlot: '저장된 플롯',
       targetLength: '목표 길이',
       plan: '플랜',
       free: '무료',
@@ -492,7 +516,13 @@
       language: 'Lingua',
       genre: 'Genere',
       title: 'Titolo',
-      customPrompt: 'Prompt Personalizzato',
+      customPrompt: 'Istruzioni per AI Writer',
+      concept: 'Concetto e Pianificazione',
+      conceptPlaceholder: 'Inserisci il tuo concetto o piano...',
+      plotContent: 'Contenuto della Trama',
+      useIdeaPlot: 'Applica Idea e Trama',
+      savedIdeas: 'Idee Salvate',
+      savedPlot: 'Trama Salvata',
       targetLength: 'Lunghezza Target',
       plan: 'Piano',
       free: 'Gratuito',
@@ -601,7 +631,13 @@
       language: 'भाषा',
       genre: 'विधा',
       title: 'शीर्षक',
-      customPrompt: 'कस्टम प्रॉम्प्ट',
+      customPrompt: 'AI लेखक को निर्देश',
+      concept: 'अवधारणा और योजना',
+      conceptPlaceholder: 'अपनी अवधारणा या योजना दर्ज करें...',
+      plotContent: 'कथानक सामग्री',
+      useIdeaPlot: 'विचार और कथानक लागू करें',
+      savedIdeas: 'सहेजे गए विचार',
+      savedPlot: 'सहेजा गया कथानक',
       targetLength: 'लक्ष्य लंबाई',
       plan: 'योजना',
       free: 'निःशुल्क',
@@ -671,7 +707,10 @@
       copy: 'Copiar', copied: 'Copiado', insert: 'Insertar', apply: 'Aplicar', export: 'Exportar',
       history: 'Historial', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Oscuro',
       autoSave: 'Autoguardar', language: 'Idioma', genre: 'Género', title: 'Título',
-      customPrompt: 'Prompt Personalizado', targetLength: 'Longitud Objetivo',
+      customPrompt: 'Instrucciones para AI Writer', targetLength: 'Longitud Objetivo',
+      concept: 'Concepto y Planificación', conceptPlaceholder: 'Ingresa tu concepto o plan...',
+      plotContent: 'Contenido de la Trama', useIdeaPlot: 'Aplicar Idea y Trama',
+      savedIdeas: 'Ideas Guardadas', savedPlot: 'Trama Guardada',
       plan: 'Plan', free: 'Gratis', standard: 'Estándar', premium: 'Premium',
       upgrade: 'Comprar Caracteres', usage: 'Uso', remaining: 'Restante',
       limitExceeded: 'Compra cuando alcances el límite', pleaseUpgrade: 'Compra caracteres adicionales para continuar',
@@ -712,7 +751,10 @@
       copy: 'Copier', copied: 'Copié', insert: 'Insérer', apply: 'Appliquer', export: 'Exporter',
       history: 'Historique', model: 'Modèle', theme: 'Thème', light: 'Clair', dark: 'Sombre',
       autoSave: 'Sauvegarde auto', language: 'Langue', genre: 'Genre', title: 'Titre',
-      customPrompt: 'Prompt Personnalisé', targetLength: 'Longueur Cible',
+      customPrompt: 'Instructions pour AI Writer', targetLength: 'Longueur Cible',
+      concept: 'Concept et Planification', conceptPlaceholder: 'Entrez votre concept ou plan...',
+      plotContent: 'Contenu du Scénario', useIdeaPlot: 'Appliquer Idée et Scénario',
+      savedIdeas: 'Idées Sauvegardées', savedPlot: 'Scénario Sauvegardé',
       plan: 'Plan', free: 'Gratuit', standard: 'Standard', premium: 'Premium',
       upgrade: 'Acheter des Caractères', usage: 'Utilisation', remaining: 'Restant',
       limitExceeded: 'Achetez quand vous atteignez la limite', pleaseUpgrade: 'Achetez des caractères supplémentaires',
@@ -753,7 +795,10 @@
       copy: 'Kopieren', copied: 'Kopiert', insert: 'Einfügen', apply: 'Anwenden', export: 'Exportieren',
       history: 'Verlauf', model: 'Modell', theme: 'Design', light: 'Hell', dark: 'Dunkel',
       autoSave: 'Autospeichern', language: 'Sprache', genre: 'Genre', title: 'Titel',
-      customPrompt: 'Benutzerdefinierter Prompt', targetLength: 'Ziellänge',
+      customPrompt: 'Anweisungen für AI Writer', targetLength: 'Ziellänge',
+      concept: 'Konzept und Planung', conceptPlaceholder: 'Geben Sie Ihr Konzept oder Ihren Plan ein...',
+      plotContent: 'Handlungsinhalt', useIdeaPlot: 'Idee und Handlung anwenden',
+      savedIdeas: 'Gespeicherte Ideen', savedPlot: 'Gespeicherte Handlung',
       plan: 'Plan', free: 'Kostenlos', standard: 'Standard', premium: 'Premium',
       upgrade: 'Zeichen Kaufen', usage: 'Nutzung', remaining: 'Verbleibend',
       limitExceeded: 'Kaufen Sie bei Erreichen des Limits', pleaseUpgrade: 'Kaufen Sie zusätzliche Zeichen',
@@ -794,7 +839,10 @@
       copy: 'Copiar', copied: 'Copiado', insert: 'Inserir', apply: 'Aplicar', export: 'Exportar',
       history: 'Histórico', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Escuro',
       autoSave: 'Salvar auto', language: 'Idioma', genre: 'Gênero', title: 'Título',
-      customPrompt: 'Prompt Personalizado', targetLength: 'Comprimento Alvo',
+      customPrompt: 'Instruções para AI Writer', targetLength: 'Comprimento Alvo',
+      concept: 'Conceito e Planejamento', conceptPlaceholder: 'Insira seu conceito ou plano...',
+      plotContent: 'Conteúdo do Enredo', useIdeaPlot: 'Aplicar Ideia e Enredo',
+      savedIdeas: 'Ideias Salvas', savedPlot: 'Enredo Salvo',
       plan: 'Plano', free: 'Grátis', standard: 'Padrão', premium: 'Premium',
       upgrade: 'Comprar Caracteres', usage: 'Uso', remaining: 'Restante',
       limitExceeded: 'Compre ao atingir o limite', pleaseUpgrade: 'Compre caracteres adicionais para continuar',
@@ -835,7 +883,10 @@
       copy: 'Копировать', copied: 'Скопировано', insert: 'Вставить', apply: 'Применить', export: 'Экспорт',
       history: 'История', model: 'Модель', theme: 'Тема', light: 'Светлая', dark: 'Тёмная',
       autoSave: 'Автосохранение', language: 'Язык', genre: 'Жанр', title: 'Название',
-      customPrompt: 'Пользовательский промпт', targetLength: 'Целевая длина',
+      customPrompt: 'Инструкции для AI писателя', targetLength: 'Целевая длина',
+      concept: 'Концепция и планирование', conceptPlaceholder: 'Введите вашу концепцию или план...',
+      plotContent: 'Содержание сюжета', useIdeaPlot: 'Применить идею и сюжет',
+      savedIdeas: 'Сохранённые идеи', savedPlot: 'Сохранённый сюжет',
       plan: 'План', free: 'Бесплатно', standard: 'Стандарт', premium: 'Премиум',
       upgrade: 'Купить символы', usage: 'Использование', remaining: 'Осталось',
       limitExceeded: 'Купите при достижении лимита', pleaseUpgrade: 'Купите дополнительные символы',
@@ -876,7 +927,10 @@
       copy: 'نسخ', copied: 'تم النسخ', insert: 'إدراج', apply: 'تطبيق', export: 'تصدير',
       history: 'السجل', model: 'النموذج', theme: 'المظهر', light: 'فاتح', dark: 'داكن',
       autoSave: 'حفظ تلقائي', language: 'اللغة', genre: 'النوع', title: 'العنوان',
-      customPrompt: 'موجه مخصص', targetLength: 'الطول المستهدف',
+      customPrompt: 'تعليمات لكاتب AI', targetLength: 'الطول المستهدف',
+      concept: 'المفهوم والتخطيط', conceptPlaceholder: 'أدخل مفهومك أو خطتك...',
+      plotContent: 'محتوى الحبكة', useIdeaPlot: 'تطبيق الفكرة والحبكة',
+      savedIdeas: 'أفكار محفوظة', savedPlot: 'حبكة محفوظة',
       plan: 'الخطة', free: 'مجاني', standard: 'قياسي', premium: 'مميز',
       upgrade: 'شراء أحرف', usage: 'الاستخدام', remaining: 'المتبقي',
       limitExceeded: 'اشترِ عند الوصول للحد', pleaseUpgrade: 'اشترِ أحرفًا إضافية للمتابعة',
@@ -1670,10 +1724,23 @@
   }
 
   function renderIdeaMode() {
+    const savedConcept = state.currentProject?.concept || '';
+    const savedIdeas = state.currentProject?.content || '';
+    
     return `
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <!-- Concept Section -->
         <div class="bg-white rounded-xl shadow-lg p-6">
-          <h2 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>${t('idea')}</h2>
+          <h2 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>${t('concept')}</h2>
+          <textarea id="concept-input" rows="4" placeholder="${t('conceptPlaceholder')}" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-3">${escapeHtml(savedConcept)}</textarea>
+          <button onclick="saveConcept()" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
+            <i class="fas fa-save mr-2"></i>${t('save')}
+          </button>
+        </div>
+        
+        <!-- Idea Generation -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-magic text-purple-500 mr-2"></i>${t('idea')}</h2>
           
           <div class="space-y-4">
             <div>
@@ -1703,9 +1770,14 @@
             </button>
           </div>
           
-          <div id="idea-results" class="mt-6 hidden">
-            <h3 class="font-semibold text-gray-700 mb-3">${t('generatedIdeas')}</h3>
-            <div id="idea-output" class="prose max-w-none bg-gray-50 p-4 rounded-lg"></div>
+          <div id="idea-results" class="mt-6 ${savedIdeas ? '' : 'hidden'}">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-semibold text-gray-700">${t('generatedIdeas')}</h3>
+              <button onclick="saveIdeas()" class="px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm">
+                <i class="fas fa-save mr-1"></i>${t('save')}
+              </button>
+            </div>
+            <div id="idea-output" class="prose max-w-none bg-gray-50 p-4 rounded-lg">${savedIdeas}</div>
           </div>
         </div>
       </div>
@@ -1713,8 +1785,19 @@
   }
 
   function renderPlotMode() {
+    const savedConcept = state.currentProject?.concept || '';
+    const savedPlot = state.currentProject?.plot_content || '';
+    
     return `
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <!-- Show saved concept if exists -->
+        ${savedConcept ? `
+        <div class="bg-yellow-50 rounded-xl shadow p-4">
+          <h3 class="font-semibold text-gray-700 mb-2"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>${t('concept')}</h3>
+          <p class="text-gray-600 text-sm whitespace-pre-wrap">${escapeHtml(savedConcept)}</p>
+        </div>
+        ` : ''}
+        
         <div class="bg-white rounded-xl shadow-lg p-6">
           <h2 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-sitemap text-blue-500 mr-2"></i>${t('plot')}</h2>
           
@@ -1727,7 +1810,7 @@
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">${t('ideaTheme')}</label>
-              <textarea id="plot-idea" rows="3" placeholder="${t('plotPlaceholder')}" class="w-full px-4 py-2 border border-gray-300 rounded-lg"></textarea>
+              <textarea id="plot-idea" rows="3" placeholder="${t('plotPlaceholder')}" class="w-full px-4 py-2 border border-gray-300 rounded-lg">${escapeHtml(state.currentProject?.content || '')}</textarea>
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">${t('detailLevel')}</label>
@@ -1742,9 +1825,14 @@
             </button>
           </div>
           
-          <div id="plot-results" class="mt-6 hidden">
-            <h3 class="font-semibold text-gray-700 mb-3">${t('generatedPlot')}</h3>
-            <div id="plot-output" class="prose max-w-none bg-gray-50 p-4 rounded-lg"></div>
+          <div id="plot-results" class="mt-6 ${savedPlot ? '' : 'hidden'}">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-semibold text-gray-700">${t('generatedPlot')}</h3>
+              <button onclick="savePlot()" class="px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm">
+                <i class="fas fa-save mr-1"></i>${t('save')}
+              </button>
+            </div>
+            <div id="plot-output" class="prose max-w-none bg-gray-50 p-4 rounded-lg">${savedPlot}</div>
           </div>
         </div>
       </div>
@@ -1753,6 +1841,9 @@
 
   function renderWritingMode() {
     const project = state.currentProject;
+    const hasConcept = project?.concept?.trim();
+    const hasPlot = project?.plot_content?.trim();
+    const hasContext = hasConcept || hasPlot;
     
     return `
       <div class="h-full flex gap-4">
@@ -1773,6 +1864,30 @@
             </div>
           </div>
           
+          <!-- Context Panel (Concept & Plot) -->
+          ${hasContext ? `
+          <div class="border-b border-gray-200 bg-gradient-to-r from-yellow-50 to-blue-50">
+            <button onclick="toggleContextPanel()" class="w-full px-4 py-2 flex items-center justify-between text-sm text-gray-700 hover:bg-white/50">
+              <span><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>${t('concept')} / ${t('plot')}</span>
+              <i id="context-toggle-icon" class="fas fa-chevron-down"></i>
+            </button>
+            <div id="context-panel" class="hidden px-4 pb-3 space-y-2 text-sm">
+              ${hasConcept ? `
+              <div class="bg-white/70 rounded p-2">
+                <strong class="text-yellow-700">${t('concept')}:</strong>
+                <p class="text-gray-600 mt-1 whitespace-pre-wrap">${escapeHtml(project.concept)}</p>
+              </div>
+              ` : ''}
+              ${hasPlot ? `
+              <div class="bg-white/70 rounded p-2">
+                <strong class="text-blue-700">${t('plotContent')}:</strong>
+                <p class="text-gray-600 mt-1 whitespace-pre-wrap">${escapeHtml(project.plot_content)}</p>
+              </div>
+              ` : ''}
+            </div>
+          </div>
+          ` : ''}
+          
           <textarea id="editor-content" class="flex-1 p-6 resize-none border-none focus:outline-none focus:ring-0 text-gray-800 leading-relaxed editor-area" placeholder="${t('editorPlaceholder')}">${project?.content || ''}</textarea>
           
           <div class="p-3 border-t border-gray-200 bg-gray-50">
@@ -1787,6 +1902,14 @@
           </div>
           
           <div class="flex-1 overflow-y-auto p-4 space-y-3">
+            <!-- Use Idea/Plot Checkbox -->
+            ${hasContext ? `
+            <label class="flex items-center gap-2 p-2 bg-yellow-50 rounded-lg cursor-pointer">
+              <input type="checkbox" id="use-idea-plot" class="w-4 h-4 text-yellow-600" checked>
+              <span class="text-sm text-gray-700">${t('useIdeaPlot')}</span>
+            </label>
+            ` : ''}
+            
             <button onclick="aiContinue()" class="w-full py-2 px-4 text-left bg-gray-50 hover:bg-gray-100 rounded-lg transition flex items-center gap-2">
               <i class="fas fa-arrow-right text-green-500"></i> ${t('continue')}
             </button>
@@ -2073,6 +2196,7 @@
     const charCount = content.length;
     const charCountNoSpace = content.replace(/\s/g, '').length;
     const lineCount = content ? content.split('\n').length : 0;
+    const hasContext = state.currentProject?.concept || state.currentProject?.plot_content;
     
     modals.innerHTML = `
       <div class="fixed inset-0 bg-black bg-opacity-50 flex items-end z-50" onclick="closeModal(event)">
@@ -2093,6 +2217,14 @@
               <div><span class="text-gray-600">${t('pages')}:</span> <span class="font-semibold">${(charCount / 400).toFixed(1)}</span></div>
             </div>
           </div>
+          
+          <!-- Use Idea/Plot Checkbox (mobile) -->
+          ${hasContext ? `
+          <label class="flex items-center gap-2 p-2 mb-3 bg-yellow-50 rounded-lg cursor-pointer">
+            <input type="checkbox" id="use-idea-plot" class="w-4 h-4 text-yellow-600" checked>
+            <span class="text-sm text-gray-700">${t('useIdeaPlot')}</span>
+          </label>
+          ` : ''}
           
           <!-- Quick Actions -->
           <div class="grid grid-cols-3 gap-2 mb-4">
@@ -2128,6 +2260,7 @@
   window.mobileCustomGenerate = async function() {
     const prompt = document.getElementById('mobile-custom-prompt').value;
     const targetLength = document.getElementById('mobile-target-length').value;
+    const useContext = document.getElementById('use-idea-plot')?.checked;
     
     if (!prompt.trim()) {
       showToast(t('enterPrompt'), 'warning');
@@ -2137,11 +2270,21 @@
     closeModal();
     
     const editor = document.getElementById('editor-content');
-    const context = editor?.value || '';
+    const editorContext = editor?.value || '';
+    let projectContext = '';
+    if (useContext && state.currentProject) {
+      if (state.currentProject.concept) {
+        projectContext += `【コンセプト・企画】\n${state.currentProject.concept}\n\n`;
+      }
+      if (state.currentProject.plot_content) {
+        projectContext += `【プロット】\n${state.currentProject.plot_content}\n\n`;
+      }
+    }
+    const fullContext = projectContext + editorContext;
     
     try {
       setGenerating(true);
-      const result = await generate(prompt, 'writing', targetLength ? parseInt(targetLength) : null, context);
+      const result = await generate(prompt, 'writing', targetLength ? parseInt(targetLength) : null, fullContext);
       
       if (editor) {
         editor.value = context + (context ? '\n\n' : '') + result;
@@ -2261,7 +2404,9 @@
     }
     
     try {
-      const result = await generate('この文章の続きを自然に書いてください。', 'continuation', targetLength ? parseInt(targetLength) : null, content);
+      const projectContext = getProjectContext();
+      const fullContext = projectContext + content;
+      const result = await generate('この文章の続きを自然に書いてください。', 'continuation', targetLength ? parseInt(targetLength) : null, fullContext);
       editor.value = content + '\n\n' + result;
       updateCharCount();
       showToast(t('generate') + ' OK', 'success');
@@ -2304,7 +2449,8 @@
     }
     
     try {
-      const result = await generate(selected, 'expand', targetLength ? parseInt(targetLength) : null);
+      const projectContext = getProjectContext();
+      const result = await generate(selected, 'expand', targetLength ? parseInt(targetLength) : null, projectContext || null);
       editor.value = editor.value.substring(0, start) + result + editor.value.substring(end);
       updateCharCount();
       showToast(t('generate') + ' OK', 'success');
@@ -2426,8 +2572,10 @@
     }
     
     try {
-      const context = editor.value;
-      const result = await generate(prompt, 'writing', targetLength ? parseInt(targetLength) : null, context || null);
+      const projectContext = getProjectContext();
+      const editorContext = editor.value;
+      const fullContext = projectContext + editorContext;
+      const result = await generate(prompt, 'writing', targetLength ? parseInt(targetLength) : null, fullContext || null);
       
       const cursorPos = editor.selectionEnd;
       if (cursorPos > 0) {
@@ -2498,6 +2646,140 @@
       showToast(e.message, 'error');
     }
   };
+
+  // Save concept from Idea mode
+  window.saveConcept = async function() {
+    const concept = document.getElementById('concept-input')?.value || '';
+    
+    if (!state.currentProject) {
+      // Create new project for idea
+      const data = await api('/projects', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: t('newProject'),
+          project_type: 'idea',
+          genre: 'other',
+          content: '',
+          concept: concept
+        })
+      });
+      state.currentProject = {
+        id: data.project.id,
+        title: t('newProject'),
+        project_type: 'idea',
+        genre: 'other',
+        content: '',
+        concept: concept
+      };
+      await loadProjects();
+    } else {
+      await api(`/projects/${state.currentProject.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          title: state.currentProject.title,
+          genre: state.currentProject.genre,
+          content: state.currentProject.content,
+          concept: concept,
+          plot_content: state.currentProject.plot_content || ''
+        })
+      });
+      state.currentProject.concept = concept;
+    }
+    showToast(t('saved'), 'success');
+  };
+
+  // Save generated ideas
+  window.saveIdeas = async function() {
+    const ideas = document.getElementById('idea-output')?.innerHTML || '';
+    
+    if (!state.currentProject) {
+      const concept = document.getElementById('concept-input')?.value || '';
+      const data = await api('/projects', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: t('newProject'),
+          project_type: 'idea',
+          genre: document.getElementById('idea-genre')?.value || 'other',
+          content: ideas,
+          concept: concept
+        })
+      });
+      state.currentProject = data.project;
+      await loadProjects();
+    } else {
+      await api(`/projects/${state.currentProject.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          title: state.currentProject.title,
+          genre: state.currentProject.genre,
+          content: ideas,
+          concept: state.currentProject.concept || '',
+          plot_content: state.currentProject.plot_content || ''
+        })
+      });
+      state.currentProject.content = ideas;
+    }
+    showToast(t('saved'), 'success');
+  };
+
+  // Save generated plot
+  window.savePlot = async function() {
+    const plot = document.getElementById('plot-output')?.innerHTML || '';
+    
+    if (!state.currentProject) {
+      const data = await api('/projects', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: t('newProject'),
+          project_type: 'plot',
+          genre: document.getElementById('plot-genre')?.value || 'other',
+          content: document.getElementById('plot-idea')?.value || '',
+          plot_content: plot
+        })
+      });
+      state.currentProject = data.project;
+      await loadProjects();
+    } else {
+      await api(`/projects/${state.currentProject.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          title: state.currentProject.title,
+          genre: state.currentProject.genre,
+          content: state.currentProject.content || '',
+          concept: state.currentProject.concept || '',
+          plot_content: plot
+        })
+      });
+      state.currentProject.plot_content = plot;
+    }
+    showToast(t('saved'), 'success');
+  };
+
+  // Toggle context panel in writing mode
+  window.toggleContextPanel = function() {
+    const panel = document.getElementById('context-panel');
+    const icon = document.getElementById('context-toggle-icon');
+    if (panel && icon) {
+      panel.classList.toggle('hidden');
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+    }
+  };
+
+  // Get context for AI generation (concept + plot)
+  function getProjectContext() {
+    const useContext = document.getElementById('use-idea-plot')?.checked;
+    if (!useContext || !state.currentProject) return '';
+    
+    let context = '';
+    if (state.currentProject.concept) {
+      context += `【コンセプト・企画】\n${state.currentProject.concept}\n\n`;
+    }
+    if (state.currentProject.plot_content) {
+      context += `【プロット】\n${state.currentProject.plot_content}\n\n`;
+    }
+    return context;
+  }
 
   window.setMode = function(mode) {
     state.currentMode = mode;
