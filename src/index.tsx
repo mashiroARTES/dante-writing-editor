@@ -964,6 +964,84 @@ const pageContent: { [key: string]: { [key: string]: any } } = {
         { title: 'अनुच्छेद 6 (शासी कानून)', content: 'ये शर्तें जापानी कानून द्वारा शासित होंगी, और विवादों को मिटो जिला न्यायालय की त्सुचिउरा शाखा के विशेष अधिकार क्षेत्र में प्रस्तुत किया जाएगा।' }
       ],
       back: '← DANTE पर वापस जाएं'
+    },
+    es: {
+      title: 'Términos de Servicio',
+      subtitle: 'Terms of Service',
+      sections: [
+        { title: 'Artículo 1 (Aplicación)', content: 'Estos Términos rigen el uso del Editor de Escritura Integrado con IA "DANTE" (el "Servicio") proporcionado por RATIO Lab., LLC (la "Empresa").' },
+        { title: 'Artículo 2 (Registro)', content: 'Los usuarios deben registrarse aceptando estos Términos y siguiendo los métodos prescritos por la Empresa.' },
+        { title: 'Artículo 3 (Precios)', list: ['Plan Gratuito: Hasta 3,000 caracteres (una vez)', 'Plan Estándar: $10 por 500,000 caracteres', 'Plan Premium: $100 por 6,000,000 caracteres'] },
+        { title: 'Artículo 4 (Actividades Prohibidas)', content: 'Los usuarios no deben:', list: ['Violar leyes u orden público', 'Violar derechos de la Empresa o terceros', 'Interferir con operaciones del Servicio', 'Acceso no autorizado o intentos'] },
+        { title: 'Artículo 5 (Exención de Responsabilidad)', content: 'La Empresa no garantiza la precisión, integridad o utilidad del contenido generado por este Servicio.' },
+        { title: 'Artículo 6 (Ley Aplicable)', content: 'Estos Términos se regirán por la ley japonesa, y las disputas se someterán a la jurisdicción exclusiva de la Sucursal Tsuchiura del Tribunal de Distrito de Mito.' }
+      ],
+      back: '← Volver a DANTE'
+    },
+    fr: {
+      title: 'Conditions d\'Utilisation',
+      subtitle: 'Terms of Service',
+      sections: [
+        { title: 'Article 1 (Application)', content: 'Ces Conditions régissent l\'utilisation de l\'Éditeur d\'Écriture Intégré IA "DANTE" (le "Service") fourni par RATIO Lab., LLC (la "Société").' },
+        { title: 'Article 2 (Inscription)', content: 'Les utilisateurs doivent s\'inscrire en acceptant ces Conditions et en suivant les méthodes prescrites par la Société.' },
+        { title: 'Article 3 (Tarification)', list: ['Plan Gratuit: Jusqu\'à 3 000 caractères (une fois)', 'Plan Standard: 10$ pour 500 000 caractères', 'Plan Premium: 100$ pour 6 000 000 caractères'] },
+        { title: 'Article 4 (Activités Interdites)', content: 'Les utilisateurs ne doivent pas:', list: ['Violer les lois ou l\'ordre public', 'Violer les droits de la Société ou de tiers', 'Interférer avec les opérations du Service', 'Accès non autorisé ou tentatives'] },
+        { title: 'Article 5 (Clause de Non-Responsabilité)', content: 'La Société ne garantit pas l\'exactitude, l\'exhaustivité ou l\'utilité du contenu généré par ce Service.' },
+        { title: 'Article 6 (Loi Applicable)', content: 'Ces Conditions seront régies par le droit japonais, et les litiges seront soumis à la juridiction exclusive de la Branche Tsuchiura du Tribunal de District de Mito.' }
+      ],
+      back: '← Retour à DANTE'
+    },
+    de: {
+      title: 'Nutzungsbedingungen',
+      subtitle: 'Terms of Service',
+      sections: [
+        { title: 'Artikel 1 (Anwendung)', content: 'Diese Bedingungen regeln die Nutzung des KI-integrierten Schreibeditors "DANTE" (der "Dienst"), bereitgestellt von RATIO Lab., LLC (das "Unternehmen").' },
+        { title: 'Artikel 2 (Registrierung)', content: 'Benutzer müssen sich registrieren, indem sie diesen Bedingungen zustimmen und den vom Unternehmen vorgeschriebenen Methoden folgen.' },
+        { title: 'Artikel 3 (Preise)', list: ['Kostenloser Plan: Bis zu 3.000 Zeichen (einmalig)', 'Standard-Plan: 10$ für 500.000 Zeichen', 'Premium-Plan: 100$ für 6.000.000 Zeichen'] },
+        { title: 'Artikel 4 (Verbotene Aktivitäten)', content: 'Benutzer dürfen nicht:', list: ['Gesetze oder öffentliche Ordnung verletzen', 'Rechte des Unternehmens oder Dritter verletzen', 'Den Dienstbetrieb stören', 'Unbefugter Zugriff oder Versuche'] },
+        { title: 'Artikel 5 (Haftungsausschluss)', content: 'Das Unternehmen garantiert nicht die Genauigkeit, Vollständigkeit oder Nützlichkeit der von diesem Dienst generierten Inhalte.' },
+        { title: 'Artikel 6 (Anwendbares Recht)', content: 'Diese Bedingungen unterliegen japanischem Recht, und Streitigkeiten werden der ausschließlichen Zuständigkeit der Tsuchiura-Zweigstelle des Bezirksgerichts Mito unterworfen.' }
+      ],
+      back: '← Zurück zu DANTE'
+    },
+    pt: {
+      title: 'Termos de Serviço',
+      subtitle: 'Terms of Service',
+      sections: [
+        { title: 'Artigo 1 (Aplicação)', content: 'Estes Termos regem o uso do Editor de Escrita Integrado com IA "DANTE" (o "Serviço") fornecido pela RATIO Lab., LLC (a "Empresa").' },
+        { title: 'Artigo 2 (Registro)', content: 'Os usuários devem se registrar concordando com estes Termos e seguindo os métodos prescritos pela Empresa.' },
+        { title: 'Artigo 3 (Preços)', list: ['Plano Gratuito: Até 3.000 caracteres (uma vez)', 'Plano Padrão: $10 por 500.000 caracteres', 'Plano Premium: $100 por 6.000.000 caracteres'] },
+        { title: 'Artigo 4 (Atividades Proibidas)', content: 'Os usuários não devem:', list: ['Violar leis ou ordem pública', 'Violar direitos da Empresa ou terceiros', 'Interferir nas operações do Serviço', 'Acesso não autorizado ou tentativas'] },
+        { title: 'Artigo 5 (Isenção de Responsabilidade)', content: 'A Empresa não garante a precisão, integridade ou utilidade do conteúdo gerado por este Serviço.' },
+        { title: 'Artigo 6 (Lei Aplicável)', content: 'Estes Termos serão regidos pela lei japonesa, e disputas serão submetidas à jurisdição exclusiva da Filial Tsuchiura do Tribunal Distrital de Mito.' }
+      ],
+      back: '← Voltar ao DANTE'
+    },
+    ru: {
+      title: 'Условия использования',
+      subtitle: 'Terms of Service',
+      sections: [
+        { title: 'Статья 1 (Применение)', content: 'Настоящие Условия регулируют использование интегрированного ИИ-редактора "DANTE" ("Сервис"), предоставляемого RATIO Lab., LLC ("Компания").' },
+        { title: 'Статья 2 (Регистрация)', content: 'Пользователи должны зарегистрироваться, согласившись с настоящими Условиями и следуя предписанным Компанией методам.' },
+        { title: 'Статья 3 (Цены)', list: ['Бесплатный план: До 3 000 символов (однократно)', 'Стандартный план: $10 за 500 000 символов', 'Премиум план: $100 за 6 000 000 символов'] },
+        { title: 'Статья 4 (Запрещенные действия)', content: 'Пользователи не должны:', list: ['Нарушать законы или общественный порядок', 'Нарушать права Компании или третьих лиц', 'Мешать работе Сервиса', 'Несанкционированный доступ или попытки'] },
+        { title: 'Статья 5 (Отказ от ответственности)', content: 'Компания не гарантирует точность, полноту или полезность контента, созданного данным Сервисом.' },
+        { title: 'Статья 6 (Применимое право)', content: 'Настоящие Условия регулируются японским законодательством, и споры подлежат исключительной юрисдикции филиала Цутиура районного суда Мито.' }
+      ],
+      back: '← Вернуться к DANTE'
+    },
+    ar: {
+      title: 'شروط الخدمة',
+      subtitle: 'Terms of Service',
+      sections: [
+        { title: 'المادة 1 (التطبيق)', content: 'تحكم هذه الشروط استخدام محرر الكتابة المتكامل بالذكاء الاصطناعي "DANTE" ("الخدمة") المقدم من RATIO Lab., LLC ("الشركة").' },
+        { title: 'المادة 2 (التسجيل)', content: 'يجب على المستخدمين التسجيل بالموافقة على هذه الشروط واتباع الطرق المحددة من الشركة.' },
+        { title: 'المادة 3 (التسعير)', list: ['الخطة المجانية: حتى 3,000 حرف (مرة واحدة)', 'الخطة القياسية: 10$ مقابل 500,000 حرف', 'الخطة المميزة: 100$ مقابل 6,000,000 حرف'] },
+        { title: 'المادة 4 (الأنشطة المحظورة)', content: 'لا يجوز للمستخدمين:', list: ['انتهاك القوانين أو النظام العام', 'انتهاك حقوق الشركة أو الأطراف الثالثة', 'التدخل في عمليات الخدمة', 'الوصول غير المصرح به أو المحاولات'] },
+        { title: 'المادة 5 (إخلاء المسؤولية)', content: 'لا تضمن الشركة دقة أو اكتمال أو فائدة المحتوى الذي تولده هذه الخدمة.' },
+        { title: 'المادة 6 (القانون الساري)', content: 'تخضع هذه الشروط للقانون الياباني، وتخضع النزاعات للاختصاص القضائي الحصري لفرع تسوتشيورا في محكمة ميتو المحلية.' }
+      ],
+      back: '← العودة إلى DANTE'
     }
   },
   privacy: {
@@ -1044,6 +1122,84 @@ const pageContent: { [key: string]: { [key: string]: any } } = {
         { title: '6. संपर्क', content: 'व्यक्तिगत जानकारी के बारे में पूछताछ के लिए, कृपया हमसे संपर्क करें।' }
       ],
       back: '← DANTE पर वापस जाएं'
+    },
+    es: {
+      title: 'Política de Privacidad',
+      subtitle: 'Privacy Policy',
+      sections: [
+        { title: '1. Información Recopilada', content: 'Recopilamos la siguiente información:', list: ['Correo electrónico y nombre de usuario (al registrarse)', 'Contenido creado (proyectos, escritos)', 'Historial de uso (historial de generación IA, caracteres usados)', 'Información de pago (a través de procesadores de pago)'] },
+        { title: '2. Propósito de Uso', list: ['Proporcionar y operar el Servicio', 'Soporte al usuario', 'Mejora del servicio', 'Facturación y procesamiento de pagos'] },
+        { title: '3. Divulgación a Terceros', content: 'No proporcionamos información personal a terceros sin el consentimiento del usuario, excepto según lo requiera la ley.' },
+        { title: '4. Seguridad', content: 'Implementamos medidas de seguridad apropiadas para prevenir fugas, pérdidas o daños a la información personal.' },
+        { title: '5. Uso de Cookies', content: 'Este Servicio utiliza cookies para la gestión de sesiones.' },
+        { title: '6. Contacto', content: 'Para consultas sobre información personal, contáctenos.' }
+      ],
+      back: '← Volver a DANTE'
+    },
+    fr: {
+      title: 'Politique de Confidentialité',
+      subtitle: 'Privacy Policy',
+      sections: [
+        { title: '1. Informations Collectées', content: 'Nous collectons les informations suivantes:', list: ['Adresse e-mail et nom d\'utilisateur (lors de l\'inscription)', 'Contenu créé (projets, écrits)', 'Historique d\'utilisation (historique de génération IA, caractères utilisés)', 'Informations de paiement (via les processeurs de paiement)'] },
+        { title: '2. Finalité d\'Utilisation', list: ['Fournir et exploiter le Service', 'Support utilisateur', 'Amélioration du service', 'Facturation et traitement des paiements'] },
+        { title: '3. Divulgation à des Tiers', content: 'Nous ne fournissons pas d\'informations personnelles à des tiers sans le consentement de l\'utilisateur, sauf si la loi l\'exige.' },
+        { title: '4. Sécurité', content: 'Nous mettons en œuvre des mesures de sécurité appropriées pour prévenir les fuites, pertes ou dommages aux informations personnelles.' },
+        { title: '5. Utilisation des Cookies', content: 'Ce Service utilise des cookies pour la gestion des sessions.' },
+        { title: '6. Contact', content: 'Pour toute question concernant les informations personnelles, contactez-nous.' }
+      ],
+      back: '← Retour à DANTE'
+    },
+    de: {
+      title: 'Datenschutzrichtlinie',
+      subtitle: 'Privacy Policy',
+      sections: [
+        { title: '1. Gesammelte Informationen', content: 'Wir sammeln folgende Informationen:', list: ['E-Mail-Adresse und Benutzername (bei der Registrierung)', 'Erstellte Inhalte (Projekte, Texte)', 'Nutzungsverlauf (KI-Generierungsverlauf, verwendete Zeichen)', 'Zahlungsinformationen (über Zahlungsdienstleister)'] },
+        { title: '2. Verwendungszweck', list: ['Bereitstellung und Betrieb des Dienstes', 'Benutzerunterstützung', 'Serviceverbesserung', 'Abrechnung und Zahlungsabwicklung'] },
+        { title: '3. Weitergabe an Dritte', content: 'Wir geben keine persönlichen Informationen an Dritte ohne Zustimmung des Benutzers weiter, es sei denn, dies ist gesetzlich vorgeschrieben.' },
+        { title: '4. Sicherheit', content: 'Wir implementieren angemessene Sicherheitsmaßnahmen, um Verlust, Diebstahl oder Beschädigung persönlicher Informationen zu verhindern.' },
+        { title: '5. Cookie-Verwendung', content: 'Dieser Dienst verwendet Cookies für die Sitzungsverwaltung.' },
+        { title: '6. Kontakt', content: 'Bei Fragen zu persönlichen Informationen kontaktieren Sie uns bitte.' }
+      ],
+      back: '← Zurück zu DANTE'
+    },
+    pt: {
+      title: 'Política de Privacidade',
+      subtitle: 'Privacy Policy',
+      sections: [
+        { title: '1. Informações Coletadas', content: 'Coletamos as seguintes informações:', list: ['Endereço de e-mail e nome de usuário (no registro)', 'Conteúdo criado (projetos, escritos)', 'Histórico de uso (histórico de geração IA, caracteres usados)', 'Informações de pagamento (através de processadores de pagamento)'] },
+        { title: '2. Finalidade de Uso', list: ['Fornecer e operar o Serviço', 'Suporte ao usuário', 'Melhoria do serviço', 'Faturamento e processamento de pagamentos'] },
+        { title: '3. Divulgação a Terceiros', content: 'Não fornecemos informações pessoais a terceiros sem o consentimento do usuário, exceto conforme exigido por lei.' },
+        { title: '4. Segurança', content: 'Implementamos medidas de segurança apropriadas para prevenir vazamentos, perdas ou danos às informações pessoais.' },
+        { title: '5. Uso de Cookies', content: 'Este Serviço usa cookies para gerenciamento de sessões.' },
+        { title: '6. Contato', content: 'Para dúvidas sobre informações pessoais, entre em contato conosco.' }
+      ],
+      back: '← Voltar ao DANTE'
+    },
+    ru: {
+      title: 'Политика конфиденциальности',
+      subtitle: 'Privacy Policy',
+      sections: [
+        { title: '1. Собираемая информация', content: 'Мы собираем следующую информацию:', list: ['Адрес электронной почты и имя пользователя (при регистрации)', 'Созданный контент (проекты, тексты)', 'История использования (история генерации ИИ, использованные символы)', 'Платежная информация (через платежные процессоры)'] },
+        { title: '2. Цель использования', list: ['Предоставление и эксплуатация Сервиса', 'Поддержка пользователей', 'Улучшение сервиса', 'Выставление счетов и обработка платежей'] },
+        { title: '3. Раскрытие третьим лицам', content: 'Мы не предоставляем личную информацию третьим лицам без согласия пользователя, за исключением случаев, предусмотренных законом.' },
+        { title: '4. Безопасность', content: 'Мы применяем соответствующие меры безопасности для предотвращения утечки, потери или повреждения личной информации.' },
+        { title: '5. Использование файлов cookie', content: 'Этот Сервис использует файлы cookie для управления сеансами.' },
+        { title: '6. Контакты', content: 'По вопросам, касающимся личной информации, свяжитесь с нами.' }
+      ],
+      back: '← Вернуться к DANTE'
+    },
+    ar: {
+      title: 'سياسة الخصوصية',
+      subtitle: 'Privacy Policy',
+      sections: [
+        { title: '1. المعلومات المجمعة', content: 'نقوم بجمع المعلومات التالية:', list: ['عنوان البريد الإلكتروني واسم المستخدم (عند التسجيل)', 'المحتوى المُنشأ (المشاريع، الكتابات)', 'سجل الاستخدام (سجل توليد الذكاء الاصطناعي، الأحرف المستخدمة)', 'معلومات الدفع (عبر معالجي الدفع)'] },
+        { title: '2. غرض الاستخدام', list: ['تقديم وتشغيل الخدمة', 'دعم المستخدم', 'تحسين الخدمة', 'الفوترة ومعالجة المدفوعات'] },
+        { title: '3. الإفصاح للأطراف الثالثة', content: 'لا نقدم معلومات شخصية لأطراف ثالثة دون موافقة المستخدم، إلا وفقًا لما يقتضيه القانون.' },
+        { title: '4. الأمان', content: 'نطبق تدابير أمنية مناسبة لمنع تسرب المعلومات الشخصية أو فقدانها أو إتلافها.' },
+        { title: '5. استخدام ملفات تعريف الارتباط', content: 'تستخدم هذه الخدمة ملفات تعريف الارتباط لإدارة الجلسات.' },
+        { title: '6. الاتصال', content: 'للاستفسارات المتعلقة بالمعلومات الشخصية، يرجى الاتصال بنا.' }
+      ],
+      back: '← العودة إلى DANTE'
     }
   },
   help: {
@@ -1208,6 +1364,168 @@ const pageContent: { [key: string]: { [key: string]: any } } = {
       privacyLink: 'गोपनीयता नीति',
       startButton: 'DANTE का उपयोग शुरू करें',
       back: '← DANTE पर वापस जाएं'
+    },
+    es: {
+      title: 'Guía de Usuario de DANTE',
+      subtitle: 'Editor de Escritura Integrado con IA',
+      gettingStarted: 'Primeros Pasos',
+      gettingStartedText: 'DANTE es un editor integrado para escribir con IA. Soporta todo tipo de escritura, incluyendo novelas, blogs y documentos empresariales.',
+      features: 'Características Principales',
+      feature1: 'Lluvia de Ideas',
+      feature1Text: 'Genera ideas innovadoras a partir de temas y palabras clave',
+      feature2: 'Creación de Trama',
+      feature2Text: 'Sugiere automáticamente estructuras de historias',
+      feature3: 'Escritura',
+      feature3Text: 'Continuar, reescribir, expandir y más',
+      feature4: 'Traducción',
+      feature4Text: 'Traduce a múltiples idiomas',
+      pricing: 'Planes de Precios',
+      free: 'Plan Gratuito',
+      freeDesc: 'Hasta 3,000 caracteres (una vez)',
+      standard: 'Estándar',
+      standardDesc: '500,000 caracteres (~5 libros)',
+      premium: 'Premium',
+      premiumDesc: '6,000,000 caracteres (~60 libros)',
+      legal: 'Información Legal',
+      termsLink: 'Términos de Servicio',
+      privacyLink: 'Política de Privacidad',
+      startButton: 'Comenzar con DANTE',
+      back: '← Volver a DANTE'
+    },
+    fr: {
+      title: 'Guide Utilisateur DANTE',
+      subtitle: 'Éditeur d\'Écriture Intégré IA',
+      gettingStarted: 'Pour Commencer',
+      gettingStartedText: 'DANTE est un éditeur intégré pour écrire avec l\'IA. Il prend en charge tous types d\'écriture, y compris les romans, blogs et documents professionnels.',
+      features: 'Fonctionnalités Principales',
+      feature1: 'Brainstorming',
+      feature1Text: 'Générez des idées innovantes à partir de thèmes et mots-clés',
+      feature2: 'Création de Scénario',
+      feature2Text: 'Suggère automatiquement des structures narratives',
+      feature3: 'Écriture',
+      feature3Text: 'Continuer, réécrire, développer et plus',
+      feature4: 'Traduction',
+      feature4Text: 'Traduisez en plusieurs langues',
+      pricing: 'Plans Tarifaires',
+      free: 'Plan Gratuit',
+      freeDesc: 'Jusqu\'à 3 000 caractères (une fois)',
+      standard: 'Standard',
+      standardDesc: '500 000 caractères (~5 livres)',
+      premium: 'Premium',
+      premiumDesc: '6 000 000 caractères (~60 livres)',
+      legal: 'Informations Légales',
+      termsLink: 'Conditions d\'Utilisation',
+      privacyLink: 'Politique de Confidentialité',
+      startButton: 'Commencer avec DANTE',
+      back: '← Retour à DANTE'
+    },
+    de: {
+      title: 'DANTE Benutzerhandbuch',
+      subtitle: 'KI-integrierter Schreibeditor',
+      gettingStarted: 'Erste Schritte',
+      gettingStartedText: 'DANTE ist ein integrierter Editor zum Schreiben mit KI. Er unterstützt alle Arten von Schreibarbeiten, einschließlich Romane, Blogs und Geschäftsdokumente.',
+      features: 'Hauptfunktionen',
+      feature1: 'Brainstorming',
+      feature1Text: 'Generieren Sie innovative Ideen aus Themen und Schlüsselwörtern',
+      feature2: 'Plot-Erstellung',
+      feature2Text: 'Schlägt automatisch Geschichtsstrukturen vor',
+      feature3: 'Schreiben',
+      feature3Text: 'Fortsetzen, umschreiben, erweitern und mehr',
+      feature4: 'Übersetzung',
+      feature4Text: 'Übersetzen Sie in mehrere Sprachen',
+      pricing: 'Preispläne',
+      free: 'Kostenloser Plan',
+      freeDesc: 'Bis zu 3.000 Zeichen (einmalig)',
+      standard: 'Standard',
+      standardDesc: '500.000 Zeichen (~5 Bücher)',
+      premium: 'Premium',
+      premiumDesc: '6.000.000 Zeichen (~60 Bücher)',
+      legal: 'Rechtliche Informationen',
+      termsLink: 'Nutzungsbedingungen',
+      privacyLink: 'Datenschutzrichtlinie',
+      startButton: 'Mit DANTE beginnen',
+      back: '← Zurück zu DANTE'
+    },
+    pt: {
+      title: 'Guia do Usuário DANTE',
+      subtitle: 'Editor de Escrita Integrado com IA',
+      gettingStarted: 'Primeiros Passos',
+      gettingStartedText: 'DANTE é um editor integrado para escrever com IA. Suporta todos os tipos de escrita, incluindo romances, blogs e documentos empresariais.',
+      features: 'Principais Recursos',
+      feature1: 'Brainstorming',
+      feature1Text: 'Gere ideias inovadoras a partir de temas e palavras-chave',
+      feature2: 'Criação de Enredo',
+      feature2Text: 'Sugere automaticamente estruturas de histórias',
+      feature3: 'Escrita',
+      feature3Text: 'Continuar, reescrever, expandir e mais',
+      feature4: 'Tradução',
+      feature4Text: 'Traduza para vários idiomas',
+      pricing: 'Planos de Preços',
+      free: 'Plano Gratuito',
+      freeDesc: 'Até 3.000 caracteres (uma vez)',
+      standard: 'Padrão',
+      standardDesc: '500.000 caracteres (~5 livros)',
+      premium: 'Premium',
+      premiumDesc: '6.000.000 caracteres (~60 livros)',
+      legal: 'Informações Legais',
+      termsLink: 'Termos de Serviço',
+      privacyLink: 'Política de Privacidade',
+      startButton: 'Começar com DANTE',
+      back: '← Voltar ao DANTE'
+    },
+    ru: {
+      title: 'Руководство пользователя DANTE',
+      subtitle: 'ИИ-интегрированный текстовый редактор',
+      gettingStarted: 'Начало работы',
+      gettingStartedText: 'DANTE — это интегрированный редактор для написания текстов с ИИ. Он поддерживает все виды письма, включая романы, блоги и деловые документы.',
+      features: 'Основные функции',
+      feature1: 'Мозговой штурм',
+      feature1Text: 'Генерируйте инновационные идеи из тем и ключевых слов',
+      feature2: 'Создание сюжета',
+      feature2Text: 'Автоматически предлагает структуры историй',
+      feature3: 'Написание',
+      feature3Text: 'Продолжение, переписывание, расширение и многое другое',
+      feature4: 'Перевод',
+      feature4Text: 'Переводите на несколько языков',
+      pricing: 'Тарифные планы',
+      free: 'Бесплатный план',
+      freeDesc: 'До 3 000 символов (однократно)',
+      standard: 'Стандарт',
+      standardDesc: '500 000 символов (~5 книг)',
+      premium: 'Премиум',
+      premiumDesc: '6 000 000 символов (~60 книг)',
+      legal: 'Юридическая информация',
+      termsLink: 'Условия использования',
+      privacyLink: 'Политика конфиденциальности',
+      startButton: 'Начать с DANTE',
+      back: '← Вернуться к DANTE'
+    },
+    ar: {
+      title: 'دليل مستخدم DANTE',
+      subtitle: 'محرر كتابة متكامل بالذكاء الاصطناعي',
+      gettingStarted: 'البدء',
+      gettingStartedText: 'DANTE هو محرر متكامل للكتابة مع الذكاء الاصطناعي. يدعم جميع أنواع الكتابة، بما في ذلك الروايات والمدونات ووثائق الأعمال.',
+      features: 'الميزات الرئيسية',
+      feature1: 'العصف الذهني',
+      feature1Text: 'توليد أفكار مبتكرة من المواضيع والكلمات المفتاحية',
+      feature2: 'إنشاء الحبكة',
+      feature2Text: 'اقتراح هياكل القصة تلقائيًا',
+      feature3: 'الكتابة',
+      feature3Text: 'الاستمرار، إعادة الكتابة، التوسيع والمزيد',
+      feature4: 'الترجمة',
+      feature4Text: 'الترجمة إلى لغات متعددة',
+      pricing: 'خطط الأسعار',
+      free: 'الخطة المجانية',
+      freeDesc: 'حتى 3,000 حرف (مرة واحدة)',
+      standard: 'قياسي',
+      standardDesc: '500,000 حرف (~5 كتب)',
+      premium: 'مميز',
+      premiumDesc: '6,000,000 حرف (~60 كتاب)',
+      legal: 'المعلومات القانونية',
+      termsLink: 'شروط الخدمة',
+      privacyLink: 'سياسة الخصوصية',
+      startButton: 'ابدأ مع DANTE',
+      back: '← العودة إلى DANTE'
     }
   }
 };
