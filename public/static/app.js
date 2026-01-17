@@ -995,7 +995,7 @@
     const usageEl = document.getElementById('usage-display');
     if (usageEl && state.user) {
       const used = state.user.total_chars_used || 0;
-      const limit = state.user.total_chars_limit || 30000;
+      const limit = state.user.total_chars_limit || 3000;
       const remaining = Math.max(0, limit - used);
       const percentage = Math.min(100, (used / limit) * 100);
       
