@@ -50,7 +50,7 @@
       copied: 'コピーしました',
       insert: '挿入',
       apply: '適用',
-      export: 'エクスポート',
+      export: '出力',
       history: '履歴',
       model: 'モデル',
       theme: 'テーマ',
@@ -1745,17 +1745,17 @@
       <div class="h-full flex gap-4">
         <!-- Editor -->
         <div class="flex-1 bg-white rounded-xl shadow-lg flex flex-col overflow-hidden">
-          <div class="p-4 border-b border-gray-200 flex items-center justify-between">
-            <input type="text" id="project-title" value="${escapeHtml(project?.title || '')}" placeholder="${t('title')}" class="text-lg font-semibold text-gray-800 border-none focus:outline-none flex-1">
-            <div class="flex items-center gap-2">
-              <button onclick="saveProject()" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">
-                <i class="fas fa-save mr-2"></i>${t('save')}
+          <div class="p-2 sm:p-4 border-b border-gray-200 flex items-center justify-between gap-2">
+            <input type="text" id="project-title" value="${escapeHtml(project?.title || '')}" placeholder="${t('title')}" class="text-base sm:text-lg font-semibold text-gray-800 border-none focus:outline-none flex-1 min-w-0">
+            <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+              <button onclick="saveProject()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('save')}">
+                <i class="fas fa-save"></i><span class="hidden sm:inline ml-1 text-sm">${t('save')}</span>
               </button>
-              <button onclick="showExportModal()" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">
-                <i class="fas fa-download mr-2"></i>${t('export')}
+              <button onclick="showExportModal()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('export')}">
+                <i class="fas fa-download"></i><span class="hidden sm:inline ml-1 text-sm">${t('export')}</span>
               </button>
-              <button onclick="showHistoryModal()" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">
-                <i class="fas fa-history mr-2"></i>${t('history')}
+              <button onclick="showHistoryModal()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('history')}">
+                <i class="fas fa-history"></i><span class="hidden sm:inline ml-1 text-sm">${t('history')}</span>
               </button>
             </div>
           </div>
