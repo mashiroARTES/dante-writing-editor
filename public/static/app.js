@@ -62,6 +62,13 @@
     return data;
   }
 
+  // ==================== HELPER FUNCTIONS ====================
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   // ==================== TOAST NOTIFICATIONS ====================
   function showToast(message, type = 'info') {
     const colors = {
@@ -875,10 +882,10 @@
                     <p class="text-sm text-gray-600 mb-2"><strong>プロンプト:</strong> ${h.prompt.substring(0, 100)}${h.prompt.length > 100 ? '...' : ''}</p>
                     <p class="text-sm text-gray-700">${h.response.substring(0, 200)}${h.response.length > 200 ? '...' : ''}</p>
                     <div class="mt-2 flex gap-2">
-                      <button onclick="copyToClipboard(\`${h.response.replace(/`/g, '\\`').replace(/\n/g, '\\n')}\`)" class="text-xs text-purple-600 hover:text-purple-800">
+                      <button onclick="copyHistoryItem(${h.id})" class="text-xs text-purple-600 hover:text-purple-800">
                         <i class="fas fa-copy mr-1"></i>コピー
                       </button>
-                      <button onclick="insertToEditor(\`${h.response.replace(/`/g, '\\`').replace(/\n/g, '\\n')}\`)" class="text-xs text-green-600 hover:text-green-800">
+                      <button onclick="insertHistoryItem(${h.id})" class="text-xs text-green-600 hover:text-green-800">
                         <i class="fas fa-plus mr-1"></i>挿入
                       </button>
                     </div>
@@ -1432,27 +1439,25 @@ ${detailInstruction}`;
     }
     
     try {
-      const result = await generate(`以下の文章を校正してください:\n\n${selected}`, 'proofread');
+      const result = await generate('以下の文章を校正してください:\n\n' + selected, 'proofread');
       
       // Show result in modal
       const modals = document.getElementById('modals');
-      modals.innerHTML = \`
-        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
-          <div class="bg-white rounded-xl w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-xl font-bold text-gray-800"><i class="fas fa-spell-check text-red-600 mr-2"></i>校正結果</h2>
-              <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times text-xl"></i>
-              </button>
-            </div>
-            <div class="prose max-w-none whitespace-pre-wrap text-gray-700 bg-gray-50 p-4 rounded-lg">\${result}</div>
-            <div class="mt-4 flex gap-3">
-              <button onclick="closeModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">閉じる</button>
-              <button onclick="applyProofreadResult()" class="flex-1 px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90">修正を適用</button>
-            </div>
-          </div>
-        </div>
-      \`;
+      modals.innerHTML = '<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">' +
+        '<div class="bg-white rounded-xl w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">' +
+          '<div class="flex items-center justify-between mb-4">' +
+            '<h2 class="text-xl font-bold text-gray-800"><i class="fas fa-spell-check text-red-600 mr-2"></i>校正結果</h2>' +
+            '<button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">' +
+              '<i class="fas fa-times text-xl"></i>' +
+            '</button>' +
+          '</div>' +
+          '<div class="prose max-w-none whitespace-pre-wrap text-gray-700 bg-gray-50 p-4 rounded-lg">' + escapeHtml(result) + '</div>' +
+          '<div class="mt-4 flex gap-3">' +
+            '<button onclick="closeModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">閉じる</button>' +
+            '<button onclick="applyProofreadResult()" class="flex-1 px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90">修正を適用</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
       
       // Store result for applying
       window._proofreadResult = result;
@@ -1502,32 +1507,41 @@ ${detailInstruction}`;
     const targetLength = document.getElementById('target-length')?.value;
     
     try {
-      const result = await generate(\`以下の文章を要約してください:\n\n\${selected}\`, 'summarize', targetLength ? parseInt(targetLength) : null);
+      const result = await generate('以下の文章を要約してください:\n\n' + selected, 'summarize', targetLength ? parseInt(targetLength) : null);
+      
+      // Store result for copy
+      window._summarizeResult = result;
       
       // Show result in modal
       const modals = document.getElementById('modals');
-      modals.innerHTML = \`
-        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
-          <div class="bg-white rounded-xl w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-xl font-bold text-gray-800"><i class="fas fa-compress-alt text-orange-600 mr-2"></i>要約結果</h2>
-              <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times text-xl"></i>
-              </button>
-            </div>
-            <div class="mb-2 text-sm text-gray-500">元の文字数: \${selected.length.toLocaleString()}文字 → 要約: \${result.length.toLocaleString()}文字</div>
-            <div class="prose max-w-none whitespace-pre-wrap text-gray-700 bg-gray-50 p-4 rounded-lg">\${result}</div>
-            <div class="mt-4 flex gap-3">
-              <button onclick="copyToClipboard(\\\`\${result.replace(/\`/g, '\\\\\`')}\\\`)" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"><i class="fas fa-copy mr-1"></i>コピー</button>
-              <button onclick="closeModal()" class="flex-1 px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90">閉じる</button>
-            </div>
-          </div>
-        </div>
-      \`;
+      modals.innerHTML = '<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">' +
+        '<div class="bg-white rounded-xl w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">' +
+          '<div class="flex items-center justify-between mb-4">' +
+            '<h2 class="text-xl font-bold text-gray-800"><i class="fas fa-compress-alt text-orange-600 mr-2"></i>要約結果</h2>' +
+            '<button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">' +
+              '<i class="fas fa-times text-xl"></i>' +
+            '</button>' +
+          '</div>' +
+          '<div class="mb-2 text-sm text-gray-500">元の文字数: ' + selected.length.toLocaleString() + '文字 → 要約: ' + result.length.toLocaleString() + '文字</div>' +
+          '<div class="prose max-w-none whitespace-pre-wrap text-gray-700 bg-gray-50 p-4 rounded-lg">' + escapeHtml(result) + '</div>' +
+          '<div class="mt-4 flex gap-3">' +
+            '<button onclick="copySummarizeResult()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"><i class="fas fa-copy mr-1"></i>コピー</button>' +
+            '<button onclick="closeModal()" class="flex-1 px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90">閉じる</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
       
       showToast('要約が完了しました', 'success');
     } catch (e) {
       showToast(e.message, 'error');
+    }
+  };
+
+  window.copySummarizeResult = function() {
+    if (window._summarizeResult) {
+      navigator.clipboard.writeText(window._summarizeResult).then(() => {
+        showToast('コピーしました', 'success');
+      });
     }
   };
 
@@ -1542,26 +1556,24 @@ ${detailInstruction}`;
     }
     
     try {
-      const result = await generate(\`以下の文章に最適なタイトルを提案してください:\n\n\${content.substring(0, 2000)}\`, 'title_generate');
+      const result = await generate('以下の文章に最適なタイトルを提案してください:\n\n' + content.substring(0, 2000), 'title_generate');
       
       // Show result in modal
       const modals = document.getElementById('modals');
-      modals.innerHTML = \`
-        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
-          <div class="bg-white rounded-xl w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-xl font-bold text-gray-800"><i class="fas fa-heading text-indigo-600 mr-2"></i>タイトル案</h2>
-              <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times text-xl"></i>
-              </button>
-            </div>
-            <div class="prose max-w-none whitespace-pre-wrap text-gray-700 bg-gray-50 p-4 rounded-lg">\${result}</div>
-            <div class="mt-4">
-              <button onclick="closeModal()" class="w-full px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90">閉じる</button>
-            </div>
-          </div>
-        </div>
-      \`;
+      modals.innerHTML = '<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">' +
+        '<div class="bg-white rounded-xl w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">' +
+          '<div class="flex items-center justify-between mb-4">' +
+            '<h2 class="text-xl font-bold text-gray-800"><i class="fas fa-heading text-indigo-600 mr-2"></i>タイトル案</h2>' +
+            '<button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">' +
+              '<i class="fas fa-times text-xl"></i>' +
+            '</button>' +
+          '</div>' +
+          '<div class="prose max-w-none whitespace-pre-wrap text-gray-700 bg-gray-50 p-4 rounded-lg">' + escapeHtml(result) + '</div>' +
+          '<div class="mt-4">' +
+            '<button onclick="closeModal()" class="w-full px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90">閉じる</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
       
       showToast('タイトル案を生成しました', 'success');
     } catch (e) {
@@ -1588,27 +1600,25 @@ ${detailInstruction}`;
     };
     
     try {
-      const result = await generate(\`以下の文章を変換してください:\n\n\${selected}\`, \`style_\${style}\`);
+      const result = await generate('以下の文章を変換してください:\n\n' + selected, 'style_' + style);
       
       // Show result in modal
       const modals = document.getElementById('modals');
-      modals.innerHTML = \`
-        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
-          <div class="bg-white rounded-xl w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-xl font-bold text-gray-800"><i class="fas fa-exchange-alt text-purple-600 mr-2"></i>\${styleNames[style]}に変換</h2>
-              <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times text-xl"></i>
-              </button>
-            </div>
-            <div class="prose max-w-none whitespace-pre-wrap text-gray-700 bg-gray-50 p-4 rounded-lg">\${result}</div>
-            <div class="mt-4 flex gap-3">
-              <button onclick="closeModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">閉じる</button>
-              <button onclick="applyStyleConvert()" class="flex-1 px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90">変換を適用</button>
-            </div>
-          </div>
-        </div>
-      \`;
+      modals.innerHTML = '<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">' +
+        '<div class="bg-white rounded-xl w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">' +
+          '<div class="flex items-center justify-between mb-4">' +
+            '<h2 class="text-xl font-bold text-gray-800"><i class="fas fa-exchange-alt text-purple-600 mr-2"></i>' + styleNames[style] + 'に変換</h2>' +
+            '<button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">' +
+              '<i class="fas fa-times text-xl"></i>' +
+            '</button>' +
+          '</div>' +
+          '<div class="prose max-w-none whitespace-pre-wrap text-gray-700 bg-gray-50 p-4 rounded-lg">' + escapeHtml(result) + '</div>' +
+          '<div class="mt-4 flex gap-3">' +
+            '<button onclick="closeModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">閉じる</button>' +
+            '<button onclick="applyStyleConvert()" class="flex-1 px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90">変換を適用</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
       
       // Store result for applying
       window._styleConvertResult = result;
@@ -1706,6 +1716,28 @@ ${detailInstruction}`;
       showToast('挿入しました', 'success');
     }
     closeModal();
+  };
+
+  window.copyHistoryItem = function(id) {
+    const item = state.history.find(h => h.id === id);
+    if (item) {
+      navigator.clipboard.writeText(item.response).then(() => {
+        showToast('コピーしました', 'success');
+      });
+    }
+  };
+
+  window.insertHistoryItem = function(id) {
+    const item = state.history.find(h => h.id === id);
+    if (item) {
+      const editor = document.getElementById('editor-content');
+      if (editor) {
+        editor.value += '\n\n' + item.response;
+        updateCharCount();
+        showToast('挿入しました', 'success');
+      }
+      closeModal();
+    }
   };
 
   window.saveSettings = async function() {
