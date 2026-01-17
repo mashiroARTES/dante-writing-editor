@@ -2391,7 +2391,8 @@
     const fullContext = projectContext + editorContext;
     
     try {
-      setGenerating(true);
+      state.isGenerating = true;
+      updateGenerateButton();
       const result = await generate(prompt, 'writing', targetLength ? parseInt(targetLength) : null, fullContext);
       
       if (editor) {
@@ -2403,7 +2404,8 @@
     } catch (e) {
       showToast(e.message, 'error');
     } finally {
-      setGenerating(false);
+      state.isGenerating = false;
+      updateGenerateButton();
     }
   };
 
