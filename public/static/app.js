@@ -85,6 +85,26 @@
       enterPrompt: 'プロンプトを入力してください',
       translationTarget: '翻訳先言語',
       agreeTerms: '利用規約とプライバシーポリシーに同意する',
+      // Editor
+      editorPlaceholder: 'ここに文章を書きます...',
+      // Idea mode
+      themeKeyword: 'テーマ・キーワード',
+      themeKeywordPlaceholder: '例: 時間旅行、禁断の恋',
+      conditions: '条件・制約',
+      conditionsPlaceholder: '例: 主人公は高校生、舞台は現代日本',
+      ideaCount: 'アイデア数',
+      ideaCount3: '3つ',
+      ideaCount5: '5つ',
+      ideaCount10: '10つ',
+      generatedIdeas: '生成されたアイデア',
+      // Plot mode
+      ideaTheme: 'アイデア・テーマ',
+      plotPlaceholder: 'プロットを作成したいアイデアや概要を入力',
+      detailLevel: '詳細度',
+      detailSimple: 'シンプル（概要のみ）',
+      detailStandard: '標準',
+      detailDetailed: '詳細（各章の説明付き）',
+      generatedPlot: '生成されたプロット',
       // Genres
       novel: '小説', essay: 'エッセイ', blog: 'ブログ', business: 'ビジネス文書',
       academic: '学術・論文', script: '脚本・シナリオ', poetry: '詩・俳句',
@@ -173,6 +193,27 @@
       enterPrompt: 'Please enter a prompt',
       translationTarget: 'Target Language',
       agreeTerms: 'I agree to the Terms of Service and Privacy Policy',
+      // Editor
+      editorPlaceholder: 'Write your text here...',
+      // Idea mode
+      themeKeyword: 'Theme / Keywords',
+      themeKeywordPlaceholder: 'e.g., Time travel, Forbidden love',
+      conditions: 'Conditions / Constraints',
+      conditionsPlaceholder: 'e.g., Protagonist is a high schooler, Set in modern Japan',
+      ideaCount: 'Number of Ideas',
+      ideaCount3: '3 ideas',
+      ideaCount5: '5 ideas',
+      ideaCount10: '10 ideas',
+      generatedIdeas: 'Generated Ideas',
+      // Plot mode
+      ideaTheme: 'Idea / Theme',
+      plotPlaceholder: 'Enter the idea or outline you want to create a plot for',
+      detailLevel: 'Detail Level',
+      detailSimple: 'Simple (Overview only)',
+      detailStandard: 'Standard',
+      detailDetailed: 'Detailed (With chapter descriptions)',
+      generatedPlot: 'Generated Plot',
+      // Genres
       novel: 'Novel', essay: 'Essay', blog: 'Blog', business: 'Business',
       academic: 'Academic', script: 'Script', poetry: 'Poetry',
       news: 'News', review: 'Review', sns: 'SNS', emailGenre: 'Email',
@@ -260,6 +301,27 @@
       enterPrompt: '请输入提示',
       translationTarget: '目标语言',
       agreeTerms: '我同意服务条款和隐私政策',
+      // Editor
+      editorPlaceholder: '在这里写作...',
+      // Idea mode
+      themeKeyword: '主题/关键词',
+      themeKeywordPlaceholder: '例如：时间旅行、禁忌之恋',
+      conditions: '条件/限制',
+      conditionsPlaceholder: '例如：主人公是高中生，背景是现代日本',
+      ideaCount: '创意数量',
+      ideaCount3: '3个',
+      ideaCount5: '5个',
+      ideaCount10: '10个',
+      generatedIdeas: '生成的创意',
+      // Plot mode
+      ideaTheme: '创意/主题',
+      plotPlaceholder: '输入您想创建大纲的创意或概要',
+      detailLevel: '详细程度',
+      detailSimple: '简单（仅概要）',
+      detailStandard: '标准',
+      detailDetailed: '详细（含章节说明）',
+      generatedPlot: '生成的大纲',
+      // Genres
       novel: '小说', essay: '散文', blog: '博客', business: '商务',
       academic: '学术', script: '剧本', poetry: '诗歌',
       news: '新闻', review: '评论', sns: '社交', emailGenre: '邮件',
@@ -347,6 +409,27 @@
       enterPrompt: '프롬프트를 입력해 주세요',
       translationTarget: '번역 대상 언어',
       agreeTerms: '이용약관 및 개인정보처리방침에 동의합니다',
+      // Editor
+      editorPlaceholder: '여기에 글을 작성하세요...',
+      // Idea mode
+      themeKeyword: '테마/키워드',
+      themeKeywordPlaceholder: '예: 시간여행, 금지된 사랑',
+      conditions: '조건/제약',
+      conditionsPlaceholder: '예: 주인공은 고등학생, 배경은 현대 일본',
+      ideaCount: '아이디어 수',
+      ideaCount3: '3개',
+      ideaCount5: '5개',
+      ideaCount10: '10개',
+      generatedIdeas: '생성된 아이디어',
+      // Plot mode
+      ideaTheme: '아이디어/테마',
+      plotPlaceholder: '플롯을 만들고 싶은 아이디어나 개요를 입력하세요',
+      detailLevel: '상세 수준',
+      detailSimple: '간단 (개요만)',
+      detailStandard: '표준',
+      detailDetailed: '상세 (챕터 설명 포함)',
+      generatedPlot: '생성된 플롯',
+      // Genres
       novel: '소설', essay: '에세이', blog: '블로그', business: '비즈니스',
       academic: '학술', script: '시나리오', poetry: '시',
       news: '뉴스', review: '리뷰', sns: 'SNS', emailGenre: '이메일',
@@ -434,6 +517,27 @@
       enterPrompt: 'Inserisci un prompt',
       translationTarget: 'Lingua di Destinazione',
       agreeTerms: 'Accetto i Termini di Servizio e l\'Informativa sulla Privacy',
+      // Editor
+      editorPlaceholder: 'Scrivi il tuo testo qui...',
+      // Idea mode
+      themeKeyword: 'Tema / Parole chiave',
+      themeKeywordPlaceholder: 'es. Viaggio nel tempo, Amore proibito',
+      conditions: 'Condizioni / Vincoli',
+      conditionsPlaceholder: 'es. Il protagonista è uno studente, Ambientato in Giappone moderno',
+      ideaCount: 'Numero di Idee',
+      ideaCount3: '3 idee',
+      ideaCount5: '5 idee',
+      ideaCount10: '10 idee',
+      generatedIdeas: 'Idee Generate',
+      // Plot mode
+      ideaTheme: 'Idea / Tema',
+      plotPlaceholder: 'Inserisci l\'idea o la bozza per cui vuoi creare una trama',
+      detailLevel: 'Livello di Dettaglio',
+      detailSimple: 'Semplice (Solo panoramica)',
+      detailStandard: 'Standard',
+      detailDetailed: 'Dettagliato (Con descrizione capitoli)',
+      generatedPlot: 'Trama Generata',
+      // Genres
       novel: 'Romanzo', essay: 'Saggio', blog: 'Blog', business: 'Business',
       academic: 'Accademico', script: 'Sceneggiatura', poetry: 'Poesia',
       news: 'Notizie', review: 'Recensione', sns: 'Social', emailGenre: 'Email',
@@ -521,6 +625,27 @@
       enterPrompt: 'कृपया प्रॉम्प्ट दर्ज करें',
       translationTarget: 'लक्ष्य भाषा',
       agreeTerms: 'मैं सेवा की शर्तों और गोपनीयता नीति से सहमत हूं',
+      // Editor
+      editorPlaceholder: 'यहाँ अपना टेक्स्ट लिखें...',
+      // Idea mode
+      themeKeyword: 'थीम / कीवर्ड',
+      themeKeywordPlaceholder: 'उदा. समय यात्रा, वर्जित प्रेम',
+      conditions: 'शर्तें / प्रतिबंध',
+      conditionsPlaceholder: 'उदा. नायक एक हाई स्कूल छात्र है, आधुनिक जापान में सेट',
+      ideaCount: 'विचारों की संख्या',
+      ideaCount3: '3 विचार',
+      ideaCount5: '5 विचार',
+      ideaCount10: '10 विचार',
+      generatedIdeas: 'उत्पन्न विचार',
+      // Plot mode
+      ideaTheme: 'विचार / थीम',
+      plotPlaceholder: 'जिस विचार या सारांश के लिए आप कथानक बनाना चाहते हैं उसे दर्ज करें',
+      detailLevel: 'विस्तार स्तर',
+      detailSimple: 'सरल (केवल सारांश)',
+      detailStandard: 'मानक',
+      detailDetailed: 'विस्तृत (अध्याय विवरण के साथ)',
+      generatedPlot: 'उत्पन्न कथानक',
+      // Genres
       novel: 'उपन्यास', essay: 'निबंध', blog: 'ब्लॉग', business: 'व्यापार',
       academic: 'अकादमिक', script: 'पटकथा', poetry: 'कविता',
       news: 'समाचार', review: 'समीक्षा', sns: 'सोशल', emailGenre: 'ईमेल',
@@ -1028,8 +1153,8 @@
                   <span>${t('agreeTerms')}</span>
                 </label>
                 <div class="flex gap-4 mt-2 text-sm">
-                  <a href="/terms" target="_blank" class="text-blue-600 hover:underline">${t('terms')}</a>
-                  <a href="/privacy" target="_blank" class="text-blue-600 hover:underline">${t('privacy')}</a>
+                  <a href="/terms?lang=${state.language}" target="_blank" class="text-blue-600 hover:underline">${t('terms')}</a>
+                  <a href="/privacy?lang=${state.language}" target="_blank" class="text-blue-600 hover:underline">${t('privacy')}</a>
                 </div>
               </div>
             </div>
@@ -1050,7 +1175,7 @@
           </div>
           
           <div class="mt-6 text-center text-sm text-gray-500">
-            <a href="/help" class="hover:underline">${t('help')}</a>
+            <a href="/help?lang=${state.language}" class="hover:underline">${t('help')}</a>
           </div>
         </div>
       </div>
@@ -1161,7 +1286,7 @@
             <button onclick="showSettingsModal()" class="w-full py-2 px-4 text-left text-gray-600 hover:bg-gray-100 rounded-lg transition flex items-center gap-2">
               <i class="fas fa-cog"></i> ${t('settings')}
             </button>
-            <a href="/help" class="block w-full py-2 px-4 text-left text-gray-600 hover:bg-gray-100 rounded-lg transition flex items-center gap-2">
+            <a href="/help?lang=${state.language}" class="block w-full py-2 px-4 text-left text-gray-600 hover:bg-gray-100 rounded-lg transition flex items-center gap-2">
               <i class="fas fa-question-circle"></i> ${t('help')}
             </a>
             <button onclick="logout()" class="w-full py-2 px-4 text-left text-red-600 hover:bg-red-50 rounded-lg transition flex items-center gap-2">
@@ -1267,19 +1392,19 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">テーマ・キーワード</label>
-              <input type="text" id="idea-theme" placeholder="例: 時間旅行、禁断の恋" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('themeKeyword')}</label>
+              <input type="text" id="idea-theme" placeholder="${t('themeKeywordPlaceholder')}" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">条件・制約</label>
-              <input type="text" id="idea-conditions" placeholder="例: 主人公は高校生、舞台は現代日本" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('conditions')}</label>
+              <input type="text" id="idea-conditions" placeholder="${t('conditionsPlaceholder')}" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">アイデア数</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('ideaCount')}</label>
               <select id="idea-count" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
-                <option value="3">3つ</option>
-                <option value="5" selected>5つ</option>
-                <option value="10">10つ</option>
+                <option value="3">${t('ideaCount3')}</option>
+                <option value="5" selected>${t('ideaCount5')}</option>
+                <option value="10">${t('ideaCount10')}</option>
               </select>
             </div>
             <button onclick="generateIdeas()" id="generate-btn" class="w-full py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition font-semibold">
@@ -1288,7 +1413,7 @@
           </div>
           
           <div id="idea-results" class="mt-6 hidden">
-            <h3 class="font-semibold text-gray-700 mb-3">生成されたアイデア</h3>
+            <h3 class="font-semibold text-gray-700 mb-3">${t('generatedIdeas')}</h3>
             <div id="idea-output" class="prose max-w-none bg-gray-50 p-4 rounded-lg"></div>
           </div>
         </div>
@@ -1310,15 +1435,15 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">アイデア・テーマ</label>
-              <textarea id="plot-idea" rows="3" placeholder="プロットを作成したいアイデアや概要を入力" class="w-full px-4 py-2 border border-gray-300 rounded-lg"></textarea>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('ideaTheme')}</label>
+              <textarea id="plot-idea" rows="3" placeholder="${t('plotPlaceholder')}" class="w-full px-4 py-2 border border-gray-300 rounded-lg"></textarea>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">詳細度</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('detailLevel')}</label>
               <select id="plot-detail" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
-                <option value="simple">シンプル（概要のみ）</option>
-                <option value="standard" selected>標準</option>
-                <option value="detailed">詳細（各章の説明付き）</option>
+                <option value="simple">${t('detailSimple')}</option>
+                <option value="standard" selected>${t('detailStandard')}</option>
+                <option value="detailed">${t('detailDetailed')}</option>
               </select>
             </div>
             <button onclick="generatePlot()" id="generate-btn" class="w-full py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition font-semibold">
@@ -1327,7 +1452,7 @@
           </div>
           
           <div id="plot-results" class="mt-6 hidden">
-            <h3 class="font-semibold text-gray-700 mb-3">生成されたプロット</h3>
+            <h3 class="font-semibold text-gray-700 mb-3">${t('generatedPlot')}</h3>
             <div id="plot-output" class="prose max-w-none bg-gray-50 p-4 rounded-lg"></div>
           </div>
         </div>
@@ -1357,7 +1482,7 @@
             </div>
           </div>
           
-          <textarea id="editor-content" class="flex-1 p-6 resize-none border-none focus:outline-none focus:ring-0 text-gray-800 leading-relaxed editor-area" placeholder="ここに文章を書きます...">${project?.content || ''}</textarea>
+          <textarea id="editor-content" class="flex-1 p-6 resize-none border-none focus:outline-none focus:ring-0 text-gray-800 leading-relaxed editor-area" placeholder="${t('editorPlaceholder')}">${project?.content || ''}</textarea>
           
           <div class="p-3 border-t border-gray-200 bg-gray-50">
             <div id="char-count" class="text-sm text-gray-600 char-counter"></div>
