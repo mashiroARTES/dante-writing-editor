@@ -1100,11 +1100,36 @@
   }
 
   async function updateProject() {
-    if (!state.currentProject) return;
-    
     const content = document.getElementById('editor-content')?.value || '';
-    const title = document.getElementById('project-title')?.value || state.currentProject.title;
+    const title = document.getElementById('project-title')?.value || t('newProject');
     
+    // If no current project, create a new one
+    if (!state.currentProject) {
+      const data = await api('/projects', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: title || t('newProject'),
+          project_type: 'writing',
+          genre: 'other',
+          content
+        })
+      });
+      
+      state.currentProject = {
+        id: data.project.id,
+        title: title,
+        project_type: 'writing',
+        genre: 'other',
+        content: content,
+        word_count: content.length
+      };
+      
+      await loadProjects();
+      updateCharCount();
+      return;
+    }
+    
+    // Update existing project
     await api(`/projects/${state.currentProject.id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -1556,20 +1581,20 @@
               <button onclick="toggleSidebar()" class="md:hidden text-gray-600">
                 <i class="fas fa-bars text-xl"></i>
               </button>
-              <div class="flex gap-2">
-                <button onclick="setMode('idea')" class="px-4 py-2 rounded-lg transition ${state.currentMode === 'idea' ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:bg-gray-100'}">
-                  <i class="fas fa-lightbulb mr-2"></i>${t('idea')}
+              <div class="flex gap-1 sm:gap-2">
+                <button onclick="setMode('idea')" class="px-3 py-2 sm:px-4 rounded-lg transition ${state.currentMode === 'idea' ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:bg-gray-100'}" title="${t('idea')}">
+                  <i class="fas fa-lightbulb"></i><span class="hidden sm:inline ml-2">${t('idea')}</span>
                 </button>
-                <button onclick="setMode('plot')" class="px-4 py-2 rounded-lg transition ${state.currentMode === 'plot' ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:bg-gray-100'}">
-                  <i class="fas fa-sitemap mr-2"></i>${t('plot')}
+                <button onclick="setMode('plot')" class="px-3 py-2 sm:px-4 rounded-lg transition ${state.currentMode === 'plot' ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:bg-gray-100'}" title="${t('plot')}">
+                  <i class="fas fa-sitemap"></i><span class="hidden sm:inline ml-2">${t('plot')}</span>
                 </button>
-                <button onclick="setMode('writing')" class="px-4 py-2 rounded-lg transition ${state.currentMode === 'writing' ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:bg-gray-100'}">
-                  <i class="fas fa-pen mr-2"></i>${t('writing')}
+                <button onclick="setMode('writing')" class="px-3 py-2 sm:px-4 rounded-lg transition ${state.currentMode === 'writing' ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:bg-gray-100'}" title="${t('writing')}">
+                  <i class="fas fa-pen"></i><span class="hidden sm:inline ml-2">${t('writing')}</span>
                 </button>
               </div>
             </div>
-            <div class="flex items-center gap-2">
-              <select id="model-select" class="text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="changeModel(this.value)">
+            <div class="flex items-center gap-1 sm:gap-2">
+              <select id="model-select" class="text-xs sm:text-sm border border-gray-300 rounded-lg px-2 py-1 sm:px-3 sm:py-2 max-w-[100px] sm:max-w-none" onchange="changeModel(this.value)">
                 ${state.models.map(m => `<option value="${m.id}" ${state.selectedModel === m.id ? 'selected' : ''}>${m.name}</option>`).join('')}
               </select>
               <button onclick="toggleTheme()" class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
