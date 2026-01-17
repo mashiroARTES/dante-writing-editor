@@ -67,6 +67,11 @@
       useIdeaPlot: 'ネタ考案・プロットの内容を反映',
       savedIdeas: '保存済みアイデア',
       savedPlot: '保存済みプロット',
+      selectContext: '参照するプロジェクト',
+      selectContextDesc: '生成時に参考にするプロジェクトを選択',
+      noContextSelected: '選択なし',
+      contextSelected: '件選択中',
+      referenceProjects: '参照プロジェクト',
       targetLength: '目標文字数',
       plan: 'プラン',
       free: '無料',
@@ -181,6 +186,11 @@
       useIdeaPlot: 'Apply Idea & Plot content',
       savedIdeas: 'Saved Ideas',
       savedPlot: 'Saved Plot',
+      selectContext: 'Reference Projects',
+      selectContextDesc: 'Select projects to use as context',
+      noContextSelected: 'None selected',
+      contextSelected: 'selected',
+      referenceProjects: 'Reference Projects',
       targetLength: 'Target Length',
       plan: 'Plan',
       free: 'Free',
@@ -295,6 +305,11 @@
       useIdeaPlot: '应用创意和情节内容',
       savedIdeas: '已保存的创意',
       savedPlot: '已保存的情节',
+      selectContext: '参考项目',
+      selectContextDesc: '选择作为上下文的项目',
+      noContextSelected: '未选择',
+      contextSelected: '已选择',
+      referenceProjects: '参考项目',
       targetLength: '目标长度',
       plan: '方案',
       free: '免费',
@@ -409,6 +424,11 @@
       useIdeaPlot: '아이디어 및 플롯 내용 적용',
       savedIdeas: '저장된 아이디어',
       savedPlot: '저장된 플롯',
+      selectContext: '참조 프로젝트',
+      selectContextDesc: '컨텍스트로 사용할 프로젝트 선택',
+      noContextSelected: '선택 없음',
+      contextSelected: '선택됨',
+      referenceProjects: '참조 프로젝트',
       targetLength: '목표 길이',
       plan: '플랜',
       free: '무료',
@@ -523,6 +543,11 @@
       useIdeaPlot: 'Applica Idea e Trama',
       savedIdeas: 'Idee Salvate',
       savedPlot: 'Trama Salvata',
+      selectContext: 'Progetti di Riferimento',
+      selectContextDesc: 'Seleziona progetti da usare come contesto',
+      noContextSelected: 'Nessuna selezione',
+      contextSelected: 'selezionati',
+      referenceProjects: 'Progetti di Riferimento',
       targetLength: 'Lunghezza Target',
       plan: 'Piano',
       free: 'Gratuito',
@@ -638,6 +663,11 @@
       useIdeaPlot: 'विचार और कथानक लागू करें',
       savedIdeas: 'सहेजे गए विचार',
       savedPlot: 'सहेजा गया कथानक',
+      selectContext: 'संदर्भ प्रोजेक्ट',
+      selectContextDesc: 'संदर्भ के रूप में उपयोग करने के लिए प्रोजेक्ट चुनें',
+      noContextSelected: 'कोई चयन नहीं',
+      contextSelected: 'चयनित',
+      referenceProjects: 'संदर्भ प्रोजेक्ट',
       targetLength: 'लक्ष्य लंबाई',
       plan: 'योजना',
       free: 'निःशुल्क',
@@ -711,6 +741,8 @@
       concept: 'Concepto y Planificación', conceptPlaceholder: 'Ingresa tu concepto o plan...',
       plotContent: 'Contenido de la Trama', useIdeaPlot: 'Aplicar Idea y Trama',
       savedIdeas: 'Ideas Guardadas', savedPlot: 'Trama Guardada',
+      selectContext: 'Proyectos de Referencia', selectContextDesc: 'Selecciona proyectos para usar como contexto',
+      noContextSelected: 'Ninguno seleccionado', contextSelected: 'seleccionados', referenceProjects: 'Proyectos de Referencia',
       plan: 'Plan', free: 'Gratis', standard: 'Estándar', premium: 'Premium',
       upgrade: 'Comprar Caracteres', usage: 'Uso', remaining: 'Restante',
       limitExceeded: 'Compra cuando alcances el límite', pleaseUpgrade: 'Compra caracteres adicionales para continuar',
@@ -755,6 +787,8 @@
       concept: 'Concept et Planification', conceptPlaceholder: 'Entrez votre concept ou plan...',
       plotContent: 'Contenu du Scénario', useIdeaPlot: 'Appliquer Idée et Scénario',
       savedIdeas: 'Idées Sauvegardées', savedPlot: 'Scénario Sauvegardé',
+      selectContext: 'Projets de Référence', selectContextDesc: 'Sélectionnez les projets à utiliser comme contexte',
+      noContextSelected: 'Aucune sélection', contextSelected: 'sélectionnés', referenceProjects: 'Projets de Référence',
       plan: 'Plan', free: 'Gratuit', standard: 'Standard', premium: 'Premium',
       upgrade: 'Acheter des Caractères', usage: 'Utilisation', remaining: 'Restant',
       limitExceeded: 'Achetez quand vous atteignez la limite', pleaseUpgrade: 'Achetez des caractères supplémentaires',
@@ -799,6 +833,8 @@
       concept: 'Konzept und Planung', conceptPlaceholder: 'Geben Sie Ihr Konzept oder Ihren Plan ein...',
       plotContent: 'Handlungsinhalt', useIdeaPlot: 'Idee und Handlung anwenden',
       savedIdeas: 'Gespeicherte Ideen', savedPlot: 'Gespeicherte Handlung',
+      selectContext: 'Referenzprojekte', selectContextDesc: 'Wählen Sie Projekte als Kontext aus',
+      noContextSelected: 'Keine Auswahl', contextSelected: 'ausgewählt', referenceProjects: 'Referenzprojekte',
       plan: 'Plan', free: 'Kostenlos', standard: 'Standard', premium: 'Premium',
       upgrade: 'Zeichen Kaufen', usage: 'Nutzung', remaining: 'Verbleibend',
       limitExceeded: 'Kaufen Sie bei Erreichen des Limits', pleaseUpgrade: 'Kaufen Sie zusätzliche Zeichen',
@@ -843,6 +879,8 @@
       concept: 'Conceito e Planejamento', conceptPlaceholder: 'Insira seu conceito ou plano...',
       plotContent: 'Conteúdo do Enredo', useIdeaPlot: 'Aplicar Ideia e Enredo',
       savedIdeas: 'Ideias Salvas', savedPlot: 'Enredo Salvo',
+      selectContext: 'Projetos de Referência', selectContextDesc: 'Selecione projetos para usar como contexto',
+      noContextSelected: 'Nenhum selecionado', contextSelected: 'selecionados', referenceProjects: 'Projetos de Referência',
       plan: 'Plano', free: 'Grátis', standard: 'Padrão', premium: 'Premium',
       upgrade: 'Comprar Caracteres', usage: 'Uso', remaining: 'Restante',
       limitExceeded: 'Compre ao atingir o limite', pleaseUpgrade: 'Compre caracteres adicionais para continuar',
@@ -887,6 +925,8 @@
       concept: 'Концепция и планирование', conceptPlaceholder: 'Введите вашу концепцию или план...',
       plotContent: 'Содержание сюжета', useIdeaPlot: 'Применить идею и сюжет',
       savedIdeas: 'Сохранённые идеи', savedPlot: 'Сохранённый сюжет',
+      selectContext: 'Справочные проекты', selectContextDesc: 'Выберите проекты для использования в качестве контекста',
+      noContextSelected: 'Не выбрано', contextSelected: 'выбрано', referenceProjects: 'Справочные проекты',
       plan: 'План', free: 'Бесплатно', standard: 'Стандарт', premium: 'Премиум',
       upgrade: 'Купить символы', usage: 'Использование', remaining: 'Осталось',
       limitExceeded: 'Купите при достижении лимита', pleaseUpgrade: 'Купите дополнительные символы',
@@ -931,6 +971,8 @@
       concept: 'المفهوم والتخطيط', conceptPlaceholder: 'أدخل مفهومك أو خطتك...',
       plotContent: 'محتوى الحبكة', useIdeaPlot: 'تطبيق الفكرة والحبكة',
       savedIdeas: 'أفكار محفوظة', savedPlot: 'حبكة محفوظة',
+      selectContext: 'مشاريع مرجعية', selectContextDesc: 'حدد المشاريع لاستخدامها كسياق',
+      noContextSelected: 'لم يتم الاختيار', contextSelected: 'مختار', referenceProjects: 'مشاريع مرجعية',
       plan: 'الخطة', free: 'مجاني', standard: 'قياسي', premium: 'مميز',
       upgrade: 'شراء أحرف', usage: 'الاستخدام', remaining: 'المتبقي',
       limitExceeded: 'اشترِ عند الوصول للحد', pleaseUpgrade: 'اشترِ أحرفًا إضافية للمتابعة',
@@ -971,7 +1013,8 @@
     theme: 'light',
     language: 'ja',
     sidebarOpen: false,
-    autoSaveTimer: null
+    autoSaveTimer: null,
+    selectedContextProjects: [] // IDs of projects to use as context
   };
 
   // Get translation
@@ -1715,6 +1758,36 @@
     return icons[type] || 'fa-file';
   }
 
+  // Render context selection button
+  function renderContextSelector() {
+    const count = state.selectedContextProjects.length;
+    const otherProjects = state.projects.filter(p => p.id !== state.currentProject?.id);
+    if (otherProjects.length === 0) return '';
+    
+    return `
+      <div class="bg-blue-50 rounded-lg p-3 mb-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-book-reader text-blue-500"></i>
+            <span class="text-sm font-medium text-gray-700">${t('referenceProjects')}</span>
+          </div>
+          <button onclick="showContextSelector()" class="px-3 py-1 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition">
+            ${count > 0 ? `${count} ${t('contextSelected')}` : t('noContextSelected')}
+            <i class="fas fa-chevron-down ml-1"></i>
+          </button>
+        </div>
+        ${count > 0 ? `
+        <div class="mt-2 flex flex-wrap gap-1">
+          ${state.selectedContextProjects.map(id => {
+            const p = state.projects.find(pr => pr.id === id);
+            return p ? `<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">${escapeHtml(p.title)}</span>` : '';
+          }).join('')}
+        </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
   function renderCurrentMode() {
     switch (state.currentMode) {
       case 'idea': return renderIdeaMode();
@@ -1729,6 +1802,9 @@
     
     return `
       <div class="max-w-4xl mx-auto space-y-4">
+        <!-- Context Selector -->
+        ${renderContextSelector()}
+        
         <!-- Concept Section -->
         <div class="bg-white rounded-xl shadow-lg p-6">
           <h2 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>${t('concept')}</h2>
@@ -1790,6 +1866,9 @@
     
     return `
       <div class="max-w-4xl mx-auto space-y-4">
+        <!-- Context Selector -->
+        ${renderContextSelector()}
+        
         <!-- Show saved concept if exists -->
         ${savedConcept ? `
         <div class="bg-yellow-50 rounded-xl shadow p-4">
@@ -2360,12 +2439,20 @@
     const theme = document.getElementById('idea-theme').value;
     const conditions = document.getElementById('idea-conditions').value;
     const count = document.getElementById('idea-count').value;
+    const conceptInput = document.getElementById('concept-input')?.value || '';
     
     const genreName = t(genre);
-    const prompt = `ジャンル: ${genreName}\nテーマ・キーワード: ${theme || '自由'}\n条件: ${conditions || 'なし'}\n\n${count}つの斬新で魅力的なアイデアを提案してください。`;
+    let prompt = `ジャンル: ${genreName}\nテーマ・キーワード: ${theme || '自由'}\n条件: ${conditions || 'なし'}\n`;
+    if (conceptInput) {
+      prompt += `コンセプト: ${conceptInput}\n`;
+    }
+    prompt += `\n${count}つの斬新で魅力的なアイデアを提案してください。`;
+    
+    // Add context from selected reference projects
+    const refContext = getProjectContext();
     
     try {
-      const result = await generate(prompt, 'idea');
+      const result = await generate(prompt, 'idea', null, refContext || null);
       document.getElementById('idea-output').innerHTML = result.replace(/\n/g, '<br>');
       document.getElementById('idea-results').classList.remove('hidden');
       showToast(t('generate') + ' OK', 'success');
@@ -2381,10 +2468,20 @@
     
     // Allow generation with just genre (no idea required)
     const detailText = { simple: 'シンプルな概要', standard: '標準的な詳細度', detailed: '各章の詳細な説明付き' };
-    const prompt = `ジャンル: ${t(genre)}\nアイデア: ${idea || '（ジャンルに基づいて自由に創作）'}\n詳細度: ${detailText[detail]}\n\n魅力的なプロットを作成してください。`;
+    let prompt = `ジャンル: ${t(genre)}\nアイデア: ${idea || '（ジャンルに基づいて自由に創作）'}\n詳細度: ${detailText[detail]}\n`;
+    
+    // Add current project concept if available
+    const savedConcept = state.currentProject?.concept;
+    if (savedConcept) {
+      prompt += `コンセプト: ${savedConcept}\n`;
+    }
+    prompt += `\n魅力的なプロットを作成してください。`;
+    
+    // Add context from selected reference projects
+    const refContext = getProjectContext();
     
     try {
-      const result = await generate(prompt, 'plot');
+      const result = await generate(prompt, 'plot', null, refContext || null);
       document.getElementById('plot-output').innerHTML = result.replace(/\n/g, '<br>');
       document.getElementById('plot-results').classList.remove('hidden');
       showToast(t('generate') + ' OK', 'success');
@@ -2766,18 +2863,112 @@
     }
   };
 
-  // Get context for AI generation (concept + plot)
-  function getProjectContext() {
-    const useContext = document.getElementById('use-idea-plot')?.checked;
-    if (!useContext || !state.currentProject) return '';
+  // Show context selector modal
+  window.showContextSelector = function() {
+    const modals = document.getElementById('modals');
+    const otherProjects = state.projects.filter(p => p.id !== state.currentProject?.id);
     
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-gray-800">${t('selectContext')}</h3>
+            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">${t('selectContextDesc')}</p>
+          
+          <div class="space-y-2 max-h-[50vh] overflow-y-auto">
+            ${otherProjects.length === 0 ? `<p class="text-gray-500 text-center py-4">${t('noProjects')}</p>` :
+              otherProjects.map(p => {
+                const isSelected = state.selectedContextProjects.includes(p.id);
+                const typeIcon = p.project_type === 'idea' ? 'fa-lightbulb text-yellow-500' : 
+                                 p.project_type === 'plot' ? 'fa-sitemap text-blue-500' : 'fa-pen text-green-500';
+                const preview = (p.content || p.concept || p.plot_content || '').substring(0, 100);
+                return `
+                  <label class="flex items-start gap-3 p-3 rounded-lg border ${isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'} cursor-pointer transition">
+                    <input type="checkbox" class="mt-1 w-4 h-4 text-blue-600" ${isSelected ? 'checked' : ''} onchange="toggleContextProject(${p.id})">
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2">
+                        <i class="fas ${typeIcon}"></i>
+                        <span class="font-medium text-gray-800">${escapeHtml(p.title)}</span>
+                      </div>
+                      <p class="text-xs text-gray-500 mt-1 truncate">${escapeHtml(preview)}${preview.length >= 100 ? '...' : ''}</p>
+                      <span class="text-xs text-gray-400">${formatNumber(p.word_count || 0)} ${t('characters')}</span>
+                    </div>
+                  </label>
+                `;
+              }).join('')
+            }
+          </div>
+          
+          <div class="mt-4 flex justify-end gap-2">
+            <button onclick="clearContextSelection()" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">
+              ${t('cancel')}
+            </button>
+            <button onclick="closeModal(); render();" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  };
+
+  window.toggleContextProject = function(projectId) {
+    const idx = state.selectedContextProjects.indexOf(projectId);
+    if (idx === -1) {
+      state.selectedContextProjects.push(projectId);
+    } else {
+      state.selectedContextProjects.splice(idx, 1);
+    }
+    // Re-render the modal to update checkboxes
+    showContextSelector();
+  };
+
+  window.clearContextSelection = function() {
+    state.selectedContextProjects = [];
+    closeModal();
+    render();
+  };
+
+  // Get context for AI generation (from current project + selected reference projects)
+  function getProjectContext() {
     let context = '';
-    if (state.currentProject.concept) {
-      context += `【コンセプト・企画】\n${state.currentProject.concept}\n\n`;
+    
+    // Add current project's concept/plot if checkbox is checked
+    const useCurrentContext = document.getElementById('use-idea-plot')?.checked;
+    if (useCurrentContext && state.currentProject) {
+      if (state.currentProject.concept) {
+        context += `【現在のプロジェクトのコンセプト】\n${state.currentProject.concept}\n\n`;
+      }
+      if (state.currentProject.plot_content) {
+        context += `【現在のプロジェクトのプロット】\n${state.currentProject.plot_content}\n\n`;
+      }
     }
-    if (state.currentProject.plot_content) {
-      context += `【プロット】\n${state.currentProject.plot_content}\n\n`;
+    
+    // Add selected reference projects
+    if (state.selectedContextProjects.length > 0) {
+      context += '【参照プロジェクト】\n';
+      for (const projectId of state.selectedContextProjects) {
+        const project = state.projects.find(p => p.id === projectId);
+        if (project) {
+          context += `\n--- ${project.title} (${project.project_type}) ---\n`;
+          if (project.concept) {
+            context += `コンセプト: ${project.concept}\n`;
+          }
+          if (project.plot_content) {
+            context += `プロット: ${project.plot_content}\n`;
+          }
+          if (project.content) {
+            context += `内容: ${project.content}\n`;
+          }
+        }
+      }
+      context += '\n';
     }
+    
     return context;
   }
 
