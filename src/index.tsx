@@ -217,8 +217,7 @@ app.get('/api/grok/models', async (c) => {
   return c.json({
     models: [
       { id: 'grok-4-1-fast-non-reasoning', name: 'Grok 4.1 Fast', description: '高速・推奨モデル' },
-      { id: 'grok-4-1-fast-reasoning', name: 'Grok 4.1 Fast Reasoning', description: '高速・推論モデル' },
-      { id: 'grok-4-0709', name: 'Grok 4', description: '最高性能モデル' }
+      { id: 'grok-4-1-fast-reasoning', name: 'Grok 4.1 Fast Reasoning', description: '高速・推論モデル' }
     ]
   })
 })
