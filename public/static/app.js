@@ -1041,6 +1041,11 @@
     const modals = document.getElementById('modals');
     if (!modals) return;
     
+    // Pricing based on language (Japanese = JPY, others = USD)
+    const isJapanese = state.language === 'ja';
+    const standardPrice = isJapanese ? '¥1,000' : '$10';
+    const premiumPrice = isJapanese ? '¥10,000' : '$100';
+    
     modals.innerHTML = `
       <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
         <div class="bg-white rounded-xl max-w-lg w-full p-6" onclick="event.stopPropagation()">
@@ -1053,13 +1058,13 @@
           <div class="grid grid-cols-2 gap-4 mb-6">
             <div class="border-2 border-yellow-500 rounded-lg p-4 bg-yellow-50 cursor-pointer hover:bg-yellow-100 transition" onclick="purchasePlan('standard')">
               <h4 class="font-bold text-lg">${t('standard')}</h4>
-              <p class="text-2xl font-bold text-yellow-600">¥1,000</p>
+              <p class="text-2xl font-bold text-yellow-600">${standardPrice}</p>
               <p class="text-sm text-gray-600">500,000 ${t('characters')}</p>
               <p class="text-xs text-gray-500">≈ 5 books</p>
             </div>
             <div class="border-2 border-purple-500 rounded-lg p-4 bg-purple-50 cursor-pointer hover:bg-purple-100 transition" onclick="purchasePlan('premium')">
               <h4 class="font-bold text-lg">${t('premium')}</h4>
-              <p class="text-2xl font-bold text-purple-600">¥10,000</p>
+              <p class="text-2xl font-bold text-purple-600">${premiumPrice}</p>
               <p class="text-sm text-gray-600">6,000,000 ${t('characters')}</p>
               <p class="text-xs text-gray-500">≈ 60 books</p>
             </div>

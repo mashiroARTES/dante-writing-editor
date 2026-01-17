@@ -290,12 +290,18 @@ app.post('/api/payment/create', async (c) => {
     
     let amount = 0
     let charsToAdd = 0
+    let currency = 'JPY'
+    
+    // Check if user language is Japanese
+    const isJapanese = user.language === 'ja'
     
     if (plan === 'standard') {
-      amount = 1000
+      amount = isJapanese ? 1000 : 10  // ¥1,000 or $10
+      currency = isJapanese ? 'JPY' : 'USD'
       charsToAdd = 500000
     } else if (plan === 'premium') {
-      amount = 10000
+      amount = isJapanese ? 10000 : 100  // ¥10,000 or $100
+      currency = isJapanese ? 'JPY' : 'USD'
       charsToAdd = 6000000
     } else {
       return c.json({ error: 'Invalid plan' }, 400)
@@ -310,7 +316,7 @@ app.post('/api/payment/create', async (c) => {
       },
       body: JSON.stringify({
         amount,
-        currency: 'JPY',
+        currency,
         default_locale: user.language || 'ja',
         return_url: 'https://project-fb113820.pages.dev/payment/complete',
         cancel_url: 'https://project-fb113820.pages.dev/payment/cancel',
