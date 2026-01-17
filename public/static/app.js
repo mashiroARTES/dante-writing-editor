@@ -503,6 +503,7 @@
       remaining: 'Rimanenti',
       limitExceeded: 'Acquista quando raggiungi il limite',
       pleaseUpgrade: 'Acquista caratteri aggiuntivi per continuare',
+      purchaseCharacters: 'Acquista Caratteri',
       inviteCode: 'Codice Invito',
       inviteCodePlaceholder: 'Inserisci codice invito',
       inviteCodeApply: 'Applica',
@@ -611,6 +612,7 @@
       remaining: 'शेष',
       limitExceeded: 'सीमा पूरी होने पर खरीदें',
       pleaseUpgrade: 'जारी रखने के लिए अतिरिक्त अक्षर खरीदें',
+      purchaseCharacters: 'अक्षर खरीदें',
       inviteCode: 'आमंत्रण कोड',
       inviteCodePlaceholder: 'आमंत्रण कोड दर्ज करें',
       inviteCodeApply: 'लागू करें',
@@ -1051,7 +1053,7 @@
         <div class="bg-white rounded-xl max-w-lg w-full p-6" onclick="event.stopPropagation()">
           <div class="text-center mb-6">
             <img src="/static/logo.png" alt="DANTE" class="w-16 h-16 mx-auto mb-4">
-            <h3 class="text-xl font-bold text-gray-800">${t('limitExceeded')}</h3>
+            <h3 class="text-xl font-bold text-gray-800">${t('purchaseCharacters') || t('upgrade')}</h3>
             <p class="text-gray-600 mt-2">${t('pleaseUpgrade')}</p>
           </div>
           
