@@ -2395,7 +2395,7 @@
       const result = await generate(prompt, 'writing', targetLength ? parseInt(targetLength) : null, fullContext);
       
       if (editor) {
-        editor.value = context + (context ? '\n\n' : '') + result;
+        editor.value = editorContext + (editorContext ? '\n\n' : '') + result;
         updateCharCount();
       }
       
