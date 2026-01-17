@@ -312,25 +312,37 @@
     }
   }
 
-  // ==================== AUTO SAVE ====================
-  function setupAutoSave() {
+  // ==================== AUTO SAVE & EDITOR EVENTS ====================
+  function setupEditorEvents() {
     const editor = document.getElementById('editor-content');
-    if (!editor || !state.currentProject) return;
+    if (!editor) return;
     
-    editor.addEventListener('input', () => {
+    // Remove existing listeners by replacing element (simple approach)
+    const newEditor = editor.cloneNode(true);
+    editor.parentNode.replaceChild(newEditor, editor);
+    
+    // Add input event listener for character count (always)
+    newEditor.addEventListener('input', () => {
       updateCharCount();
       
-      if (state.autoSaveTimer) {
-        clearTimeout(state.autoSaveTimer);
-      }
-      
-      state.autoSaveTimer = setTimeout(async () => {
-        if (state.preferences?.auto_save !== false) {
-          await updateProject();
-          showToast('自動保存しました', 'info');
+      // Auto-save only if project exists
+      if (state.currentProject) {
+        if (state.autoSaveTimer) {
+          clearTimeout(state.autoSaveTimer);
         }
-      }, 3000);
+        
+        state.autoSaveTimer = setTimeout(async () => {
+          if (state.preferences?.auto_save !== false) {
+            await updateProject();
+            showToast('自動保存しました', 'info');
+          }
+        }, 3000);
+      }
     });
+    
+    // Also update on paste, cut, etc.
+    newEditor.addEventListener('paste', () => setTimeout(updateCharCount, 10));
+    newEditor.addEventListener('cut', () => setTimeout(updateCharCount, 10));
   }
 
   // ==================== RENDER FUNCTIONS ====================
@@ -513,7 +525,7 @@
       <div id="modals"></div>
     `;
     
-    setupAutoSave();
+    setupEditorEvents();
     updateCharCount();
   }
 
