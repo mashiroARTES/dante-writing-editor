@@ -245,6 +245,37 @@ app.get('/api/auth/usage', async (c) => {
   })
 })
 
+// Apply invite code
+app.post('/api/auth/invite-code', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const { code } = await c.req.json()
+  
+  // Valid invite codes
+  const VALID_CODES: { [key: string]: { plan: string; chars: number } } = {
+    'ARTES2WRITERS+': { plan: 'unlimited', chars: 999999999 }
+  }
+  
+  const codeData = VALID_CODES[code]
+  if (!codeData) {
+    return c.json({ error: 'Invalid invite code' }, 400)
+  }
+  
+  // Update user's plan
+  await c.env.DB.prepare(
+    'UPDATE users SET plan = ?, total_chars_limit = ? WHERE id = ?'
+  ).bind(codeData.plan, codeData.chars, user.id).run()
+  
+  return c.json({ 
+    success: true, 
+    plan: codeData.plan,
+    total_chars_limit: codeData.chars
+  })
+})
+
 // ==================== PAYMENT ROUTES (KOMOJU) ====================
 
 // Create payment session

@@ -69,8 +69,13 @@
       upgrade: 'アップグレード',
       usage: '使用状況',
       remaining: '残り',
-      limitExceeded: '文字数制限に達しました',
+      limitExceeded: '文字数制限に達したらご購入ください',
       pleaseUpgrade: 'プランをアップグレードしてください',
+      inviteCode: '招待コード',
+      inviteCodePlaceholder: '招待コードを入力',
+      inviteCodeApply: '適用',
+      inviteCodeSuccess: '招待コードが適用されました！全機能が開放されました',
+      inviteCodeError: '無効な招待コードです',
       payment: '決済',
       buyNow: '購入する',
       confirmDelete: '本当に削除しますか？',
@@ -152,8 +157,13 @@
       upgrade: 'Upgrade',
       usage: 'Usage',
       remaining: 'Remaining',
-      limitExceeded: 'Character limit exceeded',
+      limitExceeded: 'Purchase when you reach the character limit',
       pleaseUpgrade: 'Please upgrade your plan',
+      inviteCode: 'Invite Code',
+      inviteCodePlaceholder: 'Enter invite code',
+      inviteCodeApply: 'Apply',
+      inviteCodeSuccess: 'Invite code applied! All features unlocked',
+      inviteCodeError: 'Invalid invite code',
       payment: 'Payment',
       buyNow: 'Buy Now',
       confirmDelete: 'Are you sure you want to delete?',
@@ -234,8 +244,13 @@
       upgrade: '升级',
       usage: '使用情况',
       remaining: '剩余',
-      limitExceeded: '已达到字符限制',
+      limitExceeded: '达到字符限制时请购买',
       pleaseUpgrade: '请升级您的方案',
+      inviteCode: '邀请码',
+      inviteCodePlaceholder: '输入邀请码',
+      inviteCodeApply: '应用',
+      inviteCodeSuccess: '邀请码已应用！所有功能已解锁',
+      inviteCodeError: '无效的邀请码',
       payment: '支付',
       buyNow: '立即购买',
       confirmDelete: '确定要删除吗？',
@@ -316,8 +331,13 @@
       upgrade: '업그레이드',
       usage: '사용량',
       remaining: '남은',
-      limitExceeded: '글자 수 제한 초과',
+      limitExceeded: '글자 수 제한에 도달하면 구매해 주세요',
       pleaseUpgrade: '플랜을 업그레이드해 주세요',
+      inviteCode: '초대 코드',
+      inviteCodePlaceholder: '초대 코드 입력',
+      inviteCodeApply: '적용',
+      inviteCodeSuccess: '초대 코드가 적용되었습니다! 모든 기능이 해제되었습니다',
+      inviteCodeError: '유효하지 않은 초대 코드입니다',
       payment: '결제',
       buyNow: '구매하기',
       confirmDelete: '정말 삭제하시겠습니까?',
@@ -398,8 +418,13 @@
       upgrade: 'Aggiorna',
       usage: 'Utilizzo',
       remaining: 'Rimanenti',
-      limitExceeded: 'Limite caratteri superato',
+      limitExceeded: 'Acquista quando raggiungi il limite',
       pleaseUpgrade: 'Aggiorna il tuo piano',
+      inviteCode: 'Codice Invito',
+      inviteCodePlaceholder: 'Inserisci codice invito',
+      inviteCodeApply: 'Applica',
+      inviteCodeSuccess: 'Codice invito applicato! Tutte le funzioni sbloccate',
+      inviteCodeError: 'Codice invito non valido',
       payment: 'Pagamento',
       buyNow: 'Acquista Ora',
       confirmDelete: 'Sei sicuro di voler eliminare?',
@@ -480,8 +505,13 @@
       upgrade: 'अपग्रेड',
       usage: 'उपयोग',
       remaining: 'शेष',
-      limitExceeded: 'अक्षर सीमा पार हो गई',
+      limitExceeded: 'सीमा पूरी होने पर खरीदें',
       pleaseUpgrade: 'कृपया अपनी योजना अपग्रेड करें',
+      inviteCode: 'आमंत्रण कोड',
+      inviteCodePlaceholder: 'आमंत्रण कोड दर्ज करें',
+      inviteCodeApply: 'लागू करें',
+      inviteCodeSuccess: 'आमंत्रण कोड लागू! सभी सुविधाएं अनलॉक',
+      inviteCodeError: 'अमान्य आमंत्रण कोड',
       payment: 'भुगतान',
       buyNow: 'अभी खरीदें',
       confirmDelete: 'क्या आप वाकई हटाना चाहते हैं?',
@@ -910,6 +940,15 @@
             </div>
           </div>
           
+          <!-- Invite Code Section -->
+          <div class="border-t pt-4 mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">${t('inviteCode')}</label>
+            <div class="flex gap-2">
+              <input type="text" id="invite-code-input" placeholder="${t('inviteCodePlaceholder')}" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+              <button onclick="applyInviteCode()" class="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">${t('inviteCodeApply')}</button>
+            </div>
+          </div>
+          
           <button onclick="closeModal()" class="w-full py-2 text-gray-600 hover:text-gray-800">${t('close')}</button>
         </div>
       </div>
@@ -928,6 +967,31 @@
       }
     } catch (e) {
       showToast(e.message, 'error');
+    }
+  };
+
+  window.applyInviteCode = async function() {
+    const input = document.getElementById('invite-code-input');
+    if (!input) return;
+    
+    const code = input.value.trim();
+    if (!code) return;
+    
+    try {
+      const data = await api('/auth/invite-code', {
+        method: 'POST',
+        body: JSON.stringify({ code })
+      });
+      
+      if (data.success) {
+        showToast(t('inviteCodeSuccess'), 'success');
+        closeModal();
+        // Refresh user data
+        await checkAuth();
+        render();
+      }
+    } catch (e) {
+      showToast(t('inviteCodeError'), 'error');
     }
   };
 
