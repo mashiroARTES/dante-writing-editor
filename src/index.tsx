@@ -347,7 +347,83 @@ app.post('/api/payment/create', async (c) => {
   }
 })
 
-// KOMOJU webhook
+// Verify payment and apply characters
+app.get('/api/payment/verify', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const sessionId = c.req.query('session_id')
+  if (!sessionId) {
+    return c.json({ error: 'Session ID required' }, 400)
+  }
+  
+  try {
+    // Check if this session was already processed
+    const existingPayment = await c.env.DB.prepare(
+      'SELECT id FROM payments WHERE komoju_payment_id = ?'
+    ).bind(sessionId).first()
+    
+    if (existingPayment) {
+      return c.json({ success: true, message: 'Payment already processed' })
+    }
+    
+    // Get session from KOMOJU
+    const response = await fetch(`https://komoju.com/api/v1/sessions/${sessionId}`, {
+      headers: {
+        'Authorization': 'Basic ' + btoa(c.env.KOMOJU_SECRET_KEY + ':')
+      }
+    })
+    
+    if (!response.ok) {
+      return c.json({ error: 'Session not found' }, 404)
+    }
+    
+    const session = await response.json() as any
+    
+    // Check if payment is completed
+    if (session.status !== 'completed') {
+      return c.json({ 
+        success: false, 
+        status: session.status,
+        message: 'Payment not completed'
+      })
+    }
+    
+    // Verify user matches
+    const metadata = session.metadata || {}
+    if (metadata.user_id !== user.id.toString()) {
+      return c.json({ error: 'User mismatch' }, 403)
+    }
+    
+    const plan = metadata.plan
+    const charsToAdd = parseInt(metadata.chars_to_add)
+    
+    if (charsToAdd) {
+      // Update user's character limit
+      await c.env.DB.prepare(
+        'UPDATE users SET total_chars_limit = total_chars_limit + ?, plan = ? WHERE id = ?'
+      ).bind(charsToAdd, plan, user.id).run()
+      
+      // Record payment
+      await c.env.DB.prepare(
+        'INSERT INTO payments (user_id, amount, currency, plan, chars_added, komoju_payment_id, status) VALUES (?, ?, ?, ?, ?, ?, ?)'
+      ).bind(user.id, session.amount, session.currency, plan, charsToAdd, sessionId, 'completed').run()
+    }
+    
+    return c.json({ 
+      success: true, 
+      chars_added: charsToAdd,
+      plan: plan
+    })
+  } catch (e: any) {
+    console.error('Payment verify error:', e)
+    return c.json({ error: e.message }, 500)
+  }
+})
+
+// KOMOJU webhook (backup method)
 app.post('/api/payment/webhook', async (c) => {
   try {
     const body = await c.req.json()
@@ -358,6 +434,15 @@ app.post('/api/payment/webhook', async (c) => {
       const userId = parseInt(metadata.user_id)
       const plan = metadata.plan
       const charsToAdd = parseInt(metadata.chars_to_add)
+      
+      // Check if already processed
+      const existingPayment = await c.env.DB.prepare(
+        'SELECT id FROM payments WHERE komoju_payment_id = ?'
+      ).bind(payment.id).first()
+      
+      if (existingPayment) {
+        return c.json({ success: true, message: 'Already processed' })
+      }
       
       if (userId && charsToAdd) {
         // Update user's character limit
@@ -1282,14 +1367,78 @@ app.get('/guide', (c) => {
 // Payment complete/cancel pages
 app.get('/payment/complete', (c) => {
   return c.html(`<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>決済完了</title><script src="https://cdn.tailwindcss.com"></script></head>
+<html><head><meta charset="UTF-8"><title>決済確認中</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+</head>
 <body class="bg-gray-50 min-h-screen flex items-center justify-center">
-<div class="bg-white p-8 rounded-lg shadow-lg text-center">
-<i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
-<h1 class="text-2xl font-bold mb-4">決済が完了しました</h1>
-<p class="text-gray-600 mb-6">ご購入ありがとうございます。文字数が追加されました。</p>
-<a href="/" class="px-6 py-3 bg-yellow-600 text-white rounded-lg">エディターに戻る</a>
+<div id="status" class="bg-white p-8 rounded-lg shadow-lg text-center max-w-md">
+  <i class="fas fa-spinner fa-spin text-yellow-500 text-6xl mb-4"></i>
+  <h1 class="text-2xl font-bold mb-4">決済を確認中...</h1>
+  <p class="text-gray-600 mb-6">しばらくお待ちください</p>
 </div>
+<script>
+(async function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const sessionId = urlParams.get('session_id');
+  const statusDiv = document.getElementById('status');
+  
+  if (!sessionId) {
+    statusDiv.innerHTML = \`
+      <i class="fas fa-exclamation-circle text-red-500 text-6xl mb-4"></i>
+      <h1 class="text-2xl font-bold mb-4">エラー</h1>
+      <p class="text-gray-600 mb-6">決済セッションが見つかりません</p>
+      <a href="/" class="px-6 py-3 bg-gray-600 text-white rounded-lg inline-block">エディターに戻る</a>
+    \`;
+    return;
+  }
+  
+  try {
+    const response = await fetch('/api/payment/verify?session_id=' + sessionId, {
+      credentials: 'include'
+    });
+    const data = await response.json();
+    
+    if (data.success && data.chars_added) {
+      statusDiv.innerHTML = \`
+        <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+        <h1 class="text-2xl font-bold mb-4">決済が完了しました</h1>
+        <p class="text-gray-600 mb-4">ご購入ありがとうございます！</p>
+        <p class="text-lg text-green-600 font-bold mb-6">\${data.chars_added.toLocaleString()} 文字が追加されました</p>
+        <a href="/" class="px-6 py-3 bg-yellow-600 text-white rounded-lg inline-block">エディターに戻る</a>
+      \`;
+    } else if (data.success && data.message === 'Payment already processed') {
+      statusDiv.innerHTML = \`
+        <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+        <h1 class="text-2xl font-bold mb-4">決済は処理済みです</h1>
+        <p class="text-gray-600 mb-6">この決済は既に処理されています</p>
+        <a href="/" class="px-6 py-3 bg-yellow-600 text-white rounded-lg inline-block">エディターに戻る</a>
+      \`;
+    } else if (data.status && data.status !== 'completed') {
+      statusDiv.innerHTML = \`
+        <i class="fas fa-exclamation-triangle text-yellow-500 text-6xl mb-4"></i>
+        <h1 class="text-2xl font-bold mb-4">決済が完了していません</h1>
+        <p class="text-gray-600 mb-6">決済が完了していないか、キャンセルされました</p>
+        <a href="/" class="px-6 py-3 bg-gray-600 text-white rounded-lg inline-block">エディターに戻る</a>
+      \`;
+    } else {
+      statusDiv.innerHTML = \`
+        <i class="fas fa-exclamation-circle text-red-500 text-6xl mb-4"></i>
+        <h1 class="text-2xl font-bold mb-4">エラーが発生しました</h1>
+        <p class="text-gray-600 mb-6">\${data.error || '決済の確認中にエラーが発生しました'}</p>
+        <a href="/" class="px-6 py-3 bg-gray-600 text-white rounded-lg inline-block">エディターに戻る</a>
+      \`;
+    }
+  } catch (e) {
+    statusDiv.innerHTML = \`
+      <i class="fas fa-exclamation-circle text-red-500 text-6xl mb-4"></i>
+      <h1 class="text-2xl font-bold mb-4">エラーが発生しました</h1>
+      <p class="text-gray-600 mb-6">決済の確認中にエラーが発生しました</p>
+      <a href="/" class="px-6 py-3 bg-gray-600 text-white rounded-lg inline-block">エディターに戻る</a>
+    \`;
+  }
+})();
+</script>
 </body></html>`)
 })
 
