@@ -1212,16 +1212,16 @@
       const manuscriptPages = (charsNoSpace / 400).toFixed(1);
       
       counter.innerHTML = `
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm">
           <span><span class="font-semibold text-yellow-600">${formatNumber(chars)}</span> ${t('characters')}</span>
-          <span class="text-gray-400">|</span>
-          <span>${formatNumber(charsNoSpace)} ${t('charactersNoSpace')}</span>
+          <span class="hidden sm:inline text-gray-400">|</span>
+          <span class="hidden sm:inline">${formatNumber(charsNoSpace)} ${t('charactersNoSpace')}</span>
           <span class="text-gray-400">|</span>
           <span>${formatNumber(lines)} ${t('lines')}</span>
-          <span class="text-gray-400">|</span>
-          <span><i class="fas fa-clock text-gray-400 mr-1"></i>${readingTimeText}</span>
-          <span class="text-gray-400">|</span>
-          <span><i class="fas fa-file-alt text-gray-400 mr-1"></i>${manuscriptPages} ${t('pages')}</span>
+          <span class="hidden sm:inline text-gray-400">|</span>
+          <span class="hidden sm:inline"><i class="fas fa-clock text-gray-400 mr-1"></i>${readingTimeText}</span>
+          <span class="hidden sm:inline text-gray-400">|</span>
+          <span class="hidden sm:inline"><i class="fas fa-file-alt text-gray-400 mr-1"></i>${manuscriptPages} ${t('pages')}</span>
         </div>
       `;
     }
@@ -2030,22 +2030,92 @@
 
   window.showMobileAIPanel = function() {
     const modals = document.getElementById('modals');
+    const editor = document.getElementById('editor-content');
+    const content = editor ? editor.value : '';
+    const charCount = content.length;
+    const charCountNoSpace = content.replace(/\s/g, '').length;
+    const lineCount = content ? content.split('\n').length : 0;
+    
     modals.innerHTML = `
       <div class="fixed inset-0 bg-black bg-opacity-50 flex items-end z-50" onclick="closeModal(event)">
-        <div class="bg-white rounded-t-xl w-full p-6 max-h-[70vh] overflow-y-auto" onclick="event.stopPropagation()">
-          <h3 class="text-lg font-bold text-gray-800 mb-4">AI Assistant</h3>
-          <div class="grid grid-cols-2 gap-2 mb-4">
-            <button onclick="closeModal(); aiContinue()" class="py-3 bg-gray-50 rounded-lg"><i class="fas fa-arrow-right text-green-500 mr-2"></i>${t('continue')}</button>
-            <button onclick="closeModal(); aiRewrite()" class="py-3 bg-gray-50 rounded-lg"><i class="fas fa-sync text-blue-500 mr-2"></i>${t('rewrite')}</button>
-            <button onclick="closeModal(); aiExpand()" class="py-3 bg-gray-50 rounded-lg"><i class="fas fa-expand-arrows-alt text-purple-500 mr-2"></i>${t('expand')}</button>
-            <button onclick="closeModal(); aiProofread()" class="py-3 bg-gray-50 rounded-lg"><i class="fas fa-spell-check text-orange-500 mr-2"></i>${t('proofread')}</button>
-            <button onclick="closeModal(); aiSummarize()" class="py-3 bg-gray-50 rounded-lg"><i class="fas fa-compress-alt text-teal-500 mr-2"></i>${t('summarize')}</button>
-            <button onclick="closeModal(); showTranslateModal()" class="py-3 bg-gray-50 rounded-lg"><i class="fas fa-language text-red-500 mr-2"></i>${t('translate')}</button>
+        <div class="bg-white rounded-t-xl w-full p-4 max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-bold text-gray-800">AI Assistant</h3>
+            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times text-xl"></i>
+            </button>
           </div>
-          <button onclick="closeModal()" class="w-full py-3 border border-gray-300 rounded-lg">${t('close')}</button>
+          
+          <!-- Character Count Display -->
+          <div class="bg-gray-100 rounded-lg p-3 mb-4 text-sm">
+            <div class="grid grid-cols-2 gap-2">
+              <div><span class="text-gray-600">${t('characters')}:</span> <span class="font-semibold">${charCount.toLocaleString()}</span></div>
+              <div><span class="text-gray-600">${t('charactersNoSpace')}:</span> <span class="font-semibold">${charCountNoSpace.toLocaleString()}</span></div>
+              <div><span class="text-gray-600">${t('lines')}:</span> <span class="font-semibold">${lineCount.toLocaleString()}</span></div>
+              <div><span class="text-gray-600">${t('pages')}:</span> <span class="font-semibold">${(charCount / 400).toFixed(1)}</span></div>
+            </div>
+          </div>
+          
+          <!-- Quick Actions -->
+          <div class="grid grid-cols-3 gap-2 mb-4">
+            <button onclick="closeModal(); aiContinue()" class="py-2 bg-gray-50 rounded-lg text-sm"><i class="fas fa-arrow-right text-green-500"></i><div class="text-xs mt-1">${t('continue')}</div></button>
+            <button onclick="closeModal(); aiRewrite()" class="py-2 bg-gray-50 rounded-lg text-sm"><i class="fas fa-sync text-blue-500"></i><div class="text-xs mt-1">${t('rewrite')}</div></button>
+            <button onclick="closeModal(); aiExpand()" class="py-2 bg-gray-50 rounded-lg text-sm"><i class="fas fa-expand-arrows-alt text-purple-500"></i><div class="text-xs mt-1">${t('expand')}</div></button>
+            <button onclick="closeModal(); aiProofread()" class="py-2 bg-gray-50 rounded-lg text-sm"><i class="fas fa-spell-check text-orange-500"></i><div class="text-xs mt-1">${t('proofread')}</div></button>
+            <button onclick="closeModal(); aiSummarize()" class="py-2 bg-gray-50 rounded-lg text-sm"><i class="fas fa-compress-alt text-teal-500"></i><div class="text-xs mt-1">${t('summarize')}</div></button>
+            <button onclick="closeModal(); showTranslateModal()" class="py-2 bg-gray-50 rounded-lg text-sm"><i class="fas fa-language text-red-500"></i><div class="text-xs mt-1">${t('translate')}</div></button>
+          </div>
+          
+          <!-- Custom Prompt Section -->
+          <div class="border-t pt-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">${t('customPrompt')}</label>
+            <textarea id="mobile-custom-prompt" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm mb-2" placeholder="${t('enterPrompt')}"></textarea>
+            <div class="flex gap-2 mb-3">
+              <input type="number" id="mobile-target-length" placeholder="${t('targetLength')}" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm">
+              <button onclick="mobileCustomGenerate()" class="px-4 py-2 bg-yellow-600 text-white rounded-lg text-sm">
+                <i class="fas fa-magic mr-1"></i>${t('generate')}
+              </button>
+            </div>
+          </div>
+          
+          <!-- Title Generate -->
+          <button onclick="closeModal(); aiTitleGenerate()" class="w-full py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm mb-2">
+            <i class="fas fa-heading mr-2"></i>${t('titleGenerate')}
+          </button>
         </div>
       </div>
     `;
+  };
+  
+  window.mobileCustomGenerate = async function() {
+    const prompt = document.getElementById('mobile-custom-prompt').value;
+    const targetLength = document.getElementById('mobile-target-length').value;
+    
+    if (!prompt.trim()) {
+      showToast(t('enterPrompt'), 'warning');
+      return;
+    }
+    
+    closeModal();
+    
+    const editor = document.getElementById('editor-content');
+    const context = editor?.value || '';
+    
+    try {
+      setGenerating(true);
+      const result = await generate(prompt, 'writing', targetLength ? parseInt(targetLength) : null, context);
+      
+      if (editor) {
+        editor.value = context + (context ? '\n\n' : '') + result;
+        updateCharCount();
+      }
+      
+      showToast(t('generate') + ' OK', 'success');
+    } catch (e) {
+      showToast(e.message, 'error');
+    } finally {
+      setGenerating(false);
+    }
   };
 
   window.showHistoryModal = async function() {
