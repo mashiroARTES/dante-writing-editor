@@ -3,5 +3,12 @@
   "name": "ai-writer-pro",
   "compatibility_date": "2024-01-01",
   "pages_build_output_dir": "./dist",
-  "compatibility_flags": ["nodejs_compat"]
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ai-writer-production",
+      "database_id": "040298e5-6771-46ea-bb9f-8fbd8c0763df"
+    }
+  ]
 }
