@@ -73,6 +73,7 @@
       contextSelected: '件選択中',
       referenceProjects: '参照プロジェクト',
       targetLength: '目標文字数',
+      targetLengthNote: '※目安です。AIは指定通りの文字数で出力するとは限りません',
       plan: 'プラン',
       free: '無料',
       standard: 'スタンダード',
@@ -192,6 +193,7 @@
       contextSelected: 'selected',
       referenceProjects: 'Reference Projects',
       targetLength: 'Target Length',
+      targetLengthNote: '*Approximate. AI may not output the exact specified length',
       plan: 'Plan',
       free: 'Free',
       standard: 'Standard',
@@ -311,6 +313,7 @@
       contextSelected: '已选择',
       referenceProjects: '参考项目',
       targetLength: '目标长度',
+      targetLengthNote: '*仅供参考。AI可能不会按照指定的字符数输出',
       plan: '方案',
       free: '免费',
       standard: '标准',
@@ -430,6 +433,7 @@
       contextSelected: '선택됨',
       referenceProjects: '참조 프로젝트',
       targetLength: '목표 길이',
+      targetLengthNote: '*대략적인 수치입니다. AI가 지정된 길이대로 출력하지 않을 수 있습니다',
       plan: '플랜',
       free: '무료',
       standard: '스탠다드',
@@ -549,6 +553,7 @@
       contextSelected: 'selezionati',
       referenceProjects: 'Progetti di Riferimento',
       targetLength: 'Lunghezza Target',
+      targetLengthNote: '*Approssimativo. L\'AI potrebbe non produrre la lunghezza esatta specificata',
       plan: 'Piano',
       free: 'Gratuito',
       standard: 'Standard',
@@ -669,6 +674,7 @@
       contextSelected: 'चयनित',
       referenceProjects: 'संदर्भ प्रोजेक्ट',
       targetLength: 'लक्ष्य लंबाई',
+      targetLengthNote: '*अनुमानित। AI निर्दिष्ट लंबाई के अनुसार आउटपुट नहीं दे सकता है',
       plan: 'योजना',
       free: 'निःशुल्क',
       standard: 'स्टैंडर्ड',
@@ -737,7 +743,7 @@
       copy: 'Copiar', copied: 'Copiado', insert: 'Insertar', apply: 'Aplicar', export: 'Exportar',
       history: 'Historial', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Oscuro',
       autoSave: 'Autoguardar', language: 'Idioma', genre: 'Género', title: 'Título',
-      customPrompt: 'Instrucciones para AI Writer', targetLength: 'Longitud Objetivo',
+      customPrompt: 'Instrucciones para AI Writer', targetLength: 'Longitud Objetivo', targetLengthNote: '*Aproximado. La IA puede no producir la longitud exacta especificada',
       concept: 'Concepto y Planificación', conceptPlaceholder: 'Ingresa tu concepto o plan...',
       plotContent: 'Contenido de la Trama', useIdeaPlot: 'Aplicar Idea y Trama',
       savedIdeas: 'Ideas Guardadas', savedPlot: 'Trama Guardada',
@@ -783,7 +789,7 @@
       copy: 'Copier', copied: 'Copié', insert: 'Insérer', apply: 'Appliquer', export: 'Exporter',
       history: 'Historique', model: 'Modèle', theme: 'Thème', light: 'Clair', dark: 'Sombre',
       autoSave: 'Sauvegarde auto', language: 'Langue', genre: 'Genre', title: 'Titre',
-      customPrompt: 'Instructions pour AI Writer', targetLength: 'Longueur Cible',
+      customPrompt: 'Instructions pour AI Writer', targetLength: 'Longueur Cible', targetLengthNote: '*Approximatif. L\'IA peut ne pas produire la longueur exacte spécifiée',
       concept: 'Concept et Planification', conceptPlaceholder: 'Entrez votre concept ou plan...',
       plotContent: 'Contenu du Scénario', useIdeaPlot: 'Appliquer Idée et Scénario',
       savedIdeas: 'Idées Sauvegardées', savedPlot: 'Scénario Sauvegardé',
@@ -829,7 +835,7 @@
       copy: 'Kopieren', copied: 'Kopiert', insert: 'Einfügen', apply: 'Anwenden', export: 'Exportieren',
       history: 'Verlauf', model: 'Modell', theme: 'Design', light: 'Hell', dark: 'Dunkel',
       autoSave: 'Autospeichern', language: 'Sprache', genre: 'Genre', title: 'Titel',
-      customPrompt: 'Anweisungen für AI Writer', targetLength: 'Ziellänge',
+      customPrompt: 'Anweisungen für AI Writer', targetLength: 'Ziellänge', targetLengthNote: '*Ungenähr. KI gibt möglicherweise nicht genau die angegebene Länge aus',
       concept: 'Konzept und Planung', conceptPlaceholder: 'Geben Sie Ihr Konzept oder Ihren Plan ein...',
       plotContent: 'Handlungsinhalt', useIdeaPlot: 'Idee und Handlung anwenden',
       savedIdeas: 'Gespeicherte Ideen', savedPlot: 'Gespeicherte Handlung',
@@ -875,7 +881,7 @@
       copy: 'Copiar', copied: 'Copiado', insert: 'Inserir', apply: 'Aplicar', export: 'Exportar',
       history: 'Histórico', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Escuro',
       autoSave: 'Salvar auto', language: 'Idioma', genre: 'Gênero', title: 'Título',
-      customPrompt: 'Instruções para AI Writer', targetLength: 'Comprimento Alvo',
+      customPrompt: 'Instruções para AI Writer', targetLength: 'Comprimento Alvo', targetLengthNote: '*Aproximado. A IA pode não produzir o comprimento exato especificado',
       concept: 'Conceito e Planejamento', conceptPlaceholder: 'Insira seu conceito ou plano...',
       plotContent: 'Conteúdo do Enredo', useIdeaPlot: 'Aplicar Ideia e Enredo',
       savedIdeas: 'Ideias Salvas', savedPlot: 'Enredo Salvo',
@@ -921,7 +927,7 @@
       copy: 'Копировать', copied: 'Скопировано', insert: 'Вставить', apply: 'Применить', export: 'Экспорт',
       history: 'История', model: 'Модель', theme: 'Тема', light: 'Светлая', dark: 'Тёмная',
       autoSave: 'Автосохранение', language: 'Язык', genre: 'Жанр', title: 'Название',
-      customPrompt: 'Инструкции для AI писателя', targetLength: 'Целевая длина',
+      customPrompt: 'Инструкции для AI писателя', targetLength: 'Целевая длина', targetLengthNote: '*Приблизительно. ИИ может не выдать точно указанную длину',
       concept: 'Концепция и планирование', conceptPlaceholder: 'Введите вашу концепцию или план...',
       plotContent: 'Содержание сюжета', useIdeaPlot: 'Применить идею и сюжет',
       savedIdeas: 'Сохранённые идеи', savedPlot: 'Сохранённый сюжет',
@@ -967,7 +973,7 @@
       copy: 'نسخ', copied: 'تم النسخ', insert: 'إدراج', apply: 'تطبيق', export: 'تصدير',
       history: 'السجل', model: 'النموذج', theme: 'المظهر', light: 'فاتح', dark: 'داكن',
       autoSave: 'حفظ تلقائي', language: 'اللغة', genre: 'النوع', title: 'العنوان',
-      customPrompt: 'تعليمات لكاتب AI', targetLength: 'الطول المستهدف',
+      customPrompt: 'تعليمات لكاتب AI', targetLength: 'الطول المستهدف', targetLengthNote: '*تقريبي. قد لا ينتج الذكاء الاصطناعي الطول المحدد بالضبط',
       concept: 'المفهوم والتخطيط', conceptPlaceholder: 'أدخل مفهومك أو خطتك...',
       plotContent: 'محتوى الحبكة', useIdeaPlot: 'تطبيق الفكرة والحبكة',
       savedIdeas: 'أفكار محفوظة', savedPlot: 'حبكة محفوظة',
@@ -2038,6 +2044,7 @@
               <label class="block text-sm font-medium text-gray-700">${t('customPrompt')}</label>
               <textarea id="custom-prompt" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm" placeholder="${t('enterPrompt')}"></textarea>
               <input type="number" id="target-length" placeholder="${t('targetLength')}" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
+              <p class="text-xs text-gray-500">${t('targetLengthNote')}</p>
               <button onclick="customGenerate()" id="generate-btn" class="w-full py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition text-sm">
                 <i class="fas fa-magic mr-2"></i>${t('generate')}
               </button>
@@ -2340,12 +2347,13 @@
           <div class="border-t pt-4">
             <label class="block text-sm font-medium text-gray-700 mb-2">${t('customPrompt')}</label>
             <textarea id="mobile-custom-prompt" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm mb-2" placeholder="${t('enterPrompt')}"></textarea>
-            <div class="flex gap-2 mb-3">
+            <div class="flex gap-2 mb-1">
               <input type="number" id="mobile-target-length" placeholder="${t('targetLength')}" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm">
               <button onclick="mobileCustomGenerate()" class="px-4 py-2 bg-yellow-600 text-white rounded-lg text-sm">
                 <i class="fas fa-magic mr-1"></i>${t('generate')}
               </button>
             </div>
+            <p class="text-xs text-gray-500 mb-3">${t('targetLengthNote')}</p>
           </div>
           
           <!-- Title Generate -->

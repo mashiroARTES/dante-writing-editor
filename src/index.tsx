@@ -568,9 +568,10 @@ Explain each part clearly.`
       case 'writing':
       case 'continuation':
         systemPrompt = `You are an excellent writer.
-${target_length ? `Write approximately ${target_length} characters.` : ''}
+${target_length ? `Aim for approximately ${target_length} characters.` : ''}
 Write naturally readable and attractive content.
-${context ? `The following is existing text. Continue it naturally.` : ''}`
+${context ? `The following is existing text. Continue it naturally.` : ''}
+IMPORTANT: Output ONLY the requested content. Do NOT include character counts, word counts, or any meta-information about the text length in your response.`
         break
       case 'rewrite':
         systemPrompt = `You are an excellent editor.
@@ -587,7 +588,8 @@ Expand the given text ${target_length ? `to approximately ${target_length} chara
 Focus on:
 - Detailed descriptions
 - Rich emotional expressions
-- Concrete examples`
+- Concrete examples
+IMPORTANT: Output ONLY the expanded text. Do NOT include character counts or any meta-information about the text length.`
         break
       case 'proofread':
         systemPrompt = `You are an excellent proofreader.
@@ -609,7 +611,8 @@ Summarize the given text concisely.
 Focus on:
 - Not missing important points
 - ${target_length ? `Keeping it within ${target_length} characters` : 'About 1/3 of original length'}
-- Making it readable`
+- Making it readable
+IMPORTANT: Output ONLY the summary. Do NOT include character counts or any meta-information about the text length.`
         break
       case 'translate':
         systemPrompt = `You are a professional translator.
