@@ -1923,6 +1923,9 @@
     const hasConcept = project?.concept?.trim();
     const hasPlot = project?.plot_content?.trim();
     const hasContext = hasConcept || hasPlot;
+    const otherProjects = state.projects.filter(p => p.id !== project?.id);
+    const hasOtherProjects = otherProjects.length > 0;
+    const contextCount = state.selectedContextProjects.length;
     
     return `
       <div class="h-full flex gap-4">
@@ -1942,6 +1945,28 @@
               </button>
             </div>
           </div>
+          
+          <!-- Reference Projects Selector -->
+          ${hasOtherProjects ? `
+          <div class="border-b border-gray-200 bg-blue-50 px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-sm">
+              <i class="fas fa-book-reader text-blue-500"></i>
+              <span class="text-gray-700">${t('referenceProjects')}</span>
+              ${contextCount > 0 ? `
+              <span class="flex flex-wrap gap-1 ml-2">
+                ${state.selectedContextProjects.slice(0, 2).map(id => {
+                  const p = state.projects.find(pr => pr.id === id);
+                  return p ? `<span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">${escapeHtml(p.title)}</span>` : '';
+                }).join('')}
+                ${contextCount > 2 ? `<span class="text-xs text-blue-600">+${contextCount - 2}</span>` : ''}
+              </span>
+              ` : ''}
+            </div>
+            <button onclick="showContextSelector()" class="px-3 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700 transition">
+              ${contextCount > 0 ? `${contextCount} ${t('contextSelected')}` : t('noContextSelected')}
+            </button>
+          </div>
+          ` : ''}
           
           <!-- Context Panel (Concept & Plot) -->
           ${hasContext ? `
