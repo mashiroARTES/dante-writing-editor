@@ -498,10 +498,47 @@ app.post('/api/grok/generate', async (c) => {
   }
   
   try {
-    const { prompt, model, generation_type, target_length, project_id, context, target_language } = await c.req.json()
+    const { prompt, model, generation_type, target_length, project_id, context, target_language, genre, idea_count, detail_level, conditions } = await c.req.json()
     
-    if (!prompt) {
+    // Build effective prompt based on available information
+    let effectivePrompt = prompt || ''
+    
+    // For idea generation, allow empty prompt if genre is provided
+    if (generation_type === 'idea') {
+      if (!effectivePrompt && !genre) {
+        return c.json({ error: 'Please provide a theme/keyword or select a genre' }, 400)
+      }
+      // Build prompt from available info
+      const parts = []
+      if (genre) parts.push(`Genre: ${genre}`)
+      if (effectivePrompt) parts.push(`Theme/Keywords: ${effectivePrompt}`)
+      if (conditions) parts.push(`Conditions: ${conditions}`)
+      parts.push(`Please generate ${idea_count || 5} creative ideas.`)
+      effectivePrompt = parts.join('\n')
+    }
+    // For plot generation, allow empty prompt if genre is provided
+    else if (generation_type === 'plot') {
+      if (!effectivePrompt && !genre) {
+        return c.json({ error: 'Please provide an idea/theme or select a genre' }, 400)
+      }
+      const parts = []
+      if (genre) parts.push(`Genre: ${genre}`)
+      if (effectivePrompt) parts.push(`Idea/Theme: ${effectivePrompt}`)
+      if (detail_level) parts.push(`Detail level: ${detail_level}`)
+      effectivePrompt = parts.join('\n')
+    }
+    // For other types, prompt is required
+    else if (!effectivePrompt && generation_type !== 'writing') {
       return c.json({ error: 'Prompt is required' }, 400)
+    }
+    
+    // For writing mode with no prompt, use genre to generate initial content
+    if (generation_type === 'writing' && !effectivePrompt) {
+      if (genre) {
+        effectivePrompt = `Write an engaging opening for a ${genre} piece.`
+      } else {
+        return c.json({ error: 'Please provide a prompt or select a genre' }, 400)
+      }
     }
     
     // Valid models list
@@ -609,7 +646,7 @@ Create catchy and memorable titles.`
     
     const messages = [
       { role: 'system', content: systemPrompt },
-      { role: 'user', content: context ? `【Existing Text】\n${context}\n\n【Instruction】\n${prompt}` : prompt }
+      { role: 'user', content: context ? `【Existing Text】\n${context}\n\n【Instruction】\n${effectivePrompt}` : effectivePrompt }
     ]
     
     const response = await fetch(GROK_API_URL, {
@@ -641,10 +678,10 @@ Create catchy and memorable titles.`
       'UPDATE users SET total_chars_used = total_chars_used + ? WHERE id = ?'
     ).bind(charsGenerated, user.id).run()
     
-    // Save to history
+    // Save to history (use effectivePrompt to capture full context including genre)
     await c.env.DB.prepare(
       'INSERT INTO ai_history (user_id, project_id, prompt, response, model, generation_type, target_length, chars_generated) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
-    ).bind(user.id, project_id || null, prompt, generatedText, selectedModel, generation_type || 'writing', target_length || null, charsGenerated).run()
+    ).bind(user.id, project_id || null, effectivePrompt, generatedText, selectedModel, generation_type || 'writing', target_length || null, charsGenerated).run()
     
     return c.json({ 
       success: true, 

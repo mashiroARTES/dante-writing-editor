@@ -2128,13 +2128,9 @@
     const idea = document.getElementById('plot-idea').value;
     const detail = document.getElementById('plot-detail').value;
     
-    if (!idea.trim()) {
-      showToast(t('enterPrompt'), 'warning');
-      return;
-    }
-    
+    // Allow generation with just genre (no idea required)
     const detailText = { simple: 'シンプルな概要', standard: '標準的な詳細度', detailed: '各章の詳細な説明付き' };
-    const prompt = `ジャンル: ${t(genre)}\nアイデア: ${idea}\n詳細度: ${detailText[detail]}\n\n魅力的なプロットを作成してください。`;
+    const prompt = `ジャンル: ${t(genre)}\nアイデア: ${idea || '（ジャンルに基づいて自由に創作）'}\n詳細度: ${detailText[detail]}\n\n魅力的なプロットを作成してください。`;
     
     try {
       const result = await generate(prompt, 'plot');
