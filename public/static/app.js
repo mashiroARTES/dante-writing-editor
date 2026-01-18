@@ -2810,9 +2810,28 @@
           </div>
           
           <!-- Title Generate -->
-          <button onclick="closeModal(); aiTitleGenerate()" class="w-full py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm mb-2">
+          <button onclick="closeModal(); aiTitleGenerate()" class="w-full py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm mb-3">
             <i class="fas fa-heading mr-2"></i>${t('titleGenerate')}
           </button>
+          
+          <!-- Style Conversion -->
+          <div class="border-t pt-3">
+            <p class="text-xs text-gray-500 mb-2">${t('styleFormal').includes('Style') || t('styleFormal').includes('стиль') || t('styleFormal').includes('أسلوب') ? 'Style Conversion' : '文体変換'}</p>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="closeModal(); aiStyleFormal()" class="py-2 bg-gray-50 rounded-lg text-sm">
+                <i class="fas fa-user-tie text-gray-600"></i>
+                <div class="text-xs mt-1">${t('styleFormal')}</div>
+              </button>
+              <button onclick="closeModal(); aiStyleCasual()" class="py-2 bg-gray-50 rounded-lg text-sm">
+                <i class="fas fa-smile text-yellow-500"></i>
+                <div class="text-xs mt-1">${t('styleCasual')}</div>
+              </button>
+              <button onclick="closeModal(); aiStyleLiterary()" class="py-2 bg-gray-50 rounded-lg text-sm">
+                <i class="fas fa-feather-alt text-pink-500"></i>
+                <div class="text-xs mt-1">${t('styleLiterary')}</div>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     `;
