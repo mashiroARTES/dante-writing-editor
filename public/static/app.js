@@ -2478,6 +2478,20 @@
             </button>
             
             <hr class="my-2">
+            <p class="text-xs text-gray-500 mb-1">${t('styleFormal').includes('Style') || t('styleFormal').includes('стиль') || t('styleFormal').includes('أسلوب') ? 'Style Conversion' : '文体変換'}</p>
+            <div class="flex gap-2">
+              <button onclick="aiStyleFormal()" class="flex-1 py-2 px-2 text-center bg-gray-50 hover:bg-gray-100 rounded-lg transition text-xs">
+                <i class="fas fa-user-tie text-gray-600"></i><br>${t('styleFormal')}
+              </button>
+              <button onclick="aiStyleCasual()" class="flex-1 py-2 px-2 text-center bg-gray-50 hover:bg-gray-100 rounded-lg transition text-xs">
+                <i class="fas fa-smile text-yellow-500"></i><br>${t('styleCasual')}
+              </button>
+              <button onclick="aiStyleLiterary()" class="flex-1 py-2 px-2 text-center bg-gray-50 hover:bg-gray-100 rounded-lg transition text-xs">
+                <i class="fas fa-feather-alt text-pink-500"></i><br>${t('styleLiterary')}
+              </button>
+            </div>
+            
+            <hr class="my-2">
             
             <div class="space-y-2">
               <label class="block text-sm font-medium text-gray-700">${t('customPrompt')}</label>
@@ -3127,6 +3141,85 @@
       `;
       
       showToast(t('generate') + ' OK', 'success');
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  };
+
+  // Style conversion functions
+  window.aiStyleFormal = async function() {
+    const editor = document.getElementById('editor-content');
+    const content = editor.value;
+    const selectedText = content.substring(editor.selectionStart, editor.selectionEnd);
+    const textToConvert = selectedText || content;
+    
+    if (!textToConvert.trim()) {
+      showToast(t('enterPrompt'), 'warning');
+      return;
+    }
+    
+    try {
+      const result = await generate(textToConvert, 'style_formal');
+      
+      if (selectedText) {
+        editor.value = content.substring(0, editor.selectionStart) + result + content.substring(editor.selectionEnd);
+      } else {
+        editor.value = result;
+      }
+      updateCharCount();
+      showToast(t('styleFormal') + ' OK', 'success');
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  };
+
+  window.aiStyleCasual = async function() {
+    const editor = document.getElementById('editor-content');
+    const content = editor.value;
+    const selectedText = content.substring(editor.selectionStart, editor.selectionEnd);
+    const textToConvert = selectedText || content;
+    
+    if (!textToConvert.trim()) {
+      showToast(t('enterPrompt'), 'warning');
+      return;
+    }
+    
+    try {
+      const result = await generate(textToConvert, 'style_casual');
+      
+      if (selectedText) {
+        editor.value = content.substring(0, editor.selectionStart) + result + content.substring(editor.selectionEnd);
+      } else {
+        editor.value = result;
+      }
+      updateCharCount();
+      showToast(t('styleCasual') + ' OK', 'success');
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  };
+
+  window.aiStyleLiterary = async function() {
+    const editor = document.getElementById('editor-content');
+    const content = editor.value;
+    const selectedText = content.substring(editor.selectionStart, editor.selectionEnd);
+    const textToConvert = selectedText || content;
+    
+    if (!textToConvert.trim()) {
+      showToast(t('enterPrompt'), 'warning');
+      return;
+    }
+    
+    try {
+      const result = await generate(textToConvert, 'style_literary');
+      
+      if (selectedText) {
+        editor.value = content.substring(0, editor.selectionStart) + result + content.substring(editor.selectionEnd);
+      } else {
+        editor.value = result;
+      }
+      updateCharCount();
+      showToast(t('styleLiterary') + ' OK', 'success');
     } catch (e) {
       showToast(e.message, 'error');
     }
