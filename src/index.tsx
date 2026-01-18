@@ -553,7 +553,8 @@ app.post('/api/grok/generate', async (c) => {
       case 'idea':
         systemPrompt = `You are a creative writer who generates innovative ideas.
 Based on the specified genre or theme, propose multiple fresh and attractive ideas.
-Add a brief explanation to each idea. Format as a bullet list for readability.`
+Add a brief explanation to each idea. Format as a bullet list for readability.
+NEVER include character counts, word counts, byte counts, or any numerical information about text length in your response.`
         break
       case 'plot':
         systemPrompt = `You are a professional story planner.
@@ -563,7 +564,8 @@ Include these elements:
 - Development (problem occurrence, conflict)
 - Climax (turning point)
 - Resolution (resolution, afterglow)
-Explain each part clearly.`
+Explain each part clearly.
+NEVER include character counts, word counts, or any numerical information about text length in your response.`
         break
       case 'writing':
       case 'continuation':
@@ -571,7 +573,7 @@ Explain each part clearly.`
 ${target_length ? `Aim for approximately ${target_length} characters.` : ''}
 Write naturally readable and attractive content.
 ${context ? `The following is existing text. Continue it naturally.` : ''}
-IMPORTANT: Output ONLY the requested content. Do NOT include character counts, word counts, or any meta-information about the text length in your response.`
+CRITICAL: Output ONLY the story/text content itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, or any meta-information about text length. The reader will see character counts separately in the UI.`
         break
       case 'rewrite':
         systemPrompt = `You are an excellent editor.
@@ -580,7 +582,8 @@ Focus on:
 - Grammar correction
 - Expression improvement
 - Readability enhancement
-Do not change the meaning.`
+Do not change the meaning.
+NEVER include character counts, word counts, or any numerical information about text length in your response.`
         break
       case 'expand':
         systemPrompt = `You are an excellent writer.
@@ -589,7 +592,7 @@ Focus on:
 - Detailed descriptions
 - Rich emotional expressions
 - Concrete examples
-IMPORTANT: Output ONLY the expanded text. Do NOT include character counts or any meta-information about the text length.`
+CRITICAL: Output ONLY the expanded text itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, or any meta-comments about the text length.`
         break
       case 'proofread':
         systemPrompt = `You are an excellent proofreader.
@@ -612,38 +615,43 @@ Focus on:
 - Not missing important points
 - ${target_length ? `Keeping it within ${target_length} characters` : 'About 1/3 of original length'}
 - Making it readable
-IMPORTANT: Output ONLY the summary. Do NOT include character counts or any meta-information about the text length.`
+CRITICAL: Output ONLY the summary text itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, or any meta-comments about the text length.`
         break
       case 'translate':
         systemPrompt = `You are a professional translator.
 Translate the given text to ${target_language || 'English'}.
 - Preserve the original meaning and nuance
 - Use natural expressions in the target language
-- Maintain the original tone and style`
+- Maintain the original tone and style
+NEVER include character counts, word counts, or any meta-information about text length in your response.`
         break
       case 'style_formal':
         systemPrompt = `You are a style conversion expert.
 Convert the given text to formal/polite style.
 - Use polite expressions suitable for business
+- NEVER include character counts or text length information
 - Do not change the original meaning`
         break
       case 'style_casual':
         systemPrompt = `You are a style conversion expert.
 Convert the given text to casual/friendly style.
 - Use approachable expressions
-- Do not change the original meaning`
+- Do not change the original meaning
+- NEVER include character counts or text length information`
         break
       case 'style_literary':
         systemPrompt = `You are a style conversion expert.
 Convert the given text to literary/beautiful expressions.
 - Use metaphors and rhetorical techniques
-- Create emotionally rich descriptions`
+- Create emotionally rich descriptions
+- NEVER include character counts or text length information`
         break
       case 'title_generate':
         systemPrompt = `You are a title creation expert.
 Propose 5 optimal titles for the given content.
 Add a brief explanation to each title.
-Create catchy and memorable titles.`
+Create catchy and memorable titles.
+NEVER include character counts or text length information in your response.`
         break
     }
     
