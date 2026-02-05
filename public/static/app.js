@@ -144,6 +144,7 @@
       detailStandard: '標準',
       detailDetailed: '詳細（各章の説明付き）',
       generatedPlot: '生成されたプロット',
+      moveToWriting: 'ライティングへ移行して加筆・修正する',
       // Genres
       novel: '小説', essay: 'エッセイ', blog: 'ブログ', business: 'ビジネス文書',
       academic: '学術・論文', script: '脚本・シナリオ', poetry: '詩・俳句',
@@ -291,6 +292,7 @@
       detailStandard: 'Standard',
       detailDetailed: 'Detailed (With chapter descriptions)',
       generatedPlot: 'Generated Plot',
+      moveToWriting: 'Move to Writing to Edit & Expand',
       // Genres
       novel: 'Novel', essay: 'Essay', blog: 'Blog', business: 'Business',
       academic: 'Academic', script: 'Script', poetry: 'Poetry',
@@ -438,6 +440,7 @@
       detailStandard: '标准',
       detailDetailed: '详细（含章节说明）',
       generatedPlot: '生成的大纲',
+      moveToWriting: '移至写作模式进行编辑和扩展',
       // Genres
       novel: '小说', essay: '散文', blog: '博客', business: '商务',
       academic: '学术', script: '剧本', poetry: '诗歌',
@@ -585,6 +588,7 @@
       detailStandard: '표준',
       detailDetailed: '상세 (챕터 설명 포함)',
       generatedPlot: '생성된 플롯',
+      moveToWriting: '라이팅으로 이동하여 편집 및 확장',
       // Genres
       novel: '소설', essay: '에세이', blog: '블로그', business: '비즈니스',
       academic: '학술', script: '시나리오', poetry: '시',
@@ -733,6 +737,7 @@
       detailStandard: 'Standard',
       detailDetailed: 'Dettagliato (Con descrizione capitoli)',
       generatedPlot: 'Trama Generata',
+      moveToWriting: 'Passa alla Scrittura per Modificare ed Espandere',
       // Genres
       novel: 'Romanzo', essay: 'Saggio', blog: 'Blog', business: 'Business',
       academic: 'Accademico', script: 'Sceneggiatura', poetry: 'Poesia',
@@ -881,6 +886,7 @@
       detailStandard: 'मानक',
       detailDetailed: 'विस्तृत (अध्याय विवरण के साथ)',
       generatedPlot: 'उत्पन्न कथानक',
+      moveToWriting: 'संपादित और विस्तारित करने के लिए लेखन में जाएं',
       // Genres
       novel: 'उपन्यास', essay: 'निबंध', blog: 'ब्लॉग', business: 'व्यापार',
       academic: 'अकादमिक', script: 'पटकथा', poetry: 'कविता',
@@ -933,6 +939,7 @@
       plotPlaceholder: 'Ingresa la idea o resumen para crear la trama',
       detailLevel: 'Nivel de Detalle', detailSimple: 'Simple (solo resumen)', detailStandard: 'Estándar',
       detailDetailed: 'Detallado (con descripción de capítulos)', generatedPlot: 'Trama Generada',
+      moveToWriting: 'Ir a Escritura para Editar y Expandir',
       novel: 'Novela', essay: 'Ensayo', blog: 'Blog', business: 'Negocios', academic: 'Académico',
       script: 'Guión', poetry: 'Poesía', news: 'Noticias', review: 'Reseña', sns: 'Redes Sociales',
       emailGenre: 'Email', copywriting: 'Copywriting', technical: 'Técnico', fantasy: 'Fantasía',
@@ -983,6 +990,7 @@
       plotPlaceholder: 'Entrez l\'idée ou le résumé pour créer le scénario',
       detailLevel: 'Niveau de Détail', detailSimple: 'Simple (résumé seulement)', detailStandard: 'Standard',
       detailDetailed: 'Détaillé (avec descriptions de chapitres)', generatedPlot: 'Scénario Généré',
+      moveToWriting: 'Passer à l\'Écriture pour Modifier et Développer',
       novel: 'Roman', essay: 'Essai', blog: 'Blog', business: 'Business', academic: 'Académique',
       script: 'Scénario', poetry: 'Poésie', news: 'Actualités', review: 'Critique', sns: 'Réseaux Sociaux',
       emailGenre: 'Email', copywriting: 'Copywriting', technical: 'Technique', fantasy: 'Fantasy',
@@ -1033,6 +1041,7 @@
       plotPlaceholder: 'Geben Sie die Idee oder Zusammenfassung ein, um die Handlung zu erstellen',
       detailLevel: 'Detailgrad', detailSimple: 'Einfach (nur Zusammenfassung)', detailStandard: 'Standard',
       detailDetailed: 'Detailliert (mit Kapitelbeschreibungen)', generatedPlot: 'Generierte Handlung',
+      moveToWriting: 'Zum Schreiben wechseln zum Bearbeiten und Erweitern',
       novel: 'Roman', essay: 'Essay', blog: 'Blog', business: 'Business', academic: 'Akademisch',
       script: 'Drehbuch', poetry: 'Poesie', news: 'Nachrichten', review: 'Rezension', sns: 'Social Media',
       emailGenre: 'E-Mail', copywriting: 'Copywriting', technical: 'Technisch', fantasy: 'Fantasy',
@@ -1083,6 +1092,7 @@
       plotPlaceholder: 'Digite a ideia ou resumo para criar o enredo',
       detailLevel: 'Nível de Detalhe', detailSimple: 'Simples (apenas resumo)', detailStandard: 'Padrão',
       detailDetailed: 'Detalhado (com descrições de capítulos)', generatedPlot: 'Enredo Gerado',
+      moveToWriting: 'Ir para Escrita para Editar e Expandir',
       novel: 'Romance', essay: 'Ensaio', blog: 'Blog', business: 'Negócios', academic: 'Acadêmico',
       script: 'Roteiro', poetry: 'Poesia', news: 'Notícias', review: 'Resenha', sns: 'Redes Sociais',
       emailGenre: 'Email', copywriting: 'Copywriting', technical: 'Técnico', fantasy: 'Fantasia',
@@ -1133,6 +1143,7 @@
       plotPlaceholder: 'Введите идею или краткое содержание для создания сюжета',
       detailLevel: 'Уровень детализации', detailSimple: 'Простой (только резюме)', detailStandard: 'Стандартный',
       detailDetailed: 'Детальный (с описанием глав)', generatedPlot: 'Сгенерированный сюжет',
+      moveToWriting: 'Перейти к Письму для Редактирования и Расширения',
       novel: 'Роман', essay: 'Эссе', blog: 'Блог', business: 'Бизнес', academic: 'Академический',
       script: 'Сценарий', poetry: 'Поэзия', news: 'Новости', review: 'Обзор', sns: 'Соцсети',
       emailGenre: 'Email', copywriting: 'Копирайтинг', technical: 'Технический', fantasy: 'Фэнтези',
@@ -1183,6 +1194,7 @@
       plotPlaceholder: 'أدخل الفكرة أو الملخص لإنشاء الحبكة',
       detailLevel: 'مستوى التفصيل', detailSimple: 'بسيط (ملخص فقط)', detailStandard: 'قياسي',
       detailDetailed: 'مفصل (مع وصف الفصول)', generatedPlot: 'الحبكة المولدة',
+      moveToWriting: 'انتقل إلى الكتابة للتحرير والتوسيع',
       novel: 'رواية', essay: 'مقال', blog: 'مدونة', business: 'أعمال', academic: 'أكاديمي',
       script: 'سيناريو', poetry: 'شعر', news: 'أخبار', review: 'مراجعة', sns: 'وسائل التواصل',
       emailGenre: 'بريد إلكتروني', copywriting: 'كتابة إعلانية', technical: 'تقني', fantasy: 'خيال',
@@ -2460,11 +2472,16 @@
           <div id="plot-results" class="mt-6 ${savedPlot ? '' : 'hidden'}">
             <div class="flex justify-between items-center mb-3">
               <h3 class="font-semibold text-gray-700">${t('generatedPlot')}</h3>
-              <button onclick="savePlot()" class="px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm">
-                <i class="fas fa-save mr-1"></i>${t('save')}
-              </button>
+              <div class="flex gap-2">
+                <button onclick="savePlot()" class="px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm">
+                  <i class="fas fa-save mr-1"></i>${t('save')}
+                </button>
+              </div>
             </div>
             <div id="plot-output" class="prose max-w-none bg-gray-50 p-4 rounded-lg">${savedPlot}</div>
+            <button onclick="moveToWriting()" class="w-full mt-4 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition font-semibold">
+              <i class="fas fa-pen-to-square mr-2"></i>${t('moveToWriting')}
+            </button>
           </div>
         </div>
       </div>
@@ -3970,6 +3987,93 @@
     if (projectsList) {
       projectsList.innerHTML = renderProjectsList();
     }
+    showToast(t('saved'), 'success');
+  };
+
+  // Move plot to writing mode
+  window.moveToWriting = async function() {
+    const plotOutput = document.getElementById('plot-output');
+    if (!plotOutput) return;
+    
+    // Get plot content as plain text (remove HTML tags, convert <br> to newlines)
+    let plotText = plotOutput.innerHTML
+      .replace(/<br\s*\/?>/gi, '\n')
+      .replace(/<\/p>/gi, '\n\n')
+      .replace(/<[^>]*>/g, '')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .trim();
+    
+    if (!plotText) {
+      showToast(t('noContent'), 'error');
+      return;
+    }
+    
+    // Save plot to current project if exists
+    if (state.currentProject) {
+      state.currentProject.plot_content = plotOutput.innerHTML;
+      state.currentProject.content = plotText;
+      state.currentProject.project_type = 'writing';
+      state.currentProject.updated_at = new Date().toISOString();
+      
+      // Update in projects list
+      const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
+      if (projectIndex !== -1) {
+        state.projects[projectIndex] = { ...state.currentProject };
+        const [updatedProject] = state.projects.splice(projectIndex, 1);
+        state.projects.unshift(updatedProject);
+      }
+      
+      // Save to server in background
+      api(`/projects/${state.currentProject.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          title: state.currentProject.title,
+          genre: state.currentProject.genre,
+          content: plotText,
+          concept: state.currentProject.concept || '',
+          plot_content: plotOutput.innerHTML
+        })
+      }).catch(e => console.error('Save failed:', e));
+    } else {
+      // Create new project with plot content
+      const genre = document.getElementById('plot-genre')?.value || 'other';
+      const data = await api('/projects', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: t('newProject'),
+          project_type: 'writing',
+          genre: genre,
+          content: plotText,
+          plot_content: plotOutput.innerHTML
+        })
+      });
+      
+      state.currentProject = {
+        id: data.project.id,
+        title: t('newProject'),
+        project_type: 'writing',
+        genre: genre,
+        content: plotText,
+        plot_content: plotOutput.innerHTML,
+        updated_at: new Date().toISOString()
+      };
+      
+      // Add to projects list
+      state.projects.unshift(state.currentProject);
+    }
+    
+    // Update sidebar
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
+    }
+    
+    // Switch to writing mode
+    state.mode = 'writing';
+    render();
     showToast(t('saved'), 'success');
   };
 
