@@ -52,7 +52,8 @@
       insert: '挿入',
       apply: '適用',
       export: '出力',
-      history: '履歴',
+      history: 'AI生成ログ',
+      historyDesc: 'AIが生成したテキストの記録です。プロジェクトに保存するには「保存」ボタンを押してください。',
       model: 'モデル',
       theme: 'テーマ',
       light: 'ライト',
@@ -112,6 +113,10 @@
       inviteCodeAlreadyUsed: 'このコードは既に使用済みです',
       payment: '決済',
       buyNow: '購入する',
+      justNow: 'たった今',
+      minutesAgo: '分前',
+      hoursAgo: '時間前',
+      daysAgo: '日前',
       confirmDelete: '本当に削除しますか？',
       confirmDeleteAccount: 'すべてのデータが削除されます。よろしいですか？',
       noProjects: 'プロジェクトがありません',
@@ -194,7 +199,8 @@
       insert: 'Insert',
       apply: 'Apply',
       export: 'Export',
-      history: 'History',
+      history: 'AI Log',
+      historyDesc: 'Records of AI-generated text. Press Save to save to your project.',
       model: 'Model',
       theme: 'Theme',
       light: 'Light',
@@ -254,6 +260,10 @@
       inviteCodeAlreadyUsed: 'This code has already been used',
       payment: 'Payment',
       buyNow: 'Buy Now',
+      justNow: 'Just now',
+      minutesAgo: 'm ago',
+      hoursAgo: 'h ago',
+      daysAgo: 'd ago',
       confirmDelete: 'Are you sure you want to delete?',
       confirmDeleteAccount: 'All data will be deleted. Continue?',
       noProjects: 'No projects',
@@ -336,7 +346,8 @@
       insert: '插入',
       apply: '应用',
       export: '导出',
-      history: '历史',
+      history: 'AI生成日志',
+      historyDesc: 'AI生成文本的记录。按"保存"可保存到项目。',
       model: '模型',
       theme: '主题',
       light: '浅色',
@@ -396,6 +407,10 @@
       inviteCodeAlreadyUsed: '此码已被使用',
       payment: '支付',
       buyNow: '立即购买',
+      justNow: '刚刚',
+      minutesAgo: '分钟前',
+      hoursAgo: '小时前',
+      daysAgo: '天前',
       confirmDelete: '确定要删除吗？',
       confirmDeleteAccount: '所有数据将被删除，确定吗？',
       noProjects: '暂无项目',
@@ -478,7 +493,8 @@
       insert: '삽입',
       apply: '적용',
       export: '내보내기',
-      history: '기록',
+      history: 'AI 로그',
+      historyDesc: 'AI가 생성한 텍스트 기록입니다. 프로젝트에 저장하려면 "저장"을 누르세요.',
       model: '모델',
       theme: '테마',
       light: '라이트',
@@ -538,6 +554,10 @@
       inviteCodeAlreadyUsed: '이 코드는 이미 사용되었습니다',
       payment: '결제',
       buyNow: '구매하기',
+      justNow: '방금',
+      minutesAgo: '분 전',
+      hoursAgo: '시간 전',
+      daysAgo: '일 전',
       confirmDelete: '정말 삭제하시겠습니까?',
       confirmDeleteAccount: '모든 데이터가 삭제됩니다. 계속하시겠습니까?',
       noProjects: '프로젝트 없음',
@@ -620,7 +640,8 @@
       insert: 'Inserisci',
       apply: 'Applica',
       export: 'Esporta',
-      history: 'Cronologia',
+      history: 'Log AI',
+      historyDesc: 'Record dei testi generati dall\\'AI. Premi Salva per salvare nel progetto.',
       model: 'Modello',
       theme: 'Tema',
       light: 'Chiaro',
@@ -681,6 +702,10 @@
       inviteCodeAlreadyUsed: 'Questo codice è già stato utilizzato',
       payment: 'Pagamento',
       buyNow: 'Acquista Ora',
+      justNow: 'Adesso',
+      minutesAgo: 'm fa',
+      hoursAgo: 'h fa',
+      daysAgo: 'g fa',
       confirmDelete: 'Sei sicuro di voler eliminare?',
       confirmDeleteAccount: 'Tutti i dati verranno eliminati. Continuare?',
       noProjects: 'Nessun progetto',
@@ -763,7 +788,8 @@
       insert: 'डालें',
       apply: 'लागू करें',
       export: 'निर्यात',
-      history: 'इतिहास',
+      history: 'AI लॉग',
+      historyDesc: 'AI द्वारा जनरेट किया गया टेक्स्ट रिकॉर्ड। प्रोजेक्ट में सेव करने के लिए "सेव" दबाएं।',
       model: 'मॉडल',
       theme: 'थीम',
       light: 'लाइट',
@@ -824,6 +850,10 @@
       inviteCodeAlreadyUsed: 'यह कोड पहले ही उपयोग किया जा चुका है',
       payment: 'भुगतान',
       buyNow: 'अभी खरीदें',
+      justNow: 'अभी',
+      minutesAgo: 'मि. पहले',
+      hoursAgo: 'घं. पहले',
+      daysAgo: 'दि. पहले',
       confirmDelete: 'क्या आप वाकई हटाना चाहते हैं?',
       confirmDeleteAccount: 'सभी डेटा हटा दिया जाएगा। जारी रखें?',
       noProjects: 'कोई प्रोजेक्ट नहीं',
@@ -873,7 +903,7 @@
       readingTime: 'Tiempo de lectura', pages: 'páginas (400 car.)',
       save: 'Guardar', saving: 'Guardando...', saved: 'Guardado', delete: 'Eliminar', cancel: 'Cancelar', close: 'Cerrar',
       copy: 'Copiar', copied: 'Copiado', insert: 'Insertar', apply: 'Aplicar', export: 'Exportar',
-      history: 'Historial', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Oscuro',
+      history: 'Log de IA', historyDesc: 'Registros de texto generado por IA. Presiona Guardar para guardar en el proyecto.', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Oscuro',
       autoSave: 'Autoguardar', autoSaved: 'Guardado automáticamente', autoSaveEnabled: 'Autoguardar: ON', autoSaveDisabled: 'Autoguardar: OFF',
       shortcuts: 'Atajos', shortcutSave: 'Ctrl+S: Guardar', shortcutGenerate: 'Ctrl+Enter: Generar', shortcutUndo: 'Ctrl+Z: Deshacer',
       rateLimitExceeded: 'Demasiadas solicitudes. Por favor espere', exportMarkdown: 'Markdown', exportText: 'Texto', exportDocx: 'Word',
@@ -891,7 +921,7 @@
       purchaseCharacters: 'Comprar Caracteres', inviteCode: 'Código de Invitación',
       inviteCodePlaceholder: 'Ingresa código de invitación', inviteCodeApply: 'Aplicar',
       inviteCodeSuccess: '¡Código aplicado! Todas las funciones desbloqueadas', inviteCodeCharsAdded: '¡{chars} caracteres añadidos!', inviteCodeError: 'Código inválido', inviteCodeAlreadyUsed: 'Este código ya ha sido utilizado',
-      payment: 'Pago', buyNow: 'Comprar Ahora', confirmDelete: '¿Estás seguro de eliminar?',
+      payment: 'Pago', buyNow: 'Comprar Ahora', justNow: 'Ahora', minutesAgo: 'm', hoursAgo: 'h', daysAgo: 'd', confirmDelete: '¿Estás seguro de eliminar?',
       confirmDeleteAccount: 'Se eliminarán todos los datos. ¿Continuar?', noProjects: 'Sin proyectos',
       selectText: 'Selecciona texto', enterPrompt: 'Ingresa un prompt', translationTarget: 'Idioma destino',
       agreeTerms: 'Acepto los Términos de Servicio y Política de Privacidad',
@@ -923,7 +953,7 @@
       readingTime: 'Temps de lecture', pages: 'pages (400 car.)',
       save: 'Enregistrer', saving: 'Enregistrement...', saved: 'Enregistré', delete: 'Supprimer', cancel: 'Annuler', close: 'Fermer',
       copy: 'Copier', copied: 'Copié', insert: 'Insérer', apply: 'Appliquer', export: 'Exporter',
-      history: 'Historique', model: 'Modèle', theme: 'Thème', light: 'Clair', dark: 'Sombre',
+      history: 'Log IA', historyDesc: 'Enregistrements des textes générés par l\\'IA. Appuyez sur Enregistrer pour sauvegarder.', model: 'Modèle', theme: 'Thème', light: 'Clair', dark: 'Sombre',
       autoSave: 'Sauvegarde auto', autoSaved: 'Sauvegardé automatiquement', autoSaveEnabled: 'Sauvegarde auto: ON', autoSaveDisabled: 'Sauvegarde auto: OFF',
       shortcuts: 'Raccourcis', shortcutSave: 'Ctrl+S: Sauvegarder', shortcutGenerate: 'Ctrl+Enter: Générer', shortcutUndo: 'Ctrl+Z: Annuler',
       rateLimitExceeded: 'Trop de requêtes. Veuillez patienter', exportMarkdown: 'Markdown', exportText: 'Texte', exportDocx: 'Word',
@@ -941,7 +971,7 @@
       purchaseCharacters: 'Acheter des Caractères', inviteCode: 'Code d\'Invitation',
       inviteCodePlaceholder: 'Entrez le code d\'invitation', inviteCodeApply: 'Appliquer',
       inviteCodeSuccess: 'Code appliqué! Toutes les fonctions débloquées', inviteCodeCharsAdded: '{chars} caractères ajoutés!', inviteCodeError: 'Code invalide', inviteCodeAlreadyUsed: 'Ce code a déjà été utilisé',
-      payment: 'Paiement', buyNow: 'Acheter Maintenant', confirmDelete: 'Êtes-vous sûr de vouloir supprimer?',
+      payment: 'Paiement', buyNow: 'Acheter Maintenant', justNow: 'À l\\'instant', minutesAgo: 'm', hoursAgo: 'h', daysAgo: 'j', confirmDelete: 'Êtes-vous sûr de vouloir supprimer?',
       confirmDeleteAccount: 'Toutes les données seront supprimées. Continuer?', noProjects: 'Aucun projet',
       selectText: 'Sélectionnez le texte', enterPrompt: 'Entrez un prompt', translationTarget: 'Langue cible',
       agreeTerms: 'J\'accepte les Conditions d\'Utilisation et la Politique de Confidentialité',
@@ -973,7 +1003,7 @@
       readingTime: 'Lesezeit', pages: 'Seiten (400 Zeichen)',
       save: 'Speichern', saving: 'Speichern...', saved: 'Gespeichert', delete: 'Löschen', cancel: 'Abbrechen', close: 'Schließen',
       copy: 'Kopieren', copied: 'Kopiert', insert: 'Einfügen', apply: 'Anwenden', export: 'Exportieren',
-      history: 'Verlauf', model: 'Modell', theme: 'Design', light: 'Hell', dark: 'Dunkel',
+      history: 'KI-Log', historyDesc: 'Aufzeichnungen der KI-generierten Texte. Drücken Sie Speichern, um im Projekt zu speichern.', model: 'Modell', theme: 'Design', light: 'Hell', dark: 'Dunkel',
       autoSave: 'Autospeichern', autoSaved: 'Automatisch gespeichert', autoSaveEnabled: 'Autospeichern: AN', autoSaveDisabled: 'Autospeichern: AUS',
       shortcuts: 'Tastenkombinationen', shortcutSave: 'Ctrl+S: Speichern', shortcutGenerate: 'Ctrl+Enter: Generieren', shortcutUndo: 'Ctrl+Z: Rückgängig',
       rateLimitExceeded: 'Zu viele Anfragen. Bitte warten', exportMarkdown: 'Markdown', exportText: 'Text', exportDocx: 'Word',
@@ -991,7 +1021,7 @@
       purchaseCharacters: 'Zeichen Kaufen', inviteCode: 'Einladungscode',
       inviteCodePlaceholder: 'Einladungscode eingeben', inviteCodeApply: 'Anwenden',
       inviteCodeSuccess: 'Code angewendet! Alle Funktionen freigeschaltet', inviteCodeCharsAdded: '{chars} Zeichen hinzugefügt!', inviteCodeError: 'Ungültiger Code', inviteCodeAlreadyUsed: 'Dieser Code wurde bereits verwendet',
-      payment: 'Zahlung', buyNow: 'Jetzt Kaufen', confirmDelete: 'Sind Sie sicher, dass Sie löschen möchten?',
+      payment: 'Zahlung', buyNow: 'Jetzt Kaufen', justNow: 'Gerade', minutesAgo: 'm', hoursAgo: 'h', daysAgo: 'T', confirmDelete: 'Sind Sie sicher, dass Sie löschen möchten?',
       confirmDeleteAccount: 'Alle Daten werden gelöscht. Fortfahren?', noProjects: 'Keine Projekte',
       selectText: 'Text auswählen', enterPrompt: 'Prompt eingeben', translationTarget: 'Zielsprache',
       agreeTerms: 'Ich akzeptiere die Nutzungsbedingungen und Datenschutzrichtlinie',
@@ -1023,7 +1053,7 @@
       readingTime: 'Tempo de leitura', pages: 'páginas (400 car.)',
       save: 'Salvar', saving: 'Salvando...', saved: 'Salvo', delete: 'Excluir', cancel: 'Cancelar', close: 'Fechar',
       copy: 'Copiar', copied: 'Copiado', insert: 'Inserir', apply: 'Aplicar', export: 'Exportar',
-      history: 'Histórico', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Escuro',
+      history: 'Log de IA', historyDesc: 'Registros de texto gerado por IA. Pressione Salvar para salvar no projeto.', model: 'Modelo', theme: 'Tema', light: 'Claro', dark: 'Escuro',
       autoSave: 'Salvar auto', autoSaved: 'Salvo automaticamente', autoSaveEnabled: 'Salvar auto: ON', autoSaveDisabled: 'Salvar auto: OFF',
       shortcuts: 'Atalhos', shortcutSave: 'Ctrl+S: Salvar', shortcutGenerate: 'Ctrl+Enter: Gerar', shortcutUndo: 'Ctrl+Z: Desfazer',
       rateLimitExceeded: 'Muitas solicitações. Por favor aguarde', exportMarkdown: 'Markdown', exportText: 'Texto', exportDocx: 'Word',
@@ -1041,7 +1071,7 @@
       purchaseCharacters: 'Comprar Caracteres', inviteCode: 'Código de Convite',
       inviteCodePlaceholder: 'Digite o código de convite', inviteCodeApply: 'Aplicar',
       inviteCodeSuccess: 'Código aplicado! Todas as funções desbloqueadas', inviteCodeCharsAdded: '{chars} caracteres adicionados!', inviteCodeError: 'Código inválido', inviteCodeAlreadyUsed: 'Este código já foi utilizado',
-      payment: 'Pagamento', buyNow: 'Comprar Agora', confirmDelete: 'Tem certeza que deseja excluir?',
+      payment: 'Pagamento', buyNow: 'Comprar Agora', justNow: 'Agora', minutesAgo: 'm', hoursAgo: 'h', daysAgo: 'd', confirmDelete: 'Tem certeza que deseja excluir?',
       confirmDeleteAccount: 'Todos os dados serão excluídos. Continuar?', noProjects: 'Sem projetos',
       selectText: 'Selecione o texto', enterPrompt: 'Digite um prompt', translationTarget: 'Idioma alvo',
       agreeTerms: 'Aceito os Termos de Serviço e Política de Privacidade',
@@ -1073,7 +1103,7 @@
       readingTime: 'Время чтения', pages: 'страниц (400 симв.)',
       save: 'Сохранить', saving: 'Сохранение...', saved: 'Сохранено', delete: 'Удалить', cancel: 'Отмена', close: 'Закрыть',
       copy: 'Копировать', copied: 'Скопировано', insert: 'Вставить', apply: 'Применить', export: 'Экспорт',
-      history: 'История', model: 'Модель', theme: 'Тема', light: 'Светлая', dark: 'Тёмная',
+      history: 'Лог ИИ', historyDesc: 'Записи текстов, созданных ИИ. Нажмите Сохранить для сохранения в проекте.', model: 'Модель', theme: 'Тема', light: 'Светлая', dark: 'Тёмная',
       autoSave: 'Автосохранение', autoSaved: 'Автосохранено', autoSaveEnabled: 'Автосохранение: ВКЛ', autoSaveDisabled: 'Автосохранение: ВЫКЛ',
       shortcuts: 'Горячие клавиши', shortcutSave: 'Ctrl+S: Сохранить', shortcutGenerate: 'Ctrl+Enter: Генерация', shortcutUndo: 'Ctrl+Z: Отмена',
       rateLimitExceeded: 'Слишком много запросов. Пожалуйста подождите', exportMarkdown: 'Markdown', exportText: 'Текст', exportDocx: 'Word',
@@ -1091,7 +1121,7 @@
       purchaseCharacters: 'Купить символы', inviteCode: 'Код приглашения',
       inviteCodePlaceholder: 'Введите код приглашения', inviteCodeApply: 'Применить',
       inviteCodeSuccess: 'Код применён! Все функции разблокированы', inviteCodeCharsAdded: '{chars} символов добавлено!', inviteCodeError: 'Неверный код', inviteCodeAlreadyUsed: 'Этот код уже был использован',
-      payment: 'Оплата', buyNow: 'Купить сейчас', confirmDelete: 'Вы уверены, что хотите удалить?',
+      payment: 'Оплата', buyNow: 'Купить сейчас', justNow: 'Сейчас', minutesAgo: 'м', hoursAgo: 'ч', daysAgo: 'д', confirmDelete: 'Вы уверены, что хотите удалить?',
       confirmDeleteAccount: 'Все данные будут удалены. Продолжить?', noProjects: 'Нет проектов',
       selectText: 'Выберите текст', enterPrompt: 'Введите промпт', translationTarget: 'Целевой язык',
       agreeTerms: 'Я принимаю Условия использования и Политику конфиденциальности',
@@ -1123,7 +1153,7 @@
       readingTime: 'وقت القراءة', pages: 'صفحة (400 حرف)',
       save: 'حفظ', saving: 'جاري الحفظ...', saved: 'تم الحفظ', delete: 'حذف', cancel: 'إلغاء', close: 'إغلاق',
       copy: 'نسخ', copied: 'تم النسخ', insert: 'إدراج', apply: 'تطبيق', export: 'تصدير',
-      history: 'السجل', model: 'النموذج', theme: 'المظهر', light: 'فاتح', dark: 'داكن',
+      history: 'سجل AI', historyDesc: 'سجلات النص المُنشأ بواسطة AI. اضغط حفظ للحفظ في المشروع.', model: 'النموذج', theme: 'المظهر', light: 'فاتح', dark: 'داكن',
       autoSave: 'حفظ تلقائي', autoSaved: 'تم الحفظ تلقائياً', autoSaveEnabled: 'حفظ تلقائي: مفعل', autoSaveDisabled: 'حفظ تلقائي: موقف',
       shortcuts: 'اختصارات', shortcutSave: 'Ctrl+S: حفظ', shortcutGenerate: 'Ctrl+Enter: توليد', shortcutUndo: 'Ctrl+Z: تراجع',
       rateLimitExceeded: 'طلبات كثيرة جداً. يرجى الانتظار', exportMarkdown: 'Markdown', exportText: 'نص', exportDocx: 'Word',
@@ -1141,7 +1171,7 @@
       purchaseCharacters: 'شراء أحرف', inviteCode: 'رمز الدعوة',
       inviteCodePlaceholder: 'أدخل رمز الدعوة', inviteCodeApply: 'تطبيق',
       inviteCodeSuccess: 'تم تطبيق الرمز! جميع الميزات مفتوحة', inviteCodeCharsAdded: 'تمت إضافة {chars} حرف!', inviteCodeError: 'رمز غير صالح', inviteCodeAlreadyUsed: 'تم استخدام هذا الرمز بالفعل',
-      payment: 'الدفع', buyNow: 'اشترِ الآن', confirmDelete: 'هل أنت متأكد من الحذف؟',
+      payment: 'الدفع', buyNow: 'اشترِ الآن', justNow: 'الآن', minutesAgo: 'د', hoursAgo: 'س', daysAgo: 'ي', confirmDelete: 'هل أنت متأكد من الحذف؟',
       confirmDeleteAccount: 'سيتم حذف جميع البيانات. متابعة؟', noProjects: 'لا توجد مشاريع',
       selectText: 'حدد النص', enterPrompt: 'أدخل الموجه', translationTarget: 'اللغة المستهدفة',
       agreeTerms: 'أوافق على شروط الخدمة وسياسة الخصوصية',
@@ -1433,6 +1463,23 @@
     
     state.rateLimitCount++;
     return true;
+  }
+
+  // ==================== TIME FORMATTING ====================
+  function formatRelativeTime(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffSec = Math.floor(diffMs / 1000);
+    const diffMin = Math.floor(diffSec / 60);
+    const diffHour = Math.floor(diffMin / 60);
+    const diffDay = Math.floor(diffHour / 24);
+    
+    if (diffMin < 1) return t('justNow');
+    if (diffMin < 60) return `${diffMin}${t('minutesAgo')}`;
+    if (diffHour < 24) return `${diffHour}${t('hoursAgo')}`;
+    if (diffDay < 7) return `${diffDay}${t('daysAgo')}`;
+    return date.toLocaleDateString();
   }
 
   // ==================== TOAST NOTIFICATIONS ====================
@@ -2203,6 +2250,7 @@
     
     return filteredProjects.map(p => {
       const folder = state.folders.find(f => f.id === p.folder_id);
+      const updatedAt = p.updated_at ? formatRelativeTime(p.updated_at) : '';
       return `
         <div class="group flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition cursor-pointer ${state.currentProject?.id === p.id ? 'bg-yellow-50' : ''}" onclick="loadProject(${p.id})">
           <div class="flex flex-col items-center">
@@ -2211,7 +2259,10 @@
           </div>
           <div class="flex-1 min-w-0">
             <p class="text-sm font-medium text-gray-700 truncate">${escapeHtml(p.title)}</p>
-            <p class="text-xs text-gray-500">${formatNumber(p.word_count || 0)} ${t('characters')}</p>
+            <div class="flex items-center gap-2 text-xs text-gray-500">
+              <span>${formatNumber(p.word_count || 0)} ${t('characters')}</span>
+              ${updatedAt ? `<span class="text-gray-400">• ${updatedAt}</span>` : ''}
+            </div>
           </div>
           <button onclick="event.stopPropagation(); deleteProject(${p.id})" class="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 p-1">
             <i class="fas fa-trash text-xs"></i>
@@ -2910,7 +2961,8 @@
     modals.innerHTML = `
       <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
         <div class="bg-white rounded-xl max-w-2xl w-full p-6 max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">${t('history')}</h3>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">${t('history')}</h3>
+          <p class="text-sm text-gray-500 mb-4 bg-blue-50 p-2 rounded"><i class="fas fa-info-circle mr-1"></i>${t('historyDesc')}</p>
           <div class="space-y-3">
             ${state.history.length === 0 ? '<p class="text-gray-500 text-center py-4">No history</p>' : state.history.slice(0, 20).map(h => `
               <div class="border border-gray-200 rounded-lg p-3">
