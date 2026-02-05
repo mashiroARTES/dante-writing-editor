@@ -3810,11 +3810,26 @@
         project_type: 'idea',
         genre: 'other',
         content: '',
-        concept: concept
+        concept: concept,
+        updated_at: new Date().toISOString()
       };
-      await loadProjects();
+      // Immediately add to projects list
+      state.projects.unshift(state.currentProject);
     } else {
-      await api(`/projects/${state.currentProject.id}`, {
+      // Update local state immediately
+      state.currentProject.concept = concept;
+      state.currentProject.updated_at = new Date().toISOString();
+      
+      // Update in projects list
+      const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
+      if (projectIndex !== -1) {
+        state.projects[projectIndex] = { ...state.currentProject };
+        const [updatedProject] = state.projects.splice(projectIndex, 1);
+        state.projects.unshift(updatedProject);
+      }
+      
+      // Save to server in background
+      api(`/projects/${state.currentProject.id}`, {
         method: 'PUT',
         body: JSON.stringify({
           title: state.currentProject.title,
@@ -3823,8 +3838,13 @@
           concept: concept,
           plot_content: state.currentProject.plot_content || ''
         })
-      });
-      state.currentProject.concept = concept;
+      }).catch(e => console.error('Save concept failed:', e));
+    }
+    
+    // Immediately render sidebar
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
     }
     showToast(t('saved'), 'success');
   };
@@ -3835,20 +3855,43 @@
     
     if (!state.currentProject) {
       const concept = document.getElementById('concept-input')?.value || '';
+      const genre = document.getElementById('idea-genre')?.value || 'other';
       const data = await api('/projects', {
         method: 'POST',
         body: JSON.stringify({
           title: t('newProject'),
           project_type: 'idea',
-          genre: document.getElementById('idea-genre')?.value || 'other',
+          genre: genre,
           content: ideas,
           concept: concept
         })
       });
-      state.currentProject = data.project;
-      await loadProjects();
+      state.currentProject = {
+        id: data.project.id,
+        title: t('newProject'),
+        project_type: 'idea',
+        genre: genre,
+        content: ideas,
+        concept: concept,
+        updated_at: new Date().toISOString()
+      };
+      // Immediately add to projects list
+      state.projects.unshift(state.currentProject);
     } else {
-      await api(`/projects/${state.currentProject.id}`, {
+      // Update local state immediately
+      state.currentProject.content = ideas;
+      state.currentProject.updated_at = new Date().toISOString();
+      
+      // Update in projects list
+      const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
+      if (projectIndex !== -1) {
+        state.projects[projectIndex] = { ...state.currentProject };
+        const [updatedProject] = state.projects.splice(projectIndex, 1);
+        state.projects.unshift(updatedProject);
+      }
+      
+      // Save to server in background
+      api(`/projects/${state.currentProject.id}`, {
         method: 'PUT',
         body: JSON.stringify({
           title: state.currentProject.title,
@@ -3857,8 +3900,13 @@
           concept: state.currentProject.concept || '',
           plot_content: state.currentProject.plot_content || ''
         })
-      });
-      state.currentProject.content = ideas;
+      }).catch(e => console.error('Save ideas failed:', e));
+    }
+    
+    // Immediately render sidebar
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
     }
     showToast(t('saved'), 'success');
   };
@@ -3868,20 +3916,44 @@
     const plot = document.getElementById('plot-output')?.innerHTML || '';
     
     if (!state.currentProject) {
+      const genre = document.getElementById('plot-genre')?.value || 'other';
+      const content = document.getElementById('plot-idea')?.value || '';
       const data = await api('/projects', {
         method: 'POST',
         body: JSON.stringify({
           title: t('newProject'),
           project_type: 'plot',
-          genre: document.getElementById('plot-genre')?.value || 'other',
-          content: document.getElementById('plot-idea')?.value || '',
+          genre: genre,
+          content: content,
           plot_content: plot
         })
       });
-      state.currentProject = data.project;
-      await loadProjects();
+      state.currentProject = {
+        id: data.project.id,
+        title: t('newProject'),
+        project_type: 'plot',
+        genre: genre,
+        content: content,
+        plot_content: plot,
+        updated_at: new Date().toISOString()
+      };
+      // Immediately add to projects list
+      state.projects.unshift(state.currentProject);
     } else {
-      await api(`/projects/${state.currentProject.id}`, {
+      // Update local state immediately
+      state.currentProject.plot_content = plot;
+      state.currentProject.updated_at = new Date().toISOString();
+      
+      // Update in projects list
+      const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
+      if (projectIndex !== -1) {
+        state.projects[projectIndex] = { ...state.currentProject };
+        const [updatedProject] = state.projects.splice(projectIndex, 1);
+        state.projects.unshift(updatedProject);
+      }
+      
+      // Save to server in background
+      api(`/projects/${state.currentProject.id}`, {
         method: 'PUT',
         body: JSON.stringify({
           title: state.currentProject.title,
@@ -3890,8 +3962,13 @@
           concept: state.currentProject.concept || '',
           plot_content: plot
         })
-      });
-      state.currentProject.plot_content = plot;
+      }).catch(e => console.error('Save plot failed:', e));
+    }
+    
+    // Immediately render sidebar
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
     }
     showToast(t('saved'), 'success');
   };
