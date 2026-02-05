@@ -1380,14 +1380,12 @@
     state.currentProject.title = title;
     state.currentProject.word_count = content.length;
     
-    const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
-    if (projectIndex !== -1) {
-      state.projects[projectIndex].title = title;
-      state.projects[projectIndex].word_count = content.length;
-      const projectsList = document.getElementById('projects-list');
-      if (projectsList) {
-        projectsList.innerHTML = renderProjectsList();
-      }
+    // Reload projects to update sidebar with latest data (including updated_at)
+    await loadProjects();
+    
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
     }
   }
 
@@ -1628,16 +1626,13 @@
     state.currentProject.title = title;
     state.currentProject.word_count = content.length;
     
-    // Update project in the projects list for sidebar display
-    const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
-    if (projectIndex !== -1) {
-      state.projects[projectIndex].title = title;
-      state.projects[projectIndex].word_count = content.length;
-      // Re-render sidebar project list
-      const projectsList = document.getElementById('projects-list');
-      if (projectsList) {
-        projectsList.innerHTML = renderProjectsList();
-      }
+    // Reload projects to update sidebar with latest data (including updated_at)
+    await loadProjects();
+    
+    // Re-render sidebar project list
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
     }
     
     updateCharCount();
