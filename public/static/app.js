@@ -4072,7 +4072,7 @@
     }
     
     // Switch to writing mode
-    state.mode = 'writing';
+    state.currentMode = 'writing';
     render();
     showToast(t('saved'), 'success');
   };
