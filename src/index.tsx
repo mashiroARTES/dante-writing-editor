@@ -255,8 +255,9 @@ app.post('/api/auth/invite-code', async (c) => {
   const { code } = await c.req.json()
   
   // Valid invite codes
-  const VALID_CODES: { [key: string]: { plan: string; chars: number } } = {
-    'ARTES2WRITERS+': { plan: 'unlimited', chars: 999999999 }
+  const VALID_CODES: { [key: string]: { plan: string; chars: number; additive?: boolean } } = {
+    'ARTES2WRITERS+': { plan: 'unlimited', chars: 999999999 },
+    'DANTE2YOU': { plan: 'standard', chars: 100000, additive: true }
   }
   
   const codeData = VALID_CODES[code]
@@ -264,15 +265,30 @@ app.post('/api/auth/invite-code', async (c) => {
     return c.json({ error: 'Invalid invite code' }, 400)
   }
   
+  let newLimit: number
+  let newPlan: string
+  
+  if (codeData.additive) {
+    // Additive code: add characters to existing limit
+    newLimit = user.total_chars_limit + codeData.chars
+    // Keep current plan if it's better, otherwise upgrade
+    newPlan = user.plan === 'unlimited' || user.plan === 'premium' ? user.plan : codeData.plan
+  } else {
+    // Replacement code: set new plan and limit
+    newLimit = codeData.chars
+    newPlan = codeData.plan
+  }
+  
   // Update user's plan
   await c.env.DB.prepare(
     'UPDATE users SET plan = ?, total_chars_limit = ? WHERE id = ?'
-  ).bind(codeData.plan, codeData.chars, user.id).run()
+  ).bind(newPlan, newLimit, user.id).run()
   
   return c.json({ 
     success: true, 
-    plan: codeData.plan,
-    total_chars_limit: codeData.chars
+    plan: newPlan,
+    total_chars_limit: newLimit,
+    chars_added: codeData.additive ? codeData.chars : null
   })
 })
 

@@ -107,6 +107,7 @@
       inviteCodePlaceholder: '招待コードを入力',
       inviteCodeApply: '適用',
       inviteCodeSuccess: '招待コードが適用されました！全機能が開放されました',
+      inviteCodeCharsAdded: '{chars}文字が追加されました！',
       inviteCodeError: '無効な招待コードです',
       payment: '決済',
       buyNow: '購入する',
@@ -247,6 +248,7 @@
       inviteCodePlaceholder: 'Enter invite code',
       inviteCodeApply: 'Apply',
       inviteCodeSuccess: 'Invite code applied! All features unlocked',
+      inviteCodeCharsAdded: '{chars} characters added!',
       inviteCodeError: 'Invalid invite code',
       payment: 'Payment',
       buyNow: 'Buy Now',
@@ -387,6 +389,7 @@
       inviteCodePlaceholder: '输入邀请码',
       inviteCodeApply: '应用',
       inviteCodeSuccess: '邀请码已应用！所有功能已解锁',
+      inviteCodeCharsAdded: '已添加{chars}个字符！',
       inviteCodeError: '无效的邀请码',
       payment: '支付',
       buyNow: '立即购买',
@@ -527,6 +530,7 @@
       inviteCodePlaceholder: '초대 코드 입력',
       inviteCodeApply: '적용',
       inviteCodeSuccess: '초대 코드가 적용되었습니다! 모든 기능이 해제되었습니다',
+      inviteCodeCharsAdded: '{chars}자가 추가되었습니다!',
       inviteCodeError: '유효하지 않은 초대 코드입니다',
       payment: '결제',
       buyNow: '구매하기',
@@ -668,6 +672,7 @@
       inviteCodePlaceholder: 'Inserisci codice invito',
       inviteCodeApply: 'Applica',
       inviteCodeSuccess: 'Codice invito applicato! Tutte le funzioni sbloccate',
+      inviteCodeCharsAdded: '{chars} caratteri aggiunti!',
       inviteCodeError: 'Codice invito non valido',
       payment: 'Pagamento',
       buyNow: 'Acquista Ora',
@@ -809,6 +814,7 @@
       inviteCodePlaceholder: 'आमंत्रण कोड दर्ज करें',
       inviteCodeApply: 'लागू करें',
       inviteCodeSuccess: 'आमंत्रण कोड लागू! सभी सुविधाएं अनलॉक',
+      inviteCodeCharsAdded: '{chars} अक्षर जोड़े गए!',
       inviteCodeError: 'अमान्य आमंत्रण कोड',
       payment: 'भुगतान',
       buyNow: 'अभी खरीदें',
@@ -878,7 +884,7 @@
       limitExceeded: 'Compra cuando alcances el límite', pleaseUpgrade: 'Compra caracteres adicionales para continuar',
       purchaseCharacters: 'Comprar Caracteres', inviteCode: 'Código de Invitación',
       inviteCodePlaceholder: 'Ingresa código de invitación', inviteCodeApply: 'Aplicar',
-      inviteCodeSuccess: '¡Código aplicado! Todas las funciones desbloqueadas', inviteCodeError: 'Código inválido',
+      inviteCodeSuccess: '¡Código aplicado! Todas las funciones desbloqueadas', inviteCodeCharsAdded: '¡{chars} caracteres añadidos!', inviteCodeError: 'Código inválido',
       payment: 'Pago', buyNow: 'Comprar Ahora', confirmDelete: '¿Estás seguro de eliminar?',
       confirmDeleteAccount: 'Se eliminarán todos los datos. ¿Continuar?', noProjects: 'Sin proyectos',
       selectText: 'Selecciona texto', enterPrompt: 'Ingresa un prompt', translationTarget: 'Idioma destino',
@@ -928,7 +934,7 @@
       limitExceeded: 'Achetez quand vous atteignez la limite', pleaseUpgrade: 'Achetez des caractères supplémentaires',
       purchaseCharacters: 'Acheter des Caractères', inviteCode: 'Code d\'Invitation',
       inviteCodePlaceholder: 'Entrez le code d\'invitation', inviteCodeApply: 'Appliquer',
-      inviteCodeSuccess: 'Code appliqué! Toutes les fonctions débloquées', inviteCodeError: 'Code invalide',
+      inviteCodeSuccess: 'Code appliqué! Toutes les fonctions débloquées', inviteCodeCharsAdded: '{chars} caractères ajoutés!', inviteCodeError: 'Code invalide',
       payment: 'Paiement', buyNow: 'Acheter Maintenant', confirmDelete: 'Êtes-vous sûr de vouloir supprimer?',
       confirmDeleteAccount: 'Toutes les données seront supprimées. Continuer?', noProjects: 'Aucun projet',
       selectText: 'Sélectionnez le texte', enterPrompt: 'Entrez un prompt', translationTarget: 'Langue cible',
@@ -978,7 +984,7 @@
       limitExceeded: 'Kaufen Sie bei Erreichen des Limits', pleaseUpgrade: 'Kaufen Sie zusätzliche Zeichen',
       purchaseCharacters: 'Zeichen Kaufen', inviteCode: 'Einladungscode',
       inviteCodePlaceholder: 'Einladungscode eingeben', inviteCodeApply: 'Anwenden',
-      inviteCodeSuccess: 'Code angewendet! Alle Funktionen freigeschaltet', inviteCodeError: 'Ungültiger Code',
+      inviteCodeSuccess: 'Code angewendet! Alle Funktionen freigeschaltet', inviteCodeCharsAdded: '{chars} Zeichen hinzugefügt!', inviteCodeError: 'Ungültiger Code',
       payment: 'Zahlung', buyNow: 'Jetzt Kaufen', confirmDelete: 'Sind Sie sicher, dass Sie löschen möchten?',
       confirmDeleteAccount: 'Alle Daten werden gelöscht. Fortfahren?', noProjects: 'Keine Projekte',
       selectText: 'Text auswählen', enterPrompt: 'Prompt eingeben', translationTarget: 'Zielsprache',
@@ -1028,7 +1034,7 @@
       limitExceeded: 'Compre ao atingir o limite', pleaseUpgrade: 'Compre caracteres adicionais para continuar',
       purchaseCharacters: 'Comprar Caracteres', inviteCode: 'Código de Convite',
       inviteCodePlaceholder: 'Digite o código de convite', inviteCodeApply: 'Aplicar',
-      inviteCodeSuccess: 'Código aplicado! Todas as funções desbloqueadas', inviteCodeError: 'Código inválido',
+      inviteCodeSuccess: 'Código aplicado! Todas as funções desbloqueadas', inviteCodeCharsAdded: '{chars} caracteres adicionados!', inviteCodeError: 'Código inválido',
       payment: 'Pagamento', buyNow: 'Comprar Agora', confirmDelete: 'Tem certeza que deseja excluir?',
       confirmDeleteAccount: 'Todos os dados serão excluídos. Continuar?', noProjects: 'Sem projetos',
       selectText: 'Selecione o texto', enterPrompt: 'Digite um prompt', translationTarget: 'Idioma alvo',
@@ -1078,7 +1084,7 @@
       limitExceeded: 'Купите при достижении лимита', pleaseUpgrade: 'Купите дополнительные символы',
       purchaseCharacters: 'Купить символы', inviteCode: 'Код приглашения',
       inviteCodePlaceholder: 'Введите код приглашения', inviteCodeApply: 'Применить',
-      inviteCodeSuccess: 'Код применён! Все функции разблокированы', inviteCodeError: 'Неверный код',
+      inviteCodeSuccess: 'Код применён! Все функции разблокированы', inviteCodeCharsAdded: '{chars} символов добавлено!', inviteCodeError: 'Неверный код',
       payment: 'Оплата', buyNow: 'Купить сейчас', confirmDelete: 'Вы уверены, что хотите удалить?',
       confirmDeleteAccount: 'Все данные будут удалены. Продолжить?', noProjects: 'Нет проектов',
       selectText: 'Выберите текст', enterPrompt: 'Введите промпт', translationTarget: 'Целевой язык',
@@ -1128,7 +1134,7 @@
       limitExceeded: 'اشترِ عند الوصول للحد', pleaseUpgrade: 'اشترِ أحرفًا إضافية للمتابعة',
       purchaseCharacters: 'شراء أحرف', inviteCode: 'رمز الدعوة',
       inviteCodePlaceholder: 'أدخل رمز الدعوة', inviteCodeApply: 'تطبيق',
-      inviteCodeSuccess: 'تم تطبيق الرمز! جميع الميزات مفتوحة', inviteCodeError: 'رمز غير صالح',
+      inviteCodeSuccess: 'تم تطبيق الرمز! جميع الميزات مفتوحة', inviteCodeCharsAdded: 'تمت إضافة {chars} حرف!', inviteCodeError: 'رمز غير صالح',
       payment: 'الدفع', buyNow: 'اشترِ الآن', confirmDelete: 'هل أنت متأكد من الحذف؟',
       confirmDeleteAccount: 'سيتم حذف جميع البيانات. متابعة؟', noProjects: 'لا توجد مشاريع',
       selectText: 'حدد النص', enterPrompt: 'أدخل الموجه', translationTarget: 'اللغة المستهدفة',
@@ -1902,7 +1908,13 @@
       });
       
       if (data.success) {
-        showToast(t('inviteCodeSuccess'), 'success');
+        // Show appropriate message based on whether chars were added
+        if (data.chars_added) {
+          const addedMsg = t('inviteCodeCharsAdded').replace('{chars}', data.chars_added.toLocaleString());
+          showToast(addedMsg, 'success');
+        } else {
+          showToast(t('inviteCodeSuccess'), 'success');
+        }
         closeModal();
         // Refresh user data
         await checkAuth();
