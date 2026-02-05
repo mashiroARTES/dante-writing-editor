@@ -1366,7 +1366,28 @@
     
     if (!state.currentProject) return;
     
-    await api(`/projects/${state.currentProject.id}`, {
+    // Update local state immediately
+    state.currentProject.content = content;
+    state.currentProject.title = title;
+    state.currentProject.word_count = content.length;
+    state.currentProject.updated_at = new Date().toISOString();
+    
+    // Update in projects list immediately
+    const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
+    if (projectIndex !== -1) {
+      state.projects[projectIndex] = { ...state.currentProject };
+      const [updatedProject] = state.projects.splice(projectIndex, 1);
+      state.projects.unshift(updatedProject);
+    }
+    
+    // Render sidebar immediately
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
+    }
+    
+    // Save to server in background
+    api(`/projects/${state.currentProject.id}`, {
       method: 'PUT',
       body: JSON.stringify({
         title,
@@ -1374,19 +1395,7 @@
         custom_genre: state.currentProject.custom_genre,
         content
       })
-    });
-    
-    state.currentProject.content = content;
-    state.currentProject.title = title;
-    state.currentProject.word_count = content.length;
-    
-    // Reload projects to update sidebar with latest data (including updated_at)
-    await loadProjects();
-    
-    const projectsList = document.getElementById('projects-list');
-    if (projectsList) {
-      projectsList.innerHTML = renderProjectsList();
-    }
+    }).catch(e => console.error('Silent save failed:', e));
   }
 
   function toggleAutoSave() {
@@ -1603,16 +1612,49 @@
         project_type: 'writing',
         genre: 'other',
         content: content,
-        word_count: content.length
+        word_count: content.length,
+        updated_at: new Date().toISOString()
       };
       
-      await loadProjects();
+      // Immediately add to projects list for instant display
+      state.projects.unshift(state.currentProject);
+      
+      // Immediately render sidebar
+      const projectsList = document.getElementById('projects-list');
+      if (projectsList) {
+        projectsList.innerHTML = renderProjectsList();
+      }
+      
       updateCharCount();
       return;
     }
     
     // Update existing project
-    await api(`/projects/${state.currentProject.id}`, {
+    // First update local state immediately for instant UI feedback
+    state.currentProject.content = content;
+    state.currentProject.title = title;
+    state.currentProject.word_count = content.length;
+    state.currentProject.updated_at = new Date().toISOString();
+    
+    // Update in projects list immediately
+    const projectIndex = state.projects.findIndex(p => p.id === state.currentProject.id);
+    if (projectIndex !== -1) {
+      state.projects[projectIndex] = { ...state.currentProject };
+      // Move to top of list (most recently updated)
+      const [updatedProject] = state.projects.splice(projectIndex, 1);
+      state.projects.unshift(updatedProject);
+    }
+    
+    // Immediately render sidebar (before API call)
+    const projectsList = document.getElementById('projects-list');
+    if (projectsList) {
+      projectsList.innerHTML = renderProjectsList();
+    }
+    
+    updateCharCount();
+    
+    // Then save to server in background (non-blocking)
+    api(`/projects/${state.currentProject.id}`, {
       method: 'PUT',
       body: JSON.stringify({
         title,
@@ -1620,22 +1662,7 @@
         custom_genre: state.currentProject.custom_genre,
         content
       })
-    });
-    
-    state.currentProject.content = content;
-    state.currentProject.title = title;
-    state.currentProject.word_count = content.length;
-    
-    // Reload projects to update sidebar with latest data (including updated_at)
-    await loadProjects();
-    
-    // Re-render sidebar project list
-    const projectsList = document.getElementById('projects-list');
-    if (projectsList) {
-      projectsList.innerHTML = renderProjectsList();
-    }
-    
-    updateCharCount();
+    }).catch(e => console.error('Save failed:', e));
   }
 
   async function deleteProject(id) {
@@ -1860,17 +1887,31 @@
     newEditor.addEventListener('input', () => {
       updateCharCount();
       
-      if (state.currentProject) {
-        if (state.autoSaveTimer) {
-          clearTimeout(state.autoSaveTimer);
-        }
+      // Clear existing timer
+      if (state.autoSaveTimer) {
+        clearTimeout(state.autoSaveTimer);
+      }
+      
+      // Auto-save with debounce (shorter for new projects)
+      const content = newEditor.value || '';
+      const hasContent = content.trim().length > 0;
+      
+      if (hasContent) {
+        // For new projects, save quickly (500ms) to create project immediately
+        // For existing projects, use standard debounce (2000ms)
+        const debounceTime = state.currentProject ? 2000 : 500;
         
         state.autoSaveTimer = setTimeout(async () => {
-          if (state.preferences?.auto_save !== false) {
+          try {
             await updateProject();
-            showToast(t('saved'), 'info');
+            // Only show toast for new project creation
+            if (!state.currentProject) {
+              showToast(t('saved'), 'success');
+            }
+          } catch (e) {
+            console.error('Auto-save failed:', e);
           }
-        }, 3000);
+        }, debounceTime);
       }
     });
     
