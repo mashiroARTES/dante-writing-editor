@@ -265,6 +265,15 @@ app.post('/api/auth/invite-code', async (c) => {
     return c.json({ error: 'Invalid invite code' }, 400)
   }
   
+  // Check if user has already used this code
+  const usedCode = await c.env.DB.prepare(
+    'SELECT id FROM used_invite_codes WHERE user_id = ? AND code = ?'
+  ).bind(user.id, code).first()
+  
+  if (usedCode) {
+    return c.json({ error: 'Code already used' }, 400)
+  }
+  
   let newLimit: number
   let newPlan: string
   
@@ -278,6 +287,11 @@ app.post('/api/auth/invite-code', async (c) => {
     newLimit = codeData.chars
     newPlan = codeData.plan
   }
+  
+  // Record that this code has been used by this user
+  await c.env.DB.prepare(
+    'INSERT INTO used_invite_codes (user_id, code) VALUES (?, ?)'
+  ).bind(user.id, code).run()
   
   // Update user's plan
   await c.env.DB.prepare(
