@@ -78,6 +78,9 @@
       addFolder: 'フォルダを追加',
       allProjects: 'すべてのプロジェクト',
       noFolder: '未分類',
+      renameFolder: 'フォルダ名を変更',
+      moveToFolder: 'フォルダに移動',
+      removeFromFolder: 'フォルダから削除',
       language: '言語',
       genre: 'ジャンル',
       title: 'タイトル',
@@ -226,6 +229,9 @@
       addFolder: 'Add Folder',
       allProjects: 'All Projects',
       noFolder: 'Uncategorized',
+      renameFolder: 'Rename Folder',
+      moveToFolder: 'Move to Folder',
+      removeFromFolder: 'Remove from Folder',
       language: 'Language',
       genre: 'Genre',
       title: 'Title',
@@ -374,6 +380,9 @@
       addFolder: '添加文件夹',
       allProjects: '所有项目',
       noFolder: '未分类',
+      renameFolder: '重命名文件夹',
+      moveToFolder: '移动到文件夹',
+      removeFromFolder: '从文件夹中移除',
       language: '语言',
       genre: '类型',
       title: '标题',
@@ -522,6 +531,9 @@
       addFolder: '폴더 추가',
       allProjects: '모든 프로젝트',
       noFolder: '미분류',
+      renameFolder: '폴더 이름 변경',
+      moveToFolder: '폴더로 이동',
+      removeFromFolder: '폴더에서 제거',
       language: '언어',
       genre: '장르',
       title: '제목',
@@ -670,6 +682,9 @@
       addFolder: 'Aggiungi Cartella',
       allProjects: 'Tutti i Progetti',
       noFolder: 'Non classificato',
+      renameFolder: 'Rinomina Cartella',
+      moveToFolder: 'Sposta in Cartella',
+      removeFromFolder: 'Rimuovi dalla Cartella',
       language: 'Lingua',
       genre: 'Genere',
       title: 'Titolo',
@@ -819,6 +834,9 @@
       addFolder: 'फ़ोल्डर जोड़ें',
       allProjects: 'सभी प्रोजेक्ट',
       noFolder: 'अवर्गीकृत',
+      renameFolder: 'फ़ोल्डर का नाम बदलें',
+      moveToFolder: 'फ़ोल्डर में ले जाएं',
+      removeFromFolder: 'फ़ोल्डर से हटाएं',
       language: 'भाषा',
       genre: 'विधा',
       title: 'शीर्षक',
@@ -913,7 +931,7 @@
       autoSave: 'Autoguardar', autoSaved: 'Guardado automáticamente', autoSaveEnabled: 'Autoguardar: ON', autoSaveDisabled: 'Autoguardar: OFF',
       shortcuts: 'Atajos', shortcutSave: 'Ctrl+S: Guardar', shortcutGenerate: 'Ctrl+Enter: Generar', shortcutUndo: 'Ctrl+Z: Deshacer',
       rateLimitExceeded: 'Demasiadas solicitudes. Por favor espere', exportMarkdown: 'Markdown', exportText: 'Texto', exportDocx: 'Word',
-      templates: 'Plantillas', useTemplate: 'Usar Plantilla', folders: 'Carpetas', tags: 'Etiquetas', addTag: 'Añadir Etiqueta', addFolder: 'Añadir Carpeta', allProjects: 'Todos los Proyectos', noFolder: 'Sin clasificar',
+      templates: 'Plantillas', useTemplate: 'Usar Plantilla', folders: 'Carpetas', tags: 'Etiquetas', addTag: 'Añadir Etiqueta', addFolder: 'Añadir Carpeta', allProjects: 'Todos los Proyectos', noFolder: 'Sin clasificar', renameFolder: 'Renombrar Carpeta', moveToFolder: 'Mover a Carpeta', removeFromFolder: 'Quitar de Carpeta',
       language: 'Idioma', genre: 'Género', title: 'Título',
       customPrompt: 'Instrucciones para AI Writer', targetLength: 'Longitud Objetivo', targetLengthNote: '*Aproximado. La IA puede no producir la longitud exacta especificada',
       concept: 'Concepto y Planificación', conceptPlaceholder: 'Ingresa tu concepto o plan...',
@@ -964,7 +982,7 @@
       autoSave: 'Sauvegarde auto', autoSaved: 'Sauvegardé automatiquement', autoSaveEnabled: 'Sauvegarde auto: ON', autoSaveDisabled: 'Sauvegarde auto: OFF',
       shortcuts: 'Raccourcis', shortcutSave: 'Ctrl+S: Sauvegarder', shortcutGenerate: 'Ctrl+Enter: Générer', shortcutUndo: 'Ctrl+Z: Annuler',
       rateLimitExceeded: 'Trop de requêtes. Veuillez patienter', exportMarkdown: 'Markdown', exportText: 'Texte', exportDocx: 'Word',
-      templates: 'Modèles', useTemplate: 'Utiliser Modèle', folders: 'Dossiers', tags: 'Étiquettes', addTag: 'Ajouter Étiquette', addFolder: 'Ajouter Dossier', allProjects: 'Tous les Projets', noFolder: 'Non classé',
+      templates: 'Modèles', useTemplate: 'Utiliser Modèle', folders: 'Dossiers', tags: 'Étiquettes', addTag: 'Ajouter Étiquette', addFolder: 'Ajouter Dossier', allProjects: 'Tous les Projets', noFolder: 'Non classé', renameFolder: 'Renommer Dossier', moveToFolder: 'Déplacer vers Dossier', removeFromFolder: 'Retirer du Dossier',
       language: 'Langue', genre: 'Genre', title: 'Titre',
       customPrompt: 'Instructions pour AI Writer', targetLength: 'Longueur Cible', targetLengthNote: '*Approximatif. L\'IA peut ne pas produire la longueur exacte spécifiée',
       concept: 'Concept et Planification', conceptPlaceholder: 'Entrez votre concept ou plan...',
@@ -1015,7 +1033,7 @@
       autoSave: 'Autospeichern', autoSaved: 'Automatisch gespeichert', autoSaveEnabled: 'Autospeichern: AN', autoSaveDisabled: 'Autospeichern: AUS',
       shortcuts: 'Tastenkombinationen', shortcutSave: 'Ctrl+S: Speichern', shortcutGenerate: 'Ctrl+Enter: Generieren', shortcutUndo: 'Ctrl+Z: Rückgängig',
       rateLimitExceeded: 'Zu viele Anfragen. Bitte warten', exportMarkdown: 'Markdown', exportText: 'Text', exportDocx: 'Word',
-      templates: 'Vorlagen', useTemplate: 'Vorlage verwenden', folders: 'Ordner', tags: 'Tags', addTag: 'Tag hinzufügen', addFolder: 'Ordner hinzufügen', allProjects: 'Alle Projekte', noFolder: 'Nicht kategorisiert',
+      templates: 'Vorlagen', useTemplate: 'Vorlage verwenden', folders: 'Ordner', tags: 'Tags', addTag: 'Tag hinzufügen', addFolder: 'Ordner hinzufügen', allProjects: 'Alle Projekte', noFolder: 'Nicht kategorisiert', renameFolder: 'Ordner umbenennen', moveToFolder: 'In Ordner verschieben', removeFromFolder: 'Aus Ordner entfernen',
       language: 'Sprache', genre: 'Genre', title: 'Titel',
       customPrompt: 'Anweisungen für AI Writer', targetLength: 'Ziellänge', targetLengthNote: '*Ungenähr. KI gibt möglicherweise nicht genau die angegebene Länge aus',
       concept: 'Konzept und Planung', conceptPlaceholder: 'Geben Sie Ihr Konzept oder Ihren Plan ein...',
@@ -1066,7 +1084,7 @@
       autoSave: 'Salvar auto', autoSaved: 'Salvo automaticamente', autoSaveEnabled: 'Salvar auto: ON', autoSaveDisabled: 'Salvar auto: OFF',
       shortcuts: 'Atalhos', shortcutSave: 'Ctrl+S: Salvar', shortcutGenerate: 'Ctrl+Enter: Gerar', shortcutUndo: 'Ctrl+Z: Desfazer',
       rateLimitExceeded: 'Muitas solicitações. Por favor aguarde', exportMarkdown: 'Markdown', exportText: 'Texto', exportDocx: 'Word',
-      templates: 'Modelos', useTemplate: 'Usar Modelo', folders: 'Pastas', tags: 'Tags', addTag: 'Adicionar Tag', addFolder: 'Adicionar Pasta', allProjects: 'Todos os Projetos', noFolder: 'Não categorizado',
+      templates: 'Modelos', useTemplate: 'Usar Modelo', folders: 'Pastas', tags: 'Tags', addTag: 'Adicionar Tag', addFolder: 'Adicionar Pasta', allProjects: 'Todos os Projetos', noFolder: 'Não categorizado', renameFolder: 'Renomear Pasta', moveToFolder: 'Mover para Pasta', removeFromFolder: 'Remover da Pasta',
       language: 'Idioma', genre: 'Gênero', title: 'Título',
       customPrompt: 'Instruções para AI Writer', targetLength: 'Comprimento Alvo', targetLengthNote: '*Aproximado. A IA pode não produzir o comprimento exato especificado',
       concept: 'Conceito e Planejamento', conceptPlaceholder: 'Insira seu conceito ou plano...',
@@ -1117,7 +1135,7 @@
       autoSave: 'Автосохранение', autoSaved: 'Автосохранено', autoSaveEnabled: 'Автосохранение: ВКЛ', autoSaveDisabled: 'Автосохранение: ВЫКЛ',
       shortcuts: 'Горячие клавиши', shortcutSave: 'Ctrl+S: Сохранить', shortcutGenerate: 'Ctrl+Enter: Генерация', shortcutUndo: 'Ctrl+Z: Отмена',
       rateLimitExceeded: 'Слишком много запросов. Пожалуйста подождите', exportMarkdown: 'Markdown', exportText: 'Текст', exportDocx: 'Word',
-      templates: 'Шаблоны', useTemplate: 'Использовать шаблон', folders: 'Папки', tags: 'Теги', addTag: 'Добавить тег', addFolder: 'Добавить папку', allProjects: 'Все проекты', noFolder: 'Без категории',
+      templates: 'Шаблоны', useTemplate: 'Использовать шаблон', folders: 'Папки', tags: 'Теги', addTag: 'Добавить тег', addFolder: 'Добавить папку', allProjects: 'Все проекты', noFolder: 'Без категории', renameFolder: 'Переименовать папку', moveToFolder: 'Переместить в папку', removeFromFolder: 'Удалить из папки',
       language: 'Язык', genre: 'Жанр', title: 'Название',
       customPrompt: 'Инструкции для AI писателя', targetLength: 'Целевая длина', targetLengthNote: '*Приблизительно. ИИ может не выдать точно указанную длину',
       concept: 'Концепция и планирование', conceptPlaceholder: 'Введите вашу концепцию или план...',
@@ -1168,7 +1186,7 @@
       autoSave: 'حفظ تلقائي', autoSaved: 'تم الحفظ تلقائياً', autoSaveEnabled: 'حفظ تلقائي: مفعل', autoSaveDisabled: 'حفظ تلقائي: موقف',
       shortcuts: 'اختصارات', shortcutSave: 'Ctrl+S: حفظ', shortcutGenerate: 'Ctrl+Enter: توليد', shortcutUndo: 'Ctrl+Z: تراجع',
       rateLimitExceeded: 'طلبات كثيرة جداً. يرجى الانتظار', exportMarkdown: 'Markdown', exportText: 'نص', exportDocx: 'Word',
-      templates: 'قوالب', useTemplate: 'استخدام قالب', folders: 'مجلدات', tags: 'علامات', addTag: 'إضافة علامة', addFolder: 'إضافة مجلد', allProjects: 'كل المشاريع', noFolder: 'غير مصنف',
+      templates: 'قوالب', useTemplate: 'استخدام قالب', folders: 'مجلدات', tags: 'علامات', addTag: 'إضافة علامة', addFolder: 'إضافة مجلد', allProjects: 'كل المشاريع', noFolder: 'غير مصنف', renameFolder: 'إعادة تسمية المجلد', moveToFolder: 'نقل إلى مجلد', removeFromFolder: 'إزالة من المجلد',
       language: 'اللغة', genre: 'النوع', title: 'العنوان',
       customPrompt: 'تعليمات لكاتب AI', targetLength: 'الطول المستهدف', targetLengthNote: '*تقريبي. قد لا ينتج الذكاء الاصطناعي الطول المحدد بالضبط',
       concept: 'المفهوم والتخطيط', conceptPlaceholder: 'أدخل مفهومك أو خطتك...',
@@ -2180,24 +2198,54 @@
           
           <!-- Folders & Projects List -->
           <div class="flex-1 overflow-y-auto p-4">
-            <!-- Folder Filter -->
-            <div class="mb-3">
-              <select id="folder-filter" class="w-full text-sm border border-gray-200 rounded-lg px-2 py-1" onchange="filterByFolder(this.value)">
-                <option value="">${t('allProjects')}</option>
-                <option value="null">${t('noFolder')}</option>
-                ${state.folders.map(f => `<option value="${f.id}" style="color: ${f.color}">${f.name}</option>`).join('')}
-              </select>
-            </div>
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="font-semibold text-gray-700">${t('projects')}</h3>
-              <div class="flex gap-1">
-                <button onclick="showFolderModal()" class="text-gray-500 hover:text-gray-700" title="${t('folders')}">
-                  <i class="fas fa-folder-plus"></i>
-                </button>
-                <button onclick="showNewProjectModal()" class="text-yellow-600 hover:text-yellow-700">
-                  <i class="fas fa-plus"></i>
+            <!-- Folders Section -->
+            ${state.folders.length > 0 ? `
+            <div class="mb-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xs font-semibold text-gray-500 uppercase">${t('folders')}</h3>
+                <button onclick="showFolderModal()" class="text-gray-400 hover:text-yellow-600 transition" title="${t('addFolder')}">
+                  <i class="fas fa-plus text-xs"></i>
                 </button>
               </div>
+              <div class="space-y-1">
+                <button onclick="filterByFolder('')" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm transition ${state.selectedFolder === null ? 'bg-yellow-50 text-yellow-700' : 'hover:bg-gray-100 text-gray-600'}">
+                  <i class="fas fa-layer-group text-xs"></i>
+                  <span>${t('allProjects')}</span>
+                  <span class="ml-auto text-xs text-gray-400">${state.projects.length}</span>
+                </button>
+                ${state.folders.map(f => {
+                  const count = state.projects.filter(p => p.folder_id === f.id).length;
+                  return `
+                  <button onclick="filterByFolder('${f.id}')" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm transition ${state.selectedFolder === f.id ? 'bg-yellow-50 text-yellow-700' : 'hover:bg-gray-100 text-gray-600'}">
+                    <div class="w-3 h-3 rounded" style="background-color: ${f.color}"></div>
+                    <span class="truncate">${escapeHtml(f.name)}</span>
+                    <span class="ml-auto text-xs text-gray-400">${count}</span>
+                  </button>
+                  `;
+                }).join('')}
+                <button onclick="filterByFolder('null')" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm transition ${state.selectedFolder === 'null' ? 'bg-yellow-50 text-yellow-700' : 'hover:bg-gray-100 text-gray-600'}">
+                  <i class="fas fa-inbox text-xs text-gray-400"></i>
+                  <span>${t('noFolder')}</span>
+                  <span class="ml-auto text-xs text-gray-400">${state.projects.filter(p => !p.folder_id).length}</span>
+                </button>
+              </div>
+            </div>
+            <hr class="border-gray-200 mb-4">
+            ` : `
+            <div class="mb-3">
+              <button onclick="showFolderModal()" class="w-full flex items-center justify-center gap-2 px-3 py-2 border border-dashed border-gray-300 rounded-lg text-sm text-gray-500 hover:border-yellow-500 hover:text-yellow-600 transition">
+                <i class="fas fa-folder-plus"></i>
+                <span>${t('addFolder')}</span>
+              </button>
+            </div>
+            `}
+            
+            <!-- Projects Section -->
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-xs font-semibold text-gray-500 uppercase">${t('projects')}</h3>
+              <button onclick="showNewProjectModal()" class="text-yellow-600 hover:text-yellow-700 transition" title="${t('newProject')}">
+                <i class="fas fa-plus text-xs"></i>
+              </button>
             </div>
             <div id="projects-list">${renderProjectsList()}</div>
           </div>
@@ -2312,9 +2360,14 @@
               ${updatedAt ? `<span class="text-gray-400">• ${updatedAt}</span>` : ''}
             </div>
           </div>
-          <button onclick="event.stopPropagation(); deleteProject(${p.id})" class="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 p-1">
-            <i class="fas fa-trash text-xs"></i>
-          </button>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <button onclick="event.stopPropagation(); showProjectFolderModal(${p.id})" class="text-gray-400 hover:text-yellow-600 p-1" title="${t('moveToFolder')}">
+              <i class="fas fa-folder text-xs"></i>
+            </button>
+            <button onclick="event.stopPropagation(); deleteProject(${p.id})" class="text-gray-400 hover:text-red-600 p-1" title="${t('delete')}">
+              <i class="fas fa-trash text-xs"></i>
+            </button>
+          </div>
         </div>
       `;
     }).join('');
@@ -3713,7 +3766,7 @@
             <div class="flex gap-2">
               <input type="text" id="new-folder-name" placeholder="${t('addFolder')}" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg">
               <input type="color" id="new-folder-color" value="#6b7280" class="w-10 h-10 rounded cursor-pointer">
-              <button onclick="createNewFolder()" class="px-4 py-2 bg-yellow-600 text-white rounded-lg">
+              <button onclick="createNewFolder()" class="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">
                 <i class="fas fa-plus"></i>
               </button>
             </div>
@@ -3722,19 +3775,23 @@
           <div class="space-y-2 max-h-60 overflow-y-auto">
             ${state.folders.length === 0 ? `<p class="text-gray-500 text-center py-4">${t('noFolder')}</p>` : 
               state.folders.map(f => `
-                <div class="flex items-center justify-between py-2 px-3 bg-gray-50 rounded-lg">
-                  <div class="flex items-center gap-2">
-                    <div class="w-4 h-4 rounded" style="background-color: ${f.color}"></div>
-                    <span>${f.name}</span>
+                <div class="flex items-center justify-between py-2 px-3 bg-gray-50 rounded-lg group" id="folder-item-${f.id}">
+                  <div class="flex items-center gap-2 flex-1">
+                    <input type="color" value="${f.color}" class="w-6 h-6 rounded cursor-pointer" onchange="updateFolderColor(${f.id}, this.value)">
+                    <input type="text" value="${escapeHtml(f.name)}" 
+                      class="flex-1 bg-transparent border-none focus:outline-none focus:bg-white focus:border focus:border-gray-300 rounded px-1"
+                      onblur="updateFolderName(${f.id}, this.value)"
+                      onkeydown="if(event.key==='Enter'){this.blur()}"
+                    >
                   </div>
-                  <button onclick="deleteFolder(${f.id})" class="text-red-500 hover:text-red-700">
+                  <button onclick="deleteFolder(${f.id})" class="text-red-500 hover:text-red-700 opacity-50 group-hover:opacity-100 transition ml-2">
                     <i class="fas fa-trash"></i>
                   </button>
                 </div>
               `).join('')}
           </div>
           
-          <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg">${t('close')}</button>
+          <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">${t('close')}</button>
         </div>
       </div>
     `;
@@ -3753,6 +3810,42 @@
       await createFolder(name, color);
       showToast(t('saved'), 'success');
       showFolderModal(); // Refresh modal
+      render(); // Update sidebar
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  };
+
+  window.updateFolderName = async function(id, newName) {
+    if (!newName.trim()) return;
+    
+    const folder = state.folders.find(f => f.id === id);
+    if (!folder || folder.name === newName.trim()) return;
+    
+    try {
+      await api(`/folders/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ name: newName.trim(), color: folder.color })
+      });
+      folder.name = newName.trim();
+      showToast(t('saved'), 'success');
+      render(); // Update sidebar
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  };
+
+  window.updateFolderColor = async function(id, newColor) {
+    const folder = state.folders.find(f => f.id === id);
+    if (!folder) return;
+    
+    try {
+      await api(`/folders/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ name: folder.name, color: newColor })
+      });
+      folder.color = newColor;
+      render(); // Update sidebar
     } catch (e) {
       showToast(e.message, 'error');
     }
@@ -3764,8 +3857,13 @@
     try {
       await api(`/folders/${id}`, { method: 'DELETE' });
       state.folders = state.folders.filter(f => f.id !== id);
+      // Reset folder filter if deleted folder was selected
+      if (state.selectedFolder === id) {
+        state.selectedFolder = null;
+      }
       showToast(t('deleted'), 'success');
       showFolderModal(); // Refresh modal
+      render(); // Update sidebar
     } catch (e) {
       showToast(e.message, 'error');
     }
@@ -3776,6 +3874,51 @@
     const projectsList = document.getElementById('projects-list');
     if (projectsList) {
       projectsList.innerHTML = renderProjectsList();
+    }
+  };
+
+  // Show project folder selection modal
+  window.showProjectFolderModal = function(projectId) {
+    const project = state.projects.find(p => p.id === projectId);
+    if (!project) return;
+    
+    const modals = document.getElementById('modals');
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-xl max-w-sm w-full p-6" onclick="event.stopPropagation()">
+          <h3 class="text-lg font-bold text-gray-800 mb-4"><i class="fas fa-folder-open text-yellow-600 mr-2"></i>${t('moveToFolder')}</h3>
+          
+          <div class="space-y-2 max-h-60 overflow-y-auto">
+            <button onclick="moveProjectToFolder(${projectId}, null)" 
+              class="w-full flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 transition ${!project.folder_id ? 'bg-yellow-50 border border-yellow-300' : 'bg-gray-50'}">
+              <i class="fas fa-inbox text-gray-400"></i>
+              <span>${t('noFolder')}</span>
+              ${!project.folder_id ? '<i class="fas fa-check text-yellow-600 ml-auto"></i>' : ''}
+            </button>
+            ${state.folders.map(f => `
+              <button onclick="moveProjectToFolder(${projectId}, ${f.id})" 
+                class="w-full flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 transition ${project.folder_id === f.id ? 'bg-yellow-50 border border-yellow-300' : 'bg-gray-50'}">
+                <div class="w-4 h-4 rounded" style="background-color: ${f.color}"></div>
+                <span>${escapeHtml(f.name)}</span>
+                ${project.folder_id === f.id ? '<i class="fas fa-check text-yellow-600 ml-auto"></i>' : ''}
+              </button>
+            `).join('')}
+          </div>
+          
+          <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">${t('close')}</button>
+        </div>
+      </div>
+    `;
+  };
+
+  window.moveProjectToFolder = async function(projectId, folderId) {
+    try {
+      await setProjectFolder(projectId, folderId);
+      showToast(t('saved'), 'success');
+      closeModal();
+      render(); // Update sidebar
+    } catch (e) {
+      showToast(e.message, 'error');
     }
   };
 

@@ -965,6 +965,27 @@ app.post('/api/folders', async (c) => {
   })
 })
 
+// Update folder (name/color)
+app.put('/api/folders/:id', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const id = c.req.param('id')
+  const { name, color } = await c.req.json()
+  
+  if (!name || !name.trim()) {
+    return c.json({ error: 'Folder name is required' }, 400)
+  }
+  
+  await c.env.DB.prepare(
+    'UPDATE folders SET name = ?, color = ? WHERE id = ? AND user_id = ?'
+  ).bind(name.trim(), color || '#6b7280', id, user.id).run()
+  
+  return c.json({ success: true, folder: { id: parseInt(id), name: name.trim(), color: color || '#6b7280' } })
+})
+
 // Delete folder
 app.delete('/api/folders/:id', async (c) => {
   const user = c.get('user')
@@ -973,6 +994,11 @@ app.delete('/api/folders/:id', async (c) => {
   }
   
   const id = c.req.param('id')
+  
+  // Set folder_id to null for all projects in this folder
+  await c.env.DB.prepare(
+    'UPDATE projects SET folder_id = NULL WHERE folder_id = ? AND user_id = ?'
+  ).bind(id, user.id).run()
   
   await c.env.DB.prepare(
     'DELETE FROM folders WHERE id = ? AND user_id = ?'
