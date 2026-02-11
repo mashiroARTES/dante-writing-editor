@@ -378,12 +378,9 @@ app.post('/api/payment/create', async (c) => {
 })
 
 // Verify payment and apply characters
+// Note: This endpoint can work with or without authentication
+// If no session cookie, it uses the user_id from KOMOJU metadata
 app.get('/api/payment/verify', async (c) => {
-  const user = c.get('user')
-  if (!user) {
-    return c.json({ error: 'Authentication required' }, 401)
-  }
-  
   const sessionId = c.req.query('session_id')
   if (!sessionId) {
     return c.json({ error: 'Session ID required' }, 400)
@@ -407,13 +404,15 @@ app.get('/api/payment/verify', async (c) => {
     })
     
     if (!response.ok) {
+      console.error('KOMOJU session fetch failed:', response.status)
       return c.json({ error: 'Session not found' }, 404)
     }
     
     const session = await response.json() as any
+    console.log('KOMOJU session status:', session.status, 'metadata:', session.metadata)
     
-    // Check if payment is completed
-    if (session.status !== 'completed') {
+    // Check if payment is completed (also accept 'captured' status)
+    if (session.status !== 'completed' && session.status !== 'captured') {
       return c.json({ 
         success: false, 
         status: session.status,
@@ -421,25 +420,36 @@ app.get('/api/payment/verify', async (c) => {
       })
     }
     
-    // Verify user matches
+    // Get user_id from metadata (works even without cookie)
     const metadata = session.metadata || {}
-    if (metadata.user_id !== user.id.toString()) {
-      return c.json({ error: 'User mismatch' }, 403)
+    const userId = parseInt(metadata.user_id)
+    
+    if (!userId) {
+      return c.json({ error: 'User ID not found in payment metadata' }, 400)
+    }
+    
+    // Optional: verify against logged-in user if available
+    const loggedInUser = c.get('user')
+    if (loggedInUser && loggedInUser.id !== userId) {
+      console.warn('User mismatch: logged in user', loggedInUser.id, 'vs payment user', userId)
+      // Allow anyway - trust the payment metadata
     }
     
     const plan = metadata.plan
     const charsToAdd = parseInt(metadata.chars_to_add)
     
-    if (charsToAdd) {
+    if (charsToAdd && userId) {
       // Update user's character limit
       await c.env.DB.prepare(
         'UPDATE users SET total_chars_limit = total_chars_limit + ?, plan = ? WHERE id = ?'
-      ).bind(charsToAdd, plan, user.id).run()
+      ).bind(charsToAdd, plan, userId).run()
       
       // Record payment
       await c.env.DB.prepare(
         'INSERT INTO payments (user_id, amount, currency, plan, chars_added, komoju_payment_id, status) VALUES (?, ?, ?, ?, ?, ?, ?)'
-      ).bind(user.id, session.amount, session.currency, plan, charsToAdd, sessionId, 'completed').run()
+      ).bind(userId, session.amount || 0, session.currency || 'JPY', plan, charsToAdd, sessionId, 'completed').run()
+      
+      console.log('Payment processed: user', userId, 'chars added', charsToAdd)
     }
     
     return c.json({ 
@@ -453,24 +463,30 @@ app.get('/api/payment/verify', async (c) => {
   }
 })
 
-// KOMOJU webhook (backup method)
+// KOMOJU webhook (backup method - handles various payment events)
 app.post('/api/payment/webhook', async (c) => {
   try {
     const body = await c.req.json()
+    console.log('Webhook received:', body.type)
     
-    if (body.type === 'payment.captured') {
+    // Handle both payment.captured and session.completed events
+    if (body.type === 'payment.captured' || body.type === 'session.completed') {
       const payment = body.data
       const metadata = payment.metadata || {}
       const userId = parseInt(metadata.user_id)
       const plan = metadata.plan
       const charsToAdd = parseInt(metadata.chars_to_add)
+      const paymentId = payment.id || payment.session_id
+      
+      console.log('Webhook processing: user', userId, 'plan', plan, 'chars', charsToAdd)
       
       // Check if already processed
       const existingPayment = await c.env.DB.prepare(
         'SELECT id FROM payments WHERE komoju_payment_id = ?'
-      ).bind(payment.id).first()
+      ).bind(paymentId).first()
       
       if (existingPayment) {
+        console.log('Webhook: payment already processed')
         return c.json({ success: true, message: 'Already processed' })
       }
       
@@ -482,8 +498,10 @@ app.post('/api/payment/webhook', async (c) => {
         
         // Record payment
         await c.env.DB.prepare(
-          'INSERT INTO payments (user_id, amount, plan, chars_added, komoju_payment_id, status) VALUES (?, ?, ?, ?, ?, ?)'
-        ).bind(userId, payment.amount, plan, charsToAdd, payment.id, 'completed').run()
+          'INSERT INTO payments (user_id, amount, currency, plan, chars_added, komoju_payment_id, status) VALUES (?, ?, ?, ?, ?, ?, ?)'
+        ).bind(userId, payment.amount || 0, payment.currency || 'JPY', plan, charsToAdd, paymentId, 'completed').run()
+        
+        console.log('Webhook: payment processed successfully')
       }
     }
     
@@ -2055,11 +2073,34 @@ app.get('/payment/complete', (c) => {
     return;
   }
   
+  // Retry logic for payment verification
+  async function verifyPayment(retries = 3, delay = 2000) {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch('/api/payment/verify?session_id=' + sessionId, {
+          credentials: 'include'
+        });
+        const data = await response.json();
+        
+        // If payment not completed yet, wait and retry
+        if (data.status && data.status !== 'completed' && data.status !== 'captured' && i < retries - 1) {
+          await new Promise(r => setTimeout(r, delay));
+          continue;
+        }
+        
+        return data;
+      } catch (e) {
+        if (i < retries - 1) {
+          await new Promise(r => setTimeout(r, delay));
+        } else {
+          throw e;
+        }
+      }
+    }
+  }
+  
   try {
-    const response = await fetch('/api/payment/verify?session_id=' + sessionId, {
-      credentials: 'include'
-    });
-    const data = await response.json();
+    const data = await verifyPayment();
     
     if (data.success && data.chars_added) {
       statusDiv.innerHTML = \`
@@ -2076,11 +2117,12 @@ app.get('/payment/complete', (c) => {
         <p class="text-gray-600 mb-6">この決済は既に処理されています</p>
         <a href="/" class="px-6 py-3 bg-yellow-600 text-white rounded-lg inline-block">エディターに戻る</a>
       \`;
-    } else if (data.status && data.status !== 'completed') {
+    } else if (data.status && data.status !== 'completed' && data.status !== 'captured') {
       statusDiv.innerHTML = \`
         <i class="fas fa-exclamation-triangle text-yellow-500 text-6xl mb-4"></i>
         <h1 class="text-2xl font-bold mb-4">決済が完了していません</h1>
-        <p class="text-gray-600 mb-6">決済が完了していないか、キャンセルされました</p>
+        <p class="text-gray-600 mb-4">決済が完了していないか、キャンセルされました</p>
+        <p class="text-sm text-gray-500 mb-6">ステータス: \${data.status}</p>
         <a href="/" class="px-6 py-3 bg-gray-600 text-white rounded-lg inline-block">エディターに戻る</a>
       \`;
     } else {
@@ -2095,7 +2137,7 @@ app.get('/payment/complete', (c) => {
     statusDiv.innerHTML = \`
       <i class="fas fa-exclamation-circle text-red-500 text-6xl mb-4"></i>
       <h1 class="text-2xl font-bold mb-4">エラーが発生しました</h1>
-      <p class="text-gray-600 mb-6">決済の確認中にエラーが発生しました</p>
+      <p class="text-gray-600 mb-6">決済の確認中にエラーが発生しました。しばらくしてから再度アクセスしてください。</p>
       <a href="/" class="px-6 py-3 bg-gray-600 text-white rounded-lg inline-block">エディターに戻る</a>
     \`;
   }
