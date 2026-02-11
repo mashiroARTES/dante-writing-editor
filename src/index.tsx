@@ -257,7 +257,8 @@ app.post('/api/auth/invite-code', async (c) => {
   // Valid invite codes
   const VALID_CODES: { [key: string]: { plan: string; chars: number; additive?: boolean } } = {
     'ARTES2WRITERS+': { plan: 'unlimited', chars: 999999999 },
-    'DANTE2YOU': { plan: 'standard', chars: 100000, additive: true }
+    'DANTE2YOU': { plan: 'standard', chars: 100000, additive: true },
+    'DANTE2STANDARDUSER': { plan: 'standard', chars: 500000, additive: true }
   }
   
   const codeData = VALID_CODES[code]
