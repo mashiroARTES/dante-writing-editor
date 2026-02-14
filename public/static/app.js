@@ -153,7 +153,19 @@
       academic: '学術・論文', script: '脚本・シナリオ', poetry: '詩・俳句',
       news: 'ニュース記事', review: 'レビュー', sns: 'SNS投稿', emailGenre: 'メール',
       copywriting: 'コピーライティング', technical: '技術文書', fantasy: 'ファンタジー',
-      mystery: 'ミステリー', romance: '恋愛', horror: 'ホラー', sf: 'SF', other: 'その他'
+      mystery: 'ミステリー', romance: '恋愛', horror: 'ホラー', sf: 'SF', other: 'その他',
+      // Vertical writing mode
+      verticalWriting: '縦書きモード',
+      horizontalWriting: '横書きモード',
+      // Export formats
+      exportPdf: 'PDF形式',
+      exportRtf: 'RTF形式',
+      exportEpub: 'EPUB形式',
+      exportHtml: 'HTML形式',
+      // Import
+      import: 'インポート',
+      importFile: 'ファイルを選択',
+      importSupported: '対応形式: TXT, RTF, DOCX, DOC'
     },
     en: {
       appName: 'DANTE',
@@ -304,7 +316,19 @@
       academic: 'Academic', script: 'Script', poetry: 'Poetry',
       news: 'News', review: 'Review', sns: 'SNS', emailGenre: 'Email',
       copywriting: 'Copywriting', technical: 'Technical', fantasy: 'Fantasy',
-      mystery: 'Mystery', romance: 'Romance', horror: 'Horror', sf: 'Sci-Fi', other: 'Other'
+      mystery: 'Mystery', romance: 'Romance', horror: 'Horror', sf: 'Sci-Fi', other: 'Other',
+      // Vertical writing mode
+      verticalWriting: 'Vertical Mode',
+      horizontalWriting: 'Horizontal Mode',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'Import',
+      importFile: 'Select File',
+      importSupported: 'Supported: TXT, RTF, DOCX, DOC'
     },
     zh: {
       appName: 'DANTE',
@@ -455,7 +479,19 @@
       academic: '学术', script: '剧本', poetry: '诗歌',
       news: '新闻', review: '评论', sns: '社交', emailGenre: '邮件',
       copywriting: '文案', technical: '技术', fantasy: '奇幻',
-      mystery: '悬疑', romance: '言情', horror: '恐怖', sf: '科幻', other: '其他'
+      mystery: '悬疑', romance: '言情', horror: '恐怖', sf: '科幻', other: '其他',
+      // Vertical writing mode
+      verticalWriting: '竖排模式',
+      horizontalWriting: '横排模式',
+      // Export formats
+      exportPdf: 'PDF格式',
+      exportRtf: 'RTF格式',
+      exportEpub: 'EPUB格式',
+      exportHtml: 'HTML格式',
+      // Import
+      import: '导入',
+      importFile: '选择文件',
+      importSupported: '支持格式: TXT, RTF, DOCX, DOC'
     },
     ko: {
       appName: 'DANTE',
@@ -606,7 +642,19 @@
       academic: '학술', script: '시나리오', poetry: '시',
       news: '뉴스', review: '리뷰', sns: 'SNS', emailGenre: '이메일',
       copywriting: '카피라이팅', technical: '기술', fantasy: '판타지',
-      mystery: '미스터리', romance: '로맨스', horror: '호러', sf: 'SF', other: '기타'
+      mystery: '미스터리', romance: '로맨스', horror: '호러', sf: 'SF', other: '기타',
+      // Vertical writing mode
+      verticalWriting: '세로쓰기',
+      horizontalWriting: '가로쓰기',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: '가져오기',
+      importFile: '파일 선택',
+      importSupported: '지원 형식: TXT, RTF, DOCX, DOC'
     },
     it: {
       appName: 'DANTE',
@@ -758,7 +806,19 @@
       academic: 'Accademico', script: 'Sceneggiatura', poetry: 'Poesia',
       news: 'Notizie', review: 'Recensione', sns: 'Social', emailGenre: 'Email',
       copywriting: 'Copywriting', technical: 'Tecnico', fantasy: 'Fantasy',
-      mystery: 'Giallo', romance: 'Romantico', horror: 'Horror', sf: 'Fantascienza', other: 'Altro'
+      mystery: 'Giallo', romance: 'Romantico', horror: 'Horror', sf: 'Fantascienza', other: 'Altro',
+      // Vertical writing mode
+      verticalWriting: 'Scrittura Verticale',
+      horizontalWriting: 'Scrittura Orizzontale',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'Importa',
+      importFile: 'Seleziona File',
+      importSupported: 'Supportati: TXT, RTF, DOCX, DOC'
     },
     hi: {
       appName: 'DANTE',
@@ -910,7 +970,19 @@
       academic: 'अकादमिक', script: 'पटकथा', poetry: 'कविता',
       news: 'समाचार', review: 'समीक्षा', sns: 'सोशल', emailGenre: 'ईमेल',
       copywriting: 'कॉपीराइटिंग', technical: 'तकनीकी', fantasy: 'फैंटेसी',
-      mystery: 'रहस्य', romance: 'रोमांस', horror: 'हॉरर', sf: 'साइ-फाई', other: 'अन्य'
+      mystery: 'रहस्य', romance: 'रोमांस', horror: 'हॉरर', sf: 'साइ-फाई', other: 'अन्य',
+      // Vertical writing mode
+      verticalWriting: 'लंबवत लेखन',
+      horizontalWriting: 'क्षैतिज लेखन',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'आयात',
+      importFile: 'फ़ाइल चुनें',
+      importSupported: 'समर्थित: TXT, RTF, DOCX, DOC'
     },
     es: {
       appName: 'DANTE', appSubtitle: 'Editor de Escritura Integrado con IA',
@@ -961,7 +1033,19 @@
       novel: 'Novela', essay: 'Ensayo', blog: 'Blog', business: 'Negocios', academic: 'Académico',
       script: 'Guión', poetry: 'Poesía', news: 'Noticias', review: 'Reseña', sns: 'Redes Sociales',
       emailGenre: 'Email', copywriting: 'Copywriting', technical: 'Técnico', fantasy: 'Fantasía',
-      mystery: 'Misterio', romance: 'Romance', horror: 'Terror', sf: 'Ciencia Ficción', other: 'Otro'
+      mystery: 'Misterio', romance: 'Romance', horror: 'Terror', sf: 'Ciencia Ficción', other: 'Otro',
+      // Vertical writing mode
+      verticalWriting: 'Modo Vertical',
+      horizontalWriting: 'Modo Horizontal',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'Importar',
+      importFile: 'Seleccionar Archivo',
+      importSupported: 'Soportados: TXT, RTF, DOCX, DOC'
     },
     fr: {
       appName: 'DANTE', appSubtitle: 'Éditeur d\'Écriture Intégré IA',
@@ -1012,7 +1096,19 @@
       novel: 'Roman', essay: 'Essai', blog: 'Blog', business: 'Business', academic: 'Académique',
       script: 'Scénario', poetry: 'Poésie', news: 'Actualités', review: 'Critique', sns: 'Réseaux Sociaux',
       emailGenre: 'Email', copywriting: 'Copywriting', technical: 'Technique', fantasy: 'Fantasy',
-      mystery: 'Mystère', romance: 'Romance', horror: 'Horreur', sf: 'Science-Fiction', other: 'Autre'
+      mystery: 'Mystère', romance: 'Romance', horror: 'Horreur', sf: 'Science-Fiction', other: 'Autre',
+      // Vertical writing mode
+      verticalWriting: 'Mode Vertical',
+      horizontalWriting: 'Mode Horizontal',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'Importer',
+      importFile: 'Sélectionner un Fichier',
+      importSupported: 'Formats: TXT, RTF, DOCX, DOC'
     },
     de: {
       appName: 'DANTE', appSubtitle: 'KI-integrierter Schreibeditor',
@@ -1063,7 +1159,19 @@
       novel: 'Roman', essay: 'Essay', blog: 'Blog', business: 'Business', academic: 'Akademisch',
       script: 'Drehbuch', poetry: 'Poesie', news: 'Nachrichten', review: 'Rezension', sns: 'Social Media',
       emailGenre: 'E-Mail', copywriting: 'Copywriting', technical: 'Technisch', fantasy: 'Fantasy',
-      mystery: 'Krimi', romance: 'Romantik', horror: 'Horror', sf: 'Science-Fiction', other: 'Andere'
+      mystery: 'Krimi', romance: 'Romantik', horror: 'Horror', sf: 'Science-Fiction', other: 'Andere',
+      // Vertical writing mode
+      verticalWriting: 'Vertikaler Modus',
+      horizontalWriting: 'Horizontaler Modus',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'Importieren',
+      importFile: 'Datei Auswählen',
+      importSupported: 'Unterstützt: TXT, RTF, DOCX, DOC'
     },
     pt: {
       appName: 'DANTE', appSubtitle: 'Editor de Escrita Integrado com IA',
@@ -1114,7 +1222,19 @@
       novel: 'Romance', essay: 'Ensaio', blog: 'Blog', business: 'Negócios', academic: 'Acadêmico',
       script: 'Roteiro', poetry: 'Poesia', news: 'Notícias', review: 'Resenha', sns: 'Redes Sociais',
       emailGenre: 'Email', copywriting: 'Copywriting', technical: 'Técnico', fantasy: 'Fantasia',
-      mystery: 'Mistério', romance: 'Romance', horror: 'Terror', sf: 'Ficção Científica', other: 'Outro'
+      mystery: 'Mistério', romance: 'Romance', horror: 'Terror', sf: 'Ficção Científica', other: 'Outro',
+      // Vertical writing mode
+      verticalWriting: 'Modo Vertical',
+      horizontalWriting: 'Modo Horizontal',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'Importar',
+      importFile: 'Selecionar Arquivo',
+      importSupported: 'Suportados: TXT, RTF, DOCX, DOC'
     },
     ru: {
       appName: 'DANTE', appSubtitle: 'ИИ-интегрированный текстовый редактор',
@@ -1165,7 +1285,19 @@
       novel: 'Роман', essay: 'Эссе', blog: 'Блог', business: 'Бизнес', academic: 'Академический',
       script: 'Сценарий', poetry: 'Поэзия', news: 'Новости', review: 'Обзор', sns: 'Соцсети',
       emailGenre: 'Email', copywriting: 'Копирайтинг', technical: 'Технический', fantasy: 'Фэнтези',
-      mystery: 'Детектив', romance: 'Романтика', horror: 'Ужасы', sf: 'Научная фантастика', other: 'Другое'
+      mystery: 'Детектив', romance: 'Романтика', horror: 'Ужасы', sf: 'Научная фантастика', other: 'Другое',
+      // Vertical writing mode
+      verticalWriting: 'Вертикальный режим',
+      horizontalWriting: 'Горизонтальный режим',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'Импорт',
+      importFile: 'Выбрать файл',
+      importSupported: 'Поддерживаются: TXT, RTF, DOCX, DOC'
     },
     ar: {
       appName: 'DANTE', appSubtitle: 'محرر كتابة متكامل بالذكاء الاصطناعي',
@@ -1216,7 +1348,19 @@
       novel: 'رواية', essay: 'مقال', blog: 'مدونة', business: 'أعمال', academic: 'أكاديمي',
       script: 'سيناريو', poetry: 'شعر', news: 'أخبار', review: 'مراجعة', sns: 'وسائل التواصل',
       emailGenre: 'بريد إلكتروني', copywriting: 'كتابة إعلانية', technical: 'تقني', fantasy: 'خيال',
-      mystery: 'غموض', romance: 'رومانسية', horror: 'رعب', sf: 'خيال علمي', other: 'آخر'
+      mystery: 'غموض', romance: 'رومانسية', horror: 'رعب', sf: 'خيال علمي', other: 'آخر',
+      // Vertical writing mode
+      verticalWriting: 'الوضع العمودي',
+      horizontalWriting: 'الوضع الأفقي',
+      // Export formats
+      exportPdf: 'PDF',
+      exportRtf: 'RTF',
+      exportEpub: 'EPUB',
+      exportHtml: 'HTML',
+      // Import
+      import: 'استيراد',
+      importFile: 'اختر ملف',
+      importSupported: 'المدعومة: TXT, RTF, DOCX, DOC'
     }
   };
 
@@ -1243,7 +1387,8 @@
     tags: [],
     selectedFolder: null,
     rateLimitCount: 0,
-    rateLimitResetTime: 0
+    rateLimitResetTime: 0,
+    verticalWriting: false  // Vertical writing mode
   };
 
   // ==================== TEMPLATES ====================
@@ -1914,6 +2059,15 @@
     const newEditor = editor.cloneNode(true);
     editor.parentNode.replaceChild(newEditor, editor);
     
+    // Apply vertical writing style if enabled
+    if (state.verticalWriting) {
+      newEditor.style.writingMode = 'vertical-rl';
+      newEditor.style.textOrientation = 'mixed';
+      newEditor.style.overflowX = 'auto';
+      newEditor.style.overflowY = 'hidden';
+      newEditor.classList.add('vertical-editor');
+    }
+    
     newEditor.addEventListener('input', () => {
       updateCharCount();
       
@@ -2560,6 +2714,12 @@
               <button id="save-btn" onclick="saveProject()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('save')}">
                 <i class="fas fa-save"></i><span class="hidden sm:inline ml-1 text-sm">${t('save')}</span>
               </button>
+              <button onclick="toggleVerticalWriting()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition ${state.verticalWriting ? 'bg-yellow-100 text-yellow-700' : ''}" title="${state.verticalWriting ? t('horizontalWriting') : t('verticalWriting')}">
+                <i class="fas fa-align-${state.verticalWriting ? 'right' : 'left'} ${state.verticalWriting ? 'rotate-90' : ''}"></i>
+              </button>
+              <button onclick="showImportModal()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('import')}">
+                <i class="fas fa-upload"></i><span class="hidden sm:inline ml-1 text-sm">${t('import')}</span>
+              </button>
               <button onclick="showExportModal()" class="p-2 sm:px-3 sm:py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="${t('export')}">
                 <i class="fas fa-download"></i><span class="hidden sm:inline ml-1 text-sm">${t('export')}</span>
               </button>
@@ -3094,25 +3254,62 @@
     const modals = document.getElementById('modals');
     modals.innerHTML = `
       <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+          <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-download mr-2 text-yellow-600"></i>${t('export')}</h3>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="exportAs('txt')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
+              <i class="fas fa-file-alt text-blue-500 w-5 text-center"></i>
+              <span class="text-sm">.txt</span>
+            </button>
+            <button onclick="exportAs('md')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
+              <i class="fab fa-markdown text-purple-500 w-5 text-center"></i>
+              <span class="text-sm">.md</span>
+            </button>
+            <button onclick="exportAs('docx')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
+              <i class="fas fa-file-word text-blue-600 w-5 text-center"></i>
+              <span class="text-sm">.docx</span>
+            </button>
+            <button onclick="exportAs('pdf')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
+              <i class="fas fa-file-pdf text-red-500 w-5 text-center"></i>
+              <span class="text-sm">.pdf</span>
+            </button>
+            <button onclick="exportAs('rtf')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
+              <i class="fas fa-file-lines text-green-500 w-5 text-center"></i>
+              <span class="text-sm">.rtf</span>
+            </button>
+            <button onclick="exportAs('epub')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
+              <i class="fas fa-book text-orange-500 w-5 text-center"></i>
+              <span class="text-sm">.epub</span>
+            </button>
+            <button onclick="exportAs('html')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
+              <i class="fas fa-code text-teal-500 w-5 text-center"></i>
+              <span class="text-sm">.html</span>
+            </button>
+            <button onclick="copyContent('editor-content')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
+              <i class="fas fa-copy text-gray-500 w-5 text-center"></i>
+              <span class="text-sm">${t('copy')}</span>
+            </button>
+          </div>
+          <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">${t('close')}</button>
+        </div>
+      </div>
+    `;
+  };
+
+  // Import modal
+  window.showImportModal = function() {
+    const modals = document.getElementById('modals');
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
         <div class="bg-white rounded-xl max-w-md w-full p-6" onclick="event.stopPropagation()">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">${t('export')}</h3>
-          <div class="space-y-3">
-            <button onclick="exportAs('txt')" class="w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-3">
-              <i class="fas fa-file-alt text-blue-500"></i>
-              <span>${t('exportText')} (.txt)</span>
-            </button>
-            <button onclick="exportAs('md')" class="w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-3">
-              <i class="fab fa-markdown text-purple-500"></i>
-              <span>${t('exportMarkdown')} (.md)</span>
-            </button>
-            <button onclick="exportAs('docx')" class="w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-3">
-              <i class="fas fa-file-word text-blue-600"></i>
-              <span>${t('exportDocx')} (.docx)</span>
-            </button>
-            <button onclick="copyContent('editor-content')" class="w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-3">
-              <i class="fas fa-copy text-gray-500"></i>
-              <span>${t('copy')}</span>
-            </button>
+          <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-upload mr-2"></i>${t('import')}</h3>
+          <div class="space-y-4">
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-yellow-500 transition cursor-pointer" onclick="document.getElementById('import-file').click()">
+              <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-3"></i>
+              <p class="text-gray-600">${t('importFile')}</p>
+              <p class="text-sm text-gray-400 mt-2">${t('importSupported')}</p>
+            </div>
+            <input type="file" id="import-file" class="hidden" accept=".txt,.rtf,.docx,.doc" onchange="handleImportFile(event)">
           </div>
           <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg">${t('close')}</button>
         </div>
@@ -3492,6 +3689,25 @@
       const docxContent = generateDocx(title, content);
       blob = new Blob([docxContent], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
       filename = `${title}.docx`;
+    } else if (format === 'pdf') {
+      // Generate PDF using browser print
+      exportToPdf(title, content);
+      return;
+    } else if (format === 'rtf') {
+      // Generate RTF format
+      const rtfContent = generateRtf(title, content);
+      blob = new Blob([rtfContent], { type: 'application/rtf' });
+      filename = `${title}.rtf`;
+    } else if (format === 'epub') {
+      // Generate EPUB format
+      const epubContent = generateEpub(title, content);
+      blob = new Blob([epubContent], { type: 'application/epub+zip' });
+      filename = `${title}.epub`;
+    } else if (format === 'html') {
+      // Generate HTML format
+      const htmlContent = generateHtml(title, content);
+      blob = new Blob([htmlContent], { type: 'text/html' });
+      filename = `${title}.html`;
     } else {
       blob = new Blob([content], { type: 'text/plain' });
       filename = `${title}.txt`;
@@ -3506,6 +3722,389 @@
     closeModal();
     showToast(t('export') + ' OK', 'success');
   };
+
+  // Export to PDF using browser print
+  function exportToPdf(title, content) {
+    const printWindow = window.open('', '_blank');
+    const isVertical = state.verticalWriting;
+    printWindow.document.write(`
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>${escapeHtml(title)}</title>
+  <style>
+    @page { 
+      size: A4; 
+      margin: 2cm;
+      ${isVertical ? '@page { size: A4 landscape; }' : ''}
+    }
+    body {
+      font-family: "Noto Serif JP", "Yu Mincho", "游明朝", serif;
+      font-size: 12pt;
+      line-height: 2;
+      ${isVertical ? `
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        height: 100vh;
+      ` : ''}
+    }
+    h1 {
+      font-size: 18pt;
+      margin-bottom: 1em;
+      ${isVertical ? 'writing-mode: vertical-rl;' : ''}
+    }
+    p {
+      text-indent: 1em;
+      margin: 0.5em 0;
+    }
+    .upright {
+      text-combine-upright: all;
+      -webkit-text-combine: horizontal;
+    }
+  </style>
+</head>
+<body>
+  <h1>${escapeHtml(title)}</h1>
+  ${content.split('\\n').map(p => `<p>${processVerticalText(escapeHtml(p || '　'))}</p>`).join('')}
+</body>
+</html>
+    `);
+    printWindow.document.close();
+    setTimeout(() => {
+      printWindow.print();
+      closeModal();
+      showToast(t('export') + ' OK', 'success');
+    }, 500);
+  }
+
+  // Generate RTF format
+  function generateRtf(title, content) {
+    const rtfContent = content.split('\\n').map(p => p || '').join('\\par ');
+    return `{\\rtf1\\ansi\\deff0
+{\\fonttbl{\\f0 Yu Mincho;}}
+{\\colortbl;\\red0\\green0\\blue0;}
+\\f0\\fs24
+{\\b ${escapeRtf(title)}}\\par\\par
+${escapeRtf(rtfContent)}
+}`;
+  }
+
+  function escapeRtf(str) {
+    return str
+      .replace(/\\\\/g, '\\\\\\\\')
+      .replace(/\\{/g, '\\\\{')
+      .replace(/\\}/g, '\\\\}')
+      .replace(/[\\u0080-\\uffff]/g, char => '\\\\u' + char.charCodeAt(0) + '?');
+  }
+
+  // Generate HTML format
+  function generateHtml(title, content) {
+    const isVertical = state.verticalWriting;
+    return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${escapeHtml(title)}</title>
+  <style>
+    body {
+      font-family: "Noto Serif JP", "Yu Mincho", "游明朝", serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 2;
+      ${isVertical ? `
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        min-height: 100vh;
+        max-width: none;
+        padding: 2rem 4rem;
+      ` : ''}
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5rem;
+    }
+    p {
+      text-indent: 1em;
+      margin: 0.5em 0;
+    }
+    .upright {
+      text-combine-upright: all;
+      -webkit-text-combine: horizontal;
+    }
+  </style>
+</head>
+<body>
+  <h1>${escapeHtml(title)}</h1>
+  ${content.split('\\n').map(p => `<p>${processVerticalText(escapeHtml(p || '　'))}</p>`).join('')}
+</body>
+</html>`;
+  }
+
+  // Generate EPUB format (simplified)
+  function generateEpub(title, content) {
+    const isVertical = state.verticalWriting;
+    const uuid = 'urn:uuid:' + crypto.randomUUID();
+    
+    const containerXml = `<?xml version="1.0" encoding="UTF-8"?>
+<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
+  <rootfiles>
+    <rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/>
+  </rootfiles>
+</container>`;
+
+    const contentOpf = `<?xml version="1.0" encoding="UTF-8"?>
+<package version="3.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:identifier id="BookId">${uuid}</dc:identifier>
+    <dc:title>${escapeXml(title)}</dc:title>
+    <dc:language>ja</dc:language>
+    <meta property="dcterms:modified">${new Date().toISOString().split('.')[0]}Z</meta>
+  </metadata>
+  <manifest>
+    <item id="chapter1" href="chapter1.xhtml" media-type="application/xhtml+xml"/>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="css" href="style.css" media-type="text/css"/>
+  </manifest>
+  <spine${isVertical ? ' page-progression-direction="rtl"' : ''}>
+    <itemref idref="chapter1"/>
+  </spine>
+</package>`;
+
+    const navXhtml = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Navigation</title>
+</head>
+<body>
+  <nav epub:type="toc">
+    <h1>目次</h1>
+    <ol>
+      <li><a href="chapter1.xhtml">${escapeXml(title)}</a></li>
+    </ol>
+  </nav>
+</body>
+</html>`;
+
+    const styleCss = `body {
+  font-family: "Noto Serif JP", serif;
+  line-height: 2;
+  ${isVertical ? `
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  -epub-writing-mode: vertical-rl;
+  ` : ''}
+}
+h1 { font-size: 1.5em; margin-bottom: 1em; }
+p { text-indent: 1em; margin: 0.5em 0; }
+.upright { text-combine-upright: all; -webkit-text-combine: horizontal; }`;
+
+    const chapter1 = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <title>${escapeXml(title)}</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1>${escapeXml(title)}</h1>
+  ${content.split('\\n').map(p => `<p>${processVerticalText(escapeXml(p || '　'))}</p>`).join('')}
+</body>
+</html>`;
+
+    const mimetypeContent = 'application/epub+zip';
+    
+    const zip = new JSZipLite();
+    zip.file('mimetype', mimetypeContent);
+    zip.file('META-INF/container.xml', containerXml);
+    zip.file('OEBPS/content.opf', contentOpf);
+    zip.file('OEBPS/nav.xhtml', navXhtml);
+    zip.file('OEBPS/style.css', styleCss);
+    zip.file('OEBPS/chapter1.xhtml', chapter1);
+    return zip.generate();
+  }
+
+  // Process text for vertical writing (make alphanumerics upright)
+  function processVerticalText(text) {
+    if (!state.verticalWriting) return text;
+    // Wrap consecutive alphanumeric sequences (1-2 chars) with upright span
+    return text.replace(/([A-Za-z0-9]{1,2})/g, '<span class="upright">$1</span>');
+  }
+
+  // ==================== IMPORT FUNCTIONS ====================
+  
+  // Handle file import
+  window.handleImportFile = async function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const filename = file.name.toLowerCase();
+    let content = '';
+    
+    try {
+      if (filename.endsWith('.txt')) {
+        content = await readTextFile(file);
+      } else if (filename.endsWith('.rtf')) {
+        content = await readRtfFile(file);
+      } else if (filename.endsWith('.docx')) {
+        content = await readDocxFile(file);
+      } else if (filename.endsWith('.doc')) {
+        // For .doc files, try to read as text (basic support)
+        content = await readTextFile(file);
+      } else {
+        showToast('Unsupported file format', 'error');
+        return;
+      }
+      
+      // Set content to editor
+      const editor = document.getElementById('editor-content');
+      if (editor) {
+        editor.value = content;
+        updateCharCount();
+      }
+      
+      // Set filename as title if no title exists
+      const titleInput = document.getElementById('project-title');
+      if (titleInput && !titleInput.value) {
+        const title = file.name.replace(/\\.[^/.]+$/, '');
+        titleInput.value = title;
+      }
+      
+      closeModal();
+      showToast(t('import') + ' OK', 'success');
+    } catch (e) {
+      console.error('Import error:', e);
+      showToast('Import failed: ' + e.message, 'error');
+    }
+  };
+
+  // Read plain text file
+  async function readTextFile(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = e => resolve(e.target.result);
+      reader.onerror = e => reject(e);
+      reader.readAsText(file, 'UTF-8');
+    });
+  }
+
+  // Read RTF file and extract plain text
+  async function readRtfFile(file) {
+    const rtfContent = await readTextFile(file);
+    // Basic RTF to plain text conversion
+    let text = rtfContent
+      .replace(/\\{\\\\[^{}]*\\}/g, '') // Remove RTF groups
+      .replace(/\\\\par\\s*/g, '\\n') // Convert paragraphs to newlines
+      .replace(/\\\\[a-z]+\\d*\\s?/gi, '') // Remove RTF commands
+      .replace(/[{}]/g, '') // Remove braces
+      .replace(/\\\\\\\\/g, '\\\\') // Unescape backslashes
+      .replace(/\\\\'/g, "'") // Unescape quotes
+      .trim();
+    return text;
+  }
+
+  // Read DOCX file and extract text
+  async function readDocxFile(file) {
+    const arrayBuffer = await file.arrayBuffer();
+    const uint8Array = new Uint8Array(arrayBuffer);
+    
+    // Parse ZIP to find document.xml
+    const documentXml = await extractDocxDocument(uint8Array);
+    if (!documentXml) {
+      throw new Error('Could not read DOCX content');
+    }
+    
+    // Parse XML to extract text
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(documentXml, 'text/xml');
+    
+    // Extract text from w:t elements
+    const textElements = doc.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main', 't');
+    const paragraphs = [];
+    let currentParagraph = '';
+    
+    // Group text by paragraphs
+    const pElements = doc.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main', 'p');
+    for (const p of pElements) {
+      const texts = p.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main', 't');
+      let paragraphText = '';
+      for (const t of texts) {
+        paragraphText += t.textContent;
+      }
+      if (paragraphText) {
+        paragraphs.push(paragraphText);
+      }
+    }
+    
+    return paragraphs.join('\\n');
+  }
+
+  // Extract document.xml from DOCX ZIP
+  async function extractDocxDocument(uint8Array) {
+    let offset = 0;
+    const files = {};
+    
+    while (offset < uint8Array.length - 4) {
+      const signature = uint8Array[offset] | (uint8Array[offset + 1] << 8) | 
+                       (uint8Array[offset + 2] << 16) | (uint8Array[offset + 3] << 24);
+      
+      if (signature !== 0x04034b50) break; // Local file header signature
+      
+      const nameLength = uint8Array[offset + 26] | (uint8Array[offset + 27] << 8);
+      const extraLength = uint8Array[offset + 28] | (uint8Array[offset + 29] << 8);
+      const compressedSize = uint8Array[offset + 18] | (uint8Array[offset + 19] << 8) |
+                            (uint8Array[offset + 20] << 16) | (uint8Array[offset + 21] << 24);
+      
+      const nameStart = offset + 30;
+      const nameBytes = uint8Array.slice(nameStart, nameStart + nameLength);
+      const filename = new TextDecoder().decode(nameBytes);
+      
+      const dataStart = nameStart + nameLength + extraLength;
+      const fileData = uint8Array.slice(dataStart, dataStart + compressedSize);
+      
+      files[filename] = new TextDecoder().decode(fileData);
+      
+      offset = dataStart + compressedSize;
+    }
+    
+    return files['word/document.xml'] || null;
+  }
+
+  // ==================== VERTICAL WRITING MODE ====================
+  
+  // Toggle vertical writing mode
+  window.toggleVerticalWriting = function() {
+    state.verticalWriting = !state.verticalWriting;
+    applyVerticalWritingStyle();
+    showToast(state.verticalWriting ? t('verticalWriting') : t('horizontalWriting'), 'info');
+  };
+
+  // Apply vertical writing CSS
+  function applyVerticalWritingStyle() {
+    const editor = document.getElementById('editor-content');
+    if (!editor) return;
+    
+    if (state.verticalWriting) {
+      editor.style.writingMode = 'vertical-rl';
+      editor.style.textOrientation = 'mixed';
+      editor.style.overflowX = 'auto';
+      editor.style.overflowY = 'hidden';
+      editor.classList.add('vertical-editor');
+    } else {
+      editor.style.writingMode = 'horizontal-tb';
+      editor.style.textOrientation = 'mixed';
+      editor.style.overflowX = 'hidden';
+      editor.style.overflowY = 'auto';
+      editor.classList.remove('vertical-editor');
+    }
+  }
 
   // Generate DOCX file (simplified Office Open XML)
   function generateDocx(title, content) {
