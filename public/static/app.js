@@ -3277,10 +3277,6 @@
               <i class="fas fa-file-lines text-green-500 w-5 text-center"></i>
               <span class="text-sm">.rtf</span>
             </button>
-            <button onclick="exportAs('epub')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
-              <i class="fas fa-book text-orange-500 w-5 text-center"></i>
-              <span class="text-sm">.epub</span>
-            </button>
             <button onclick="exportAs('html')" class="py-3 px-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-yellow-400 flex items-center gap-3 transition">
               <i class="fas fa-code text-teal-500 w-5 text-center"></i>
               <span class="text-sm">.html</span>
