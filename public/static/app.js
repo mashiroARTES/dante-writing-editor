@@ -3727,6 +3727,7 @@
   function exportToPdf(title, content) {
     const printWindow = window.open('', '_blank');
     const isVertical = state.verticalWriting;
+    const paragraphs = content.split('\n').map(p => `<p>${processVerticalText(escapeHtml(p || '　'))}</p>`).join('\n');
     printWindow.document.write(`
 <!DOCTYPE html>
 <html>
@@ -3766,7 +3767,7 @@
 </head>
 <body>
   <h1>${escapeHtml(title)}</h1>
-  ${content.split('\\n').map(p => `<p>${processVerticalText(escapeHtml(p || '　'))}</p>`).join('')}
+  ${paragraphs}
 </body>
 </html>
     `);
@@ -3801,6 +3802,7 @@ ${escapeRtf(rtfContent)}
   // Generate HTML format
   function generateHtml(title, content) {
     const isVertical = state.verticalWriting;
+    const paragraphs = content.split('\n').map(p => `<p>${processVerticalText(escapeHtml(p || '　'))}</p>`).join('\n    ');
     return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -3840,15 +3842,16 @@ ${escapeRtf(rtfContent)}
 </head>
 <body>
   <h1>${escapeHtml(title)}</h1>
-  ${content.split('\\n').map(p => `<p>${processVerticalText(escapeHtml(p || '　'))}</p>`).join('')}
+  ${paragraphs}
 </body>
 </html>`;
   }
 
-  // Generate EPUB format (simplified)
+  // Generate EPUB format (properly formatted)
   function generateEpub(title, content) {
     const isVertical = state.verticalWriting;
     const uuid = 'urn:uuid:' + crypto.randomUUID();
+    const paragraphs = content.split('\n').map(p => `<p>${escapeXml(p || '　')}</p>`).join('\n  ');
     
     const containerXml = `<?xml version="1.0" encoding="UTF-8"?>
 <container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
@@ -3915,20 +3918,138 @@ p { text-indent: 1em; margin: 0.5em 0; }
 </head>
 <body>
   <h1>${escapeXml(title)}</h1>
-  ${content.split('\\n').map(p => `<p>${processVerticalText(escapeXml(p || '　'))}</p>`).join('')}
+  ${paragraphs}
 </body>
 </html>`;
 
     const mimetypeContent = 'application/epub+zip';
     
-    const zip = new JSZipLite();
-    zip.file('mimetype', mimetypeContent);
-    zip.file('META-INF/container.xml', containerXml);
-    zip.file('OEBPS/content.opf', contentOpf);
-    zip.file('OEBPS/nav.xhtml', navXhtml);
-    zip.file('OEBPS/style.css', styleCss);
-    zip.file('OEBPS/chapter1.xhtml', chapter1);
-    return zip.generate();
+    // Use proper EPUB ZIP generation
+    return generateEpubZip(mimetypeContent, containerXml, contentOpf, navXhtml, styleCss, chapter1);
+  }
+
+  // Generate proper EPUB ZIP file
+  function generateEpubZip(mimetype, container, opf, nav, css, chapter) {
+    const files = [
+      { name: 'mimetype', content: mimetype, store: true }, // Must be first and uncompressed
+      { name: 'META-INF/container.xml', content: container, store: false },
+      { name: 'OEBPS/content.opf', content: opf, store: false },
+      { name: 'OEBPS/nav.xhtml', content: nav, store: false },
+      { name: 'OEBPS/style.css', content: css, store: false },
+      { name: 'OEBPS/chapter1.xhtml', content: chapter, store: false }
+    ];
+    
+    const parts = [];
+    let offset = 0;
+    const centralDir = [];
+    const encoder = new TextEncoder();
+    
+    for (const file of files) {
+      const nameBytes = encoder.encode(file.name);
+      const data = encoder.encode(file.content);
+      
+      // Local file header
+      const header = new Uint8Array(30 + nameBytes.length);
+      const headerView = new DataView(header.buffer);
+      
+      headerView.setUint32(0, 0x04034b50, true); // Local file header signature
+      headerView.setUint16(4, 20, true); // Version needed
+      headerView.setUint16(6, 0, true); // General purpose bit flag
+      headerView.setUint16(8, file.store ? 0 : 0, true); // Compression method (0 = store)
+      headerView.setUint16(10, 0, true); // Last mod time
+      headerView.setUint16(12, 0, true); // Last mod date
+      headerView.setUint32(14, crc32(data), true); // CRC-32
+      headerView.setUint32(18, data.length, true); // Compressed size
+      headerView.setUint32(22, data.length, true); // Uncompressed size
+      headerView.setUint16(26, nameBytes.length, true); // File name length
+      headerView.setUint16(28, 0, true); // Extra field length
+      header.set(nameBytes, 30);
+      
+      // Central directory header
+      const centralHeader = new Uint8Array(46 + nameBytes.length);
+      const centralView = new DataView(centralHeader.buffer);
+      
+      centralView.setUint32(0, 0x02014b50, true); // Central directory signature
+      centralView.setUint16(4, 20, true); // Version made by
+      centralView.setUint16(6, 20, true); // Version needed
+      centralView.setUint16(8, 0, true); // General purpose bit flag
+      centralView.setUint16(10, 0, true); // Compression method
+      centralView.setUint16(12, 0, true); // Last mod time
+      centralView.setUint16(14, 0, true); // Last mod date
+      centralView.setUint32(16, crc32(data), true); // CRC-32
+      centralView.setUint32(20, data.length, true); // Compressed size
+      centralView.setUint32(24, data.length, true); // Uncompressed size
+      centralView.setUint16(28, nameBytes.length, true); // File name length
+      centralView.setUint16(30, 0, true); // Extra field length
+      centralView.setUint16(32, 0, true); // File comment length
+      centralView.setUint16(34, 0, true); // Disk number start
+      centralView.setUint16(36, 0, true); // Internal file attributes
+      centralView.setUint32(38, 0, true); // External file attributes
+      centralView.setUint32(42, offset, true); // Relative offset of local header
+      centralHeader.set(nameBytes, 46);
+      
+      parts.push(header);
+      parts.push(data);
+      centralDir.push(centralHeader);
+      
+      offset += header.length + data.length;
+    }
+    
+    // End of central directory record
+    const centralDirSize = centralDir.reduce((sum, c) => sum + c.length, 0);
+    const endRecord = new Uint8Array(22);
+    const endView = new DataView(endRecord.buffer);
+    
+    endView.setUint32(0, 0x06054b50, true); // End of central directory signature
+    endView.setUint16(4, 0, true); // Number of this disk
+    endView.setUint16(6, 0, true); // Disk where central directory starts
+    endView.setUint16(8, files.length, true); // Number of central directory records on this disk
+    endView.setUint16(10, files.length, true); // Total number of central directory records
+    endView.setUint32(12, centralDirSize, true); // Size of central directory
+    endView.setUint32(16, offset, true); // Offset of start of central directory
+    endView.setUint16(20, 0, true); // Comment length
+    
+    // Combine all parts
+    const totalSize = parts.reduce((sum, p) => sum + p.length, 0) + centralDirSize + 22;
+    const result = new Uint8Array(totalSize);
+    let pos = 0;
+    
+    for (const part of parts) {
+      result.set(part, pos);
+      pos += part.length;
+    }
+    for (const cd of centralDir) {
+      result.set(cd, pos);
+      pos += cd.length;
+    }
+    result.set(endRecord, pos);
+    
+    return result;
+  }
+
+  // CRC32 calculation for ZIP
+  function crc32(data) {
+    let crc = 0xFFFFFFFF;
+    const table = getCrc32Table();
+    for (let i = 0; i < data.length; i++) {
+      crc = (crc >>> 8) ^ table[(crc ^ data[i]) & 0xFF];
+    }
+    return (crc ^ 0xFFFFFFFF) >>> 0;
+  }
+
+  // CRC32 lookup table (lazy initialization)
+  let crc32Table = null;
+  function getCrc32Table() {
+    if (crc32Table) return crc32Table;
+    crc32Table = new Uint32Array(256);
+    for (let i = 0; i < 256; i++) {
+      let c = i;
+      for (let j = 0; j < 8; j++) {
+        c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+      }
+      crc32Table[i] = c;
+    }
+    return crc32Table;
   }
 
   // Process text for vertical writing (make alphanumerics upright)
