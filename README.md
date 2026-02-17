@@ -65,6 +65,14 @@
 - **フォルダ管理**: カラー付きフォルダでプロジェクトを整理
 - **タグ機能**: プロジェクトにタグ付け
 - **フォルダフィルタ**: サイドバーでフォルダ別にプロジェクトを表示
+- **フォルダ連動作成**: フォルダを開いた状態で新規作成すると、そのフォルダに自動配置
+
+### 🗑️ ゴミ箱機能（v1.2.0 NEW）
+- **30日間保持**: 削除したプロジェクトは30日間ゴミ箱に保持
+- **復元機能**: 誤削除してもワンクリックで復元可能
+- **完全削除**: 不要なプロジェクトを完全に削除
+- **一括削除**: ゴミ箱を空にして全て削除
+- **12言語対応**: 全ての言語でゴミ箱UIを利用可能
 
 ### 📄 テンプレート機能
 ジャンル別の定型テンプレート：
@@ -159,7 +167,8 @@ webapp/
 │   ├── 0003_add_unlimited_plan.sql
 │   ├── 0004_update_free_plan_limit.sql
 │   ├── 0005_add_project_concept_plot.sql
-│   └── 0006_add_folders_tags.sql
+│   ├── 0006_add_folders_tags.sql
+│   └── 0009_add_trash_feature.sql
 ├── .dev.vars              # 環境変数（ローカル開発用）
 ├── .gitignore             # Git除外設定
 ├── wrangler.jsonc         # Cloudflare設定
@@ -181,7 +190,7 @@ webapp/
 - project_type (idea/plot/writing)
 - content, word_count
 - concept, plot_content
-- folder_id, created_at, updated_at
+- folder_id, deleted_at, created_at, updated_at
 
 ### AI History
 - id, user_id, project_id
@@ -271,9 +280,14 @@ KOMOJU_SECRET_KEY=your_komoju_secret_key
 
 ## 📅 最終更新
 
-2025-02-14（v1.1.0）
+2025-02-17（v1.2.0）
 
 ## 📋 更新履歴
+
+### v1.2.0 (2025-02-17)
+- ✨ ゴミ箱機能追加（30日間保持、復元可能、完全削除）
+- ✨ フォルダ連動プロジェクト作成（開いているフォルダに自動配置）
+- 🌍 ゴミ箱機能の12言語翻訳対応
 
 ### v1.1.0 (2025-02-14)
 - ✨ 縦書きモード追加（英数字正立対応）
