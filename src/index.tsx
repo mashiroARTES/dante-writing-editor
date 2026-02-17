@@ -720,7 +720,8 @@ NEVER include character counts or text length information in your response.`
         messages,
         temperature: 0.7,
         // Japanese text uses ~2-3 tokens per character, so multiply by 3 to ensure enough tokens
-        max_tokens: target_length ? Math.min(target_length * 3, 8192) : 4096
+        // Grok 4.1 Fast supports up to 30K+ output tokens
+        max_tokens: target_length ? Math.min(target_length * 3, 32768) : 4096
       })
     })
     
