@@ -619,10 +619,10 @@ NEVER include character counts, word counts, or any numerical information about 
       case 'writing':
       case 'continuation':
         systemPrompt = `You are an excellent writer.
-${target_length ? `Aim for approximately ${target_length} characters.` : ''}
+${target_length ? `IMPORTANT: Write approximately ${target_length} Japanese characters (NOT tokens, NOT words - actual character count including hiragana, katakana, kanji, and punctuation). For reference: 1000 characters ≈ one A4 page of Japanese text.` : ''}
 Write naturally readable and attractive content.
 ${context ? `The following is existing text. Continue it naturally.` : ''}
-CRITICAL: Output ONLY the story/text content itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, or any meta-information about text length. The reader will see character counts separately in the UI.`
+CRITICAL: Output ONLY the story/text content itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, token counts, or any meta-information about text length. The reader will see character counts separately in the UI.`
         break
       case 'rewrite':
         systemPrompt = `You are an excellent editor.
@@ -636,12 +636,12 @@ NEVER include character counts, word counts, or any numerical information about 
         break
       case 'expand':
         systemPrompt = `You are an excellent writer.
-Expand the given text ${target_length ? `to approximately ${target_length} characters` : 'with more detail'}.
+Expand the given text ${target_length ? `to approximately ${target_length} Japanese characters (NOT tokens, NOT words - actual character count including hiragana, katakana, kanji, and punctuation)` : 'with more detail'}.
 Focus on:
 - Detailed descriptions
 - Rich emotional expressions
 - Concrete examples
-CRITICAL: Output ONLY the expanded text itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, or any meta-comments about the text length.`
+CRITICAL: Output ONLY the expanded text itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, token counts, or any meta-comments about the text length.`
         break
       case 'proofread':
         systemPrompt = `You are an excellent proofreader.
@@ -662,9 +662,9 @@ Do not change meaning or style.`
 Summarize the given text concisely.
 Focus on:
 - Not missing important points
-- ${target_length ? `Keeping it within ${target_length} characters` : 'About 1/3 of original length'}
+- ${target_length ? `Keeping it within ${target_length} Japanese characters (NOT tokens - actual character count)` : 'About 1/3 of original length'}
 - Making it readable
-CRITICAL: Output ONLY the summary text itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, or any meta-comments about the text length.`
+CRITICAL: Output ONLY the summary text itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, token counts, or any meta-comments about the text length.`
         break
       case 'translate':
         systemPrompt = `You are a professional translator.
@@ -719,7 +719,8 @@ NEVER include character counts or text length information in your response.`
         model: selectedModel,
         messages,
         temperature: 0.7,
-        max_tokens: target_length ? Math.min(target_length * 2, 4096) : 2048
+        // Japanese text uses ~2-3 tokens per character, so multiply by 3 to ensure enough tokens
+        max_tokens: target_length ? Math.min(target_length * 3, 8192) : 4096
       })
     })
     
