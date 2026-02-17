@@ -165,7 +165,23 @@
       // Import
       import: 'インポート',
       importFile: 'ファイルを選択',
-      importSupported: '対応形式: TXT, RTF, DOCX, DOC'
+      importSupported: '対応形式: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'ごみ箱',
+      restore: '復元',
+      permanentDelete: '完全に削除',
+      emptyTrash: 'ごみ箱を空にする',
+      daysRemaining: '日後に自動削除',
+      noTrashItems: 'ごみ箱は空です',
+      confirmEmptyTrash: 'ごみ箱を空にしますか？この操作は取り消せません。',
+      confirmPermanentDelete: '完全に削除しますか？この操作は取り消せません。',
+      movedToTrash: 'ごみ箱に移動しました',
+      restoredFromTrash: '復元しました',
+      items: '件',
+      trashInfo: 'ゴミ箱のアイテムは30日後に自動的に完全削除されます',
+      trashEmptied: 'ごみ箱を空にしました',
+      permanentlyDeleted: '完全に削除しました',
+      untitled: '無題'
     },
     en: {
       appName: 'DANTE',
@@ -328,7 +344,23 @@
       // Import
       import: 'Import',
       importFile: 'Select File',
-      importSupported: 'Supported: TXT, RTF, DOCX, DOC'
+      importSupported: 'Supported: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'Trash',
+      restore: 'Restore',
+      permanentDelete: 'Delete Permanently',
+      emptyTrash: 'Empty Trash',
+      daysRemaining: 'days until auto-delete',
+      noTrashItems: 'Trash is empty',
+      confirmEmptyTrash: 'Empty trash? This cannot be undone.',
+      confirmPermanentDelete: 'Delete permanently? This cannot be undone.',
+      movedToTrash: 'Moved to trash',
+      restoredFromTrash: 'Restored',
+      items: 'items',
+      trashInfo: 'Items in trash will be automatically deleted after 30 days',
+      trashEmptied: 'Trash emptied',
+      permanentlyDeleted: 'Permanently deleted',
+      untitled: 'Untitled'
     },
     zh: {
       appName: 'DANTE',
@@ -491,7 +523,23 @@
       // Import
       import: '导入',
       importFile: '选择文件',
-      importSupported: '支持格式: TXT, RTF, DOCX, DOC'
+      importSupported: '支持格式: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: '回收站',
+      restore: '恢复',
+      permanentDelete: '彻底删除',
+      emptyTrash: '清空回收站',
+      daysRemaining: '天后自动删除',
+      noTrashItems: '回收站为空',
+      confirmEmptyTrash: '清空回收站？此操作不可撤销。',
+      confirmPermanentDelete: '彻底删除？此操作不可撤销。',
+      movedToTrash: '已移至回收站',
+      restoredFromTrash: '已恢复',
+      items: '项',
+      trashInfo: '回收站中的项目将30天后自动删除',
+      trashEmptied: '已清空回收站',
+      permanentlyDeleted: '已彻底删除',
+      untitled: '无标题'
     },
     ko: {
       appName: 'DANTE',
@@ -654,7 +702,23 @@
       // Import
       import: '가져오기',
       importFile: '파일 선택',
-      importSupported: '지원 형식: TXT, RTF, DOCX, DOC'
+      importSupported: '지원 형식: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: '휴지통',
+      restore: '복원',
+      permanentDelete: '완전히 삭제',
+      emptyTrash: '휴지통 비우기',
+      daysRemaining: '일 후 자동 삭제',
+      noTrashItems: '휴지통이 비어 있습니다',
+      confirmEmptyTrash: '휴지통을 비우시겠습니까? 이 작업은 취소할 수 없습니다.',
+      confirmPermanentDelete: '완전히 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.',
+      movedToTrash: '휴지통으로 이동됨',
+      restoredFromTrash: '복원됨',
+      items: '개',
+      trashInfo: '휴지통의 항목은 30일 후 자동 삭제됩니다',
+      trashEmptied: '휴지통을 비웠습니다',
+      permanentlyDeleted: '영구 삭제됨',
+      untitled: '제목 없음'
     },
     it: {
       appName: 'DANTE',
@@ -818,7 +882,23 @@
       // Import
       import: 'Importa',
       importFile: 'Seleziona File',
-      importSupported: 'Supportati: TXT, RTF, DOCX, DOC'
+      importSupported: 'Supportati: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'Cestino',
+      restore: 'Ripristina',
+      permanentDelete: 'Elimina definitivamente',
+      emptyTrash: 'Svuota cestino',
+      daysRemaining: 'giorni alla cancellazione',
+      noTrashItems: 'Il cestino è vuoto',
+      confirmEmptyTrash: 'Svuotare il cestino? Non può essere annullato.',
+      confirmPermanentDelete: 'Eliminare definitivamente? Non può essere annullato.',
+      movedToTrash: 'Spostato nel cestino',
+      restoredFromTrash: 'Ripristinato',
+      items: 'elementi',
+      trashInfo: 'Gli elementi nel cestino verranno eliminati automaticamente dopo 30 giorni',
+      trashEmptied: 'Cestino svuotato',
+      permanentlyDeleted: 'Eliminato definitivamente',
+      untitled: 'Senza titolo'
     },
     hi: {
       appName: 'DANTE',
@@ -982,7 +1062,23 @@
       // Import
       import: 'आयात',
       importFile: 'फ़ाइल चुनें',
-      importSupported: 'समर्थित: TXT, RTF, DOCX, DOC'
+      importSupported: 'समर्थित: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'कूड़ा',
+      restore: 'पुनर्स्थापित',
+      permanentDelete: 'स्थायी रूप से हटाएं',
+      emptyTrash: 'कूड़ा खाली करें',
+      daysRemaining: 'दिन में स्वचालित हटाना',
+      noTrashItems: 'कूड़ा खाली है',
+      confirmEmptyTrash: 'कूड़ा खाली करें? यह वापस नहीं हो सकता।',
+      confirmPermanentDelete: 'स्थायी रूप से हटाएं? यह वापस नहीं हो सकता।',
+      movedToTrash: 'कूड़े में ले जाया गया',
+      restoredFromTrash: 'पुनर्स्थापित',
+      items: 'आइटम',
+      trashInfo: 'कूड़े में आइटम 30 दिनों के बाद स्वचालित रूप से हटा दिए जाएंगे',
+      trashEmptied: 'कूड़ा खाली हो गया',
+      permanentlyDeleted: 'स्थायी रूप से हटा दिया गया',
+      untitled: 'शीर्षकहीन'
     },
     es: {
       appName: 'DANTE', appSubtitle: 'Editor de Escritura Integrado con IA',
@@ -1045,7 +1141,23 @@
       // Import
       import: 'Importar',
       importFile: 'Seleccionar Archivo',
-      importSupported: 'Soportados: TXT, RTF, DOCX, DOC'
+      importSupported: 'Soportados: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'Papelera',
+      restore: 'Restaurar',
+      permanentDelete: 'Eliminar permanentemente',
+      emptyTrash: 'Vaciar papelera',
+      daysRemaining: 'días para eliminación',
+      noTrashItems: 'La papelera está vacía',
+      confirmEmptyTrash: '¿Vaciar papelera? No se puede deshacer.',
+      confirmPermanentDelete: '¿Eliminar permanentemente? No se puede deshacer.',
+      movedToTrash: 'Movido a la papelera',
+      restoredFromTrash: 'Restaurado',
+      items: 'elementos',
+      trashInfo: 'Los elementos de la papelera se eliminarán automáticamente después de 30 días',
+      trashEmptied: 'Papelera vaciada',
+      permanentlyDeleted: 'Eliminado permanentemente',
+      untitled: 'Sin título'
     },
     fr: {
       appName: 'DANTE', appSubtitle: 'Éditeur d\'Écriture Intégré IA',
@@ -1108,7 +1220,23 @@
       // Import
       import: 'Importer',
       importFile: 'Sélectionner un Fichier',
-      importSupported: 'Formats: TXT, RTF, DOCX, DOC'
+      importSupported: 'Formats: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'Corbeille',
+      restore: 'Restaurer',
+      permanentDelete: 'Supprimer définitivement',
+      emptyTrash: 'Vider la corbeille',
+      daysRemaining: 'jours avant suppression',
+      noTrashItems: 'La corbeille est vide',
+      confirmEmptyTrash: 'Vider la corbeille? Irréversible.',
+      confirmPermanentDelete: 'Supprimer définitivement? Irréversible.',
+      movedToTrash: 'Déplacé dans la corbeille',
+      restoredFromTrash: 'Restauré',
+      items: 'éléments',
+      trashInfo: 'Les éléments de la corbeille seront supprimés automatiquement après 30 jours',
+      trashEmptied: 'Corbeille vidée',
+      permanentlyDeleted: 'Supprimé définitivement',
+      untitled: 'Sans titre'
     },
     de: {
       appName: 'DANTE', appSubtitle: 'KI-integrierter Schreibeditor',
@@ -1171,7 +1299,23 @@
       // Import
       import: 'Importieren',
       importFile: 'Datei Auswählen',
-      importSupported: 'Unterstützt: TXT, RTF, DOCX, DOC'
+      importSupported: 'Unterstützt: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'Papierkorb',
+      restore: 'Wiederherstellen',
+      permanentDelete: 'Endgültig löschen',
+      emptyTrash: 'Papierkorb leeren',
+      daysRemaining: 'Tage bis zur Löschung',
+      noTrashItems: 'Der Papierkorb ist leer',
+      confirmEmptyTrash: 'Papierkorb leeren? Nicht rückgängig machbar.',
+      confirmPermanentDelete: 'Endgültig löschen? Nicht rückgängig machbar.',
+      movedToTrash: 'In den Papierkorb verschoben',
+      restoredFromTrash: 'Wiederhergestellt',
+      items: 'Elemente',
+      trashInfo: 'Elemente im Papierkorb werden nach 30 Tagen automatisch gelöscht',
+      trashEmptied: 'Papierkorb geleert',
+      permanentlyDeleted: 'Endgültig gelöscht',
+      untitled: 'Unbenannt'
     },
     pt: {
       appName: 'DANTE', appSubtitle: 'Editor de Escrita Integrado com IA',
@@ -1234,7 +1378,23 @@
       // Import
       import: 'Importar',
       importFile: 'Selecionar Arquivo',
-      importSupported: 'Suportados: TXT, RTF, DOCX, DOC'
+      importSupported: 'Suportados: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'Lixeira',
+      restore: 'Restaurar',
+      permanentDelete: 'Excluir permanentemente',
+      emptyTrash: 'Esvaziar lixeira',
+      daysRemaining: 'dias para exclusão',
+      noTrashItems: 'A lixeira está vazia',
+      confirmEmptyTrash: 'Esvaziar lixeira? Não pode ser desfeito.',
+      confirmPermanentDelete: 'Excluir permanentemente? Não pode ser desfeito.',
+      movedToTrash: 'Movido para lixeira',
+      restoredFromTrash: 'Restaurado',
+      items: 'itens',
+      trashInfo: 'Os itens na lixeira serão excluídos automaticamente após 30 dias',
+      trashEmptied: 'Lixeira esvaziada',
+      permanentlyDeleted: 'Excluído permanentemente',
+      untitled: 'Sem título'
     },
     ru: {
       appName: 'DANTE', appSubtitle: 'ИИ-интегрированный текстовый редактор',
@@ -1297,7 +1457,23 @@
       // Import
       import: 'Импорт',
       importFile: 'Выбрать файл',
-      importSupported: 'Поддерживаются: TXT, RTF, DOCX, DOC'
+      importSupported: 'Поддерживаются: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'Корзина',
+      restore: 'Восстановить',
+      permanentDelete: 'Удалить навсегда',
+      emptyTrash: 'Очистить корзину',
+      daysRemaining: 'дней до удаления',
+      noTrashItems: 'Корзина пуста',
+      confirmEmptyTrash: 'Очистить корзину? Нельзя отменить.',
+      confirmPermanentDelete: 'Удалить навсегда? Нельзя отменить.',
+      movedToTrash: 'Перемещено в корзину',
+      restoredFromTrash: 'Восстановлено',
+      items: 'элементов',
+      trashInfo: 'Элементы в корзине будут автоматически удалены через 30 дней',
+      trashEmptied: 'Корзина очищена',
+      permanentlyDeleted: 'Навсегда удалено',
+      untitled: 'Без названия'
     },
     ar: {
       appName: 'DANTE', appSubtitle: 'محرر كتابة متكامل بالذكاء الاصطناعي',
@@ -1360,7 +1536,23 @@
       // Import
       import: 'استيراد',
       importFile: 'اختر ملف',
-      importSupported: 'المدعومة: TXT, RTF, DOCX, DOC'
+      importSupported: 'المدعومة: TXT, RTF, DOCX, DOC',
+      // Trash
+      trash: 'سلة المهملات',
+      restore: 'استعادة',
+      permanentDelete: 'حذف نهائي',
+      emptyTrash: 'تفريغ السلة',
+      daysRemaining: 'يوم للحذف التلقائي',
+      noTrashItems: 'السلة فارغة',
+      confirmEmptyTrash: 'تفريغ السلة؟ لا يمكن التراجع.',
+      confirmPermanentDelete: 'حذف نهائي؟ لا يمكن التراجع.',
+      movedToTrash: 'نقل إلى السلة',
+      restoredFromTrash: 'تمت الاستعادة',
+      items: 'عناصر',
+      trashInfo: 'سيتم حذف العناصر في السلة تلقائيًا بعد 30 يومًا',
+      trashEmptied: 'تم تفريغ السلة',
+      permanentlyDeleted: 'تم الحذف نهائيًا',
+      untitled: 'بدون عنوان'
     }
   };
 
@@ -1749,7 +1941,7 @@
     state.projects = data.projects;
   }
 
-  async function createProject(title, genre, customGenre, type, content = '') {
+  async function createProject(title, genre, customGenre, type, content = '', concept = '', folderId = null) {
     const data = await api('/projects', {
       method: 'POST',
       body: JSON.stringify({ 
@@ -1757,7 +1949,9 @@
         genre, 
         custom_genre: customGenre,
         project_type: type, 
-        content 
+        content,
+        concept,
+        folder_id: folderId
       })
     });
     state.currentProject = data.project;
@@ -2406,6 +2600,10 @@
           
           <!-- Bottom Actions -->
           <div class="p-4 border-t border-gray-200 space-y-2">
+            <button onclick="showTrashModal()" class="w-full py-2 px-4 text-left text-gray-600 hover:bg-gray-100 rounded-lg transition flex items-center gap-2">
+              <i class="fas fa-trash-alt"></i> ${t('trash')}
+              <span id="trash-count" class="ml-auto text-xs bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded"></span>
+            </button>
             <button onclick="showUpgradeModal()" class="w-full py-2 px-4 text-left text-yellow-600 hover:bg-yellow-50 rounded-lg transition flex items-center gap-2">
               <i class="fas fa-crown"></i> ${t('upgrade')}
             </button>
@@ -2922,7 +3120,11 @@
     }
     
     try {
-      await createProject(title, genre, null, type);
+      // Create project with current folder if one is selected
+      // When selectedFolder is 'null' (string for uncategorized), or actual null (all projects view), pass null
+      // When selectedFolder is an actual folder ID, pass it
+      const folderId = (state.selectedFolder && state.selectedFolder !== 'null') ? state.selectedFolder : null;
+      await createProject(title, genre, null, type, null, null, folderId);
       closeModal();
       render();
       showToast(t('saved'), 'success');
@@ -5139,6 +5341,169 @@ p { text-indent: 1em; margin: 0.5em 0; }
   window.deleteAccount = deleteAccount;
   window.toggleTheme = toggleTheme;
   window.showUpgradeModal = showUpgradeModal;
+
+  // ==================== TRASH FUNCTIONS ====================
+
+  // Load trash items
+  async function loadTrash() {
+    try {
+      const res = await fetch('/api/trash', { credentials: 'include' });
+      if (!res.ok) throw new Error('Failed to load trash');
+      const data = await res.json();
+      return data.projects || [];
+    } catch (e) {
+      console.error('Load trash error:', e);
+      return [];
+    }
+  }
+
+  // Update trash count in sidebar
+  async function updateTrashCount() {
+    const trashItems = await loadTrash();
+    const countEl = document.getElementById('trash-count');
+    if (countEl) {
+      if (trashItems.length > 0) {
+        countEl.textContent = trashItems.length;
+        countEl.style.display = '';
+      } else {
+        countEl.style.display = 'none';
+      }
+    }
+  }
+
+  // Show trash modal
+  window.showTrashModal = async function() {
+    const trashItems = await loadTrash();
+    const modals = document.getElementById('modals');
+    
+    const formatDate = (dateStr) => {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      const now = new Date();
+      const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+      const remaining = 30 - diffDays;
+      return `${remaining}${t('daysRemaining')}`;
+    };
+
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onclick="if(event.target === this) closeModal()">
+        <div class="bg-white rounded-xl w-full max-w-2xl max-h-[80vh] flex flex-col">
+          <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-trash-alt text-gray-400"></i>
+              <h2 class="text-lg font-semibold">${t('trash')}</h2>
+              <span class="text-sm text-gray-500">${trashItems.length} ${t('items')}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              ${trashItems.length > 0 ? `
+              <button onclick="emptyTrashConfirm()" class="px-3 py-1.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition">
+                <i class="fas fa-trash mr-1"></i> ${t('emptyTrash')}
+              </button>
+              ` : ''}
+              <button onclick="closeModal()" class="p-2 text-gray-400 hover:text-gray-600">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="flex-1 overflow-y-auto p-4">
+            ${trashItems.length === 0 ? `
+              <div class="text-center py-12 text-gray-400">
+                <i class="fas fa-trash-alt text-4xl mb-4"></i>
+                <p>${t('noTrashItems')}</p>
+              </div>
+            ` : `
+              <div class="space-y-2">
+                ${trashItems.map(p => `
+                  <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <div class="flex-1 min-w-0">
+                      <h4 class="font-medium text-gray-800 truncate">${escapeHtml(p.title || t('untitled'))}</h4>
+                      <div class="flex items-center gap-2 text-xs text-gray-500 mt-1">
+                        <span>${t(p.project_type) || p.project_type}</span>
+                        <span>•</span>
+                        <span class="text-orange-600">${formatDate(p.deleted_at)}</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <button onclick="restoreFromTrash('${p.id}')" class="p-2 text-green-600 hover:bg-green-50 rounded-lg transition" title="${t('restore')}">
+                        <i class="fas fa-undo"></i>
+                      </button>
+                      <button onclick="permanentlyDelete('${p.id}')" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition" title="${t('permanentlyDelete')}">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+          <div class="p-4 border-t border-gray-200 text-sm text-gray-500">
+            <i class="fas fa-info-circle mr-1"></i> ${t('trashInfo')}
+          </div>
+        </div>
+      </div>
+    `;
+  };
+
+  // Restore from trash
+  window.restoreFromTrash = async function(id) {
+    try {
+      const res = await fetch(`/api/trash/${id}/restore`, {
+        method: 'POST',
+        credentials: 'include'
+      });
+      if (!res.ok) throw new Error('Failed to restore');
+      await loadProjects();
+      await updateTrashCount();
+      showToast(t('restoredFromTrash'), 'success');
+      showTrashModal(); // Refresh modal
+    } catch (e) {
+      console.error('Restore error:', e);
+      showToast(t('error'), 'error');
+    }
+  };
+
+  // Confirm empty trash
+  window.emptyTrashConfirm = function() {
+    if (confirm(t('confirmEmptyTrash'))) {
+      emptyTrash();
+    }
+  };
+
+  // Empty trash
+  async function emptyTrash() {
+    try {
+      const res = await fetch('/api/trash', {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+      if (!res.ok) throw new Error('Failed to empty trash');
+      await updateTrashCount();
+      showToast(t('trashEmptied'), 'success');
+      showTrashModal(); // Refresh modal
+    } catch (e) {
+      console.error('Empty trash error:', e);
+      showToast(t('error'), 'error');
+    }
+  }
+
+  // Permanently delete
+  window.permanentlyDelete = async function(id) {
+    if (!confirm(t('confirmPermanentDelete'))) return;
+    
+    try {
+      const res = await fetch(`/api/trash/${id}`, {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+      if (!res.ok) throw new Error('Failed to delete');
+      await updateTrashCount();
+      showToast(t('permanentlyDeleted'), 'success');
+      showTrashModal(); // Refresh modal
+    } catch (e) {
+      console.error('Permanent delete error:', e);
+      showToast(t('error'), 'error');
+    }
+  };
 
   // ==================== RENDER ====================
 

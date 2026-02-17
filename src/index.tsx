@@ -771,7 +771,8 @@ app.get('/api/projects', async (c) => {
   
   const { type } = c.req.query()
   
-  let query = 'SELECT * FROM projects WHERE user_id = ?'
+  // Only get non-deleted projects
+  let query = 'SELECT * FROM projects WHERE user_id = ? AND deleted_at IS NULL'
   const params: any[] = [user.id]
   
   if (type) {
@@ -812,7 +813,7 @@ app.post('/api/projects', async (c) => {
     return c.json({ error: 'Authentication required' }, 401)
   }
   
-  const { title, genre, custom_genre, project_type, content, concept, plot_content } = await c.req.json()
+  const { title, genre, custom_genre, project_type, content, concept, plot_content, folder_id } = await c.req.json()
   
   if (!title || !genre || !project_type) {
     return c.json({ error: 'Title, genre, and project type are required' }, 400)
@@ -821,8 +822,8 @@ app.post('/api/projects', async (c) => {
   const wordCount = (content || '').length
   
   const result = await c.env.DB.prepare(
-    'INSERT INTO projects (user_id, title, genre, custom_genre, project_type, content, word_count, concept, plot_content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
-  ).bind(user.id, title, genre, custom_genre || null, project_type, content || '', wordCount, concept || '', plot_content || '').run()
+    'INSERT INTO projects (user_id, title, genre, custom_genre, project_type, content, word_count, concept, plot_content, folder_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+  ).bind(user.id, title, genre, custom_genre || null, project_type, content || '', wordCount, concept || '', plot_content || '', folder_id || null).run()
   
   return c.json({ 
     success: true, 
@@ -867,7 +868,7 @@ app.put('/api/projects/:id', async (c) => {
   return c.json({ success: true, word_count: wordCount })
 })
 
-// Delete project
+// Delete project (move to trash)
 app.delete('/api/projects/:id', async (c) => {
   const user = c.get('user')
   if (!user) {
@@ -876,9 +877,76 @@ app.delete('/api/projects/:id', async (c) => {
   
   const id = c.req.param('id')
   
+  // Soft delete: set deleted_at timestamp
   await c.env.DB.prepare(
-    'DELETE FROM projects WHERE id = ? AND user_id = ?'
+    'UPDATE projects SET deleted_at = datetime("now") WHERE id = ? AND user_id = ?'
   ).bind(id, user.id).run()
+  
+  return c.json({ success: true })
+})
+
+// ==================== TRASH ROUTES ====================
+
+// Get trash (deleted projects)
+app.get('/api/trash', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  // Get projects deleted within last 30 days
+  const projects = await c.env.DB.prepare(
+    `SELECT * FROM projects 
+     WHERE user_id = ? AND deleted_at IS NOT NULL 
+     AND deleted_at > datetime("now", "-30 days")
+     ORDER BY deleted_at DESC`
+  ).bind(user.id).all()
+  
+  return c.json({ projects: projects.results })
+})
+
+// Restore project from trash
+app.post('/api/trash/:id/restore', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const id = c.req.param('id')
+  
+  await c.env.DB.prepare(
+    'UPDATE projects SET deleted_at = NULL WHERE id = ? AND user_id = ?'
+  ).bind(id, user.id).run()
+  
+  return c.json({ success: true })
+})
+
+// Permanently delete project
+app.delete('/api/trash/:id', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const id = c.req.param('id')
+  
+  await c.env.DB.prepare(
+    'DELETE FROM projects WHERE id = ? AND user_id = ? AND deleted_at IS NOT NULL'
+  ).bind(id, user.id).run()
+  
+  return c.json({ success: true })
+})
+
+// Empty trash (delete all)
+app.delete('/api/trash', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  await c.env.DB.prepare(
+    'DELETE FROM projects WHERE user_id = ? AND deleted_at IS NOT NULL'
+  ).bind(user.id).run()
   
   return c.json({ success: true })
 })
