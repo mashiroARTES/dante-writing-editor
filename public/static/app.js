@@ -181,7 +181,19 @@
       trashInfo: 'ゴミ箱のアイテムは30日後に自動的に完全削除されます',
       trashEmptied: 'ごみ箱を空にしました',
       permanentlyDeleted: '完全に削除しました',
-      untitled: '無題'
+      untitled: '無題',
+      // Mashiro AI Consultant
+      mashiroConsultant: '執筆相談',
+      mashiroGreeting: 'こんにちは！マシロです。執筆のお手伝いをさせてください。何でもお気軽にご相談くださいね。',
+      mashiroPlaceholder: 'マシロさんに相談する...',
+      mashiroSend: '送信',
+      mashiroVoiceInput: '音声入力',
+      mashiroListening: '聞いています...',
+      // AI Options Modal
+      aiOptionsTitle: 'AI生成オプション',
+      additionalInstructions: '追加の指示（任意）',
+      additionalInstructionsPlaceholder: '例: もっと詳細に、感情豊かに、会話を増やして...',
+      executeGenerate: '生成実行'
     },
     en: {
       appName: 'DANTE',
@@ -360,7 +372,19 @@
       trashInfo: 'Items in trash will be automatically deleted after 30 days',
       trashEmptied: 'Trash emptied',
       permanentlyDeleted: 'Permanently deleted',
-      untitled: 'Untitled'
+      untitled: 'Untitled',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'Writing Consultant',
+      mashiroGreeting: 'Hello! I\'m Mashiro. Let me help you with your writing. Feel free to ask me anything!',
+      mashiroPlaceholder: 'Ask Mashiro...',
+      mashiroSend: 'Send',
+      mashiroVoiceInput: 'Voice Input',
+      mashiroListening: 'Listening...',
+      // AI Options Modal
+      aiOptionsTitle: 'AI Generation Options',
+      additionalInstructions: 'Additional Instructions (optional)',
+      additionalInstructionsPlaceholder: 'e.g., More detail, more emotional, add more dialogue...',
+      executeGenerate: 'Generate'
     },
     zh: {
       appName: 'DANTE',
@@ -1580,7 +1604,10 @@
     selectedFolder: null,
     rateLimitCount: 0,
     rateLimitResetTime: 0,
-    verticalWriting: false  // Vertical writing mode
+    verticalWriting: false,  // Vertical writing mode
+    // Mashiro consultant
+    mashiroMessages: [],
+    mashiroTyping: false
   };
 
   // ==================== TEMPLATES ====================
@@ -2637,6 +2664,9 @@
                 <button onclick="setMode('writing')" class="px-3 py-2 sm:px-4 rounded-lg transition ${state.currentMode === 'writing' ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:bg-gray-100'}" title="${t('writing')}">
                   <i class="fas fa-pen"></i><span class="hidden sm:inline ml-2">${t('writing')}</span>
                 </button>
+                <button onclick="setMode('mashiro')" class="px-3 py-2 sm:px-4 rounded-lg transition ${state.currentMode === 'mashiro' ? 'bg-pink-100 text-pink-700' : 'text-gray-600 hover:bg-gray-100'}" title="${t('mashiroConsultant')}">
+                  <i class="fas fa-comments"></i><span class="hidden sm:inline ml-2">${t('mashiroConsultant')}</span>
+                </button>
               </div>
             </div>
             <div class="flex items-center gap-1 sm:gap-2">
@@ -2762,6 +2792,7 @@
     switch (state.currentMode) {
       case 'idea': return renderIdeaMode();
       case 'plot': return renderPlotMode();
+      case 'mashiro': return renderMashiroMode();
       default: return renderWritingMode();
     }
   }
@@ -3040,6 +3071,87 @@
                 <i class="fas fa-magic mr-2"></i>${t('generate')}
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ==================== MASHIRO CONSULTANT MODE ====================
+
+  function renderMashiroMode() {
+    return `
+      <div class="max-w-3xl mx-auto h-full flex flex-col">
+        <div class="bg-white rounded-xl shadow-lg flex-1 flex flex-col overflow-hidden">
+          <!-- Mashiro Header -->
+          <div class="bg-gradient-to-r from-pink-500 to-purple-500 p-4 flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-lg">
+              <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="text-white">
+              <h2 class="text-xl font-bold">マシロさん</h2>
+              <p class="text-sm opacity-90">執筆相談AIアシスタント</p>
+            </div>
+          </div>
+          
+          <!-- Chat Messages -->
+          <div id="mashiro-chat" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+            ${state.mashiroMessages.length === 0 ? `
+              <div class="flex gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm max-w-[80%]">
+                  <p class="text-gray-800">${t('mashiroGreeting')}</p>
+                </div>
+              </div>
+            ` : state.mashiroMessages.map(msg => `
+              <div class="flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}">
+                ${msg.role === 'assistant' ? `
+                  <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                    <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
+                  </div>
+                ` : `
+                  <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-user text-white"></i>
+                  </div>
+                `}
+                <div class="${msg.role === 'user' ? 'bg-yellow-500 text-white rounded-2xl rounded-tr-none' : 'bg-white rounded-2xl rounded-tl-none shadow-sm'} p-4 max-w-[80%]">
+                  <p class="${msg.role === 'user' ? 'text-white' : 'text-gray-800'}" style="white-space: pre-wrap;">${escapeHtml(msg.content)}</p>
+                </div>
+              </div>
+            `).join('')}
+            ${state.mashiroTyping ? `
+              <div class="flex gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm">
+                  <div class="flex gap-1">
+                    <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
+                    <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s;"></span>
+                    <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s;"></span>
+                  </div>
+                </div>
+              </div>
+            ` : ''}
+          </div>
+          
+          <!-- Input Area -->
+          <div class="p-4 border-t border-gray-200 bg-white">
+            <div class="flex gap-2">
+              <button onclick="toggleVoiceInput()" id="voice-btn" class="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition" title="${t('mashiroVoiceInput')}">
+                <i class="fas fa-microphone text-gray-600"></i>
+              </button>
+              <input type="text" id="mashiro-input" 
+                class="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-pink-500" 
+                placeholder="${t('mashiroPlaceholder')}"
+                onkeypress="if(event.key === 'Enter') sendToMashiro()">
+              <button onclick="sendToMashiro()" class="p-3 rounded-full bg-pink-500 hover:bg-pink-600 text-white transition">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+            <p id="voice-status" class="text-xs text-gray-500 mt-2 hidden text-center"></p>
           </div>
         </div>
       </div>
@@ -3574,69 +3686,134 @@
   };
 
   window.aiContinue = async function() {
+    showAiOptionsModal('continue');
+  };
+
+  // Show options modal for AI generation
+  window.showAiOptionsModal = function(type) {
     const editor = document.getElementById('editor-content');
-    const content = editor.value;
-    const targetLength = document.getElementById('target-length')?.value;
+    const content = editor?.value || '';
+    const start = editor?.selectionStart || 0;
+    const end = editor?.selectionEnd || 0;
+    const selected = editor?.value.substring(start, end) || '';
     
-    if (!content.trim()) {
+    // Check if text is needed
+    if ((type === 'rewrite' || type === 'expand') && !selected.trim()) {
+      showToast(t('selectText'), 'warning');
+      return;
+    }
+    if (type === 'continue' && !content.trim()) {
       showToast(t('enterPrompt'), 'warning');
       return;
     }
     
+    const modals = document.getElementById('modals');
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-xl max-w-md w-full p-6" onclick="event.stopPropagation()">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">
+            <i class="fas ${type === 'continue' ? 'fa-arrow-right text-green-500' : type === 'rewrite' ? 'fa-sync text-blue-500' : 'fa-expand-arrows-alt text-purple-500'} mr-2"></i>
+            ${t(type === 'continue' ? 'continue' : type === 'rewrite' ? 'rewrite' : 'expand')}
+          </h3>
+          
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('additionalInstructions')}</label>
+              <textarea id="ai-additional-instructions" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="${t('additionalInstructionsPlaceholder')}"></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('targetLength')}</label>
+              <input type="number" id="ai-target-length" placeholder="${t('targetLength')}" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+              <p class="text-xs text-gray-500 mt-1">${t('targetLengthNote')}</p>
+            </div>
+          </div>
+          
+          <div class="mt-6 flex gap-3">
+            <button onclick="closeModal()" class="flex-1 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">${t('cancel')}</button>
+            <button onclick="executeAiGeneration('${type}')" class="flex-1 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">${t('executeGenerate')}</button>
+          </div>
+        </div>
+      </div>
+    `;
+  };
+
+  // Execute AI generation with options
+  window.executeAiGeneration = async function(type) {
+    const additionalInstructions = document.getElementById('ai-additional-instructions')?.value || '';
+    const targetLength = document.getElementById('ai-target-length')?.value;
+    
+    closeModal();
+    
+    if (type === 'continue') {
+      await aiContinueWithOptions(additionalInstructions, targetLength);
+    } else if (type === 'rewrite') {
+      await aiRewriteWithOptions(additionalInstructions, targetLength);
+    } else if (type === 'expand') {
+      await aiExpandWithOptions(additionalInstructions, targetLength);
+    }
+  };
+
+  // AI Continue with options
+  async function aiContinueWithOptions(additionalInstructions, targetLength) {
+    const editor = document.getElementById('editor-content');
+    const content = editor.value;
+    
     try {
       const projectContext = getProjectContext();
       const fullContext = projectContext + content;
-      const result = await generate('この文章の続きを自然に書いてください。', 'continuation', targetLength ? parseInt(targetLength) : null, fullContext);
+      const prompt = 'この文章の続きを自然に書いてください。' + (additionalInstructions ? `\n追加指示: ${additionalInstructions}` : '');
+      const result = await generate(prompt, 'continuation', targetLength ? parseInt(targetLength) : null, fullContext);
       editor.value = content + '\n\n' + result;
       updateCharCount();
       showToast(t('generate') + ' OK', 'success');
     } catch (e) {
       showToast(e.message, 'error');
     }
-  };
+  }
 
-  window.aiRewrite = async function() {
+  // AI Rewrite with options
+  async function aiRewriteWithOptions(additionalInstructions, targetLength) {
     const editor = document.getElementById('editor-content');
     const start = editor.selectionStart;
     const end = editor.selectionEnd;
     const selected = editor.value.substring(start, end);
     
-    if (!selected.trim()) {
-      showToast(t('selectText'), 'warning');
-      return;
-    }
-    
     try {
-      const result = await generate(selected, 'rewrite');
+      const prompt = selected + (additionalInstructions ? `\n追加指示: ${additionalInstructions}` : '');
+      const result = await generate(prompt, 'rewrite', targetLength ? parseInt(targetLength) : null);
       editor.value = editor.value.substring(0, start) + result + editor.value.substring(end);
       updateCharCount();
       showToast(t('generate') + ' OK', 'success');
     } catch (e) {
       showToast(e.message, 'error');
     }
-  };
+  }
 
-  window.aiExpand = async function() {
+  // AI Expand with options
+  async function aiExpandWithOptions(additionalInstructions, targetLength) {
     const editor = document.getElementById('editor-content');
     const start = editor.selectionStart;
     const end = editor.selectionEnd;
     const selected = editor.value.substring(start, end);
-    const targetLength = document.getElementById('target-length')?.value;
-    
-    if (!selected.trim()) {
-      showToast(t('selectText'), 'warning');
-      return;
-    }
     
     try {
       const projectContext = getProjectContext();
-      const result = await generate(selected, 'expand', targetLength ? parseInt(targetLength) : null, projectContext || null);
+      const prompt = selected + (additionalInstructions ? `\n追加指示: ${additionalInstructions}` : '');
+      const result = await generate(prompt, 'expand', targetLength ? parseInt(targetLength) : null, projectContext || null);
       editor.value = editor.value.substring(0, start) + result + editor.value.substring(end);
       updateCharCount();
       showToast(t('generate') + ' OK', 'success');
     } catch (e) {
       showToast(e.message, 'error');
     }
+  }
+
+  window.aiRewrite = async function() {
+    showAiOptionsModal('rewrite');
+  };
+
+  window.aiExpand = async function() {
+    showAiOptionsModal('expand');
   };
 
   window.aiProofread = async function() {
@@ -5370,6 +5547,119 @@ p { text-indent: 1em; margin: 0.5em 0; }
       }
     }
   }
+
+  // ==================== MASHIRO CONSULTANT FUNCTIONS ====================
+
+  window.sendToMashiro = async function() {
+    const input = document.getElementById('mashiro-input');
+    const message = input.value.trim();
+    if (!message) return;
+    
+    // Add user message
+    state.mashiroMessages.push({ role: 'user', content: message });
+    input.value = '';
+    state.mashiroTyping = true;
+    render();
+    
+    // Scroll to bottom
+    setTimeout(() => {
+      const chat = document.getElementById('mashiro-chat');
+      if (chat) chat.scrollTop = chat.scrollHeight;
+    }, 100);
+    
+    try {
+      const res = await fetch('/api/mashiro/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ 
+          message,
+          history: state.mashiroMessages.slice(-10) // Last 10 messages for context
+        })
+      });
+      
+      if (!res.ok) throw new Error('Failed to get response');
+      const data = await res.json();
+      
+      state.mashiroMessages.push({ role: 'assistant', content: data.response });
+    } catch (e) {
+      state.mashiroMessages.push({ role: 'assistant', content: 'すみません、エラーが発生しました。もう一度お試しください。' });
+    }
+    
+    state.mashiroTyping = false;
+    render();
+    
+    // Scroll to bottom
+    setTimeout(() => {
+      const chat = document.getElementById('mashiro-chat');
+      if (chat) chat.scrollTop = chat.scrollHeight;
+    }, 100);
+  };
+
+  // Voice input for Mashiro
+  let recognition = null;
+  window.toggleVoiceInput = function() {
+    const btn = document.getElementById('voice-btn');
+    const status = document.getElementById('voice-status');
+    
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      showToast('音声入力はこのブラウザでサポートされていません', 'warning');
+      return;
+    }
+    
+    if (recognition && recognition.running) {
+      recognition.stop();
+      btn.classList.remove('bg-red-500', 'text-white');
+      btn.classList.add('bg-gray-100');
+      status.classList.add('hidden');
+      return;
+    }
+    
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = state.language === 'ja' ? 'ja-JP' : 'en-US';
+    recognition.interimResults = true;
+    recognition.continuous = false;
+    
+    recognition.onstart = function() {
+      btn.classList.add('bg-red-500', 'text-white');
+      btn.classList.remove('bg-gray-100');
+      status.textContent = t('mashiroListening');
+      status.classList.remove('hidden');
+    };
+    
+    recognition.onresult = function(event) {
+      const input = document.getElementById('mashiro-input');
+      let finalTranscript = '';
+      
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) {
+          finalTranscript += event.results[i][0].transcript;
+        }
+      }
+      
+      if (finalTranscript) {
+        input.value = finalTranscript;
+      }
+    };
+    
+    recognition.onend = function() {
+      btn.classList.remove('bg-red-500', 'text-white');
+      btn.classList.add('bg-gray-100');
+      status.classList.add('hidden');
+      recognition.running = false;
+    };
+    
+    recognition.onerror = function(event) {
+      console.error('Speech recognition error:', event.error);
+      btn.classList.remove('bg-red-500', 'text-white');
+      btn.classList.add('bg-gray-100');
+      status.classList.add('hidden');
+    };
+    
+    recognition.running = true;
+    recognition.start();
+  };
 
   // Show trash modal
   window.showTrashModal = async function() {

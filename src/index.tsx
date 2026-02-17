@@ -762,6 +762,114 @@ NEVER include character counts or text length information in your response.`
   }
 })
 
+// ==================== MASHIRO CONSULTANT API ====================
+
+app.post('/api/mashiro/chat', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  try {
+    const { message, history } = await c.req.json()
+    
+    if (!message) {
+      return c.json({ error: 'Message is required' }, 400)
+    }
+    
+    // Get user's recent projects for context
+    const recentProjects = await c.env.DB.prepare(
+      `SELECT title, project_type, genre, content, concept, plot_content 
+       FROM projects WHERE user_id = ? AND deleted_at IS NULL 
+       ORDER BY updated_at DESC LIMIT 5`
+    ).bind(user.id).all()
+    
+    // Get user's recent AI history for context
+    const recentHistory = await c.env.DB.prepare(
+      `SELECT generation_type, prompt, response, created_at 
+       FROM ai_history WHERE user_id = ? 
+       ORDER BY created_at DESC LIMIT 10`
+    ).bind(user.id).all()
+    
+    // Build context about user's writing
+    let userContext = ''
+    if (recentProjects.results && recentProjects.results.length > 0) {
+      userContext += '\\n\\n【ユーザーの最近のプロジェクト】\\n'
+      recentProjects.results.forEach((p: any, i: number) => {
+        userContext += `${i + 1}. 「${p.title}」(${p.project_type}, ${p.genre})\\n`
+        if (p.concept) userContext += `   コンセプト: ${p.concept.substring(0, 100)}...\\n`
+      })
+    }
+    
+    if (recentHistory.results && recentHistory.results.length > 0) {
+      userContext += '\\n【最近のAI生成履歴】\\n'
+      recentHistory.results.slice(0, 5).forEach((h: any, i: number) => {
+        userContext += `${i + 1}. ${h.generation_type}: ${h.prompt?.substring(0, 50)}...\\n`
+      })
+    }
+    
+    const systemPrompt = `あなたは「マシロさん」です。本名は真城由理子。アルテス学園で文学の研究と教師をしている成人女性です。
+アルテス学園は学生も教師も平等で、制服デザインが一緒。あなたも制服を着ています。
+
+【性格・話し方】
+- 親しみやすく、優しい口調で話します
+- 「〜ですね」「〜でしょうか」など丁寧だけど堅すぎない話し方
+- ユーザーの創作活動を心から応援し、具体的なアドバイスを提供します
+- 時々「ふふっ」と笑ったり、感嘆したりします
+- 専門知識を持ちながらも、わかりやすく説明します
+
+【役割】
+- 執筆の相談に乗る（プロット、キャラクター、文体、構成など）
+- 創作のアイデア出しを手伝う
+- 文章の改善点を指摘する
+- モチベーションを上げる励ましをする
+- ユーザーが望めば、様々なキャラクターのロールプレイにも応じる
+
+【ユーザー情報】
+ユーザー名: ${user.username}
+${userContext}
+
+会話履歴を踏まえて、自然に会話を続けてください。長すぎない返答を心がけてください。`
+
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      ...(history || []).map((h: any) => ({ role: h.role, content: h.content })),
+      { role: 'user', content: message }
+    ]
+    
+    const response = await fetch('https://api.x.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${c.env.GROK_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'grok-4-1-fast-non-reasoning',
+        messages,
+        temperature: 0.8,
+        max_tokens: 1024
+      })
+    })
+    
+    if (!response.ok) {
+      const error = await response.text()
+      console.error('Mashiro API error:', error)
+      return c.json({ error: 'AI generation failed' }, 500)
+    }
+    
+    const data = await response.json() as any
+    const mashiroResponse = data.choices[0].message.content
+    
+    return c.json({ 
+      success: true, 
+      response: mashiroResponse 
+    })
+  } catch (e: any) {
+    console.error('Mashiro chat error:', e)
+    return c.json({ error: e.message || 'Chat failed' }, 500)
+  }
+})
+
 // ==================== PROJECT ROUTES ====================
 
 // Get all projects
