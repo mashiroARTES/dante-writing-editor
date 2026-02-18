@@ -4,7 +4,7 @@
 
 ## 🌐 アクセスURL
 
-- **本番環境**: https://project-fb113820.pages.dev/
+- **本番環境**: https://dante.ratio-lab.com/
 - **GitHub**: https://github.com/mashiroARTES/dante-writing-editor
 
 ## 🌍 対応言語（12言語）
