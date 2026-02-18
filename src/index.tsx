@@ -770,6 +770,18 @@ app.post('/api/mashiro/chat', async (c) => {
     return c.json({ error: 'Authentication required' }, 401)
   }
   
+  // Check usage limit
+  if (user.total_chars_used >= user.total_chars_limit) {
+    return c.json({ 
+      error: 'limit_exceeded',
+      message: 'Character limit exceeded. Please upgrade your plan.',
+      usage: {
+        used: user.total_chars_used,
+        limit: user.total_chars_limit
+      }
+    }, 403)
+  }
+  
   try {
     const { message, history } = await c.req.json()
     
@@ -859,10 +871,21 @@ ${userContext}
     
     const data = await response.json() as any
     const mashiroResponse = data.choices[0].message.content
+    const charsGenerated = mashiroResponse.length
+    
+    // Update user's usage (consume characters for Mashiro chat too)
+    await c.env.DB.prepare(
+      'UPDATE users SET total_chars_used = total_chars_used + ? WHERE id = ?'
+    ).bind(charsGenerated, user.id).run()
     
     return c.json({ 
       success: true, 
-      response: mashiroResponse 
+      response: mashiroResponse,
+      chars_generated: charsGenerated,
+      user_usage: {
+        used: user.total_chars_used + charsGenerated,
+        limit: user.total_chars_limit
+      }
     })
   } catch (e: any) {
     console.error('Mashiro chat error:', e)

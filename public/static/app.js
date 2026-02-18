@@ -5580,10 +5580,26 @@ p { text-indent: 1em; margin: 0.5em 0; }
         })
       });
       
-      if (!res.ok) throw new Error('Failed to get response');
       const data = await res.json();
       
+      // Check for limit exceeded error
+      if (data.error === 'limit_exceeded') {
+        state.mashiroMessages.push({ role: 'assistant', content: 'すみません、文字数の上限に達しているようです。プランをアップグレードしてください。' });
+        state.mashiroTyping = false;
+        render();
+        showToast(t('upgrade'), 'warning');
+        return;
+      }
+      
+      if (!res.ok) throw new Error(data.error || 'Failed to get response');
+      
       state.mashiroMessages.push({ role: 'assistant', content: data.response });
+      
+      // Update usage display
+      if (data.user_usage) {
+        state.user.total_chars_used = data.user_usage.used;
+        updateUsageDisplay();
+      }
     } catch (e) {
       state.mashiroMessages.push({ role: 'assistant', content: 'すみません、エラーが発生しました。もう一度お試しください。' });
     }
