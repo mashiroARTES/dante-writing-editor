@@ -2696,10 +2696,12 @@
         </main>
       </div>
       
-      <!-- Mobile AI Button -->
+      <!-- Mobile AI Button (only show in writing mode) -->
+      ${state.currentMode === 'writing' ? `
       <button onclick="showMobileAIPanel()" class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-yellow-600 text-white rounded-full shadow-lg flex items-center justify-center z-30">
         <i class="fas fa-magic text-xl"></i>
       </button>
+      ` : ''}
       
       <!-- Modals Container -->
       <div id="modals"></div>
@@ -3081,52 +3083,52 @@
 
   function renderMashiroMode() {
     return `
-      <div class="max-w-3xl mx-auto h-full flex flex-col">
+      <div class="max-w-3xl mx-auto h-full flex flex-col" style="height: calc(100vh - 140px);">
         <div class="bg-white rounded-xl shadow-lg flex-1 flex flex-col overflow-hidden">
           <!-- Mashiro Header -->
-          <div class="bg-gradient-to-r from-pink-500 to-purple-500 p-4 flex items-center gap-4">
-            <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-lg">
+          <div class="bg-gradient-to-r from-pink-500 to-purple-500 p-3 sm:p-4 flex items-center gap-3 sm:gap-4">
+            <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-white shadow-lg flex-shrink-0">
               <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
             </div>
             <div class="text-white">
-              <h2 class="text-xl font-bold">マシロさん</h2>
-              <p class="text-sm opacity-90">執筆相談AIアシスタント</p>
+              <h2 class="text-lg sm:text-xl font-bold">マシロさん</h2>
+              <p class="text-xs sm:text-sm opacity-90">執筆相談AIアシスタント</p>
             </div>
           </div>
           
           <!-- Chat Messages -->
-          <div id="mashiro-chat" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div id="mashiro-chat" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50">
             ${state.mashiroMessages.length === 0 ? `
-              <div class="flex gap-3">
-                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+              <div class="flex gap-2 sm:gap-3">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0">
                   <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
                 </div>
-                <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm max-w-[80%]">
-                  <p class="text-gray-800">${t('mashiroGreeting')}</p>
+                <div class="bg-white rounded-2xl rounded-tl-none p-3 sm:p-4 shadow-sm max-w-[85%] sm:max-w-[80%]">
+                  <p class="text-gray-800 text-sm sm:text-base">${t('mashiroGreeting')}</p>
                 </div>
               </div>
             ` : state.mashiroMessages.map(msg => `
-              <div class="flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}">
+              <div class="flex gap-2 sm:gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}">
                 ${msg.role === 'assistant' ? `
-                  <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0">
                     <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
                   </div>
                 ` : `
-                  <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-user text-white"></i>
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-user text-white text-xs sm:text-sm"></i>
                   </div>
                 `}
-                <div class="${msg.role === 'user' ? 'bg-yellow-500 text-white rounded-2xl rounded-tr-none' : 'bg-white rounded-2xl rounded-tl-none shadow-sm'} p-4 max-w-[80%]">
-                  <p class="${msg.role === 'user' ? 'text-white' : 'text-gray-800'}" style="white-space: pre-wrap;">${escapeHtml(msg.content)}</p>
+                <div class="${msg.role === 'user' ? 'bg-yellow-500 text-white rounded-2xl rounded-tr-none' : 'bg-white rounded-2xl rounded-tl-none shadow-sm'} p-3 sm:p-4 max-w-[85%] sm:max-w-[80%]">
+                  <p class="${msg.role === 'user' ? 'text-white' : 'text-gray-800'} text-sm sm:text-base" style="white-space: pre-wrap;">${escapeHtml(msg.content)}</p>
                 </div>
               </div>
             `).join('')}
             ${state.mashiroTyping ? `
-              <div class="flex gap-3">
-                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+              <div class="flex gap-2 sm:gap-3">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0">
                   <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
                 </div>
-                <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm">
+                <div class="bg-white rounded-2xl rounded-tl-none p-3 sm:p-4 shadow-sm">
                   <div class="flex gap-1">
                     <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
                     <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s;"></span>
@@ -3138,16 +3140,16 @@
           </div>
           
           <!-- Input Area -->
-          <div class="p-4 border-t border-gray-200 bg-white">
+          <div class="p-3 sm:p-4 border-t border-gray-200 bg-white">
             <div class="flex gap-2">
-              <button onclick="toggleVoiceInput()" id="voice-btn" class="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition" title="${t('mashiroVoiceInput')}">
+              <button onclick="toggleVoiceInput()" id="voice-btn" class="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition flex-shrink-0" title="${t('mashiroVoiceInput')}">
                 <i class="fas fa-microphone text-gray-600"></i>
               </button>
               <input type="text" id="mashiro-input" 
-                class="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-pink-500" 
+                class="flex-1 min-w-0 px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-full focus:outline-none focus:border-pink-500 text-sm sm:text-base" 
                 placeholder="${t('mashiroPlaceholder')}"
                 onkeypress="if(event.key === 'Enter') sendToMashiro()">
-              <button onclick="sendToMashiro()" class="p-3 rounded-full bg-pink-500 hover:bg-pink-600 text-white transition">
+              <button onclick="sendToMashiro()" class="p-2 sm:p-3 rounded-full bg-pink-500 hover:bg-pink-600 text-white transition flex-shrink-0">
                 <i class="fas fa-paper-plane"></i>
               </button>
             </div>
