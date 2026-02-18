@@ -107,6 +107,8 @@
       remaining: '残り',
       limitExceeded: '文字数制限に達したらご購入ください',
       pleaseUpgrade: '追加の文字数を購入してください',
+      charUsageNote: '※ 文字数はAI生成時のみ消費されます。通常の執筆では消費されません。',
+      charUsageDetail: 'AI続き書き・アイデア生成・AI相談など、AIが生成した文字数のみがカウントされます。',
       inviteCode: '招待コード',
       inviteCodePlaceholder: '招待コードを入力',
       inviteCodeApply: '適用',
@@ -184,11 +186,29 @@
       untitled: '無題',
       // Mashiro AI Consultant
       mashiroConsultant: '執筆相談',
+      mashiroName: 'マシロさん',
+      mashiroSubtitle: '執筆相談AIアシスタント',
       mashiroGreeting: 'こんにちは！マシロです。執筆のお手伝いをさせてください。何でもお気軽にご相談くださいね。',
       mashiroPlaceholder: 'マシロさんに相談する...',
       mashiroSend: '送信',
       mashiroVoiceInput: '音声入力',
       mashiroListening: '聞いています...',
+      mashiroClearHistory: '履歴を消去',
+      mashiroHistoryCleared: '履歴を消去しました',
+      mashiroConfirmClearHistory: 'マシロさんとの会話履歴をすべて消去しますか？マシロさんは過去の会話を忘れます。',
+      mashiroCharsConsumed: '文字消費',
+      mashiroCharsNote: '※執筆相談も文字数を消費します',
+      // AI Settings
+      aiSettings: 'AI設定',
+      aiSettingsTitle: '執筆相談AI設定',
+      aiName: 'AI名',
+      aiNamePlaceholder: '例: マシロさん',
+      aiIconUrl: 'アイコンURL',
+      aiIconUrlPlaceholder: '画像URLを入力',
+      aiPersonality: 'キャラクター設定',
+      aiPersonalityPlaceholder: '性格、話し方、役割などを自由に設定してください',
+      aiSettingsReset: 'デフォルトに戻す',
+      aiSettingsSaved: 'AI設定を保存しました',
       // AI Options Modal
       aiOptionsTitle: 'AI生成オプション',
       additionalInstructions: '追加の指示（任意）',
@@ -298,6 +318,8 @@
       remaining: 'Remaining',
       limitExceeded: 'Purchase when you reach the character limit',
       pleaseUpgrade: 'Purchase additional characters to continue',
+      charUsageNote: '* Characters are only consumed when AI generates text. Regular writing is free.',
+      charUsageDetail: 'Only AI-generated text counts: Continue writing, Idea generation, AI consultation, etc.',
       inviteCode: 'Invite Code',
       inviteCodePlaceholder: 'Enter invite code',
       inviteCodeApply: 'Apply',
@@ -375,11 +397,29 @@
       untitled: 'Untitled',
       // Mashiro AI Consultant
       mashiroConsultant: 'Writing Consultant',
+      mashiroName: 'Mashiro',
+      mashiroSubtitle: 'AI Writing Assistant',
       mashiroGreeting: 'Hello! I\'m Mashiro. Let me help you with your writing. Feel free to ask me anything!',
       mashiroPlaceholder: 'Ask Mashiro...',
       mashiroSend: 'Send',
       mashiroVoiceInput: 'Voice Input',
       mashiroListening: 'Listening...',
+      mashiroClearHistory: 'Clear History',
+      mashiroHistoryCleared: 'History cleared',
+      mashiroConfirmClearHistory: 'Clear all conversation history with Mashiro? Mashiro will forget past conversations.',
+      mashiroCharsConsumed: 'Characters consumed',
+      mashiroCharsNote: '* Consultations also consume character credits',
+      // AI Settings
+      aiSettings: 'AI Settings',
+      aiSettingsTitle: 'Writing AI Settings',
+      aiName: 'AI Name',
+      aiNamePlaceholder: 'e.g., Mashiro',
+      aiIconUrl: 'Icon URL',
+      aiIconUrlPlaceholder: 'Enter image URL',
+      aiPersonality: 'Character Settings',
+      aiPersonalityPlaceholder: 'Customize personality, speech style, role, etc.',
+      aiSettingsReset: 'Reset to Default',
+      aiSettingsSaved: 'AI settings saved',
       // AI Options Modal
       aiOptionsTitle: 'AI Generation Options',
       additionalInstructions: 'Additional Instructions (optional)',
@@ -563,7 +603,37 @@
       trashInfo: '回收站中的项目将30天后自动删除',
       trashEmptied: '已清空回收站',
       permanentlyDeleted: '已彻底删除',
-      untitled: '无标题'
+      untitled: '无标题',
+      // Mashiro AI Consultant
+      mashiroConsultant: '写作咨询',
+      mashiroName: '真城',
+      mashiroSubtitle: 'AI写作助手',
+      mashiroGreeting: '你好！我是真城。让我来帮助你写作吧。有什么都可以问我！',
+      mashiroPlaceholder: '向真城咨询...',
+      mashiroSend: '发送',
+      mashiroVoiceInput: '语音输入',
+      mashiroListening: '正在听...',
+      mashiroClearHistory: '清除历史',
+      mashiroHistoryCleared: '历史已清除',
+      mashiroConfirmClearHistory: '清除与真城的所有对话历史？真城将忘记过去的对话。',
+      mashiroCharsConsumed: '消耗字数',
+      mashiroCharsNote: '※咨询也会消耗字数配额',
+      // AI Settings
+      aiSettings: 'AI设置',
+      aiSettingsTitle: '写作AI设置',
+      aiName: 'AI名称',
+      aiNamePlaceholder: '例如：真城',
+      aiIconUrl: '图标URL',
+      aiIconUrlPlaceholder: '输入图片URL',
+      aiPersonality: '角色设定',
+      aiPersonalityPlaceholder: '自定义性格、说话方式、角色等',
+      aiSettingsReset: '恢复默认',
+      aiSettingsSaved: 'AI设置已保存',
+      // AI Options Modal
+      aiOptionsTitle: 'AI生成选项',
+      additionalInstructions: '附加说明（可选）',
+      additionalInstructionsPlaceholder: '例如：更详细、更有感情、增加对话...',
+      executeGenerate: '生成'
     },
     ko: {
       appName: 'DANTE',
@@ -668,6 +738,8 @@
       remaining: '남은',
       limitExceeded: '글자 수 제한에 도달하면 구매해 주세요',
       pleaseUpgrade: '추가 글자를 구매하세요',
+      charUsageNote: '※ 글자 수는 AI가 텍스트를 생성할 때만 소비됩니다. 일반 글쓰기는 무료입니다.',
+      charUsageDetail: 'AI가 생성한 텍스트만 카운트: 이어쓰기, 아이디어 생성, AI 상담 등.',
       inviteCode: '초대 코드',
       inviteCodePlaceholder: '초대 코드 입력',
       inviteCodeApply: '적용',
@@ -742,7 +814,37 @@
       trashInfo: '휴지통의 항목은 30일 후 자동 삭제됩니다',
       trashEmptied: '휴지통을 비웠습니다',
       permanentlyDeleted: '영구 삭제됨',
-      untitled: '제목 없음'
+      untitled: '제목 없음',
+      // Mashiro AI Consultant
+      mashiroConsultant: '글쓰기 상담',
+      mashiroName: '마시로',
+      mashiroSubtitle: 'AI 글쓰기 어시스턴트',
+      mashiroGreeting: '안녕하세요! 마시로입니다. 글쓰기를 도와드릴게요. 무엇이든 물어보세요!',
+      mashiroPlaceholder: '마시로에게 상담하기...',
+      mashiroSend: '보내기',
+      mashiroVoiceInput: '음성 입력',
+      mashiroListening: '듣고 있어요...',
+      mashiroClearHistory: '기록 삭제',
+      mashiroHistoryCleared: '기록이 삭제되었습니다',
+      mashiroConfirmClearHistory: '마시로와의 모든 대화 기록을 삭제하시겠습니까? 마시로는 이전 대화를 잊게 됩니다.',
+      mashiroCharsConsumed: '소비된 글자 수',
+      mashiroCharsNote: '※ 상담도 글자 수 크레딧을 소비합니다',
+      // AI Settings
+      aiSettings: 'AI 설정',
+      aiSettingsTitle: '글쓰기 AI 설정',
+      aiName: 'AI 이름',
+      aiNamePlaceholder: '예: 마시로',
+      aiIconUrl: '아이콘 URL',
+      aiIconUrlPlaceholder: '이미지 URL 입력',
+      aiPersonality: '캐릭터 설정',
+      aiPersonalityPlaceholder: '성격, 말투, 역할 등을 커스터마이즈',
+      aiSettingsReset: '기본값으로 복원',
+      aiSettingsSaved: 'AI 설정 저장됨',
+      // AI Options Modal
+      aiOptionsTitle: 'AI 생성 옵션',
+      additionalInstructions: '추가 지시 (선택)',
+      additionalInstructionsPlaceholder: '예: 더 자세히, 더 감정적으로, 대화 추가...',
+      executeGenerate: '생성'
     },
     it: {
       appName: 'DANTE',
@@ -847,6 +949,8 @@
       remaining: 'Rimanenti',
       limitExceeded: 'Acquista quando raggiungi il limite',
       pleaseUpgrade: 'Acquista caratteri aggiuntivi per continuare',
+      charUsageNote: '※ I caratteri vengono consumati solo quando l\'AI genera testo. La scrittura normale è gratuita.',
+      charUsageDetail: 'Solo il testo generato dall\'AI conta: Continua scrittura, Generazione idee, Consultazione AI.',
       purchaseCharacters: 'Acquista Caratteri',
       inviteCode: 'Codice Invito',
       inviteCodePlaceholder: 'Inserisci codice invito',
@@ -922,7 +1026,37 @@
       trashInfo: 'Gli elementi nel cestino verranno eliminati automaticamente dopo 30 giorni',
       trashEmptied: 'Cestino svuotato',
       permanentlyDeleted: 'Eliminato definitivamente',
-      untitled: 'Senza titolo'
+      untitled: 'Senza titolo',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'Consulente Scrittura',
+      mashiroName: 'Mashiro',
+      mashiroSubtitle: 'Assistente AI per Scrittura',
+      mashiroGreeting: 'Ciao! Sono Mashiro. Lascia che ti aiuti con la scrittura. Sentiti libero di chiedermi qualsiasi cosa!',
+      mashiroPlaceholder: 'Chiedi a Mashiro...',
+      mashiroSend: 'Invia',
+      mashiroVoiceInput: 'Input Vocale',
+      mashiroListening: 'Ascolto...',
+      mashiroClearHistory: 'Cancella Cronologia',
+      mashiroHistoryCleared: 'Cronologia cancellata',
+      mashiroConfirmClearHistory: 'Cancellare tutta la cronologia delle conversazioni con Mashiro? Mashiro dimenticherà le conversazioni passate.',
+      mashiroCharsConsumed: 'Caratteri consumati',
+      mashiroCharsNote: '※ Le consulenze consumano crediti caratteri',
+      // AI Settings
+      aiSettings: 'Impostazioni AI',
+      aiSettingsTitle: 'Impostazioni AI Scrittura',
+      aiName: 'Nome AI',
+      aiNamePlaceholder: 'Es.: Mashiro',
+      aiIconUrl: 'URL Icona',
+      aiIconUrlPlaceholder: 'Inserisci URL immagine',
+      aiPersonality: 'Impostazioni Personaggio',
+      aiPersonalityPlaceholder: 'Personalizza personalità, stile di linguaggio, ruolo, ecc.',
+      aiSettingsReset: 'Ripristina Predefinito',
+      aiSettingsSaved: 'Impostazioni AI salvate',
+      // AI Options Modal
+      aiOptionsTitle: 'Opzioni Generazione AI',
+      additionalInstructions: 'Istruzioni Aggiuntive (opzionale)',
+      additionalInstructionsPlaceholder: 'Es.: Più dettagli, più emotivo, aggiungi dialogo...',
+      executeGenerate: 'Genera'
     },
     hi: {
       appName: 'DANTE',
@@ -1027,6 +1161,8 @@
       remaining: 'शेष',
       limitExceeded: 'सीमा पूरी होने पर खरीदें',
       pleaseUpgrade: 'जारी रखने के लिए अतिरिक्त अक्षर खरीदें',
+      charUsageNote: '※ अक्षर केवल AI टेक्स्ट जनरेट करने पर खर्च होते हैं। सामान्य लेखन मुफ्त है।',
+      charUsageDetail: 'केवल AI द्वारा जनरेट टेक्स्ट गिना जाता है: लेखन जारी, विचार जनरेशन, AI परामर्श आदि।',
       purchaseCharacters: 'अक्षर खरीदें',
       inviteCode: 'आमंत्रण कोड',
       inviteCodePlaceholder: 'आमंत्रण कोड दर्ज करें',
@@ -1102,7 +1238,37 @@
       trashInfo: 'कूड़े में आइटम 30 दिनों के बाद स्वचालित रूप से हटा दिए जाएंगे',
       trashEmptied: 'कूड़ा खाली हो गया',
       permanentlyDeleted: 'स्थायी रूप से हटा दिया गया',
-      untitled: 'शीर्षकहीन'
+      untitled: 'शीर्षकहीन',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'लेखन परामर्श',
+      mashiroName: 'माशिरो',
+      mashiroSubtitle: 'AI लेखन सहायक',
+      mashiroGreeting: 'नमस्ते! मैं माशिरो हूं। मुझे आपके लेखन में मदद करने दीजिए। कुछ भी पूछने में संकोच न करें!',
+      mashiroPlaceholder: 'माशिरो से पूछें...',
+      mashiroSend: 'भेजें',
+      mashiroVoiceInput: 'वॉइस इनपुट',
+      mashiroListening: 'सुन रहा हूं...',
+      mashiroClearHistory: 'इतिहास मिटाएं',
+      mashiroHistoryCleared: 'इतिहास मिटा दिया गया',
+      mashiroConfirmClearHistory: 'माशिरो के साथ सभी बातचीत का इतिहास मिटाएं? माशिरो पिछली बातचीत भूल जाएगी।',
+      mashiroCharsConsumed: 'खपत किए गए अक्षर',
+      mashiroCharsNote: '※ परामर्श भी अक्षर क्रेडिट का उपयोग करता है',
+      // AI Settings
+      aiSettings: 'AI सेटिंग्स',
+      aiSettingsTitle: 'लेखन AI सेटिंग्स',
+      aiName: 'AI नाम',
+      aiNamePlaceholder: 'उदा.: माशिरो',
+      aiIconUrl: 'आइकन URL',
+      aiIconUrlPlaceholder: 'छवि URL दर्ज करें',
+      aiPersonality: 'चरित्र सेटिंग्स',
+      aiPersonalityPlaceholder: 'व्यक्तित्व, बोलने की शैली, भूमिका आदि को अनुकूलित करें',
+      aiSettingsReset: 'डिफ़ॉल्ट पर रीसेट',
+      aiSettingsSaved: 'AI सेटिंग्स सहेजी गईं',
+      // AI Options Modal
+      aiOptionsTitle: 'AI जनरेशन विकल्प',
+      additionalInstructions: 'अतिरिक्त निर्देश (वैकल्पिक)',
+      additionalInstructionsPlaceholder: 'उदाहरण: अधिक विस्तृत, अधिक भावनात्मक, अधिक संवाद जोड़ें...',
+      executeGenerate: 'जनरेट'
     },
     es: {
       appName: 'DANTE', appSubtitle: 'Editor de Escritura Integrado con IA',
@@ -1134,6 +1300,8 @@
       plan: 'Plan', free: 'Gratis', standard: 'Estándar', premium: 'Premium',
       upgrade: 'Comprar Caracteres', usage: 'Uso', remaining: 'Restante',
       limitExceeded: 'Compra cuando alcances el límite', pleaseUpgrade: 'Compra caracteres adicionales para continuar',
+      charUsageNote: '※ Los caracteres solo se consumen cuando la IA genera texto. La escritura normal es gratis.',
+      charUsageDetail: 'Solo cuenta el texto generado por IA: Continuar escritura, Generación de ideas, Consulta IA.',
       purchaseCharacters: 'Comprar Caracteres', inviteCode: 'Código de Invitación',
       inviteCodePlaceholder: 'Ingresa código de invitación', inviteCodeApply: 'Aplicar',
       inviteCodeSuccess: '¡Código aplicado! Todas las funciones desbloqueadas', inviteCodeCharsAdded: '¡{chars} caracteres añadidos!', inviteCodeError: 'Código inválido', inviteCodeAlreadyUsed: 'Este código ya ha sido utilizado',
@@ -1181,7 +1349,37 @@
       trashInfo: 'Los elementos de la papelera se eliminarán automáticamente después de 30 días',
       trashEmptied: 'Papelera vaciada',
       permanentlyDeleted: 'Eliminado permanentemente',
-      untitled: 'Sin título'
+      untitled: 'Sin título',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'Consultor de Escritura',
+      mashiroName: 'Mashiro',
+      mashiroSubtitle: 'Asistente AI de Escritura',
+      mashiroGreeting: '¡Hola! Soy Mashiro. Déjame ayudarte con tu escritura. ¡No dudes en preguntarme lo que sea!',
+      mashiroPlaceholder: 'Pregunta a Mashiro...',
+      mashiroSend: 'Enviar',
+      mashiroVoiceInput: 'Entrada de Voz',
+      mashiroListening: 'Escuchando...',
+      mashiroClearHistory: 'Borrar Historial',
+      mashiroHistoryCleared: 'Historial borrado',
+      mashiroConfirmClearHistory: '¿Borrar todo el historial de conversaciones con Mashiro? Mashiro olvidará las conversaciones pasadas.',
+      mashiroCharsConsumed: 'Caracteres consumidos',
+      mashiroCharsNote: '※ Las consultas también consumen créditos de caracteres',
+      // AI Settings
+      aiSettings: 'Configuración AI',
+      aiSettingsTitle: 'Configuración AI de Escritura',
+      aiName: 'Nombre AI',
+      aiNamePlaceholder: 'Ej.: Mashiro',
+      aiIconUrl: 'URL del Icono',
+      aiIconUrlPlaceholder: 'Ingresa URL de imagen',
+      aiPersonality: 'Configuración de Personaje',
+      aiPersonalityPlaceholder: 'Personaliza personalidad, estilo de habla, rol, etc.',
+      aiSettingsReset: 'Restablecer Predeterminado',
+      aiSettingsSaved: 'Configuración AI guardada',
+      // AI Options Modal
+      aiOptionsTitle: 'Opciones de Generación IA',
+      additionalInstructions: 'Instrucciones Adicionales (opcional)',
+      additionalInstructionsPlaceholder: 'Ej.: Más detalle, más emotivo, añadir diálogo...',
+      executeGenerate: 'Generar'
     },
     fr: {
       appName: 'DANTE', appSubtitle: 'Éditeur d\'Écriture Intégré IA',
@@ -1213,6 +1411,8 @@
       plan: 'Plan', free: 'Gratuit', standard: 'Standard', premium: 'Premium',
       upgrade: 'Acheter des Caractères', usage: 'Utilisation', remaining: 'Restant',
       limitExceeded: 'Achetez quand vous atteignez la limite', pleaseUpgrade: 'Achetez des caractères supplémentaires',
+      charUsageNote: '※ Les caractères ne sont consommés que lorsque l\'IA génère du texte. L\'écriture normale est gratuite.',
+      charUsageDetail: 'Seul le texte généré par l\'IA compte: Continuer l\'écriture, Génération d\'idées, Consultation IA.',
       purchaseCharacters: 'Acheter des Caractères', inviteCode: 'Code d\'Invitation',
       inviteCodePlaceholder: 'Entrez le code d\'invitation', inviteCodeApply: 'Appliquer',
       inviteCodeSuccess: 'Code appliqué! Toutes les fonctions débloquées', inviteCodeCharsAdded: '{chars} caractères ajoutés!', inviteCodeError: 'Code invalide', inviteCodeAlreadyUsed: 'Ce code a déjà été utilisé',
@@ -1260,7 +1460,37 @@
       trashInfo: 'Les éléments de la corbeille seront supprimés automatiquement après 30 jours',
       trashEmptied: 'Corbeille vidée',
       permanentlyDeleted: 'Supprimé définitivement',
-      untitled: 'Sans titre'
+      untitled: 'Sans titre',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'Consultant Écriture',
+      mashiroName: 'Mashiro',
+      mashiroSubtitle: 'Assistant AI d\'Écriture',
+      mashiroGreeting: 'Bonjour! Je suis Mashiro. Laissez-moi vous aider avec votre écriture. N\'hésitez pas à me poser des questions!',
+      mashiroPlaceholder: 'Demandez à Mashiro...',
+      mashiroSend: 'Envoyer',
+      mashiroVoiceInput: 'Entrée Vocale',
+      mashiroListening: 'J\'écoute...',
+      mashiroClearHistory: 'Effacer l\'Historique',
+      mashiroHistoryCleared: 'Historique effacé',
+      mashiroConfirmClearHistory: 'Effacer tout l\'historique des conversations avec Mashiro? Mashiro oubliera les conversations passées.',
+      mashiroCharsConsumed: 'Caractères consommés',
+      mashiroCharsNote: '※ Les consultations consomment aussi des crédits de caractères',
+      // AI Settings
+      aiSettings: 'Paramètres AI',
+      aiSettingsTitle: 'Paramètres AI d\'Écriture',
+      aiName: 'Nom AI',
+      aiNamePlaceholder: 'Ex.: Mashiro',
+      aiIconUrl: 'URL de l\'Icône',
+      aiIconUrlPlaceholder: 'Entrez l\'URL de l\'image',
+      aiPersonality: 'Paramètres du Personnage',
+      aiPersonalityPlaceholder: 'Personnalisez la personnalité, le style de parole, le rôle, etc.',
+      aiSettingsReset: 'Réinitialiser par Défaut',
+      aiSettingsSaved: 'Paramètres AI sauvegardés',
+      // AI Options Modal
+      aiOptionsTitle: 'Options de Génération IA',
+      additionalInstructions: 'Instructions Supplémentaires (optionnel)',
+      additionalInstructionsPlaceholder: 'Ex.: Plus de détails, plus émotionnel, ajouter du dialogue...',
+      executeGenerate: 'Générer'
     },
     de: {
       appName: 'DANTE', appSubtitle: 'KI-integrierter Schreibeditor',
@@ -1292,6 +1522,8 @@
       plan: 'Plan', free: 'Kostenlos', standard: 'Standard', premium: 'Premium',
       upgrade: 'Zeichen Kaufen', usage: 'Nutzung', remaining: 'Verbleibend',
       limitExceeded: 'Kaufen Sie bei Erreichen des Limits', pleaseUpgrade: 'Kaufen Sie zusätzliche Zeichen',
+      charUsageNote: '※ Zeichen werden nur verbraucht, wenn die KI Text generiert. Normales Schreiben ist kostenlos.',
+      charUsageDetail: 'Nur KI-generierter Text zählt: Weiter schreiben, Ideengenerierung, KI-Beratung usw.',
       purchaseCharacters: 'Zeichen Kaufen', inviteCode: 'Einladungscode',
       inviteCodePlaceholder: 'Einladungscode eingeben', inviteCodeApply: 'Anwenden',
       inviteCodeSuccess: 'Code angewendet! Alle Funktionen freigeschaltet', inviteCodeCharsAdded: '{chars} Zeichen hinzugefügt!', inviteCodeError: 'Ungültiger Code', inviteCodeAlreadyUsed: 'Dieser Code wurde bereits verwendet',
@@ -1339,7 +1571,37 @@
       trashInfo: 'Elemente im Papierkorb werden nach 30 Tagen automatisch gelöscht',
       trashEmptied: 'Papierkorb geleert',
       permanentlyDeleted: 'Endgültig gelöscht',
-      untitled: 'Unbenannt'
+      untitled: 'Unbenannt',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'Schreibberater',
+      mashiroName: 'Mashiro',
+      mashiroSubtitle: 'KI-Schreibassistent',
+      mashiroGreeting: 'Hallo! Ich bin Mashiro. Lass mich dir beim Schreiben helfen. Frag mich alles!',
+      mashiroPlaceholder: 'Frag Mashiro...',
+      mashiroSend: 'Senden',
+      mashiroVoiceInput: 'Spracheingabe',
+      mashiroListening: 'Ich höre zu...',
+      mashiroClearHistory: 'Verlauf Löschen',
+      mashiroHistoryCleared: 'Verlauf gelöscht',
+      mashiroConfirmClearHistory: 'Den gesamten Gesprächsverlauf mit Mashiro löschen? Mashiro wird vergangene Gespräche vergessen.',
+      mashiroCharsConsumed: 'Verbrauchte Zeichen',
+      mashiroCharsNote: '※ Beratungen verbrauchen auch Zeichen-Credits',
+      // AI Settings
+      aiSettings: 'KI-Einstellungen',
+      aiSettingsTitle: 'Schreib-KI-Einstellungen',
+      aiName: 'KI-Name',
+      aiNamePlaceholder: 'z.B.: Mashiro',
+      aiIconUrl: 'Symbol-URL',
+      aiIconUrlPlaceholder: 'Bild-URL eingeben',
+      aiPersonality: 'Charaktereinstellungen',
+      aiPersonalityPlaceholder: 'Persönlichkeit, Sprechstil, Rolle usw. anpassen',
+      aiSettingsReset: 'Auf Standard zurücksetzen',
+      aiSettingsSaved: 'KI-Einstellungen gespeichert',
+      // AI Options Modal
+      aiOptionsTitle: 'KI-Generierungsoptionen',
+      additionalInstructions: 'Zusätzliche Anweisungen (optional)',
+      additionalInstructionsPlaceholder: 'z.B.: Mehr Details, emotionaler, mehr Dialog...',
+      executeGenerate: 'Generieren'
     },
     pt: {
       appName: 'DANTE', appSubtitle: 'Editor de Escrita Integrado com IA',
@@ -1371,6 +1633,8 @@
       plan: 'Plano', free: 'Grátis', standard: 'Padrão', premium: 'Premium',
       upgrade: 'Comprar Caracteres', usage: 'Uso', remaining: 'Restante',
       limitExceeded: 'Compre ao atingir o limite', pleaseUpgrade: 'Compre caracteres adicionais para continuar',
+      charUsageNote: '※ Caracteres só são consumidos quando a IA gera texto. A escrita normal é gratuita.',
+      charUsageDetail: 'Apenas texto gerado por IA conta: Continuar escrita, Geração de ideias, Consulta IA.',
       purchaseCharacters: 'Comprar Caracteres', inviteCode: 'Código de Convite',
       inviteCodePlaceholder: 'Digite o código de convite', inviteCodeApply: 'Aplicar',
       inviteCodeSuccess: 'Código aplicado! Todas as funções desbloqueadas', inviteCodeCharsAdded: '{chars} caracteres adicionados!', inviteCodeError: 'Código inválido', inviteCodeAlreadyUsed: 'Este código já foi utilizado',
@@ -1418,7 +1682,37 @@
       trashInfo: 'Os itens na lixeira serão excluídos automaticamente após 30 dias',
       trashEmptied: 'Lixeira esvaziada',
       permanentlyDeleted: 'Excluído permanentemente',
-      untitled: 'Sem título'
+      untitled: 'Sem título',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'Consultor de Escrita',
+      mashiroName: 'Mashiro',
+      mashiroSubtitle: 'Assistente AI de Escrita',
+      mashiroGreeting: 'Olá! Sou Mashiro. Deixe-me ajudá-lo com sua escrita. Sinta-se à vontade para perguntar qualquer coisa!',
+      mashiroPlaceholder: 'Pergunte ao Mashiro...',
+      mashiroSend: 'Enviar',
+      mashiroVoiceInput: 'Entrada de Voz',
+      mashiroListening: 'Ouvindo...',
+      mashiroClearHistory: 'Limpar Histórico',
+      mashiroHistoryCleared: 'Histórico limpo',
+      mashiroConfirmClearHistory: 'Limpar todo o histórico de conversas com Mashiro? Mashiro esquecerá conversas passadas.',
+      mashiroCharsConsumed: 'Caracteres consumidos',
+      mashiroCharsNote: '※ Consultas também consomem créditos de caracteres',
+      // AI Settings
+      aiSettings: 'Configurações AI',
+      aiSettingsTitle: 'Configurações AI de Escrita',
+      aiName: 'Nome AI',
+      aiNamePlaceholder: 'Ex.: Mashiro',
+      aiIconUrl: 'URL do Ícone',
+      aiIconUrlPlaceholder: 'Digite URL da imagem',
+      aiPersonality: 'Configurações de Personagem',
+      aiPersonalityPlaceholder: 'Personalize personalidade, estilo de fala, papel, etc.',
+      aiSettingsReset: 'Restaurar Padrão',
+      aiSettingsSaved: 'Configurações AI salvas',
+      // AI Options Modal
+      aiOptionsTitle: 'Opções de Geração IA',
+      additionalInstructions: 'Instruções Adicionais (opcional)',
+      additionalInstructionsPlaceholder: 'Ex.: Mais detalhes, mais emotivo, adicionar diálogo...',
+      executeGenerate: 'Gerar'
     },
     ru: {
       appName: 'DANTE', appSubtitle: 'ИИ-интегрированный текстовый редактор',
@@ -1450,6 +1744,8 @@
       plan: 'План', free: 'Бесплатно', standard: 'Стандарт', premium: 'Премиум',
       upgrade: 'Купить символы', usage: 'Использование', remaining: 'Осталось',
       limitExceeded: 'Купите при достижении лимита', pleaseUpgrade: 'Купите дополнительные символы',
+      charUsageNote: '※ Символы расходуются только когда ИИ генерирует текст. Обычное написание бесплатно.',
+      charUsageDetail: 'Считается только текст, созданный ИИ: Продолжить писать, Генерация идей, Консультация ИИ.',
       purchaseCharacters: 'Купить символы', inviteCode: 'Код приглашения',
       inviteCodePlaceholder: 'Введите код приглашения', inviteCodeApply: 'Применить',
       inviteCodeSuccess: 'Код применён! Все функции разблокированы', inviteCodeCharsAdded: '{chars} символов добавлено!', inviteCodeError: 'Неверный код', inviteCodeAlreadyUsed: 'Этот код уже был использован',
@@ -1497,7 +1793,37 @@
       trashInfo: 'Элементы в корзине будут автоматически удалены через 30 дней',
       trashEmptied: 'Корзина очищена',
       permanentlyDeleted: 'Навсегда удалено',
-      untitled: 'Без названия'
+      untitled: 'Без названия',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'Консультант по письму',
+      mashiroName: 'Маширо',
+      mashiroSubtitle: 'ИИ-ассистент по письму',
+      mashiroGreeting: 'Привет! Я Маширо. Позвольте мне помочь вам с написанием. Не стесняйтесь спрашивать!',
+      mashiroPlaceholder: 'Спросить Маширо...',
+      mashiroSend: 'Отправить',
+      mashiroVoiceInput: 'Голосовой ввод',
+      mashiroListening: 'Слушаю...',
+      mashiroClearHistory: 'Очистить историю',
+      mashiroHistoryCleared: 'История очищена',
+      mashiroConfirmClearHistory: 'Очистить всю историю разговоров с Маширо? Маширо забудет прошлые разговоры.',
+      mashiroCharsConsumed: 'Потрачено символов',
+      mashiroCharsNote: '※ Консультации также потребляют кредиты символов',
+      // AI Settings
+      aiSettings: 'Настройки ИИ',
+      aiSettingsTitle: 'Настройки ИИ для письма',
+      aiName: 'Имя ИИ',
+      aiNamePlaceholder: 'Напр.: Маширо',
+      aiIconUrl: 'URL иконки',
+      aiIconUrlPlaceholder: 'Введите URL изображения',
+      aiPersonality: 'Настройки персонажа',
+      aiPersonalityPlaceholder: 'Настройте личность, стиль речи, роль и т.д.',
+      aiSettingsReset: 'Сбросить по умолчанию',
+      aiSettingsSaved: 'Настройки ИИ сохранены',
+      // AI Options Modal
+      aiOptionsTitle: 'Опции генерации ИИ',
+      additionalInstructions: 'Дополнительные инструкции (необязательно)',
+      additionalInstructionsPlaceholder: 'Напр.: Больше деталей, эмоциональнее, добавить диалог...',
+      executeGenerate: 'Генерировать'
     },
     ar: {
       appName: 'DANTE', appSubtitle: 'محرر كتابة متكامل بالذكاء الاصطناعي',
@@ -1529,6 +1855,8 @@
       plan: 'الخطة', free: 'مجاني', standard: 'قياسي', premium: 'مميز',
       upgrade: 'شراء أحرف', usage: 'الاستخدام', remaining: 'المتبقي',
       limitExceeded: 'اشترِ عند الوصول للحد', pleaseUpgrade: 'اشترِ أحرفًا إضافية للمتابعة',
+      charUsageNote: '※ يتم استهلاك الأحرف فقط عندما يُنشئ الذكاء الاصطناعي نصًا. الكتابة العادية مجانية.',
+      charUsageDetail: 'يُحسب فقط النص الذي ينشئه الذكاء الاصطناعي: متابعة الكتابة، توليد الأفكار، استشارة AI.',
       purchaseCharacters: 'شراء أحرف', inviteCode: 'رمز الدعوة',
       inviteCodePlaceholder: 'أدخل رمز الدعوة', inviteCodeApply: 'تطبيق',
       inviteCodeSuccess: 'تم تطبيق الرمز! جميع الميزات مفتوحة', inviteCodeCharsAdded: 'تمت إضافة {chars} حرف!', inviteCodeError: 'رمز غير صالح', inviteCodeAlreadyUsed: 'تم استخدام هذا الرمز بالفعل',
@@ -1576,7 +1904,37 @@
       trashInfo: 'سيتم حذف العناصر في السلة تلقائيًا بعد 30 يومًا',
       trashEmptied: 'تم تفريغ السلة',
       permanentlyDeleted: 'تم الحذف نهائيًا',
-      untitled: 'بدون عنوان'
+      untitled: 'بدون عنوان',
+      // Mashiro AI Consultant
+      mashiroConsultant: 'مستشار الكتابة',
+      mashiroName: 'ماشيرو',
+      mashiroSubtitle: 'مساعد AI للكتابة',
+      mashiroGreeting: 'مرحبًا! أنا ماشيرو. دعني أساعدك في كتابتك. لا تتردد في سؤالي عن أي شيء!',
+      mashiroPlaceholder: 'اسأل ماشيرو...',
+      mashiroSend: 'إرسال',
+      mashiroVoiceInput: 'الإدخال الصوتي',
+      mashiroListening: 'أستمع...',
+      mashiroClearHistory: 'مسح السجل',
+      mashiroHistoryCleared: 'تم مسح السجل',
+      mashiroConfirmClearHistory: 'مسح كل سجل المحادثات مع ماشيرو؟ ستنسى ماشيرو المحادثات السابقة.',
+      mashiroCharsConsumed: 'الأحرف المستهلكة',
+      mashiroCharsNote: '※ الاستشارات تستهلك أيضًا رصيد الأحرف',
+      // AI Settings
+      aiSettings: 'إعدادات AI',
+      aiSettingsTitle: 'إعدادات AI الكتابة',
+      aiName: 'اسم AI',
+      aiNamePlaceholder: 'مثال: ماشيرو',
+      aiIconUrl: 'رابط الأيقونة',
+      aiIconUrlPlaceholder: 'أدخل رابط الصورة',
+      aiPersonality: 'إعدادات الشخصية',
+      aiPersonalityPlaceholder: 'خصص الشخصية، أسلوب الكلام، الدور، إلخ.',
+      aiSettingsReset: 'استعادة الافتراضي',
+      aiSettingsSaved: 'تم حفظ إعدادات AI',
+      // AI Options Modal
+      aiOptionsTitle: 'خيارات توليد الذكاء الاصطناعي',
+      additionalInstructions: 'تعليمات إضافية (اختياري)',
+      additionalInstructionsPlaceholder: 'مثال: المزيد من التفاصيل، أكثر عاطفية، إضافة حوار...',
+      executeGenerate: 'توليد'
     }
   };
 
@@ -1607,7 +1965,13 @@
     verticalWriting: false,  // Vertical writing mode
     // Mashiro consultant
     mashiroMessages: [],
-    mashiroTyping: false
+    mashiroTyping: false,
+    // AI consultant settings
+    aiSettings: {
+      ai_name: '',
+      ai_icon_url: '',
+      ai_personality: ''
+    }
   };
 
   // ==================== TEMPLATES ====================
@@ -1917,6 +2281,8 @@
         state.selectedModel = state.preferences?.default_model || 'grok-4-1-fast-non-reasoning';
         state.theme = state.preferences?.theme || 'light';
         applyTheme();
+        // Load Mashiro chat history on auth check
+        await loadMashiroHistory();
       }
       return !!data.user;
     } catch (e) {
@@ -1931,6 +2297,8 @@
     });
     state.user = data.user;
     state.language = data.user.language || 'ja';
+    // Load Mashiro chat history after login
+    await loadMashiroHistory();
     return data;
   }
 
@@ -1948,6 +2316,7 @@
     state.user = null;
     state.projects = [];
     state.currentProject = null;
+    state.mashiroMessages = [];
     render();
   }
 
@@ -2341,6 +2710,14 @@
             <img src="/static/logo.png" alt="DANTE" class="w-16 h-16 mx-auto mb-4">
             <h3 class="text-xl font-bold text-gray-800">${t('purchaseCharacters') || t('upgrade')}</h3>
             <p class="text-gray-600 mt-2">${t('pleaseUpgrade')}</p>
+          </div>
+          
+          <!-- Usage explanation -->
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <p class="text-sm text-blue-800 font-medium mb-1">
+              <i class="fas fa-info-circle mr-1"></i>${t('charUsageNote')}
+            </p>
+            <p class="text-xs text-blue-600">${t('charUsageDetail')}</p>
           </div>
           
           <div class="grid grid-cols-2 gap-4 mb-6">
@@ -3090,10 +3467,21 @@
             <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-white shadow-lg flex-shrink-0">
               <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
             </div>
-            <div class="text-white">
-              <h2 class="text-lg sm:text-xl font-bold">マシロさん</h2>
-              <p class="text-xs sm:text-sm opacity-90">執筆相談AIアシスタント</p>
+            <div class="text-white flex-1">
+              <h2 class="text-lg sm:text-xl font-bold">${state.aiSettings.ai_name || t('mashiroName')}</h2>
+              <p class="text-xs sm:text-sm opacity-90">${t('mashiroSubtitle')}</p>
             </div>
+            <button onclick="showAiSettingsModal()" class="p-2 text-white/80 hover:text-white hover:bg-white/20 rounded-lg transition" title="${t('aiSettings')}">
+              <i class="fas fa-cog"></i>
+            </button>
+            <button onclick="confirmClearMashiroHistory()" class="p-2 text-white/80 hover:text-white hover:bg-white/20 rounded-lg transition" title="${t('mashiroClearHistory')}">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+          
+          <!-- Character consumption notice -->
+          <div class="px-3 sm:px-4 py-2 bg-pink-50 border-b border-pink-100 text-xs text-pink-600">
+            <i class="fas fa-info-circle mr-1"></i> ${t('mashiroCharsNote')}
           </div>
           
           <!-- Chat Messages -->
@@ -3101,7 +3489,7 @@
             ${state.mashiroMessages.length === 0 ? `
               <div class="flex gap-2 sm:gap-3">
                 <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0">
-                  <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
+                  <img src="${state.aiSettings.ai_icon_url || '/static/mashiro_icon.png'}" alt="${state.aiSettings.ai_name || t('mashiroName')}" class="w-full h-full object-cover object-top" onerror="this.src='/static/mashiro_icon.png'">
                 </div>
                 <div class="bg-white rounded-2xl rounded-tl-none p-3 sm:p-4 shadow-sm max-w-[85%] sm:max-w-[80%]">
                   <p class="text-gray-800 text-sm sm:text-base">${t('mashiroGreeting')}</p>
@@ -3111,7 +3499,7 @@
               <div class="flex gap-2 sm:gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}">
                 ${msg.role === 'assistant' ? `
                   <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0">
-                    <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
+                    <img src="${state.aiSettings.ai_icon_url || '/static/mashiro_icon.png'}" alt="${state.aiSettings.ai_name || t('mashiroName')}" class="w-full h-full object-cover object-top" onerror="this.src='/static/mashiro_icon.png'">
                   </div>
                 ` : `
                   <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0">
@@ -3120,13 +3508,14 @@
                 `}
                 <div class="${msg.role === 'user' ? 'bg-yellow-500 text-white rounded-2xl rounded-tr-none' : 'bg-white rounded-2xl rounded-tl-none shadow-sm'} p-3 sm:p-4 max-w-[85%] sm:max-w-[80%]">
                   <p class="${msg.role === 'user' ? 'text-white' : 'text-gray-800'} text-sm sm:text-base" style="white-space: pre-wrap;">${escapeHtml(msg.content)}</p>
+                  ${msg.role === 'assistant' && msg.chars_consumed ? `<p class="text-xs text-gray-400 mt-1">${t('mashiroCharsConsumed')}: ${msg.chars_consumed}</p>` : ''}
                 </div>
               </div>
             `).join('')}
             ${state.mashiroTyping ? `
               <div class="flex gap-2 sm:gap-3">
                 <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0">
-                  <img src="/static/mashiro_icon.png" alt="Mashiro" class="w-full h-full object-cover object-top">
+                  <img src="${state.aiSettings.ai_icon_url || '/static/mashiro_icon.png'}" alt="${state.aiSettings.ai_name || t('mashiroName')}" class="w-full h-full object-cover object-top" onerror="this.src='/static/mashiro_icon.png'">
                 </div>
                 <div class="bg-white rounded-2xl rounded-tl-none p-3 sm:p-4 shadow-sm">
                   <div class="flex gap-1">
@@ -5552,6 +5941,207 @@ p { text-indent: 1em; margin: 0.5em 0; }
 
   // ==================== MASHIRO CONSULTANT FUNCTIONS ====================
 
+  // Load Mashiro chat history from server
+  async function loadMashiroHistory() {
+    try {
+      const res = await fetch('/api/mashiro/history', {
+        credentials: 'include'
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.history) {
+          state.mashiroMessages = data.history.map(h => ({
+            role: h.role,
+            content: h.content,
+            chars_consumed: h.chars_consumed || 0,
+            id: h.id
+          }));
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load Mashiro history:', e);
+    }
+  }
+
+  // Clear Mashiro history confirmation
+  window.confirmClearMashiroHistory = function() {
+    const modals = document.getElementById('modals');
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onclick="if(event.target === this) closeModal()">
+        <div class="bg-white rounded-xl max-w-sm w-full p-6">
+          <div class="text-center">
+            <i class="fas fa-exclamation-triangle text-4xl text-orange-500 mb-4"></i>
+            <h3 class="text-lg font-bold mb-2">${t('mashiroClearHistory')}</h3>
+            <p class="text-gray-600 text-sm mb-6">${t('mashiroConfirmClearHistory')}</p>
+          </div>
+          <div class="flex gap-3">
+            <button onclick="closeModal()" class="flex-1 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">${t('cancel')}</button>
+            <button onclick="clearMashiroHistory()" class="flex-1 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">${t('delete')}</button>
+          </div>
+        </div>
+      </div>
+    `;
+  };
+
+  // Clear Mashiro history
+  window.clearMashiroHistory = async function() {
+    try {
+      const res = await fetch('/api/mashiro/history', {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+      if (res.ok) {
+        state.mashiroMessages = [];
+        closeModal();
+        render();
+        showToast(t('mashiroHistoryCleared'), 'success');
+      }
+    } catch (e) {
+      showToast('Error clearing history', 'error');
+    }
+  };
+
+  // ==================== AI SETTINGS ====================
+  
+  // Load AI settings
+  async function loadAiSettings() {
+    try {
+      const res = await fetch('/api/ai-settings', {
+        credentials: 'include'
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.settings) {
+          state.aiSettings = {
+            ai_name: data.settings.ai_name || '',
+            ai_icon_url: data.settings.ai_icon_url || '',
+            ai_personality: data.settings.ai_personality || ''
+          };
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load AI settings:', e);
+    }
+  }
+  
+  // Save AI settings
+  window.saveAiSettings = async function() {
+    const aiName = document.getElementById('ai-name-input')?.value || '';
+    const aiIconUrl = document.getElementById('ai-icon-url-input')?.value || '';
+    const aiPersonality = document.getElementById('ai-personality-input')?.value || '';
+    
+    try {
+      const res = await fetch('/api/ai-settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          ai_name: aiName,
+          ai_icon_url: aiIconUrl,
+          ai_personality: aiPersonality
+        })
+      });
+      
+      if (res.ok) {
+        state.aiSettings = {
+          ai_name: aiName,
+          ai_icon_url: aiIconUrl,
+          ai_personality: aiPersonality
+        };
+        closeModal();
+        render();
+        showToast(t('aiSettingsSaved'), 'success');
+      }
+    } catch (e) {
+      showToast('Error saving settings', 'error');
+    }
+  };
+  
+  // Reset AI settings to default
+  window.resetAiSettings = async function() {
+    try {
+      const res = await fetch('/api/ai-settings', {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+      
+      if (res.ok) {
+        state.aiSettings = {
+          ai_name: '',
+          ai_icon_url: '',
+          ai_personality: ''
+        };
+        closeModal();
+        render();
+        showToast(t('aiSettingsSaved'), 'success');
+      }
+    } catch (e) {
+      showToast('Error resetting settings', 'error');
+    }
+  };
+  
+  // Show AI Settings Modal
+  window.showAiSettingsModal = function() {
+    const modals = document.getElementById('modals');
+    const currentName = state.aiSettings.ai_name || '';
+    const currentIcon = state.aiSettings.ai_icon_url || '';
+    const currentPersonality = state.aiSettings.ai_personality || '';
+    
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onclick="if(event.target === this) closeModal()">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 max-h-[90vh] overflow-y-auto">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-pink-300">
+              <img src="${currentIcon || '/static/mashiro_icon.png'}" alt="AI" class="w-full h-full object-cover object-top" onerror="this.src='/static/mashiro_icon.png'" id="ai-icon-preview">
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-gray-800">${t('aiSettingsTitle')}</h3>
+              <p class="text-sm text-gray-500">${t('mashiroConsultant')}</p>
+            </div>
+          </div>
+          
+          <div class="space-y-4">
+            <!-- AI Name -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('aiName')}</label>
+              <input type="text" id="ai-name-input" value="${escapeHtml(currentName)}" placeholder="${t('aiNamePlaceholder')}" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            </div>
+            
+            <!-- AI Icon URL -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('aiIconUrl')}</label>
+              <input type="text" id="ai-icon-url-input" value="${escapeHtml(currentIcon)}" placeholder="${t('aiIconUrlPlaceholder')}"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                oninput="document.getElementById('ai-icon-preview').src = this.value || '/static/mashiro_icon.png'">
+              <p class="text-xs text-gray-400 mt-1">https://example.com/image.png</p>
+            </div>
+            
+            <!-- AI Personality -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('aiPersonality')}</label>
+              <textarea id="ai-personality-input" rows="6" placeholder="${t('aiPersonalityPlaceholder')}"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent resize-none">${escapeHtml(currentPersonality)}</textarea>
+              <p class="text-xs text-gray-400 mt-1">※ ${t('mashiroCharsNote').replace('※ ', '')}</p>
+            </div>
+          </div>
+          
+          <div class="mt-6 flex flex-col gap-3">
+            <div class="flex gap-3">
+              <button onclick="closeModal()" class="flex-1 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">${t('cancel')}</button>
+              <button onclick="saveAiSettings()" class="flex-1 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition">
+                <i class="fas fa-save mr-2"></i>${t('save')}
+              </button>
+            </div>
+            <button onclick="resetAiSettings()" class="w-full py-2 text-gray-500 hover:text-gray-700 hover:bg-gray-50 rounded-lg transition text-sm">
+              <i class="fas fa-undo mr-2"></i>${t('aiSettingsReset')}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  };
+
   window.sendToMashiro = async function() {
     const input = document.getElementById('mashiro-input');
     const message = input.value.trim();
@@ -5575,8 +6165,7 @@ p { text-indent: 1em; margin: 0.5em 0; }
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify({ 
-          message,
-          history: state.mashiroMessages.slice(-10) // Last 10 messages for context
+          message
         })
       });
       
@@ -5584,7 +6173,7 @@ p { text-indent: 1em; margin: 0.5em 0; }
       
       // Check for limit exceeded error
       if (data.error === 'limit_exceeded') {
-        state.mashiroMessages.push({ role: 'assistant', content: 'すみません、文字数の上限に達しているようです。プランをアップグレードしてください。' });
+        state.mashiroMessages.push({ role: 'assistant', content: 'すみません、文字数の上限に達しているようです。プランをアップグレードしてください。', chars_consumed: 0 });
         state.mashiroTyping = false;
         render();
         showToast(t('upgrade'), 'warning');
@@ -5593,7 +6182,11 @@ p { text-indent: 1em; margin: 0.5em 0; }
       
       if (!res.ok) throw new Error(data.error || 'Failed to get response');
       
-      state.mashiroMessages.push({ role: 'assistant', content: data.response });
+      state.mashiroMessages.push({ 
+        role: 'assistant', 
+        content: data.response,
+        chars_consumed: data.chars_generated || 0
+      });
       
       // Update usage display
       if (data.user_usage) {
@@ -5601,7 +6194,7 @@ p { text-indent: 1em; margin: 0.5em 0; }
         updateUsageDisplay();
       }
     } catch (e) {
-      state.mashiroMessages.push({ role: 'assistant', content: 'すみません、エラーが発生しました。もう一度お試しください。' });
+      state.mashiroMessages.push({ role: 'assistant', content: 'すみません、エラーが発生しました。もう一度お試しください。', chars_consumed: 0 });
     }
     
     state.mashiroTyping = false;
@@ -5831,7 +6424,7 @@ p { text-indent: 1em; margin: 0.5em 0; }
       const isAuthed = await checkAuth();
       
       if (isAuthed) {
-        await Promise.all([loadProjects(), loadFolders(), loadTags()]);
+        await Promise.all([loadProjects(), loadFolders(), loadTags(), loadAiSettings()]);
       }
       
       // Initialize keyboard shortcuts

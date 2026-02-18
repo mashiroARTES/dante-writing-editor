@@ -783,7 +783,7 @@ app.post('/api/mashiro/chat', async (c) => {
   }
   
   try {
-    const { message, history } = await c.req.json()
+    const { message } = await c.req.json()
     
     if (!message) {
       return c.json({ error: 'Message is required' }, 400)
@@ -803,6 +803,12 @@ app.post('/api/mashiro/chat', async (c) => {
        ORDER BY created_at DESC LIMIT 10`
     ).bind(user.id).all()
     
+    // Get past Mashiro conversation history from DB (last 20 messages)
+    const pastMashiroHistory = await c.env.DB.prepare(
+      `SELECT role, content, created_at FROM mashiro_history 
+       WHERE user_id = ? ORDER BY created_at DESC LIMIT 20`
+    ).bind(user.id).all()
+    
     // Build context about user's writing
     let userContext = ''
     if (recentProjects.results && recentProjects.results.length > 0) {
@@ -820,7 +826,13 @@ app.post('/api/mashiro/chat', async (c) => {
       })
     }
     
-    const systemPrompt = `あなたは「マシロさん」です。本名は真城由理子。アルテス学園で文学の研究と教師をしている成人女性です。
+    // Get custom AI settings
+    const aiSettings = await c.env.DB.prepare(
+      'SELECT ai_name, ai_icon_url, ai_personality FROM ai_consultant_settings WHERE user_id = ?'
+    ).bind(user.id).first() as { ai_name?: string, ai_icon_url?: string, ai_personality?: string } | null
+    
+    // Default personality
+    const defaultPersonality = `あなたは「マシロさん」です。本名は真城由理子。アルテス学園で文学の研究と教師をしている成人女性です。
 アルテス学園は学生も教師も平等で、制服デザインが一緒。あなたも制服を着ています。
 
 【性格・話し方】
@@ -835,17 +847,33 @@ app.post('/api/mashiro/chat', async (c) => {
 - 創作のアイデア出しを手伝う
 - 文章の改善点を指摘する
 - モチベーションを上げる励ましをする
-- ユーザーが望めば、様々なキャラクターのロールプレイにも応じる
+- ユーザーが望めば、様々なキャラクターのロールプレイにも応じる`
+    
+    // Use custom personality if set, otherwise use default
+    const personality = aiSettings?.ai_personality && aiSettings.ai_personality.trim() 
+      ? aiSettings.ai_personality 
+      : defaultPersonality
+    
+    const aiName = aiSettings?.ai_name && aiSettings.ai_name.trim() 
+      ? aiSettings.ai_name 
+      : 'マシロさん'
+    
+    const systemPrompt = `${personality}
 
 【ユーザー情報】
 ユーザー名: ${user.username}
 ${userContext}
 
-会話履歴を踏まえて、自然に会話を続けてください。長すぎない返答を心がけてください。`
+過去の会話履歴も踏まえて、自然に会話を続けてください。以前話した内容を覚えているように振る舞い、継続性のある対話をしてください。長すぎない返答を心がけてください。`
 
+    // Build messages array with past conversation history from DB
+    const conversationHistory = pastMashiroHistory.results 
+      ? [...pastMashiroHistory.results].reverse().map((h: any) => ({ role: h.role, content: h.content }))
+      : []
+    
     const messages = [
       { role: 'system', content: systemPrompt },
-      ...(history || []).map((h: any) => ({ role: h.role, content: h.content })),
+      ...conversationHistory,
       { role: 'user', content: message }
     ]
     
@@ -873,6 +901,16 @@ ${userContext}
     const mashiroResponse = data.choices[0].message.content
     const charsGenerated = mashiroResponse.length
     
+    // Save user message to history
+    await c.env.DB.prepare(
+      'INSERT INTO mashiro_history (user_id, role, content, chars_consumed) VALUES (?, ?, ?, ?)'
+    ).bind(user.id, 'user', message, 0).run()
+    
+    // Save assistant response to history
+    await c.env.DB.prepare(
+      'INSERT INTO mashiro_history (user_id, role, content, chars_consumed) VALUES (?, ?, ?, ?)'
+    ).bind(user.id, 'assistant', mashiroResponse, charsGenerated).run()
+    
     // Update user's usage (consume characters for Mashiro chat too)
     await c.env.DB.prepare(
       'UPDATE users SET total_chars_used = total_chars_used + ? WHERE id = ?'
@@ -890,6 +928,165 @@ ${userContext}
   } catch (e: any) {
     console.error('Mashiro chat error:', e)
     return c.json({ error: e.message || 'Chat failed' }, 500)
+  }
+})
+
+// Get Mashiro chat history
+app.get('/api/mashiro/history', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  try {
+    const history = await c.env.DB.prepare(
+      `SELECT id, role, content, chars_consumed, created_at FROM mashiro_history 
+       WHERE user_id = ? ORDER BY created_at ASC`
+    ).bind(user.id).all()
+    
+    return c.json({ success: true, history: history.results || [] })
+  } catch (e: any) {
+    console.error('Get Mashiro history error:', e)
+    return c.json({ error: e.message || 'Failed to get history' }, 500)
+  }
+})
+
+// Delete all Mashiro chat history
+app.delete('/api/mashiro/history', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  try {
+    await c.env.DB.prepare(
+      'DELETE FROM mashiro_history WHERE user_id = ?'
+    ).bind(user.id).run()
+    
+    return c.json({ success: true, message: 'History cleared' })
+  } catch (e: any) {
+    console.error('Delete Mashiro history error:', e)
+    return c.json({ error: e.message || 'Failed to delete history' }, 500)
+  }
+})
+
+// Delete specific Mashiro chat messages
+app.delete('/api/mashiro/history/:id', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const messageId = c.req.param('id')
+  
+  try {
+    // Verify the message belongs to this user
+    const message = await c.env.DB.prepare(
+      'SELECT id FROM mashiro_history WHERE id = ? AND user_id = ?'
+    ).bind(messageId, user.id).first()
+    
+    if (!message) {
+      return c.json({ error: 'Message not found' }, 404)
+    }
+    
+    await c.env.DB.prepare(
+      'DELETE FROM mashiro_history WHERE id = ? AND user_id = ?'
+    ).bind(messageId, user.id).run()
+    
+    return c.json({ success: true, message: 'Message deleted' })
+  } catch (e: any) {
+    console.error('Delete Mashiro message error:', e)
+    return c.json({ error: e.message || 'Failed to delete message' }, 500)
+  }
+})
+
+// ==================== AI CONSULTANT SETTINGS ====================
+
+// Get AI consultant settings
+app.get('/api/ai-settings', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  try {
+    const settings = await c.env.DB.prepare(
+      'SELECT ai_name, ai_icon_url, ai_personality FROM ai_consultant_settings WHERE user_id = ?'
+    ).bind(user.id).first()
+    
+    // Return default settings if none exist
+    if (!settings) {
+      return c.json({ 
+        success: true, 
+        settings: {
+          ai_name: '',
+          ai_icon_url: '',
+          ai_personality: ''
+        },
+        isDefault: true
+      })
+    }
+    
+    return c.json({ success: true, settings, isDefault: false })
+  } catch (e: any) {
+    console.error('Get AI settings error:', e)
+    return c.json({ error: e.message || 'Failed to get settings' }, 500)
+  }
+})
+
+// Update AI consultant settings
+app.put('/api/ai-settings', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  try {
+    const { ai_name, ai_icon_url, ai_personality } = await c.req.json()
+    
+    // Check if settings exist
+    const existing = await c.env.DB.prepare(
+      'SELECT id FROM ai_consultant_settings WHERE user_id = ?'
+    ).bind(user.id).first()
+    
+    if (existing) {
+      // Update existing settings
+      await c.env.DB.prepare(
+        `UPDATE ai_consultant_settings 
+         SET ai_name = ?, ai_icon_url = ?, ai_personality = ?, updated_at = CURRENT_TIMESTAMP 
+         WHERE user_id = ?`
+      ).bind(ai_name || '', ai_icon_url || '', ai_personality || '', user.id).run()
+    } else {
+      // Insert new settings
+      await c.env.DB.prepare(
+        `INSERT INTO ai_consultant_settings (user_id, ai_name, ai_icon_url, ai_personality) 
+         VALUES (?, ?, ?, ?)`
+      ).bind(user.id, ai_name || '', ai_icon_url || '', ai_personality || '').run()
+    }
+    
+    return c.json({ success: true, message: 'Settings saved' })
+  } catch (e: any) {
+    console.error('Update AI settings error:', e)
+    return c.json({ error: e.message || 'Failed to save settings' }, 500)
+  }
+})
+
+// Delete AI consultant settings (reset to default)
+app.delete('/api/ai-settings', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  try {
+    await c.env.DB.prepare(
+      'DELETE FROM ai_consultant_settings WHERE user_id = ?'
+    ).bind(user.id).run()
+    
+    return c.json({ success: true, message: 'Settings reset to default' })
+  } catch (e: any) {
+    console.error('Delete AI settings error:', e)
+    return c.json({ error: e.message || 'Failed to reset settings' }, 500)
   }
 })
 
@@ -1458,7 +1655,8 @@ const pageContent: { [key: string]: { [key: string]: any } } = {
         { title: '第3条（料金）', list: ['無料プラン：3,000文字まで（一度限り）', 'スタンダードプラン：1,000円で500,000文字', 'プレミアムプラン：10,000円で6,000,000文字'] },
         { title: '第4条（禁止事項）', content: '利用者は、以下の行為を行ってはなりません：', list: ['法令または公序良俗に違反する行為', '当社または第三者の権利を侵害する行為', '本サービスの運営を妨害する行為', '不正アクセスまたはその試み'] },
         { title: '第5条（免責事項）', content: '当社は、本サービスにより生成されたコンテンツの正確性、完全性、有用性について保証しません。' },
-        { title: '第6条（準拠法・管轄）', content: '本規約の解釈および適用は日本法に準拠し、本サービスに関する紛争については、水戸地方裁判所土浦支部を第一審の専属的合意管轄裁判所とします。' }
+        { title: '第6条（準拠法・管轄）', content: '本規約の解釈および適用は日本法に準拠し、本サービスに関する紛争については、水戸地方裁判所土浦支部を第一審の専属的合意管轄裁判所とします。' },
+        { title: '第7条（お問い合わせ先）', content: '合同会社RATIO Lab.', list: ['〒305-0051 茨城県つくば市二の宮2-7-20-3階', 'Email: info@ratio-lab.com'] }
       ],
       back: '← DANTEに戻る'
     },
@@ -1471,7 +1669,8 @@ const pageContent: { [key: string]: { [key: string]: any } } = {
         { title: 'Article 3 (Pricing)', list: ['Free Plan: Up to 3,000 characters (one-time)', 'Standard Plan: $10 for 500,000 characters', 'Premium Plan: $100 for 6,000,000 characters'] },
         { title: 'Article 4 (Prohibited Activities)', content: 'Users shall not engage in:', list: ['Activities violating laws or public order', 'Activities infringing rights of the Company or third parties', 'Activities interfering with Service operations', 'Unauthorized access or attempts thereof'] },
         { title: 'Article 5 (Disclaimer)', content: 'The Company does not guarantee the accuracy, completeness, or usefulness of content generated by this Service.' },
-        { title: 'Article 6 (Governing Law & Jurisdiction)', content: 'These Terms shall be governed by Japanese law, and disputes shall be submitted to the exclusive jurisdiction of the Tsuchiura Branch of Mito District Court.' }
+        { title: 'Article 6 (Governing Law & Jurisdiction)', content: 'These Terms shall be governed by Japanese law, and disputes shall be submitted to the exclusive jurisdiction of the Tsuchiura Branch of Mito District Court.' },
+        { title: 'Article 7 (Contact Information)', content: 'RATIO Lab., LLC', list: ['2-7-20-3F Ninomiya, Tsukuba-shi, Ibaraki 305-0051, Japan', 'Email: info@ratio-lab.com'] }
       ],
       back: '← Back to DANTE'
     },
@@ -1616,7 +1815,7 @@ const pageContent: { [key: string]: { [key: string]: any } } = {
         { title: '3. 情報の第三者提供', content: '当社は、法令に基づく場合を除き、利用者の同意なく個人情報を第三者に提供しません。' },
         { title: '4. セキュリティ', content: '当社は、個人情報の漏洩、滅失、毀損を防止するため、適切なセキュリティ対策を講じます。' },
         { title: '5. Cookieの使用', content: '本サービスは、セッション管理のためにCookieを使用します。' },
-        { title: '6. お問い合わせ', content: '個人情報に関するお問い合わせは、当社までご連絡ください。' }
+        { title: '6. お問い合わせ', content: '個人情報に関するお問い合わせは、下記までご連絡ください。', list: ['合同会社RATIO Lab.', '〒305-0051 茨城県つくば市二の宮2-7-20-3階', 'Email: info@ratio-lab.com'] }
       ],
       back: '← DANTEに戻る'
     },
@@ -1629,7 +1828,7 @@ const pageContent: { [key: string]: { [key: string]: any } } = {
         { title: '3. Third-Party Disclosure', content: 'We do not provide personal information to third parties without user consent, except as required by law.' },
         { title: '4. Security', content: 'We implement appropriate security measures to prevent leakage, loss, or damage of personal information.' },
         { title: '5. Cookie Usage', content: 'This Service uses cookies for session management.' },
-        { title: '6. Contact', content: 'For inquiries regarding personal information, please contact us.' }
+        { title: '6. Contact', content: 'For inquiries regarding personal information, please contact us at:', list: ['RATIO Lab., LLC', '2-7-20-3F Ninomiya, Tsukuba-shi, Ibaraki 305-0051, Japan', 'Email: info@ratio-lab.com'] }
       ],
       back: '← Back to DANTE'
     },
