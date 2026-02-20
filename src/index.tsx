@@ -6,6 +6,8 @@ type Bindings = {
   DB: D1Database
   GROK_API_KEY: string
   KOMOJU_SECRET_KEY: string
+  GOOGLE_CLIENT_ID: string
+  GOOGLE_CLIENT_SECRET: string
 }
 
 type Variables = {
@@ -178,6 +180,170 @@ app.post('/api/auth/logout', async (c) => {
     deleteCookie(c, 'session_id', { path: '/' })
   }
   return c.json({ success: true })
+})
+
+// ==================== GOOGLE OAUTH ====================
+
+// Get the callback URL based on the request origin
+function getGoogleCallbackUrl(c: any): string {
+  const url = new URL(c.req.url)
+  return `${url.origin}/api/auth/callback/google`
+}
+
+// Start Google OAuth flow
+app.get('/api/auth/google', (c) => {
+  const clientId = c.env.GOOGLE_CLIENT_ID
+  if (!clientId) {
+    return c.json({ error: 'Google OAuth not configured' }, 500)
+  }
+  
+  const callbackUrl = getGoogleCallbackUrl(c)
+  const authorizationUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth')
+  authorizationUrl.searchParams.set('client_id', clientId)
+  authorizationUrl.searchParams.set('redirect_uri', callbackUrl)
+  authorizationUrl.searchParams.set('response_type', 'code')
+  authorizationUrl.searchParams.set('scope', 'openid email profile')
+  authorizationUrl.searchParams.set('access_type', 'offline')
+  authorizationUrl.searchParams.set('prompt', 'consent')
+  
+  return c.redirect(authorizationUrl.toString())
+})
+
+// Google OAuth callback
+app.get('/api/auth/callback/google', async (c) => {
+  const code = c.req.query('code')
+  const error = c.req.query('error')
+  
+  if (error) {
+    return c.redirect('/?error=google_auth_cancelled')
+  }
+  
+  if (!code) {
+    return c.redirect('/?error=google_auth_failed')
+  }
+  
+  try {
+    const clientId = c.env.GOOGLE_CLIENT_ID
+    const clientSecret = c.env.GOOGLE_CLIENT_SECRET
+    const callbackUrl = getGoogleCallbackUrl(c)
+    
+    // Exchange code for tokens
+    const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        code,
+        client_id: clientId,
+        client_secret: clientSecret,
+        redirect_uri: callbackUrl,
+        grant_type: 'authorization_code',
+      }).toString(),
+    })
+    
+    if (!tokenResponse.ok) {
+      console.error('Token exchange failed:', await tokenResponse.text())
+      return c.redirect('/?error=google_token_failed')
+    }
+    
+    const tokenData = await tokenResponse.json() as { access_token: string }
+    const accessToken = tokenData.access_token
+    
+    // Get user info from Google
+    const userInfoResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    
+    if (!userInfoResponse.ok) {
+      console.error('User info failed:', await userInfoResponse.text())
+      return c.redirect('/?error=google_userinfo_failed')
+    }
+    
+    const googleUser = await userInfoResponse.json() as {
+      id: string
+      email: string
+      name: string
+      picture: string
+    }
+    
+    // Check if user exists with this Google ID
+    let user = await c.env.DB.prepare(
+      `SELECT id, email, username, COALESCE(plan, 'free') as plan, 
+       COALESCE(total_chars_limit, 3000) as total_chars_limit, 
+       COALESCE(total_chars_used, 0) as total_chars_used,
+       COALESCE(language, 'ja') as language
+       FROM users WHERE google_id = ?`
+    ).bind(googleUser.id).first() as any
+    
+    if (!user) {
+      // Check if user exists with this email (link accounts)
+      const existingUser = await c.env.DB.prepare(
+        'SELECT id FROM users WHERE email = ?'
+      ).bind(googleUser.email).first() as any
+      
+      if (existingUser) {
+        // Link Google account to existing user
+        await c.env.DB.prepare(
+          'UPDATE users SET google_id = ? WHERE id = ?'
+        ).bind(googleUser.id, existingUser.id).run()
+        
+        user = await c.env.DB.prepare(
+          `SELECT id, email, username, COALESCE(plan, 'free') as plan, 
+           COALESCE(total_chars_limit, 3000) as total_chars_limit, 
+           COALESCE(total_chars_used, 0) as total_chars_used,
+           COALESCE(language, 'ja') as language
+           FROM users WHERE id = ?`
+        ).bind(existingUser.id).first()
+      } else {
+        // Create new user with Google account
+        const result = await c.env.DB.prepare(
+          `INSERT INTO users (email, username, google_id, plan, total_chars_limit, total_chars_used, language) 
+           VALUES (?, ?, ?, 'free', 3000, 0, 'ja')`
+        ).bind(googleUser.email, googleUser.name, googleUser.id).run()
+        
+        const userId = result.meta.last_row_id
+        
+        // Initialize user preferences
+        await c.env.DB.prepare(
+          `INSERT INTO user_preferences (user_id, default_model, default_genre, theme, auto_save) 
+           VALUES (?, 'grok-4-1-fast-non-reasoning', 'novel', 'light', 1)`
+        ).bind(userId).run()
+        
+        user = await c.env.DB.prepare(
+          `SELECT id, email, username, COALESCE(plan, 'free') as plan, 
+           COALESCE(total_chars_limit, 3000) as total_chars_limit, 
+           COALESCE(total_chars_used, 0) as total_chars_used,
+           COALESCE(language, 'ja') as language
+           FROM users WHERE id = ?`
+        ).bind(userId).first()
+      }
+    }
+    
+    // Create session
+    const sessionId = generateSessionId()
+    const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+    
+    await c.env.DB.prepare(
+      'INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)'
+    ).bind(sessionId, user.id, expiresAt).run()
+    
+    setCookie(c, 'session_id', sessionId, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'Lax',
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/'
+    })
+    
+    // Redirect to home page
+    return c.redirect('/')
+  } catch (e: any) {
+    console.error('Google OAuth error:', e)
+    return c.redirect('/?error=google_auth_error')
+  }
 })
 
 // Get current user
