@@ -396,6 +396,156 @@ app.put('/api/auth/preferences', async (c) => {
   return c.json({ success: true })
 })
 
+// Get Google link status
+app.get('/api/auth/google-status', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const userData = await c.env.DB.prepare(
+    'SELECT google_id FROM users WHERE id = ?'
+  ).bind(user.id).first() as any
+  
+  return c.json({ 
+    linked: !!userData?.google_id,
+    google_id: userData?.google_id || null
+  })
+})
+
+// Start Google linking flow (for existing users)
+app.get('/api/auth/google/link', (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.redirect('/?error=auth_required')
+  }
+  
+  const clientId = c.env.GOOGLE_CLIENT_ID
+  if (!clientId) {
+    return c.json({ error: 'Google OAuth not configured' }, 500)
+  }
+  
+  const callbackUrl = getGoogleCallbackUrl(c).replace('/callback/google', '/callback/google-link')
+  const authorizationUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth')
+  authorizationUrl.searchParams.set('client_id', clientId)
+  authorizationUrl.searchParams.set('redirect_uri', callbackUrl)
+  authorizationUrl.searchParams.set('response_type', 'code')
+  authorizationUrl.searchParams.set('scope', 'openid email profile')
+  authorizationUrl.searchParams.set('access_type', 'offline')
+  authorizationUrl.searchParams.set('prompt', 'consent')
+  
+  return c.redirect(authorizationUrl.toString())
+})
+
+// Google OAuth callback for linking
+app.get('/api/auth/callback/google-link', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.redirect('/?error=auth_required')
+  }
+  
+  const code = c.req.query('code')
+  const error = c.req.query('error')
+  
+  if (error) {
+    return c.redirect('/?error=google_link_cancelled')
+  }
+  
+  if (!code) {
+    return c.redirect('/?error=google_link_failed')
+  }
+  
+  try {
+    const clientId = c.env.GOOGLE_CLIENT_ID
+    const clientSecret = c.env.GOOGLE_CLIENT_SECRET
+    const callbackUrl = getGoogleCallbackUrl(c).replace('/callback/google', '/callback/google-link')
+    
+    // Exchange code for tokens
+    const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        code,
+        client_id: clientId,
+        client_secret: clientSecret,
+        redirect_uri: callbackUrl,
+        grant_type: 'authorization_code',
+      }).toString(),
+    })
+    
+    if (!tokenResponse.ok) {
+      console.error('Token exchange failed:', await tokenResponse.text())
+      return c.redirect('/?error=google_link_token_failed')
+    }
+    
+    const tokenData = await tokenResponse.json() as { access_token: string }
+    const accessToken = tokenData.access_token
+    
+    // Get user info from Google
+    const userInfoResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    
+    if (!userInfoResponse.ok) {
+      console.error('User info failed:', await userInfoResponse.text())
+      return c.redirect('/?error=google_link_userinfo_failed')
+    }
+    
+    const googleUser = await userInfoResponse.json() as {
+      id: string
+      email: string
+      name: string
+      picture: string
+    }
+    
+    // Check if this Google account is already linked to another user
+    const existingGoogleUser = await c.env.DB.prepare(
+      'SELECT id FROM users WHERE google_id = ?'
+    ).bind(googleUser.id).first()
+    
+    if (existingGoogleUser) {
+      return c.redirect('/?error=google_already_linked')
+    }
+    
+    // Link Google account to current user
+    await c.env.DB.prepare(
+      'UPDATE users SET google_id = ? WHERE id = ?'
+    ).bind(googleUser.id, user.id).run()
+    
+    return c.redirect('/?success=google_linked')
+  } catch (e: any) {
+    console.error('Google link error:', e)
+    return c.redirect('/?error=google_link_error')
+  }
+})
+
+// Unlink Google account
+app.delete('/api/auth/google/link', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  // Check if user has a password (can't unlink if no password)
+  const userData = await c.env.DB.prepare(
+    'SELECT password_hash FROM users WHERE id = ?'
+  ).bind(user.id).first() as any
+  
+  if (!userData?.password_hash) {
+    return c.json({ error: 'Cannot unlink Google - no password set. Please set a password first.' }, 400)
+  }
+  
+  await c.env.DB.prepare(
+    'UPDATE users SET google_id = NULL WHERE id = ?'
+  ).bind(user.id).run()
+  
+  return c.json({ success: true })
+})
+
 // Get usage stats
 app.get('/api/auth/usage', async (c) => {
   const user = c.get('user')

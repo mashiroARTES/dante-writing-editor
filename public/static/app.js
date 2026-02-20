@@ -132,6 +132,14 @@
       googleLogin: 'Googleでログイン',
       googleLoginError: 'Googleログインに失敗しました',
       orContinueWith: 'または',
+      googleLinked: 'Google連携済み',
+      googleNotLinked: 'Google未連携',
+      linkGoogle: 'Googleアカウントを連携',
+      unlinkGoogle: '連携を解除',
+      googleLinkSuccess: 'Googleアカウントを連携しました',
+      googleUnlinkSuccess: 'Google連携を解除しました',
+      googleAlreadyLinked: 'このGoogleアカウントは既に他のユーザーに連携されています',
+      cannotUnlinkNoPassword: 'パスワードが設定されていないため、連携を解除できません',
       // Editor
       editorPlaceholder: 'ここに文章を書きます...',
       // Idea mode
@@ -346,6 +354,14 @@
       googleLogin: 'Sign in with Google',
       googleLoginError: 'Google sign-in failed',
       orContinueWith: 'or',
+      googleLinked: 'Google Linked',
+      googleNotLinked: 'Google Not Linked',
+      linkGoogle: 'Link Google Account',
+      unlinkGoogle: 'Unlink',
+      googleLinkSuccess: 'Google account linked successfully',
+      googleUnlinkSuccess: 'Google account unlinked',
+      googleAlreadyLinked: 'This Google account is already linked to another user',
+      cannotUnlinkNoPassword: 'Cannot unlink - no password set',
       // Editor
       editorPlaceholder: 'Write your text here...',
       // Idea mode
@@ -558,6 +574,14 @@
       googleLogin: '使用Google登录',
       googleLoginError: 'Google登录失败',
       orContinueWith: '或者',
+      googleLinked: 'Google已关联',
+      googleNotLinked: 'Google未关联',
+      linkGoogle: '关联Google账户',
+      unlinkGoogle: '取消关联',
+      googleLinkSuccess: 'Google账户关联成功',
+      googleUnlinkSuccess: 'Google账户已取消关联',
+      googleAlreadyLinked: '此Google账户已关联其他用户',
+      cannotUnlinkNoPassword: '未设置密码，无法取消关联',
       // Editor
       editorPlaceholder: '在这里写作...',
       // Idea mode
@@ -772,6 +796,14 @@
       googleLogin: 'Google로 로그인',
       googleLoginError: 'Google 로그인에 실패했습니다',
       orContinueWith: '또는',
+      googleLinked: 'Google 연동됨',
+      googleNotLinked: 'Google 미연동',
+      linkGoogle: 'Google 계정 연동',
+      unlinkGoogle: '연동 해제',
+      googleLinkSuccess: 'Google 계정이 연동되었습니다',
+      googleUnlinkSuccess: 'Google 연동이 해제되었습니다',
+      googleAlreadyLinked: '이 Google 계정은 이미 다른 사용자에게 연동되어 있습니다',
+      cannotUnlinkNoPassword: '비밀번호가 설정되지 않아 연동을 해제할 수 없습니다',
       // Editor
       editorPlaceholder: '여기에 글을 작성하세요...',
       // Idea mode
@@ -987,6 +1019,14 @@
       googleLogin: 'Accedi con Google',
       googleLoginError: 'Accesso con Google fallito',
       orContinueWith: 'oppure',
+      googleLinked: 'Google Collegato',
+      googleNotLinked: 'Google Non Collegato',
+      linkGoogle: 'Collega Account Google',
+      unlinkGoogle: 'Scollega',
+      googleLinkSuccess: 'Account Google collegato',
+      googleUnlinkSuccess: 'Account Google scollegato',
+      googleAlreadyLinked: 'Questo account Google è già collegato a un altro utente',
+      cannotUnlinkNoPassword: 'Impossibile scollegare - nessuna password impostata',
       // Editor
       editorPlaceholder: 'Scrivi il tuo testo qui...',
       // Idea mode
@@ -1202,6 +1242,14 @@
       googleLogin: 'Google से साइन इन करें',
       googleLoginError: 'Google साइन इन विफल',
       orContinueWith: 'या',
+      googleLinked: 'Google जुड़ा हुआ',
+      googleNotLinked: 'Google नहीं जुड़ा',
+      linkGoogle: 'Google खाता जोड़ें',
+      unlinkGoogle: 'लिंक हटाएं',
+      googleLinkSuccess: 'Google खाता जोड़ा गया',
+      googleUnlinkSuccess: 'Google लिंक हटाया गया',
+      googleAlreadyLinked: 'यह Google खाता पहले से किसी अन्य उपयोगकर्ता से जुड़ा है',
+      cannotUnlinkNoPassword: 'लिंक नहीं हटा सकते - कोई पासवर्ड सेट नहीं',
       // Editor
       editorPlaceholder: 'यहाँ अपना टेक्स्ट लिखें...',
       // Idea mode
@@ -1328,6 +1376,8 @@
       selectText: 'Selecciona texto', enterPrompt: 'Ingresa un prompt', translationTarget: 'Idioma destino',
       agreeTerms: 'Acepto los Términos de Servicio y Política de Privacidad',
       googleLogin: 'Iniciar sesión con Google', googleLoginError: 'Error al iniciar sesión con Google', orContinueWith: 'o',
+      googleLinked: 'Google Vinculado', googleNotLinked: 'Google No Vinculado', linkGoogle: 'Vincular Cuenta Google', unlinkGoogle: 'Desvincular',
+      googleLinkSuccess: 'Cuenta Google vinculada', googleUnlinkSuccess: 'Cuenta Google desvinculada', googleAlreadyLinked: 'Esta cuenta Google ya está vinculada a otro usuario', cannotUnlinkNoPassword: 'No se puede desvincular - sin contraseña',
       editorPlaceholder: 'Escribe tu texto aquí...',
       themeKeyword: 'Tema / Palabras clave', themeKeywordPlaceholder: 'ej. Viaje en el tiempo, amor prohibido',
       conditions: 'Condiciones / Restricciones', conditionsPlaceholder: 'ej. El protagonista es estudiante, ambientado en Japón moderno',
@@ -1440,6 +1490,8 @@
       selectText: 'Sélectionnez le texte', enterPrompt: 'Entrez un prompt', translationTarget: 'Langue cible',
       agreeTerms: 'J\'accepte les Conditions d\'Utilisation et la Politique de Confidentialité',
       googleLogin: 'Se connecter avec Google', googleLoginError: 'Échec de la connexion Google', orContinueWith: 'ou',
+      googleLinked: 'Google Lié', googleNotLinked: 'Google Non Lié', linkGoogle: 'Lier le Compte Google', unlinkGoogle: 'Dissocier',
+      googleLinkSuccess: 'Compte Google lié', googleUnlinkSuccess: 'Compte Google dissocié', googleAlreadyLinked: 'Ce compte Google est déjà lié à un autre utilisateur', cannotUnlinkNoPassword: 'Impossible de dissocier - aucun mot de passe défini',
       editorPlaceholder: 'Écrivez votre texte ici...',
       themeKeyword: 'Thème / Mots-clés', themeKeywordPlaceholder: 'ex. Voyage dans le temps, amour interdit',
       conditions: 'Conditions / Restrictions', conditionsPlaceholder: 'ex. Le protagoniste est étudiant, situé au Japon moderne',
@@ -1552,6 +1604,8 @@
       selectText: 'Text auswählen', enterPrompt: 'Prompt eingeben', translationTarget: 'Zielsprache',
       agreeTerms: 'Ich akzeptiere die Nutzungsbedingungen und Datenschutzrichtlinie',
       googleLogin: 'Mit Google anmelden', googleLoginError: 'Google-Anmeldung fehlgeschlagen', orContinueWith: 'oder',
+      googleLinked: 'Google Verknüpft', googleNotLinked: 'Google Nicht Verknüpft', linkGoogle: 'Google-Konto Verknüpfen', unlinkGoogle: 'Trennen',
+      googleLinkSuccess: 'Google-Konto verknüpft', googleUnlinkSuccess: 'Google-Konto getrennt', googleAlreadyLinked: 'Dieses Google-Konto ist bereits mit einem anderen Benutzer verknüpft', cannotUnlinkNoPassword: 'Kann nicht trennen - kein Passwort festgelegt',
       editorPlaceholder: 'Schreiben Sie hier Ihren Text...',
       themeKeyword: 'Thema / Schlüsselwörter', themeKeywordPlaceholder: 'z.B. Zeitreise, verbotene Liebe',
       conditions: 'Bedingungen / Einschränkungen', conditionsPlaceholder: 'z.B. Der Protagonist ist Student, im modernen Japan angesiedelt',
@@ -1664,6 +1718,8 @@
       selectText: 'Selecione o texto', enterPrompt: 'Digite um prompt', translationTarget: 'Idioma alvo',
       agreeTerms: 'Aceito os Termos de Serviço e Política de Privacidade',
       googleLogin: 'Entrar com Google', googleLoginError: 'Falha no login do Google', orContinueWith: 'ou',
+      googleLinked: 'Google Vinculado', googleNotLinked: 'Google Não Vinculado', linkGoogle: 'Vincular Conta Google', unlinkGoogle: 'Desvincular',
+      googleLinkSuccess: 'Conta Google vinculada', googleUnlinkSuccess: 'Conta Google desvinculada', googleAlreadyLinked: 'Esta conta Google já está vinculada a outro usuário', cannotUnlinkNoPassword: 'Não é possível desvincular - sem senha definida',
       editorPlaceholder: 'Escreva seu texto aqui...',
       themeKeyword: 'Tema / Palavras-chave', themeKeywordPlaceholder: 'ex. Viagem no tempo, amor proibido',
       conditions: 'Condições / Restrições', conditionsPlaceholder: 'ex. O protagonista é estudante, ambientado no Japão moderno',
@@ -1776,6 +1832,8 @@
       selectText: 'Выберите текст', enterPrompt: 'Введите промпт', translationTarget: 'Целевой язык',
       agreeTerms: 'Я принимаю Условия использования и Политику конфиденциальности',
       googleLogin: 'Войти через Google', googleLoginError: 'Ошибка входа через Google', orContinueWith: 'или',
+      googleLinked: 'Google Связан', googleNotLinked: 'Google Не Связан', linkGoogle: 'Связать Аккаунт Google', unlinkGoogle: 'Отвязать',
+      googleLinkSuccess: 'Аккаунт Google связан', googleUnlinkSuccess: 'Аккаунт Google отвязан', googleAlreadyLinked: 'Этот аккаунт Google уже связан с другим пользователем', cannotUnlinkNoPassword: 'Невозможно отвязать - пароль не установлен',
       editorPlaceholder: 'Пишите здесь...',
       themeKeyword: 'Тема / Ключевые слова', themeKeywordPlaceholder: 'напр. Путешествие во времени, запретная любовь',
       conditions: 'Условия / Ограничения', conditionsPlaceholder: 'напр. Главный герой - студент, действие в современной Японии',
@@ -1888,6 +1946,8 @@
       selectText: 'حدد النص', enterPrompt: 'أدخل الموجه', translationTarget: 'اللغة المستهدفة',
       agreeTerms: 'أوافق على شروط الخدمة وسياسة الخصوصية',
       googleLogin: 'تسجيل الدخول بـ Google', googleLoginError: 'فشل تسجيل الدخول بـ Google', orContinueWith: 'أو',
+      googleLinked: 'Google مرتبط', googleNotLinked: 'Google غير مرتبط', linkGoogle: 'ربط حساب Google', unlinkGoogle: 'إلغاء الربط',
+      googleLinkSuccess: 'تم ربط حساب Google', googleUnlinkSuccess: 'تم إلغاء ربط حساب Google', googleAlreadyLinked: 'حساب Google هذا مرتبط بالفعل بمستخدم آخر', cannotUnlinkNoPassword: 'لا يمكن إلغاء الربط - لم يتم تعيين كلمة مرور',
       editorPlaceholder: 'اكتب نصك هنا...',
       themeKeyword: 'الموضوع / الكلمات المفتاحية', themeKeywordPlaceholder: 'مثال: السفر عبر الزمن، الحب المحرم',
       conditions: 'الشروط / القيود', conditionsPlaceholder: 'مثال: البطل طالب، في اليابان الحديثة',
@@ -2977,17 +3037,32 @@
     window.location.href = '/api/auth/google';
   };
 
-  // Check for Google OAuth errors on page load
+  // Check for Google OAuth errors/success on page load
   function checkGoogleAuthError() {
     const urlParams = new URLSearchParams(window.location.search);
     const error = urlParams.get('error');
-    if (error) {
-      // Remove error from URL
+    const success = urlParams.get('success');
+    
+    // Remove params from URL
+    if (error || success) {
       window.history.replaceState({}, document.title, window.location.pathname);
-      
+    }
+    
+    if (error) {
       // Show error message
-      if (error.startsWith('google_')) {
+      if (error === 'google_already_linked') {
+        showToast(t('googleAlreadyLinked'), 'error');
+      } else if (error.startsWith('google_link')) {
         showToast(t('googleLoginError'), 'error');
+      } else if (error.startsWith('google_')) {
+        showToast(t('googleLoginError'), 'error');
+      }
+    }
+    
+    if (success) {
+      // Show success message
+      if (success === 'google_linked') {
+        showToast(t('googleLinkSuccess'), 'success');
       }
     }
   }
@@ -3738,18 +3813,97 @@
             <button onclick="saveSettings()" class="flex-1 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">${t('save')}</button>
           </div>
           
+          <!-- Google Account Section -->
+          <div class="mt-4 pt-4 border-t">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Google</label>
+            <div id="google-link-section" class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                <span id="google-link-status" class="text-sm text-gray-600">${t('googleNotLinked')}</span>
+              </div>
+              <button id="google-link-btn" onclick="toggleGoogleLink()" class="px-3 py-1 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                ${t('linkGoogle')}
+              </button>
+            </div>
+          </div>
+          
           <div class="mt-4 pt-4 border-t">
             <button onclick="deleteAccount()" class="w-full py-2 text-red-600 hover:bg-red-50 rounded-lg transition">${t('deleteAccount')}</button>
           </div>
         </div>
       </div>
     `;
+    
+    // Load Google link status
+    loadGoogleLinkStatus();
   };
 
   window.setSettingsTheme = function(theme) {
     state.theme = theme;
     applyTheme();
     showSettingsModal();
+  };
+
+  // Google Link Functions
+  let googleLinkStatus = { linked: false };
+  
+  async function loadGoogleLinkStatus() {
+    try {
+      const data = await api('/auth/google-status');
+      googleLinkStatus = data;
+      updateGoogleLinkUI();
+    } catch (e) {
+      console.error('Failed to load Google link status:', e);
+    }
+  }
+  
+  function updateGoogleLinkUI() {
+    const statusEl = document.getElementById('google-link-status');
+    const btnEl = document.getElementById('google-link-btn');
+    
+    if (!statusEl || !btnEl) return;
+    
+    if (googleLinkStatus.linked) {
+      statusEl.textContent = t('googleLinked');
+      statusEl.classList.remove('text-gray-600');
+      statusEl.classList.add('text-green-600');
+      btnEl.textContent = t('unlinkGoogle');
+      btnEl.classList.remove('bg-white', 'border-gray-300');
+      btnEl.classList.add('bg-red-50', 'border-red-300', 'text-red-600');
+    } else {
+      statusEl.textContent = t('googleNotLinked');
+      statusEl.classList.remove('text-green-600');
+      statusEl.classList.add('text-gray-600');
+      btnEl.textContent = t('linkGoogle');
+      btnEl.classList.remove('bg-red-50', 'border-red-300', 'text-red-600');
+      btnEl.classList.add('bg-white', 'border-gray-300');
+    }
+  }
+  
+  window.toggleGoogleLink = async function() {
+    if (googleLinkStatus.linked) {
+      // Unlink
+      try {
+        await api('/auth/google/link', { method: 'DELETE' });
+        googleLinkStatus.linked = false;
+        updateGoogleLinkUI();
+        showToast(t('googleUnlinkSuccess'), 'success');
+      } catch (e) {
+        if (e.message.includes('no password')) {
+          showToast(t('cannotUnlinkNoPassword'), 'error');
+        } else {
+          showToast(e.message, 'error');
+        }
+      }
+    } else {
+      // Link - redirect to Google OAuth
+      window.location.href = '/api/auth/google/link';
+    }
   };
 
   window.saveSettings = async function() {
