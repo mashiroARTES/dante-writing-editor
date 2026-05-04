@@ -186,6 +186,14 @@ app.post('/api/auth/logout', async (c) => {
 
 // Get the callback URL based on the request origin
 function getGoogleCallbackUrl(c: any): string {
+  // Try to get the original host from headers (for proxied requests)
+  const forwardedHost = c.req.header('x-forwarded-host') || c.req.header('host')
+  const forwardedProto = c.req.header('x-forwarded-proto') || 'https'
+  
+  if (forwardedHost) {
+    return `${forwardedProto}://${forwardedHost}/api/auth/callback/google`
+  }
+  
   const url = new URL(c.req.url)
   return `${url.origin}/api/auth/callback/google`
 }
@@ -298,10 +306,10 @@ app.get('/api/auth/callback/google', async (c) => {
            FROM users WHERE id = ?`
         ).bind(existingUser.id).first()
       } else {
-        // Create new user with Google account
+        // Create new user with Google account (no password)
         const result = await c.env.DB.prepare(
-          `INSERT INTO users (email, username, google_id, plan, total_chars_limit, total_chars_used, language) 
-           VALUES (?, ?, ?, 'free', 3000, 0, 'ja')`
+          `INSERT INTO users (email, password_hash, username, google_id, plan, total_chars_limit, total_chars_used, language) 
+           VALUES (?, '', ?, ?, 'free', 3000, 0, 'ja')`
         ).bind(googleUser.email, googleUser.name, googleUser.id).run()
         
         const userId = result.meta.last_row_id
@@ -342,7 +350,8 @@ app.get('/api/auth/callback/google', async (c) => {
     return c.redirect('/')
   } catch (e: any) {
     console.error('Google OAuth error:', e)
-    return c.redirect('/?error=google_auth_error')
+    const errorMsg = encodeURIComponent(e.message || 'unknown')
+    return c.redirect(`/?error=google_auth_error&detail=${errorMsg}`)
   }
 })
 
@@ -574,7 +583,8 @@ app.post('/api/auth/invite-code', async (c) => {
   const VALID_CODES: { [key: string]: { plan: string; chars: number; additive?: boolean } } = {
     'ARTES2WRITERS+': { plan: 'unlimited', chars: 999999999 },
     'DANTE2YOU': { plan: 'standard', chars: 100000, additive: true },
-    'DANTE2STANDARDUSER': { plan: 'standard', chars: 500000, additive: true }
+    'DANTE2STANDARDUSER': { plan: 'standard', chars: 500000, additive: true },
+    'FORMAKITHANKYOU+': { plan: 'standard', chars: 500000, additive: true }
   }
   
   const codeData = VALID_CODES[code]
@@ -935,10 +945,17 @@ NEVER include character counts, word counts, or any numerical information about 
       case 'writing':
       case 'continuation':
         systemPrompt = `You are an excellent writer.
-${target_length ? `IMPORTANT: Write approximately ${target_length} Japanese characters (NOT tokens, NOT words - actual character count including hiragana, katakana, kanji, and punctuation). For reference: 1000 characters ≈ one A4 page of Japanese text.` : ''}
+${target_length ? `Target length: approximately ${target_length} Japanese characters.` : ''}
 Write naturally readable and attractive content.
 ${context ? `The following is existing text. Continue it naturally.` : ''}
-CRITICAL: Output ONLY the story/text content itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, token counts, or any meta-information about text length. The reader will see character counts separately in the UI.`
+
+ABSOLUTE RULES - NEVER VIOLATE:
+1. Output ONLY the story/text content itself
+2. NEVER write "文字数", "○○文字", "characters", "約", "approximately" or ANY reference to text length
+3. NEVER add comments like "以上、○○文字です" or "This is approximately X characters"
+4. NEVER include word counts, character counts, byte counts, or token counts
+5. Do NOT mention the length of your response in any way
+6. Just write the content - nothing else`
         break
       case 'rewrite':
         systemPrompt = `You are an excellent editor.
@@ -951,13 +968,24 @@ Do not change the meaning.
 NEVER include character counts, word counts, or any numerical information about text length in your response.`
         break
       case 'expand':
-        systemPrompt = `You are an excellent writer.
-Expand the given text ${target_length ? `to approximately ${target_length} Japanese characters (NOT tokens, NOT words - actual character count including hiragana, katakana, kanji, and punctuation)` : 'with more detail'}.
-Focus on:
-- Detailed descriptions
-- Rich emotional expressions
-- Concrete examples
-CRITICAL: Output ONLY the expanded text itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, token counts, or any meta-comments about the text length.`
+        systemPrompt = `You are an excellent creative writer specializing in expanding and enriching text.
+Expand the given text ${target_length ? `to approximately ${target_length} Japanese characters` : 'with more detail'}.
+
+CREATIVE EXPANSION GUIDELINES:
+- Add detailed sensory descriptions (sight, sound, smell, touch, taste)
+- Develop emotional depth and character interiority
+- Introduce new relevant details that enhance the scene
+- Expand dialogue with natural reactions and subtext
+- Add atmospheric and environmental details
+- Create smooth transitions and pacing
+
+CRITICAL RULES:
+1. NEVER copy reference material verbatim - use it only as inspiration
+2. Create ORIGINAL content that captures the essence but uses YOUR OWN words
+3. The expanded text must feel fresh and creative, not recycled
+4. Maintain the original tone and style while adding depth
+5. Output ONLY the expanded text - no meta-comments
+6. NEVER mention character counts, word counts, or text length`
         break
       case 'proofread':
         systemPrompt = `You are an excellent proofreader.
@@ -978,9 +1006,10 @@ Do not change meaning or style.`
 Summarize the given text concisely.
 Focus on:
 - Not missing important points
-- ${target_length ? `Keeping it within ${target_length} Japanese characters (NOT tokens - actual character count)` : 'About 1/3 of original length'}
+- ${target_length ? `Keeping it within ${target_length} Japanese characters` : 'About 1/3 of original length'}
 - Making it readable
-CRITICAL: Output ONLY the summary text itself. NEVER include phrases like '文字数', 'characters', '約○○文字', 'approximately X characters', word counts, token counts, or any meta-comments about the text length.`
+
+ABSOLUTE RULES: Output ONLY the summary text. NEVER mention character counts, word counts, or text length in any way.`
         break
       case 'translate':
         systemPrompt = `You are a professional translator.
@@ -1017,6 +1046,23 @@ Propose 5 optimal titles for the given content.
 Add a brief explanation to each title.
 Create catchy and memorable titles.
 NEVER include character counts or text length information in your response.`
+        break
+      case 'extract_elements':
+        systemPrompt = `You are an expert literary analyst. Analyze the given text and extract the following structural elements in JSON format:
+
+{
+  "style": "Description of writing style (tone, vocabulary, sentence structure, narrative voice)",
+  "scenario": "Summary of the scenario/plot/situation",
+  "characters": [
+    {"name": "Character name or description", "traits": "Key personality traits and characteristics"}
+  ],
+  "theme": "Main themes and motifs",
+  "tone": "Overall tone and atmosphere",
+  "structure": "Narrative structure and composition"
+}
+
+Be thorough but concise. If an element is not clearly present, indicate "Not clearly defined".
+Output ONLY the JSON object, no additional text.`
         break
     }
     
@@ -1843,6 +1889,23 @@ app.put('/api/projects/:id/folder', async (c) => {
   await c.env.DB.prepare(
     'UPDATE projects SET folder_id = ? WHERE id = ? AND user_id = ?'
   ).bind(folder_id, id, user.id).run()
+  
+  return c.json({ success: true })
+})
+
+// Update project color
+app.put('/api/projects/:id/color', async (c) => {
+  const user = c.get('user')
+  if (!user) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+  
+  const id = c.req.param('id')
+  const { color } = await c.req.json()
+  
+  await c.env.DB.prepare(
+    'UPDATE projects SET color = ? WHERE id = ? AND user_id = ?'
+  ).bind(color, id, user.id).run()
   
   return c.json({ success: true })
 })

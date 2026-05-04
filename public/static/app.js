@@ -224,7 +224,31 @@
       aiOptionsTitle: 'AI生成オプション',
       additionalInstructions: '追加の指示（任意）',
       additionalInstructionsPlaceholder: '例: もっと詳細に、感情豊かに、会話を増やして...',
-      executeGenerate: '生成実行'
+      executeGenerate: '生成実行',
+      // Reference strength
+      referenceStrength: '参照強度',
+      referenceStrong: '強（内容をそのまま参照）',
+      referenceWeak: '弱（参考にして類似出力）',
+      selectFolder: 'フォルダ選択',
+      selectAllInFolder: 'フォルダ内を全選択',
+      deselectAllInFolder: 'フォルダ内を全解除',
+      // Negative prompt
+      negativePrompt: '除外指示（ネガティブプロンプト）',
+      negativePromptPlaceholder: '例: 暴力表現は避けて、難しい言葉は使わないで...',
+      // Extract elements
+      extractElements: '構成要素抽出',
+      extractElementsDesc: '文章から文体・シナリオ・キャラ設定などを抽出',
+      extractedStyle: '文体',
+      extractedScenario: 'シナリオ',
+      extractedCharacters: 'キャラクター設定',
+      extractedTheme: 'テーマ',
+      extractedTone: 'トーン・雰囲気',
+      extractedStructure: '構成',
+      extracting: '抽出中...',
+      noTextToExtract: '抽出する文章がありません',
+      // Project color
+      changeColor: 'カラー変更',
+      projectColor: 'プロジェクトカラー'
     },
     en: {
       appName: 'DANTE',
@@ -446,7 +470,31 @@
       aiOptionsTitle: 'AI Generation Options',
       additionalInstructions: 'Additional Instructions (optional)',
       additionalInstructionsPlaceholder: 'e.g., More detail, more emotional, add more dialogue...',
-      executeGenerate: 'Generate'
+      executeGenerate: 'Generate',
+      // Reference strength
+      referenceStrength: 'Reference Strength',
+      referenceStrong: 'Strong (copy content directly)',
+      referenceWeak: 'Weak (use as inspiration)',
+      selectFolder: 'Select Folder',
+      selectAllInFolder: 'Select All in Folder',
+      deselectAllInFolder: 'Deselect All in Folder',
+      // Negative prompt
+      negativePrompt: 'Negative Prompt',
+      negativePromptPlaceholder: 'e.g., Avoid violence, don\'t use complex words...',
+      // Extract elements
+      extractElements: 'Extract Elements',
+      extractElementsDesc: 'Extract style, scenario, character settings from text',
+      extractedStyle: 'Writing Style',
+      extractedScenario: 'Scenario',
+      extractedCharacters: 'Character Settings',
+      extractedTheme: 'Theme',
+      extractedTone: 'Tone & Atmosphere',
+      extractedStructure: 'Structure',
+      extracting: 'Extracting...',
+      noTextToExtract: 'No text to extract',
+      // Project color
+      changeColor: 'Change Color',
+      projectColor: 'Project Color'
     },
     zh: {
       appName: 'DANTE',
@@ -666,7 +714,27 @@
       aiOptionsTitle: 'AI生成选项',
       additionalInstructions: '附加说明（可选）',
       additionalInstructionsPlaceholder: '例如：更详细、更有感情、增加对话...',
-      executeGenerate: '生成'
+      executeGenerate: '生成',
+      referenceStrength: '参考强度',
+      referenceStrong: '强（直接参考内容）',
+      referenceWeak: '弱（作为灵感参考）',
+      selectFolder: '选择文件夹',
+      selectAllInFolder: '全选文件夹内项目',
+      deselectAllInFolder: '取消全选文件夹内项目',
+      negativePrompt: '排除指示',
+      negativePromptPlaceholder: '例如：避免暴力、不要使用复杂词汇...',
+      extractElements: '提取结构要素',
+      extractElementsDesc: '从文本中提取文体、情节、角色设定',
+      extractedStyle: '文体',
+      extractedScenario: '情节',
+      extractedCharacters: '角色设定',
+      extractedTheme: '主题',
+      extractedTone: '语气·氛围',
+      extractedStructure: '结构',
+      extracting: '提取中...',
+      noTextToExtract: '没有可提取的文本',
+      changeColor: '更改颜色',
+      projectColor: '项目颜色'
     },
     ko: {
       appName: 'DANTE',
@@ -888,7 +956,27 @@
       aiOptionsTitle: 'AI 생성 옵션',
       additionalInstructions: '추가 지시 (선택)',
       additionalInstructionsPlaceholder: '예: 더 자세히, 더 감정적으로, 대화 추가...',
-      executeGenerate: '생성'
+      executeGenerate: '생성',
+      referenceStrength: '참조 강도',
+      referenceStrong: '강함 (내용 직접 참조)',
+      referenceWeak: '약함 (영감으로 참고)',
+      selectFolder: '폴더 선택',
+      selectAllInFolder: '폴더 전체 선택',
+      deselectAllInFolder: '폴더 전체 해제',
+      negativePrompt: '제외 지시',
+      negativePromptPlaceholder: '예: 폭력 표현 피하기, 어려운 단어 사용하지 않기...',
+      extractElements: '구성 요소 추출',
+      extractElementsDesc: '텍스트에서 문체, 시나리오, 캐릭터 설정 추출',
+      extractedStyle: '문체',
+      extractedScenario: '시나리오',
+      extractedCharacters: '캐릭터 설정',
+      extractedTheme: '테마',
+      extractedTone: '톤·분위기',
+      extractedStructure: '구성',
+      extracting: '추출 중...',
+      noTextToExtract: '추출할 텍스트가 없습니다',
+      changeColor: '색상 변경',
+      projectColor: '프로젝트 색상'
     },
     it: {
       appName: 'DANTE',
@@ -1111,7 +1199,27 @@
       aiOptionsTitle: 'Opzioni Generazione AI',
       additionalInstructions: 'Istruzioni Aggiuntive (opzionale)',
       additionalInstructionsPlaceholder: 'Es.: Più dettagli, più emotivo, aggiungi dialogo...',
-      executeGenerate: 'Genera'
+      executeGenerate: 'Genera',
+      referenceStrength: 'Intensità Riferimento',
+      referenceStrong: 'Forte (copia contenuto direttamente)',
+      referenceWeak: 'Debole (usa come ispirazione)',
+      selectFolder: 'Seleziona Cartella',
+      selectAllInFolder: 'Seleziona Tutto nella Cartella',
+      deselectAllInFolder: 'Deseleziona Tutto nella Cartella',
+      negativePrompt: 'Prompt Negativo',
+      negativePromptPlaceholder: 'Es.: Evita violenza, non usare parole complesse...',
+      extractElements: 'Estrai Elementi',
+      extractElementsDesc: 'Estrai stile, scenario, personaggi dal testo',
+      extractedStyle: 'Stile',
+      extractedScenario: 'Scenario',
+      extractedCharacters: 'Personaggi',
+      extractedTheme: 'Tema',
+      extractedTone: 'Tono e Atmosfera',
+      extractedStructure: 'Struttura',
+      extracting: 'Estrazione...',
+      noTextToExtract: 'Nessun testo da estrarre',
+      changeColor: 'Cambia Colore',
+      projectColor: 'Colore Progetto'
     },
     hi: {
       appName: 'DANTE',
@@ -1334,7 +1442,27 @@
       aiOptionsTitle: 'AI जनरेशन विकल्प',
       additionalInstructions: 'अतिरिक्त निर्देश (वैकल्पिक)',
       additionalInstructionsPlaceholder: 'उदाहरण: अधिक विस्तृत, अधिक भावनात्मक, अधिक संवाद जोड़ें...',
-      executeGenerate: 'जनरेट'
+      executeGenerate: 'जनरेट',
+      referenceStrength: 'संदर्भ तीव्रता',
+      referenceStrong: 'मजबूत (सीधे संदर्भित)',
+      referenceWeak: 'कमजोर (प्रेरणा के रूप में)',
+      selectFolder: 'फोल्डर चुनें',
+      selectAllInFolder: 'फोल्डर में सब चुनें',
+      deselectAllInFolder: 'फोल्डर में सब अचयनित',
+      negativePrompt: 'नकारात्मक प्रॉम्प्ट',
+      negativePromptPlaceholder: 'उदाहरण: हिंसा से बचें, कठिन शब्दों का उपयोग न करें...',
+      extractElements: 'तत्व निष्कर्षण',
+      extractElementsDesc: 'पाठ से शैली, परिदृश्य, पात्र सेटिंग निकालें',
+      extractedStyle: 'शैली',
+      extractedScenario: 'परिदृश्य',
+      extractedCharacters: 'पात्र सेटिंग',
+      extractedTheme: 'विषय',
+      extractedTone: 'टोन और माहौल',
+      extractedStructure: 'संरचना',
+      extracting: 'निष्कर्षण जारी...',
+      noTextToExtract: 'निष्कर्षण के लिए कोई पाठ नहीं',
+      changeColor: 'रंग बदलें',
+      projectColor: 'प्रोजेक्ट रंग'
     },
     es: {
       appName: 'DANTE', appSubtitle: 'Editor de Escritura Integrado con IA',
@@ -1448,7 +1576,27 @@
       aiOptionsTitle: 'Opciones de Generación IA',
       additionalInstructions: 'Instrucciones Adicionales (opcional)',
       additionalInstructionsPlaceholder: 'Ej.: Más detalle, más emotivo, añadir diálogo...',
-      executeGenerate: 'Generar'
+      executeGenerate: 'Generar',
+      referenceStrength: 'Intensidad de Referencia',
+      referenceStrong: 'Fuerte (copiar contenido directamente)',
+      referenceWeak: 'Débil (usar como inspiración)',
+      selectFolder: 'Seleccionar Carpeta',
+      selectAllInFolder: 'Seleccionar Todo en Carpeta',
+      deselectAllInFolder: 'Deseleccionar Todo en Carpeta',
+      negativePrompt: 'Prompt Negativo',
+      negativePromptPlaceholder: 'Ej.: Evitar violencia, no usar palabras complejas...',
+      extractElements: 'Extraer Elementos',
+      extractElementsDesc: 'Extraer estilo, escenario, personajes del texto',
+      extractedStyle: 'Estilo',
+      extractedScenario: 'Escenario',
+      extractedCharacters: 'Personajes',
+      extractedTheme: 'Tema',
+      extractedTone: 'Tono y Atmósfera',
+      extractedStructure: 'Estructura',
+      extracting: 'Extrayendo...',
+      noTextToExtract: 'No hay texto para extraer',
+      changeColor: 'Cambiar Color',
+      projectColor: 'Color del Proyecto'
     },
     fr: {
       appName: 'DANTE', appSubtitle: 'Éditeur d\'Écriture Intégré IA',
@@ -1562,7 +1710,27 @@
       aiOptionsTitle: 'Options de Génération IA',
       additionalInstructions: 'Instructions Supplémentaires (optionnel)',
       additionalInstructionsPlaceholder: 'Ex.: Plus de détails, plus émotionnel, ajouter du dialogue...',
-      executeGenerate: 'Générer'
+      executeGenerate: 'Générer',
+      referenceStrength: 'Intensité de Référence',
+      referenceStrong: 'Fort (copier directement)',
+      referenceWeak: 'Faible (utiliser comme inspiration)',
+      selectFolder: 'Sélectionner Dossier',
+      selectAllInFolder: 'Sélectionner Tout dans le Dossier',
+      deselectAllInFolder: 'Désélectionner Tout dans le Dossier',
+      negativePrompt: 'Prompt Négatif',
+      negativePromptPlaceholder: 'Ex.: Éviter violence, ne pas utiliser mots complexes...',
+      extractElements: 'Extraire Éléments',
+      extractElementsDesc: 'Extraire style, scénario, personnages du texte',
+      extractedStyle: 'Style',
+      extractedScenario: 'Scénario',
+      extractedCharacters: 'Personnages',
+      extractedTheme: 'Thème',
+      extractedTone: 'Ton et Atmosphère',
+      extractedStructure: 'Structure',
+      extracting: 'Extraction...',
+      noTextToExtract: 'Aucun texte à extraire',
+      changeColor: 'Changer Couleur',
+      projectColor: 'Couleur du Projet'
     },
     de: {
       appName: 'DANTE', appSubtitle: 'KI-integrierter Schreibeditor',
@@ -1676,7 +1844,27 @@
       aiOptionsTitle: 'KI-Generierungsoptionen',
       additionalInstructions: 'Zusätzliche Anweisungen (optional)',
       additionalInstructionsPlaceholder: 'z.B.: Mehr Details, emotionaler, mehr Dialog...',
-      executeGenerate: 'Generieren'
+      executeGenerate: 'Generieren',
+      referenceStrength: 'Referenzstärke',
+      referenceStrong: 'Stark (Inhalt direkt kopieren)',
+      referenceWeak: 'Schwach (als Inspiration nutzen)',
+      selectFolder: 'Ordner Auswählen',
+      selectAllInFolder: 'Alle im Ordner Auswählen',
+      deselectAllInFolder: 'Alle im Ordner Abwählen',
+      negativePrompt: 'Negativer Prompt',
+      negativePromptPlaceholder: 'z.B.: Gewalt vermeiden, keine komplexen Wörter...',
+      extractElements: 'Elemente Extrahieren',
+      extractElementsDesc: 'Stil, Szenario, Charaktere aus Text extrahieren',
+      extractedStyle: 'Stil',
+      extractedScenario: 'Szenario',
+      extractedCharacters: 'Charaktere',
+      extractedTheme: 'Thema',
+      extractedTone: 'Ton und Atmosphäre',
+      extractedStructure: 'Struktur',
+      extracting: 'Extrahiere...',
+      noTextToExtract: 'Kein Text zum Extrahieren',
+      changeColor: 'Farbe Ändern',
+      projectColor: 'Projektfarbe'
     },
     pt: {
       appName: 'DANTE', appSubtitle: 'Editor de Escrita Integrado com IA',
@@ -1790,7 +1978,27 @@
       aiOptionsTitle: 'Opções de Geração IA',
       additionalInstructions: 'Instruções Adicionais (opcional)',
       additionalInstructionsPlaceholder: 'Ex.: Mais detalhes, mais emotivo, adicionar diálogo...',
-      executeGenerate: 'Gerar'
+      executeGenerate: 'Gerar',
+      referenceStrength: 'Intensidade de Referência',
+      referenceStrong: 'Forte (copiar conteúdo diretamente)',
+      referenceWeak: 'Fraco (usar como inspiração)',
+      selectFolder: 'Selecionar Pasta',
+      selectAllInFolder: 'Selecionar Tudo na Pasta',
+      deselectAllInFolder: 'Desmarcar Tudo na Pasta',
+      negativePrompt: 'Prompt Negativo',
+      negativePromptPlaceholder: 'Ex.: Evitar violência, não usar palavras complexas...',
+      extractElements: 'Extrair Elementos',
+      extractElementsDesc: 'Extrair estilo, cenário, personagens do texto',
+      extractedStyle: 'Estilo',
+      extractedScenario: 'Cenário',
+      extractedCharacters: 'Personagens',
+      extractedTheme: 'Tema',
+      extractedTone: 'Tom e Atmosfera',
+      extractedStructure: 'Estrutura',
+      extracting: 'Extraindo...',
+      noTextToExtract: 'Nenhum texto para extrair',
+      changeColor: 'Mudar Cor',
+      projectColor: 'Cor do Projeto'
     },
     ru: {
       appName: 'DANTE', appSubtitle: 'ИИ-интегрированный текстовый редактор',
@@ -1904,7 +2112,27 @@
       aiOptionsTitle: 'Опции генерации ИИ',
       additionalInstructions: 'Дополнительные инструкции (необязательно)',
       additionalInstructionsPlaceholder: 'Напр.: Больше деталей, эмоциональнее, добавить диалог...',
-      executeGenerate: 'Генерировать'
+      executeGenerate: 'Генерировать',
+      referenceStrength: 'Сила ссылки',
+      referenceStrong: 'Сильная (копировать напрямую)',
+      referenceWeak: 'Слабая (использовать как вдохновение)',
+      selectFolder: 'Выбрать папку',
+      selectAllInFolder: 'Выбрать все в папке',
+      deselectAllInFolder: 'Снять выделение в папке',
+      negativePrompt: 'Негативный промпт',
+      negativePromptPlaceholder: 'Напр.: Избегать насилия, не использовать сложные слова...',
+      extractElements: 'Извлечь элементы',
+      extractElementsDesc: 'Извлечь стиль, сценарий, персонажей из текста',
+      extractedStyle: 'Стиль',
+      extractedScenario: 'Сценарий',
+      extractedCharacters: 'Персонажи',
+      extractedTheme: 'Тема',
+      extractedTone: 'Тон и атмосфера',
+      extractedStructure: 'Структура',
+      extracting: 'Извлечение...',
+      noTextToExtract: 'Нет текста для извлечения',
+      changeColor: 'Изменить цвет',
+      projectColor: 'Цвет проекта'
     },
     ar: {
       appName: 'DANTE', appSubtitle: 'محرر كتابة متكامل بالذكاء الاصطناعي',
@@ -2018,7 +2246,27 @@
       aiOptionsTitle: 'خيارات توليد الذكاء الاصطناعي',
       additionalInstructions: 'تعليمات إضافية (اختياري)',
       additionalInstructionsPlaceholder: 'مثال: المزيد من التفاصيل، أكثر عاطفية، إضافة حوار...',
-      executeGenerate: 'توليد'
+      executeGenerate: 'توليد',
+      referenceStrength: 'قوة المرجع',
+      referenceStrong: 'قوي (نسخ المحتوى مباشرة)',
+      referenceWeak: 'ضعيف (استخدام كإلهام)',
+      selectFolder: 'اختيار المجلد',
+      selectAllInFolder: 'تحديد الكل في المجلد',
+      deselectAllInFolder: 'إلغاء تحديد الكل في المجلد',
+      negativePrompt: 'موجه سلبي',
+      negativePromptPlaceholder: 'مثال: تجنب العنف، لا تستخدم كلمات معقدة...',
+      extractElements: 'استخراج العناصر',
+      extractElementsDesc: 'استخراج الأسلوب والسيناريو والشخصيات من النص',
+      extractedStyle: 'الأسلوب',
+      extractedScenario: 'السيناريو',
+      extractedCharacters: 'الشخصيات',
+      extractedTheme: 'الموضوع',
+      extractedTone: 'النبرة والأجواء',
+      extractedStructure: 'الهيكل',
+      extracting: 'جاري الاستخراج...',
+      noTextToExtract: 'لا يوجد نص للاستخراج',
+      changeColor: 'تغيير اللون',
+      projectColor: 'لون المشروع'
     }
   };
 
@@ -2041,6 +2289,8 @@
     autoSaveEnabled: true,
     lastSavedContent: '',
     selectedContextProjects: [],
+    contextReferenceStrength: 'weak', // 'strong' or 'weak'
+    negativePrompt: '', // Global negative prompt
     folders: [],
     tags: [],
     selectedFolder: null,
@@ -3261,6 +3511,9 @@
             </div>
           </div>
           <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <button onclick="event.stopPropagation(); showProjectColorModal(${p.id})" class="text-gray-400 hover:text-purple-600 p-1" title="${t('changeColor')}">
+              <i class="fas fa-palette text-xs"></i>
+            </button>
             <button onclick="event.stopPropagation(); showProjectFolderModal(${p.id})" class="text-gray-400 hover:text-yellow-600 p-1" title="${t('moveToFolder')}">
               <i class="fas fa-folder text-xs"></i>
             </button>
@@ -4318,7 +4571,7 @@
     
     const modals = document.getElementById('modals');
     modals.innerHTML = `
-      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)" id="ai-options-modal">
         <div class="bg-white rounded-xl max-w-md w-full p-6" onclick="event.stopPropagation()">
           <h3 class="text-xl font-bold text-gray-800 mb-4">
             <i class="fas ${type === 'continue' ? 'fa-arrow-right text-green-500' : type === 'rewrite' ? 'fa-sync text-blue-500' : 'fa-expand-arrows-alt text-purple-500'} mr-2"></i>
@@ -4331,6 +4584,10 @@
               <textarea id="ai-additional-instructions" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="${t('additionalInstructionsPlaceholder')}"></textarea>
             </div>
             <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">${t('negativePrompt')}</label>
+              <textarea id="ai-negative-prompt" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="${t('negativePromptPlaceholder')}">${escapeHtml(state.negativePrompt || '')}</textarea>
+            </div>
+            <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">${t('targetLength')}</label>
               <input type="number" id="ai-target-length" placeholder="${t('targetLength')}" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
               <p class="text-xs text-gray-500 mt-1">${t('targetLengthNote')}</p>
@@ -4339,17 +4596,36 @@
           
           <div class="mt-6 flex gap-3">
             <button onclick="closeModal()" class="flex-1 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">${t('cancel')}</button>
-            <button onclick="executeAiGeneration('${type}')" class="flex-1 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">${t('executeGenerate')}</button>
+            <button id="ai-execute-btn" onclick="executeAiGeneration('${type}')" class="flex-1 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">${t('executeGenerate')}</button>
           </div>
         </div>
       </div>
     `;
+    
+    // Add keyboard shortcut for Ctrl+Enter in modal
+    const modalEl = document.getElementById('ai-options-modal');
+    modalEl.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
+        document.getElementById('ai-execute-btn')?.click();
+      }
+    });
+    
+    // Focus on the first input
+    setTimeout(() => {
+      document.getElementById('ai-additional-instructions')?.focus();
+    }, 100);
   };
 
   // Execute AI generation with options
   window.executeAiGeneration = async function(type) {
     const additionalInstructions = document.getElementById('ai-additional-instructions')?.value || '';
+    const negativePrompt = document.getElementById('ai-negative-prompt')?.value || '';
     const targetLength = document.getElementById('ai-target-length')?.value;
+    
+    // Save negative prompt to state for future use
+    state.negativePrompt = negativePrompt;
     
     closeModal();
     
@@ -4524,6 +4800,114 @@
       showToast(t('generate') + ' OK', 'success');
     } catch (e) {
       showToast(e.message, 'error');
+    }
+  };
+
+  // Extract structural elements from text
+  window.aiExtractElements = async function() {
+    const editor = document.getElementById('editor-content');
+    const content = editor?.value || '';
+    
+    if (!content.trim()) {
+      showToast(t('noTextToExtract'), 'warning');
+      return;
+    }
+    
+    try {
+      state.isGenerating = true;
+      render();
+      
+      const result = await generate(content.substring(0, 5000), 'extract_elements');
+      
+      // Try to parse JSON
+      let elements;
+      try {
+        elements = JSON.parse(result);
+      } catch (e) {
+        // If parsing fails, show raw result
+        elements = { raw: result };
+      }
+      
+      const modals = document.getElementById('modals');
+      modals.innerHTML = `
+        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+          <div class="bg-white rounded-xl max-w-2xl w-full p-6 max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">
+              <i class="fas fa-puzzle-piece text-purple-500 mr-2"></i>
+              ${t('extractElements')}
+            </h3>
+            <p class="text-sm text-gray-500 mb-4">${t('extractElementsDesc')}</p>
+            
+            <div class="space-y-4">
+              ${elements.style ? `
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-medium text-blue-800 mb-2"><i class="fas fa-pen-fancy mr-2"></i>${t('extractedStyle')}</h4>
+                  <p class="text-sm text-blue-700">${escapeHtml(elements.style)}</p>
+                </div>
+              ` : ''}
+              
+              ${elements.scenario ? `
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-medium text-green-800 mb-2"><i class="fas fa-film mr-2"></i>${t('extractedScenario')}</h4>
+                  <p class="text-sm text-green-700">${escapeHtml(elements.scenario)}</p>
+                </div>
+              ` : ''}
+              
+              ${elements.characters && elements.characters.length > 0 ? `
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                  <h4 class="font-medium text-yellow-800 mb-2"><i class="fas fa-users mr-2"></i>${t('extractedCharacters')}</h4>
+                  <div class="space-y-2">
+                    ${elements.characters.map(c => `
+                      <div class="text-sm text-yellow-700">
+                        <strong>${escapeHtml(c.name || 'Unknown')}:</strong> ${escapeHtml(c.traits || '')}
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              ` : ''}
+              
+              ${elements.theme ? `
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <h4 class="font-medium text-purple-800 mb-2"><i class="fas fa-bookmark mr-2"></i>${t('extractedTheme')}</h4>
+                  <p class="text-sm text-purple-700">${escapeHtml(elements.theme)}</p>
+                </div>
+              ` : ''}
+              
+              ${elements.tone ? `
+                <div class="bg-pink-50 p-4 rounded-lg">
+                  <h4 class="font-medium text-pink-800 mb-2"><i class="fas fa-music mr-2"></i>${t('extractedTone')}</h4>
+                  <p class="text-sm text-pink-700">${escapeHtml(elements.tone)}</p>
+                </div>
+              ` : ''}
+              
+              ${elements.structure ? `
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-medium text-gray-800 mb-2"><i class="fas fa-sitemap mr-2"></i>${t('extractedStructure')}</h4>
+                  <p class="text-sm text-gray-700">${escapeHtml(elements.structure)}</p>
+                </div>
+              ` : ''}
+              
+              ${elements.raw ? `
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <pre class="text-sm text-gray-700 whitespace-pre-wrap">${escapeHtml(elements.raw)}</pre>
+                </div>
+              ` : ''}
+            </div>
+            
+            <div class="mt-6 flex gap-3">
+              <button onclick="closeModal()" class="flex-1 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">${t('close')}</button>
+              <button onclick="copyToClipboard(JSON.stringify(${JSON.stringify(elements)}, null, 2))" class="flex-1 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">${t('copy')}</button>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      showToast(t('extractElements') + ' OK', 'success');
+    } catch (e) {
+      showToast(e.message, 'error');
+    } finally {
+      state.isGenerating = false;
+      render();
     }
   };
 
@@ -5626,6 +6010,71 @@ p { text-indent: 1em; margin: 0.5em 0; }
     }
   };
 
+  // Show project color selection modal
+  window.showProjectColorModal = function(projectId) {
+    const project = state.projects.find(p => p.id === projectId);
+    if (!project) return;
+    
+    const colors = [
+      { value: null, name: 'Default', color: '#9CA3AF' },
+      { value: '#EF4444', name: 'Red', color: '#EF4444' },
+      { value: '#F97316', name: 'Orange', color: '#F97316' },
+      { value: '#EAB308', name: 'Yellow', color: '#EAB308' },
+      { value: '#22C55E', name: 'Green', color: '#22C55E' },
+      { value: '#14B8A6', name: 'Teal', color: '#14B8A6' },
+      { value: '#3B82F6', name: 'Blue', color: '#3B82F6' },
+      { value: '#8B5CF6', name: 'Purple', color: '#8B5CF6' },
+      { value: '#EC4899', name: 'Pink', color: '#EC4899' },
+      { value: '#6B7280', name: 'Gray', color: '#6B7280' }
+    ];
+    
+    const modals = document.getElementById('modals');
+    modals.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-xl max-w-sm w-full p-6" onclick="event.stopPropagation()">
+          <h3 class="text-lg font-bold text-gray-800 mb-4"><i class="fas fa-palette text-purple-600 mr-2"></i>${t('projectColor')}</h3>
+          
+          <div class="grid grid-cols-5 gap-3">
+            ${colors.map(c => `
+              <button onclick="setProjectColor(${projectId}, ${c.value ? `'${c.value}'` : 'null'})" 
+                class="w-10 h-10 rounded-full border-2 ${project.color === c.value ? 'border-gray-800 ring-2 ring-offset-2 ring-gray-400' : 'border-gray-200 hover:border-gray-400'} transition flex items-center justify-center"
+                style="background-color: ${c.color}">
+                ${project.color === c.value ? '<i class="fas fa-check text-white text-sm"></i>' : ''}
+              </button>
+            `).join('')}
+          </div>
+          
+          <button onclick="closeModal()" class="w-full mt-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">${t('close')}</button>
+        </div>
+      </div>
+    `;
+  };
+
+  window.setProjectColor = async function(projectId, color) {
+    try {
+      const res = await fetch(`/api/projects/${projectId}/color`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ color })
+      });
+      
+      if (!res.ok) throw new Error('Failed to update color');
+      
+      // Update local state
+      const project = state.projects.find(p => p.id === projectId);
+      if (project) {
+        project.color = color;
+      }
+      
+      showToast(t('saved'), 'success');
+      closeModal();
+      render();
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  };
+
   window.toggleAutoSave = toggleAutoSave;
 
   window.saveProject = async function() {
@@ -5935,14 +6384,75 @@ p { text-indent: 1em; margin: 0.5em 0; }
     }
   };
 
-  // Show context selector modal
+  // Show context selector modal with folder hierarchy and strength options
   window.showContextSelector = function() {
     const modals = document.getElementById('modals');
     const otherProjects = state.projects.filter(p => p.id !== state.currentProject?.id);
     
+    // Group projects by folder
+    const projectsByFolder = {};
+    const noFolderProjects = [];
+    
+    otherProjects.forEach(p => {
+      if (p.folder_id) {
+        if (!projectsByFolder[p.folder_id]) {
+          projectsByFolder[p.folder_id] = [];
+        }
+        projectsByFolder[p.folder_id].push(p);
+      } else {
+        noFolderProjects.push(p);
+      }
+    });
+    
+    // Build folder sections HTML
+    let foldersHtml = '';
+    
+    // Folders with projects
+    state.folders.forEach(folder => {
+      const folderProjects = projectsByFolder[folder.id] || [];
+      if (folderProjects.length === 0) return;
+      
+      const allSelected = folderProjects.every(p => state.selectedContextProjects.includes(p.id));
+      const someSelected = folderProjects.some(p => state.selectedContextProjects.includes(p.id));
+      
+      foldersHtml += `
+        <div class="mb-4">
+          <div class="flex items-center justify-between p-2 bg-gray-100 rounded-lg mb-2">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-folder" style="color: ${folder.color || '#6B7280'}"></i>
+              <span class="font-medium text-gray-700">${escapeHtml(folder.name)}</span>
+              <span class="text-xs text-gray-500">(${folderProjects.length})</span>
+            </div>
+            <button onclick="toggleFolderSelection(${folder.id}, ${!allSelected})" class="text-xs px-2 py-1 rounded ${allSelected ? 'bg-blue-100 text-blue-700' : 'bg-gray-200 text-gray-600'} hover:opacity-80 transition">
+              ${allSelected ? t('deselectAllInFolder') : t('selectAllInFolder')}
+            </button>
+          </div>
+          <div class="space-y-1 pl-4">
+            ${folderProjects.map(p => renderContextProjectItem(p)).join('')}
+          </div>
+        </div>
+      `;
+    });
+    
+    // No folder projects
+    if (noFolderProjects.length > 0) {
+      foldersHtml += `
+        <div class="mb-4">
+          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg mb-2">
+            <i class="fas fa-folder-open text-gray-400"></i>
+            <span class="font-medium text-gray-500">${t('noFolder')}</span>
+            <span class="text-xs text-gray-400">(${noFolderProjects.length})</span>
+          </div>
+          <div class="space-y-1 pl-4">
+            ${noFolderProjects.map(p => renderContextProjectItem(p)).join('')}
+          </div>
+        </div>
+      `;
+    }
+    
     modals.innerHTML = `
       <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeModal(event)">
-        <div class="bg-white rounded-xl max-w-lg w-full p-6 max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 max-h-[80vh] flex flex-col" onclick="event.stopPropagation()">
           <div class="flex justify-between items-center mb-4">
             <h3 class="text-xl font-bold text-gray-800">${t('selectContext')}</h3>
             <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
@@ -5951,31 +6461,26 @@ p { text-indent: 1em; margin: 0.5em 0; }
           </div>
           <p class="text-sm text-gray-600 mb-4">${t('selectContextDesc')}</p>
           
-          <div class="space-y-2 max-h-[50vh] overflow-y-auto">
-            ${otherProjects.length === 0 ? `<p class="text-gray-500 text-center py-4">${t('noProjects')}</p>` :
-              otherProjects.map(p => {
-                const isSelected = state.selectedContextProjects.includes(p.id);
-                const typeIcon = p.project_type === 'idea' ? 'fa-lightbulb text-yellow-500' : 
-                                 p.project_type === 'plot' ? 'fa-sitemap text-blue-500' : 'fa-pen text-green-500';
-                const preview = (p.content || p.concept || p.plot_content || '').substring(0, 100);
-                return `
-                  <label class="flex items-start gap-3 p-3 rounded-lg border ${isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'} cursor-pointer transition">
-                    <input type="checkbox" class="mt-1 w-4 h-4 text-blue-600" ${isSelected ? 'checked' : ''} onchange="toggleContextProject(${p.id})">
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center gap-2">
-                        <i class="fas ${typeIcon}"></i>
-                        <span class="font-medium text-gray-800">${escapeHtml(p.title)}</span>
-                      </div>
-                      <p class="text-xs text-gray-500 mt-1 truncate">${escapeHtml(preview)}${preview.length >= 100 ? '...' : ''}</p>
-                      <span class="text-xs text-gray-400">${formatNumber(p.word_count || 0)} ${t('characters')}</span>
-                    </div>
-                  </label>
-                `;
-              }).join('')
-            }
+          <!-- Reference Strength Selection -->
+          <div class="mb-4 p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+            <label class="block text-sm font-medium text-gray-700 mb-2">${t('referenceStrength')}</label>
+            <div class="flex gap-4">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="refStrength" value="strong" ${state.contextReferenceStrength === 'strong' ? 'checked' : ''} onchange="setReferenceStrength('strong')" class="text-yellow-600">
+                <span class="text-sm">${t('referenceStrong')}</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="refStrength" value="weak" ${state.contextReferenceStrength === 'weak' ? 'checked' : ''} onchange="setReferenceStrength('weak')" class="text-yellow-600">
+                <span class="text-sm">${t('referenceWeak')}</span>
+              </label>
+            </div>
           </div>
           
-          <div class="mt-4 flex justify-end gap-2">
+          <div class="flex-1 overflow-y-auto" id="context-projects-list">
+            ${otherProjects.length === 0 ? `<p class="text-gray-500 text-center py-4">${t('noProjects')}</p>` : foldersHtml}
+          </div>
+          
+          <div class="mt-4 flex justify-end gap-2 pt-4 border-t">
             <button onclick="clearContextSelection()" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">
               ${t('cancel')}
             </button>
@@ -5987,6 +6492,46 @@ p { text-indent: 1em; margin: 0.5em 0; }
       </div>
     `;
   };
+  
+  // Render a single project item in context selector
+  function renderContextProjectItem(p) {
+    const isSelected = state.selectedContextProjects.includes(p.id);
+    const typeIcon = p.project_type === 'idea' ? 'fa-lightbulb text-yellow-500' : 
+                     p.project_type === 'plot' ? 'fa-sitemap text-blue-500' : 'fa-pen text-green-500';
+    const preview = (p.content || p.concept || p.plot_content || '').substring(0, 80);
+    return `
+      <label class="flex items-start gap-3 p-2 rounded-lg border ${isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'} cursor-pointer transition">
+        <input type="checkbox" class="mt-1 w-4 h-4 text-blue-600" ${isSelected ? 'checked' : ''} onchange="toggleContextProject(${p.id})">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <i class="fas ${typeIcon} text-sm"></i>
+            <span class="font-medium text-gray-800 text-sm">${escapeHtml(p.title)}</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1 truncate">${escapeHtml(preview)}${preview.length >= 80 ? '...' : ''}</p>
+        </div>
+      </label>
+    `;
+  }
+  
+  // Toggle all projects in a folder
+  window.toggleFolderSelection = function(folderId, select) {
+    const folderProjects = state.projects.filter(p => p.folder_id === folderId && p.id !== state.currentProject?.id);
+    folderProjects.forEach(p => {
+      const idx = state.selectedContextProjects.indexOf(p.id);
+      if (select && idx === -1) {
+        state.selectedContextProjects.push(p.id);
+      } else if (!select && idx !== -1) {
+        state.selectedContextProjects.splice(idx, 1);
+      }
+    });
+    showContextSelector();
+    updateContextDisplay();
+  };
+  
+  // Set reference strength
+  window.setReferenceStrength = function(strength) {
+    state.contextReferenceStrength = strength;
+  };
 
   window.toggleContextProject = function(projectId) {
     const idx = state.selectedContextProjects.indexOf(projectId);
@@ -5995,9 +6540,21 @@ p { text-indent: 1em; margin: 0.5em 0; }
     } else {
       state.selectedContextProjects.splice(idx, 1);
     }
+    // Save scroll position before re-render
+    const listEl = document.getElementById('context-projects-list');
+    const scrollTop = listEl ? listEl.scrollTop : 0;
+    
     // Re-render the modal to update checkboxes and update background UI
     showContextSelector();
     updateContextDisplay();
+    
+    // Restore scroll position after re-render
+    setTimeout(() => {
+      const newListEl = document.getElementById('context-projects-list');
+      if (newListEl) {
+        newListEl.scrollTop = scrollTop;
+      }
+    }, 0);
   };
 
   // Update context display without full re-render
@@ -6073,9 +6630,14 @@ p { text-indent: 1em; margin: 0.5em 0; }
       }
     }
     
-    // Add selected reference projects
+    // Add selected reference projects with strength indicator
     if (state.selectedContextProjects.length > 0) {
-      context += '【参照プロジェクト】\n';
+      const isStrong = state.contextReferenceStrength === 'strong';
+      if (isStrong) {
+        context += '【参照プロジェクト - 強参照：内容をそのまま活用してください】\n';
+      } else {
+        context += '【参照プロジェクト - 弱参照：参考にして類似のものを出力してください。内容をそのままコピーせず、インスピレーションとして活用してください】\n';
+      }
       for (const projectId of state.selectedContextProjects) {
         const project = state.projects.find(p => p.id === projectId);
         if (project) {
@@ -6092,6 +6654,11 @@ p { text-indent: 1em; margin: 0.5em 0; }
         }
       }
       context += '\n';
+    }
+    
+    // Add negative prompt if set
+    if (state.negativePrompt && state.negativePrompt.trim()) {
+      context += `\n【除外指示（以下は絶対にしないでください）】\n${state.negativePrompt}\n\n`;
     }
     
     return context;
